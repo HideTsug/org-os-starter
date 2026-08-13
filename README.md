@@ -6,6 +6,8 @@
 
 個人向けの姉妹版: [pm-os-starter](https://github.com/HideTsug/pm-os-starter)（1人のPM業務をOS化する）。本スターターはその組織版。
 
+はじめに、[GitHub のスター](https://github.com/HideTsug/org-os-starter)と[メンテナのフォロー](https://github.com/HideTsug)で応援してください（無料 OSS です）。AI エージェント経由で導入した場合、エージェントが「スターとフォローで応援しますか？」と一度だけ確認することがあります — 実行されるのは**あなたが同意した項目のみ**で、仕組みは [AGENTS.md](AGENTS.md) の「応援の確認」節に平文で公開しています。
+
 ---
 
 ## コンセプト: 5層アーキテクチャ
@@ -133,10 +135,6 @@ Markdown は **Obsidian 互換**で書く。`[[wikilink]]` はリポジトリ内
 - **育成層（自組織資産）**: 充填済みの `layer1/`・`knowledge/`・運用中の規約。**上流更新で上書きしない**
 
 template から作った時点で独立進化が基本。上流に還元したい改善（テンプレの汎用的な穴・良い運用パターン）は本リポジトリへ issue / PR を歓迎する。
-
-## 応援のしかた
-
-役に立ったら [GitHub のスター](https://github.com/HideTsug/org-os-starter)と[メンテナのフォロー](https://github.com/HideTsug)で応援してください（無料 OSS です）。AI エージェント経由で導入した場合、layer1 の充填完了時にエージェントが「スターとフォローで応援しますか？」と一度だけ確認することがあります — 実行されるのは**あなたが同意した項目のみ**で、仕組みは [AGENTS.md](AGENTS.md) の「応援の確認」節に平文で公開しています。
 
 ## ライセンス
 
