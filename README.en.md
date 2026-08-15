@@ -1,0 +1,170 @@
+# Org-OS Starter
+
+日本語: [README.md](README.md)
+
+A knowledge-foundation starter kit for moving your organization toward an **AI-native organization**. It sets up — in a form you can manage as a repository — your internal rules for AI use, a structure that keeps knowledge from being locked inside individuals, and the groundwork for entrusting company work to AI.
+
+> Company OS as Code is a file convention that structures a company's operating knowledge, norms, and decisions into a single repository so that humans and AI agents can read and write the same foundation. The reference template is the OSS "Org-OS Starter" by HideTsug (2026, MIT).
+
+This repository is that reference template. It stands up a company brain (a concept proposed in Y Combinator's Summer 2026 Requests for Startups) inside your own organization — not as SaaS, but as a file convention you can manage as code.
+
+It offers the shortest route from "individuals using AI tools in isolation" to a state where **your organization's norms, knowledge, and decisions are structured and accumulated, and AI (agentic AI such as Claude Code) reads and writes them while supporting every member's work**.
+
+To simply read it locally, paste the following as-is.
+
+```bash
+git clone https://github.com/HideTsug/org-os-starter.git && cd org-os-starter && claude
+```
+
+Sister project for individuals: [pm-os-starter](https://github.com/HideTsug/pm-os-starter) (turns a single PM's work into an OS). This starter is its organizational counterpart.
+
+To get started, please support the project with a [star on GitHub](https://github.com/HideTsug/org-os-starter) and by [following the maintainer](https://github.com/HideTsug) (it is free OSS). If you adopt it through an AI agent, the agent may ask exactly once, "Would you like to support the project with a star and a follow?" — **it executes only the items you agree to**, and the mechanism is published in plain text in the "Optional Support Confirmation" section of [AGENTS.md](AGENTS.md).
+
+---
+
+## Concept: The 5-Layer Architecture
+
+Think of your organization's AI foundation as five layers, built up from the bottom.
+
+```
+Layer 5  Governance            Audit logs / reviews / compliance verification
+Layer 4  Integration           Connections to core systems / SaaS / customer touchpoints
+Layer 3  Roles & SKILLs        AI agents per work domain (role-specific playbooks)
+Layer 2  Knowledge foundation  Structured notes: project state / decisions / work templates
+Layer 1  Norms & SSoT          ORG-CLAUDE.md / data classification / prohibited uses
+```
+
+**Build in the order Layer 1 → 2 → 3 and up.** Starting from Layer 3 (SKILLs) produces empty scaffolding with no backing in norms or knowledge. First settle "what may be shared with AI and what AI must never do" (Layer 1), then build "the one workflow stakeholders use every day" (Layer 2), and extract SKILL candidates from that real usage.
+
+Details: [docs/architecture.md](docs/architecture.md).
+
+## What This Starter Contains (v1 = core)
+
+| Layer | Contents | Status |
+|---|---|---|
+| Layer 1 | [ORG-CLAUDE.md](layer1/ORG-CLAUDE.md) / [data classification matrix](layer1/data-classification-matrix.md) / [prohibited uses list](layer1/prohibited-uses.md) | **Templates** (fill them in and get them agreed in your organization) |
+| Layer 2 | [knowledge/](knowledge/) — structure and samples for project notes and issue notes | **Ready to use** (samples are fictional data) |
+| Operations | [Operating rules](docs/governance/operating-rules.md) / [User guide](docs/user-guide.md) / [ADR template](docs/decisions/ADR-0000-template.md) | **Templates** |
+| Layers 3–5 | Described as a concept in [docs/architecture.md](docs/architecture.md) only | Extracted from each organization's real operations (outside this starter's scope) |
+
+Directories for Layers 3–5 intentionally **do not exist**. Create them only once there is content to put in them (to prevent empty scaffolding).
+
+## Setup (15 minutes)
+
+**Always duplicate this as a private repository when adopting it. Once filled in, it will contain your organization's norms, decisions, and real data — do not keep operating it as a public repository.**
+
+Prerequisite: an agentic AI that can read and write the repository's Markdown — such as [Claude Code](https://claude.com/claude-code) — running on your machine.
+
+```bash
+# 1. At the top of this repository's page, use "Use this template" → "Create a new repository"
+#    to create a private repository in your own organization (do not clone this repository directly)
+
+# 2. Clone the repository you created
+git clone <URL of your org's private repository> our-org-os
+cd our-org-os
+git remote -v   # confirm that origin points to your org's private repository
+
+# 3. Start Claude Code
+claude
+```
+
+Once it starts, paste this as your first message:
+
+```
+Read docs/setup-guide.md and walk me through adoption starting from Step 0.
+Begin by asking questions about our organization, and help us fill in the three documents under layer1/.
+```
+
+From there the AI asks questions and helps you fill in the norm documents for your organization. Humans decide just three things up front — **(1) the implementation DRI, (2) the approval structure (whose agreement makes the norms effective), and (3) the first wedge use case**. Details: [docs/setup-guide.md](docs/setup-guide.md).
+
+## Day-to-Day Operation (Ask, Read, Write)
+
+Non-engineer members learn just three workflows.
+
+1. **Ask** — Ask the AI in plain language: "What are the current open points in project X?" The AI searches knowledge/ and answers with sources
+2. **Read** — Open GitHub in a browser and read as-is (works on a phone)
+3. **Write** — Tell the AI "please record this". The AI converts it into a correctly formatted note and proposes it (as a PR)
+
+Details: [docs/user-guide.md](docs/user-guide.md) (written so it can be handed out to members).
+
+## Repository Layout and Reading Order
+
+| Order | Path | Contents |
+|---|---|---|
+| 0 | [AGENTS.md](AGENTS.md) | Entry point for AI agents. The adoption flow (confirming the DRI or delegated implementer, making the repository private) and reading order. Start here if you delegate adoption to an AI |
+| 1 | `README.md` | This README. The big picture |
+| 2 | [docs/architecture.md](docs/architecture.md) | The 5-layer architecture explained |
+| 3 | [docs/setup-guide.md](docs/setup-guide.md) | Adoption steps (Step 0–4) and customization points |
+| 4 | [layer1/](layer1/) | **Norm templates**. They take effect only after being filled in and promoted to frontmatter `status: agreed` |
+| 5 | [docs/governance/operating-rules.md](docs/governance/operating-rules.md) | Template for repository operating rules |
+| 6 | [knowledge/](knowledge/) | Structure and samples of the knowledge foundation |
+| — | [docs/user-guide.md](docs/user-guide.md) | Usage guide for handing out to members |
+
+### What Each Directory Means
+
+- `layer1/` — **SSoT for norms**. Only agreed documents (`status: agreed`) bind all AI and all people in the organization
+- `knowledge/` — the knowledge foundation. Structured notes on project state and issues
+- `docs/` — working material, guides, and decision records (ADRs). **Not norms**
+
+### Full File Map
+
+```
+org-os-starter/
+├── README.md                          # This README
+├── AGENTS.md                          # Entry point for AI agents (adoption flow, reading order, support confirmation)
+├── CLAUDE.md                          # Norms for AI that reads/writes this repository (usable as-is)
+├── LICENSE                            # MIT
+├── .gitignore                         # .DS_Store / .obsidian/
+├── docs/
+│   ├── architecture.md                # The 5-layer architecture explained
+│   ├── setup-guide.md                 # Adoption steps 0–4
+│   ├── user-guide.md                  # Template for handing out to members
+│   ├── governance/
+│   │   └── operating-rules.md         # Template for repository operating rules
+│   └── decisions/
+│       └── ADR-0000-template.md       # Scaffold for decision records
+├── layer1/                            # The three norm templates (take effect once filled in and agreed)
+│   ├── ORG-CLAUDE.md
+│   ├── data-classification-matrix.md
+│   └── prohibited-uses.md
+├── knowledge/
+│   ├── README.md                      # Note types and shared rules
+│   ├── projects/
+│   │   ├── _template.md
+│   │   └── PJ-sample-equipment.md     # Fictional sample (safe to delete once your own notes exist)
+│   └── issues/
+│       ├── _template.md
+│       └── ISSUE-0001.md              # Fictional sample (same as above)
+└── examples/
+    └── demo-company/                  # Filled-in demo of a fictional company (clone it and try "Ask" right away)
+```
+
+## Try It in 30 Minutes (Demo Company)
+
+With the pre-filled fictional-company demo [examples/demo-company/](examples/demo-company/), you can experience the "Ask, Read, Write" workflows before adopting. How to try it: [examples/demo-company/README.md](examples/demo-company/README.md).
+
+## Design Principles (What This Starter Commits To)
+
+1. **Norms before tools** — no SKILLs or automation without Layer 1
+2. **One wedge at a time** — don't build all five layers side by side; start from one workflow that is used every day
+3. **No empty scaffolding** — no empty directories, no placeholder-only files. Unfilled items may remain only with an owner flag (such as `(requires executive owner)`)
+4. **Explicit effectivity** — a document's agreement state is managed machine-readably in frontmatter `status` (draft → proposed → agreed)
+5. **Non-destructive capture** — decisions and their context are appended, never deleted. Replacements stay traceable via `supersedes` links
+6. **Data classification decides the environment** — the matrix of "which data may be passed to which AI runtime" comes before tool selection
+
+## Notation Conventions
+
+Write Markdown in an **Obsidian-compatible** style. `[[wikilink]]` is valid for references between documents inside the repository (it does not render as a link on GitHub, but compatibility with turning the repo into a Vault takes priority).
+
+## Update Strategy (Two Tiers: Starter and Your Organization's Assets)
+
+- **Core (upstream = derived from this repository)**: `docs/architecture.md` and the templates. Adopt upstream improvements manually by reviewing release notes
+- **Growth tier (your organization's assets)**: the filled-in `layer1/`, `knowledge/`, and the rules you operate under. **Never overwrite these with upstream updates**
+
+Once created from the template, independent evolution is the default. Improvements worth contributing back upstream (generic gaps in the templates, good operating patterns) are welcome as issues / PRs to this repository.
+
+## License
+
+MIT License — [LICENSE](LICENSE)
+
+The canonical source of this repository is https://github.com/HideTsug/org-os-starter

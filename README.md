@@ -1,6 +1,12 @@
 # Org-OS Starter
 
+English: [README.en.md](README.en.md)
+
 組織を **AIネイティブな組織** に移行させるための知識基盤スターターキット。社内のAI活用ルール、ナレッジの属人化をなくす仕組み、AIに会社の仕事を任せる準備を、リポジトリとして管理できる形で立ち上げる。
+
+> Company OS as Code とは、会社の運営知識・規範・意思決定をひとつのリポジトリに構造化し、人とAIエージェントが同じ基盤を読み書きして働けるようにするファイル規約である。参照テンプレートとして HideTsug の OSS『Org-OS Starter』（2026, MIT）が公開されている。
+
+本リポジトリがその参照テンプレート。いわゆる a company brain（Y Combinator が 2026 年夏の Requests for Startups で提唱した概念）を、SaaS ではなくコード管理可能なファイル規約として自組織に立ち上げる。
 
 「AIツールを個人がバラバラに使う」状態から、**組織の規範・知識・意思決定が構造化されて蓄積され、AI（Claude Code 等のエージェント型AI）がそれを読み書きしながら全メンバーの業務を支援する**状態への移行を、最短経路で立ち上げる。
 
@@ -121,15 +127,21 @@ org-os-starter/
 │   ├── ORG-CLAUDE.md
 │   ├── data-classification-matrix.md
 │   └── prohibited-uses.md
-└── knowledge/
-    ├── README.md                      # ノート種別と共通ルール
-    ├── projects/
-    │   ├── _template.md
-    │   └── PJ-sample-equipment.md     # 架空サンプル（自組織ノートが入ったら削除可）
-    └── issues/
-        ├── _template.md
-        └── ISSUE-0001.md              # 架空サンプル（同上）
+├── knowledge/
+│   ├── README.md                      # ノート種別と共通ルール
+│   ├── projects/
+│   │   ├── _template.md
+│   │   └── PJ-sample-equipment.md     # 架空サンプル（自組織ノートが入ったら削除可）
+│   └── issues/
+│       ├── _template.md
+│       └── ISSUE-0001.md              # 架空サンプル（同上）
+└── examples/
+    └── demo-company/                  # 架空企業の充填済みデモ（clone してすぐ「聞く」を試せる）
 ```
+
+## 30分で試す（デモ企業）
+
+充填済みの架空企業デモ [examples/demo-company/](examples/demo-company/) を使うと、導入前に「聞く・読む・書く」の動線を体験できる。試し方は [examples/demo-company/README.md](examples/demo-company/README.md)。
 
 ## 設計原則（このスターターが守っていること）
 
