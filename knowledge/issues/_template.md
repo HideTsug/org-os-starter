@@ -1,31 +1,33 @@
 ---
 tags:
   - issue
-classification: 社内
-owner: [起票者名]
+classification: internal
+owner: [Reporter Name]
 last_reviewed: [YYYY-MM-DD]
 issue_status: open   # open / closed
-project: [紐付け先PJノート名。なければ削除]
-reporter: [気づいた人]
+project: [Linked project note name. Delete if none]
+reporter: [Person who noticed the issue]
 created: [YYYY-MM-DD]
-source: [どの作業・文脈で気づいたか]
-summary: [1行要約]
+source: [Work or context where this was noticed]
+summary: [One-line summary]
 ---
 
-# ISSUE-[連番]: [課題のタイトル]
+Japanese version: [docs/ja/knowledge/issues/_テンプレート.md](../../docs/ja/knowledge/issues/_テンプレート.md)
 
-## 概要
+# ISSUE-[Number]: [Issue Title]
 
-- [何が問題か。1〜3行]
+## Overview
 
-## 背景・再現
+- [What is the problem? Write one to three lines.]
 
-- [どういう状況で起きるか。数字があれば数字で]
+## Background and Reproduction
 
-## 期待
+- [When does it happen? Use numbers when available.]
 
-- [どうなっていれば解決か。観測可能な条件で]
+## Expected State
 
-## 補足
+- [What observable condition would mean this is solved?]
 
-- 紐付け先 PJ: （あれば wikilink で。置換例: `[[PJ-サンプル-備品管理]]`）
+## Notes
+
+- Linked PJ: use a wikilink if applicable. Replacement example: `[[PJ-sample-equipment]]`

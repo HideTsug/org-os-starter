@@ -1,8 +1,14 @@
 # Org-OS Starter
 
-組織を **AIネイティブな組織** に移行させるための知識基盤スターターキット。
+組織を **AIネイティブな組織** に移行させるための知識基盤スターターキット。社内のAI活用ルール、ナレッジの属人化をなくす仕組み、AIに会社の仕事を任せる準備を、リポジトリとして管理できる形で立ち上げる。
 
 「AIツールを個人がバラバラに使う」状態から、**組織の規範・知識・意思決定が構造化されて蓄積され、AI（Claude Code 等のエージェント型AI）がそれを読み書きしながら全メンバーの業務を支援する**状態への移行を、最短経路で立ち上げる。
+
+まずローカルで読むだけなら、以下をそのまま貼り付ける。
+
+```bash
+git clone https://github.com/HideTsug/org-os-starter.git && cd org-os-starter && claude
+```
 
 個人向けの姉妹版: [pm-os-starter](https://github.com/HideTsug/pm-os-starter)（1人のPM業務をOS化する）。本スターターはその組織版。
 
@@ -19,7 +25,7 @@ Layer 5  ガバナンス層     監査ログ / レビュー / コンプライア
 Layer 4  統合層           基幹システム / SaaS / 顧客接点との接続
 Layer 3  ロール・SKILL層   業務領域別のAIエージェント（役割別に発動する手順書）
 Layer 2  ナレッジ・知識基盤  プロジェクト状態 / 意思決定 / 業務テンプレの構造化ノート
-Layer 1  規範・SSoT分離    組織CLAUDE.md / データ分類 / 禁止用途
+Layer 1  規範・SSoT分離    ORG-CLAUDE.md / データ分類 / 禁止用途
 ```
 
 **着手順は Layer 1 → 2 → 3以降。** Layer 3（SKILL）から作ると、規範と知識の裏付けがない「ハコモノ」になる。まず「何を渡してよいか・何をさせてはならないか」（Layer 1）を確定し、次に「関係者が毎日使う1つの動線」（Layer 2）を作り、そこから SKILL化候補を実地で抽出する。
@@ -30,14 +36,16 @@ Layer 1  規範・SSoT分離    組織CLAUDE.md / データ分類 / 禁止用途
 
 | 層 | 内容 | 状態 |
 |---|---|---|
-| Layer 1 | [組織CLAUDE.md](layer1/組織CLAUDE.md) / [データ分類マトリクス](layer1/データ分類マトリクス.md) / [禁止用途リスト](layer1/禁止用途リスト.md) | **テンプレート**（自組織で充填して合意させる） |
+| Layer 1 | [ORG-CLAUDE.md](layer1/ORG-CLAUDE.md) / [データ分類マトリクス](layer1/data-classification-matrix.md) / [禁止用途リスト](layer1/prohibited-uses.md) | **テンプレート**（自組織で充填して合意させる） |
 | Layer 2 | [knowledge/](knowledge/) — プロジェクトノート・issueノートの構造とサンプル | **すぐ使える**（サンプルは架空データ） |
-| 運用 | [運用規約](docs/governance/運用規約.md) / [利用ガイド](docs/利用ガイド.md) / [ADRテンプレート](docs/decisions/ADR-0000-テンプレート.md) | **テンプレート** |
+| 運用 | [運用規約](docs/governance/operating-rules.md) / [利用ガイド](docs/user-guide.md) / [ADRテンプレート](docs/decisions/ADR-0000-template.md) | **テンプレート** |
 | Layer 3〜5 | 構想として [docs/architecture.md](docs/architecture.md) に記述のみ | 各組織の実運用から抽出（本スターターの範囲外） |
 
 Layer 3〜5 のディレクトリは意図的に**存在しない**。中身が入る段階で初めて作る（ハコモノ化防止）。
 
 ## セットアップ（15分）
+
+**導入時は必ず private リポジトリとして複製する。充填後は組織の規範・意思決定・実データを含むため、public のまま運用しない。**
 
 前提: [Claude Code](https://claude.com/claude-code) 等、リポジトリの Markdown を読み書きできるエージェント型AIが手元で動くこと。
 
@@ -57,11 +65,11 @@ claude
 起動したら、最初のメッセージとして次を貼る:
 
 ```
-docs/導入ガイド.md を読んで、Step 0 から導入を進めたい。
+docs/setup-guide.md を読んで、Step 0 から導入を進めたい。
 まず私たちの組織について質問しながら、layer1/ の3文書の充填を手伝って。
 ```
 
-あとはAIが質問しながら、規範文書を自組織用に充填していく。人間が最初に決めるのは3つだけ — **①導入責任者（DRI） ②承認体制（誰の合意で規範が効力を持つか） ③最初の一点突破ユースケース**。詳細は [docs/導入ガイド.md](docs/導入ガイド.md)。
+あとはAIが質問しながら、規範文書を自組織用に充填していく。人間が最初に決めるのは3つだけ — **①導入責任者（DRI） ②承認体制（誰の合意で規範が効力を持つか） ③最初の一点突破ユースケース**。詳細は [docs/setup-guide.md](docs/setup-guide.md)。
 
 ## 日々の運用（読む・書く・聞く）
 
@@ -71,7 +79,7 @@ docs/導入ガイド.md を読んで、Step 0 から導入を進めたい。
 2. **読む** — GitHubをブラウザで開けばそのまま読める（スマホ可）
 3. **書く** — 「これ記録しておいて」とAIに話す。AIが正しい形式のノートに変換して提案（PR）を作る
 
-詳細は [docs/利用ガイド.md](docs/利用ガイド.md)（メンバー配布用に書いてある）。
+詳細は [docs/user-guide.md](docs/user-guide.md)（メンバー配布用に書いてある）。
 
 ## リポジトリ構成と読む順番
 
@@ -80,11 +88,11 @@ docs/導入ガイド.md を読んで、Step 0 から導入を進めたい。
 | 0 | [AGENTS.md](AGENTS.md) | AIエージェント向け入口。導入の流れ（DRI・委任者の対象確認、private リポジトリ化）と読み順。AIに導入を任せる場合はここから |
 | 1 | `README.md` | 本ファイル。全体像 |
 | 2 | [docs/architecture.md](docs/architecture.md) | 5層アーキテクチャの解説 |
-| 3 | [docs/導入ガイド.md](docs/導入ガイド.md) | 導入手順（Step 0〜4）とカスタマイズポイント |
+| 3 | [docs/setup-guide.md](docs/setup-guide.md) | 導入手順（Step 0〜4）とカスタマイズポイント |
 | 4 | [layer1/](layer1/) | **規範テンプレート**。充填して frontmatter `status: agreed` に昇格させて初めて効力を持つ |
-| 5 | [docs/governance/運用規約.md](docs/governance/運用規約.md) | リポジトリ運用ルールのテンプレート |
+| 5 | [docs/governance/operating-rules.md](docs/governance/operating-rules.md) | リポジトリ運用ルールのテンプレート |
 | 6 | [knowledge/](knowledge/) | 知識基盤の構造とサンプル |
-| — | [docs/利用ガイド.md](docs/利用ガイド.md) | メンバー配布用の使い方ガイド |
+| — | [docs/user-guide.md](docs/user-guide.md) | メンバー配布用の使い方ガイド |
 
 ### ディレクトリの意味
 
@@ -103,23 +111,23 @@ org-os-starter/
 ├── .gitignore                         # .DS_Store / .obsidian/
 ├── docs/
 │   ├── architecture.md                # 5層アーキテクチャ解説
-│   ├── 導入ガイド.md                   # 導入手順 Step 0〜4
-│   ├── 利用ガイド.md                   # メンバー配布用テンプレート
+│   ├── setup-guide.md                 # 導入手順 Step 0〜4
+│   ├── user-guide.md                  # メンバー配布用テンプレート
 │   ├── governance/
-│   │   └── 運用規約.md                 # リポジトリ運用ルールのテンプレート
+│   │   └── operating-rules.md         # リポジトリ運用ルールのテンプレート
 │   └── decisions/
-│       └── ADR-0000-テンプレート.md    # 意思決定記録の雛形
+│       └── ADR-0000-template.md       # 意思決定記録の雛形
 ├── layer1/                            # 規範テンプレート3点セット（充填 → agreed 昇格で効力発生）
-│   ├── 組織CLAUDE.md
-│   ├── データ分類マトリクス.md
-│   └── 禁止用途リスト.md
+│   ├── ORG-CLAUDE.md
+│   ├── data-classification-matrix.md
+│   └── prohibited-uses.md
 └── knowledge/
     ├── README.md                      # ノート種別と共通ルール
     ├── projects/
-    │   ├── _テンプレート.md
-    │   └── PJ-サンプル-備品管理.md     # 架空サンプル（自組織ノートが入ったら削除可）
+    │   ├── _template.md
+    │   └── PJ-sample-equipment.md     # 架空サンプル（自組織ノートが入ったら削除可）
     └── issues/
-        ├── _テンプレート.md
+        ├── _template.md
         └── ISSUE-0001.md              # 架空サンプル（同上）
 ```
 
@@ -146,3 +154,5 @@ template から作った時点で独立進化が基本。上流に還元した�
 ## ライセンス
 
 MIT License — [LICENSE](LICENSE)
+
+このリポジトリの正本は https://github.com/HideTsug/org-os-starter

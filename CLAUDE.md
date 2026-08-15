@@ -1,51 +1,53 @@
-# このリポジトリを保守するAIエージェント向け規範
+# Operating Rules for AI Agents Maintaining This Repository
 
-本ファイルは **この知識基盤リポジトリを読み書きするAIエージェント向け** の規範。組織の業務規範である `layer1/組織CLAUDE.md` とは別物（あちらは業務支援AIすべてが従う規範、こちらはリポジトリ運用の規範）。混同しないこと。
+Japanese version: [docs/ja/CLAUDE.md](docs/ja/CLAUDE.md)
 
-> テンプレートとしての注記: 本ファイルは Org-OS Starter が提供する初期値であり、そのまま使い始められる。自組織の運用が固まったら随時改訂してよい。
+This file defines the operating rules for AI agents that read and write this knowledge-base repository. It is different from `layer1/ORG-CLAUDE.md`, which defines business operating norms for all AI agents supporting the adopting organization. Do not confuse the two.
 
-## 文書の効力と優先順位
+> Template note: This file is the initial default provided by Org-OS Starter. It can be used as-is at the beginning and revised as the organization's own operations mature.
 
-- `layer1/` = 規範SSoT。frontmatter `status: agreed` の文書のみが効力を持つ
-- `docs/` = 検討資料・ガイド・決定記録。規範ではない
-- 同じ情報を複数文書に書かない。リンク（`[[wikilink]]` または相対パス）で参照する
-- frontmatter キーの使い分け:
-  - `status` = **合意状態**。`draft → proposed → agreed` の3段階。規範文書（`layer1/`・制定後の運用規約・ADR）が持つ。昇格には改訂履歴への合意日・合意者の記録が必須
-  - `doc_type` = **文書種別**。`reference`（読み物・解説）/ `template`（充填して使う雛形）。合意プロセスに乗らない文書はこちらを使い `status` を持たない
+## Document Authority and Priority
 
-## コミット禁止事項（最上位ルール）
+- `layer1/` is the normative SSoT. Only documents whose frontmatter has `status: agreed` are authoritative.
+- `docs/` contains explanatory material, guides, and decision records. It is not normative unless explicitly promoted by the adopting organization.
+- Do not duplicate the same information across documents. Refer to it with `[[wikilink]]` or relative Markdown links.
+- Frontmatter key usage:
+  - `status` is the agreement state. It moves through `draft → proposed → agreed`. It belongs to normative documents such as `layer1/`, operating rules after enactment, and ADRs. Promotion requires recording the agreement date and approvers in the revision history.
+  - `doc_type` is the document type. Use `reference` for explanatory reading material and `template` for fill-in templates. Documents that are outside the agreement process use this key and do not carry `status`.
 
-- **顧客・取引先の実名・実財務数値・実通信履歴・社内の非公開情報（人事・提携・M&A・未公開財務・係争）をコミットしない**。サンプル・教材はすべてダミー/架空/公開情報で作る。データ区分2「社内」の通常のノート（プロジェクト状態・issue・業務手順）はこれに当たらず、処理後のコミットが前提（`knowledge/README.md`）
-- APIキー・トークン・シークレットをコミットしない
-- 判断に迷うデータは投入前に `layer1/データ分類マトリクス.md` で区分を確認する
+## Commit Prohibitions
 
-## 構造規約（ハコモノ化防止）
+- Do not commit real customer or vendor names, real financial figures, real communication logs, or internal non-public information. Samples and training material must use dummy, fictional, or public information.
+- Do not commit API keys, tokens, passwords, or secrets.
+- If the classification of data is unclear, check `layer1/data-classification-matrix.md` before adding it.
 
-- **空ディレクトリ・プレースホルダだけのファイルを作らない**。ディレクトリは中身が入る時に初めて作る
-- Layer 3〜5 はディレクトリを切らず `docs/architecture.md` 内の記述のみとする（中身が入る段階で昇格）
-- 文書内の未充填項目は無印 `(TODO)` を禁止し、必ず `(要・代表)` `(要・システム責任者)` 等の **責任者フラグ付き** で残す
-- プレースホルダ記法の使い分け（全テンプレート共通）:
-  - `[角括弧]` = **導入時に必ず置換する値**（例: `[組織名]` `[DRI名]` `[日付]`）。運用開始後に残っていたら充填漏れ
-  - `(要・役割名)` = **未決事項の責任者フラグ**。運用と並走で埋める前提で、`draft` 段階では残ってよい
+## Structure Rules
 
-## 文書スタイル
+- Do not create empty directories or files that are only placeholders. Create directories only when real content is ready to live there.
+- Do not create directories for Layers 3 through 5. Keep those concepts described only in `docs/architecture.md` until real operational content is ready.
+- Unfilled items must not use bare `(TODO)`. Use owner-marked flags such as `(requires executive owner)` or `(requires system owner)`.
+- Placeholder conventions across templates:
+  - `[square brackets]` mark values that must be replaced during onboarding, such as `[Organization Name]`, `[DRI Name]`, or `[Date]`. If they remain after operations begin, something was missed.
+  - `(requires role name)` marks an undecided item with an accountable owner. These may remain while the document is still in `draft`.
 
-- Obsidian 互換 Markdown。規範文書はフロントマターに `status` / `version` / `summary` を持たせる
-- 箇条書き優先（1項目1情報）、事実ベース、「判断: 〜。理由: 〜」形式
-- 重要文書（`layer1/` と `docs/decisions/`）は文末に改訂履歴表を必須とする
-- 本文は日本語、フロントマターのキー名は英語
+## Document Style
 
-## ノートの書き方（knowledge/）
+- Use Obsidian-compatible Markdown. Normative documents should include `status`, `version`, and `summary` in frontmatter.
+- Prefer bullet lists, one fact per item, and fact-based writing. For decisions, use the format "Decision: ... Reason: ...".
+- Important documents under `layer1/` and `docs/decisions/` must end with a revision history table.
+- Body text should be English. Frontmatter key names must remain English.
 
-- プロジェクトノートは `knowledge/projects/_テンプレート.md`、issueノートは `knowledge/issues/_テンプレート.md` に従う
-- 非破壊取り込み: 既存記述の削除・書き換えより追記を優先する。置き換えは新ノート + frontmatter `supersedes` で行う
-- 非エンジニアの投稿は「AIに話す → AIがスキーマ準拠ノートに変換して PR」を主経路とする
+## Writing Notes Under knowledge/
 
-## 応援の確認（任意・同意必須）
+- Project notes follow `knowledge/projects/_template.md`; issue notes follow `knowledge/issues/_template.md`.
+- Prefer non-destructive intake. Add to existing notes rather than deleting or rewriting them. Replace a note by creating a new note and linking the old one through frontmatter `supersedes`.
+- The main path for non-engineer contributions is: speak to AI → AI converts the content into a schema-compliant note → AI opens a PR.
 
-導入の開始時に一度だけ行う応援確認（スター・フォロー）は、`AGENTS.md` の「応援の確認」節に従う。同意のない自動実行は禁止。
+## Optional Support Confirmation
 
-## Git 運用
+The optional support confirmation at the beginning of onboarding, for starring and following, must follow the "Optional Support Confirmation" section in `AGENTS.md`. Automated execution without consent is prohibited.
 
-- main への直 push 権限・マージ権限は導入組織の運用規約（`docs/governance/運用規約.md`）に従う
-- コミットは論理単位で分け、メッセージは変更の意図を書く
+## Git Operations
+
+- Direct push and merge permissions for `main` follow the adopting organization's operating rules in `docs/governance/operating-rules.md`.
+- Split commits by logical unit and write messages that explain the intent of the change.

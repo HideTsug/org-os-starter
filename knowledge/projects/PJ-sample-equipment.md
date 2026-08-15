@@ -1,54 +1,56 @@
 ---
 tags:
   - project
-classification: 社内
-owner: 山田（架空）
+classification: internal
+owner: Yamada (fictional)
 last_reviewed: 2026-08-13
-name: 備品管理の台帳化（架空サンプル）
+name: Equipment Ledger Project (fictional sample)
 project_status: active
-summary: 構造の見本として置いてある架空PJ。社内備品の在庫と持ち出しを台帳管理し、紛失と重複購入を防ぐ
+summary: Fictional sample project showing the note structure. It manages office equipment inventory and checkout records to prevent loss and duplicate purchases.
 ---
 
-# PJ: 備品管理の台帳化（架空サンプル）
+Japanese version: [docs/ja/knowledge/projects/PJ-サンプル-備品管理.md](../../docs/ja/knowledge/projects/PJ-サンプル-備品管理.md)
 
-> **架空のサンプルデータ**。ノートの書きぶりの見本として置いてある。自組織のPJノートが3本入ったら削除してよい。
+# PJ: Equipment Ledger Project (Fictional Sample)
 
-## 目的・価値
+> **Fictional sample data.** This file shows how to write a project note. Delete it once the organization has three real project notes.
 
-- 社内備品（PC周辺機器・文具）の在庫と持ち出しを台帳で管理し、紛失と重複購入を防ぐ
-- 年間の重複購入コストを可視化し、購買判断の材料にする
+## Purpose and Value
 
-## スコープ
+- Manage inventory and checkout for office equipment, such as PC peripherals and stationery, through a ledger to prevent loss and duplicate purchases.
+- Make annual duplicate-purchase spending visible so it can support purchasing decisions.
 
-**スコープイン**
-- 備品台帳の作成と月次棚卸
+## Scope
 
-**スコープアウト**
-- 消耗品の発注自動化（台帳運用が3ヶ月回ってから検討）
+**In Scope**
+- Create the equipment ledger and conduct monthly inventory checks.
 
-## 完了条件
+**Out of Scope**
+- Automating consumables ordering, which will be considered after the ledger has operated for three months.
 
-- 台帳と実在庫の差異が月次棚卸で2ヶ月連続5%以内であること
+## Completion Criteria
 
-## 体制
+- The difference between the ledger and actual inventory remains within 5% for two consecutive monthly inventory checks.
 
-- オーナー: 山田（架空）
-- メンバー: 佐藤（架空）
+## Team
 
-## マイルストーン
+- Owner: Yamada (fictional)
+- Members: Sato (fictional)
 
-- 2026-08-31 台帳初期登録の完了
-- 2026-09-30 第1回月次棚卸
+## Milestones
 
-## 現在の論点
+- 2026-08-31 Complete initial ledger entry.
+- 2026-09-30 Conduct the first monthly inventory check.
 
-- 持ち出し記録を紙とスプレッドシートのどちらで運用するか（現場の入力負荷 vs 集計性）
+## Current Issues
 
-## 直近の決定
+- Whether checkout records should be kept on paper or in a spreadsheet, balancing frontline entry burden against aggregation.
 
-- 2026-08-10 台帳のマスタはスプレッドシート1枚に集約。判断: 部署別に分けない。理由: 分けると棚卸時の突合が二度手間になる
+## Recent Decisions
 
-## 次アクション
+- 2026-08-10 The ledger master will be consolidated into one spreadsheet. Decision: do not split it by department. Reason: splitting would make reconciliation during inventory checks repetitive.
 
-- [ ] 山田: 既存備品の初期登録（〜08-20）
-- [ ] 佐藤: 持ち出し記録方式の現場ヒアリング
+## Next Actions
+
+- [ ] Yamada: enter existing equipment by 2026-08-20.
+- [ ] Sato: interview frontline users about the checkout-record method.

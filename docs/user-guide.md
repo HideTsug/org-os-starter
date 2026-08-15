@@ -1,68 +1,70 @@
 ---
 doc_type: template
 version: "1.0"
-summary: 知識基盤の人間向け利用ガイドのテンプレート。読む・書く・聞くの3動線と、書いてはいけないもの。[組織名]等を置換してメンバーに配布する
+summary: Template for a human-facing knowledge-base user guide. It covers the three paths of reading, writing, and asking, plus what must not be written. Replace placeholders such as [Organization Name] before distributing it to members.
 ---
 
-# 知識基盤 利用ガイド（人間向け）
+Japanese version: [docs/ja/docs/利用ガイド.md](ja/docs/利用ガイド.md)
 
-> エンジニアでなくても使えるように書いた、この知識基盤の使い方。git の知識は不要。覚えることは「**読む・書く・聞く**の3動線」と「**書いてはいけないもの**」だけ。
+# Knowledge Base User Guide
+
+> A guide to this knowledge base written for non-engineers. No git knowledge is required. Members only need to remember the three paths of **read, write, and ask**, plus **what must not be written**.
 >
-> （テンプレート注記: `[管理者名]` を自組織の値に置換し、必要なら削って配布する。「管理者」= 導入責任者（DRI）のメンバー向け呼称）
+> Template note: Replace `[Administrator Name]` with the organization's value, then remove any unnecessary notes before distribution. "Administrator" is the member-facing name for the implementation DRI.
 
-## まず大前提
+## First Principles
 
-- ここ（GitHub の知識基盤リポジトリ）に入っているのは**組織の知識** — プロジェクトの状況・決定の経緯・手順・ルール
-- **顧客・取引先の実名・数値・やりとりは入っていないし、入れてはいけない**
-- あなたが普段使うのは AI 経由。リポジトリの構造を覚える必要はない
+- This GitHub knowledge-base repository contains **organizational knowledge**: project status, decision history, procedures, and rules.
+- It does not contain, and must not contain, real customer or vendor names, figures, or communications.
+- Members usually use it through AI. They do not need to memorize the repository structure.
 
-## 動線1: 聞く（いちばんよく使う）
+## Path 1: Ask
 
-**AI に日本語で聞くだけ。** 例:
+**Ask AI in natural language.** Examples:
 
-- 「○○プロジェクトの今の論点は？」
-- 「進行中のプロジェクトを一覧して」
-- 「データの投入ルールってどうなってた？」
+- "What are the current issues in the ____ project?"
+- "List the active projects."
+- "What are the rules for entering data into AI?"
 
-AI がこのリポジトリを検索して、出典（どのノートか）付きで答える。**探す作業は人間の仕事ではない。**
+AI searches this repository and answers with sources, including which note it used. **Searching is not a human task.**
 
-## 動線2: 読む（ブラウザで眺める）
+## Path 2: Read
 
-GitHub にログインしてリポジトリを開けば、ブラウザ（スマホ可）でそのまま読める。
+Log in to GitHub and open the repository. Documents can be read directly in the browser, including on a phone.
 
-- はじめての人: `README.md` の「読む順番」表の上から
-- プロジェクトの現在地を知りたい: `knowledge/projects/` の該当ノート →「現在の論点」「直近の決定」を見る
-- ルールを確認したい: `layer1/`（frontmatter が `status: agreed` のものだけが有効なルール）
+- First-time readers: start from the reading-order table in `README.md`.
+- To understand a project's current state: open the relevant note under `knowledge/projects/` and read "Current Issues" and "Recent Decisions".
+- To confirm rules: read `layer1/`. Only documents whose frontmatter has `status: agreed` are effective rules.
 
-## 動線3: 書く（知識を入れる）
+## Path 3: Write
 
-**主経路: AI に話す。**「これ記録しておいて」「この決定をプロジェクトノートに残して」「このやり方、手順化して」と言えば、AI が正しい形式のノートに変換して**提案（PR）**を作る。管理者がブラウザで差分を見て「Merge」を押せば反映される。
+**Main path: speak to AI.** Say things like "record this", "leave this decision in the project note", or "turn this method into a procedure." AI converts the content into the correct note format and opens a proposal, or PR. The administrator reviews the diff in the browser and presses "Merge" to apply it.
 
-軽量経路: GitHub のブラウザ画面で鉛筆アイコン（Edit）→ 文章を直して「Propose changes」。これも自動で提案になるので、**いきなり本体が書き換わることはない**。
+Lightweight path: use the pencil icon, Edit, in GitHub's browser UI, edit the text, and choose "Propose changes." This also becomes a proposal, so the main content is not rewritten immediately.
 
-### 書くときの作法（3つだけ）
+### Three Writing Rules
 
-1. **消さない、足す** — 過去の記述が古くなったら、消すのではなく追記 or 新しいノートで置き換える（経緯も知識）
-2. **1ノート1トピック** — 1つのファイルに何でも書かない
-3. **形式は AI に任せる** — メタデータ（frontmatter）や置き場所を自分で考えない。AI 経由なら自動で正しくなる
+1. **Do not delete; add** — If old content becomes outdated, add an update or replace it with a new note. The history is also knowledge.
+2. **One topic per note** — Do not put everything into one file.
+3. **Leave format to AI** — Do not decide metadata, frontmatter, or location yourself. Through AI, those are handled correctly.
 
-## 書いてはいけないもの（ここだけは暗記）
+## What Must Not Be Written
 
-- **顧客・取引先の実名・法人名・財務数値・メール等のやりとり**
-- 法令上特別な管理義務があるデータ（マイナンバー・本人確認書類 等。自組織の区分4の定義に従う）
-- 人事・提携・M&A・未公開財務・係争に関する非公開情報
-- パスワード・API キー
+- Real customer or vendor names, company names, financial figures, or email and chat communications
+- Data with special legal management duties, such as individual numbers and identity-verification documents, according to the organization's category 4 definition
+- Non-public information about HR, partnerships, M&A, unpublished financials, or disputes
+- Passwords and API keys
 
-迷ったら**書かずに AI か [管理者名] に確認**。詳細ルールは `layer1/データ分類マトリクス.md` と `layer1/禁止用途リスト.md`。
+If unsure, **do not write it**. Ask AI or [Administrator Name]. Detailed rules are in `layer1/data-classification-matrix.md` and `layer1/prohibited-uses.md`.
 
-## よくある質問
+## FAQ
 
-- **Q. 間違えて変なものをマージしたら？** → A. git なので元に戻せる。壊れない設計なので気軽に提案してよい
-- **Q. どこに書けばいいか分からない** → A. 考えなくてよい。AI に内容を話せば適切な場所に置く
-- **Q. 提案（PR）が放置されたら？** → A. [管理者名] にチャットで一言
+- **Q. What if we merge something wrong?** → A. Git can revert it. The repository is designed to be recoverable, so proposing changes is safe.
+- **Q. I do not know where to write something.** → A. You do not need to decide. Tell AI the content, and AI will place it appropriately.
+- **Q. My proposal, or PR, is left untouched.** → A. Send [Administrator Name] a short chat message.
 
-## 改訂履歴
+## Revision History
 
-| 日付 | 版 | 改訂者 | 内容 |
+| Date | Version | Author | Change |
 |---|---|---|---|
-| 2026-08-13 | v1.0 | HideTsug | 初版（テンプレート） |
+| 2026-08-13 | v1.0 | HideTsug | Initial template |

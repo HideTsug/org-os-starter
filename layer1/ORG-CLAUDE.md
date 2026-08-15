@@ -1,98 +1,100 @@
 ---
 status: draft
 version: "0.1"
-owner: (要・導入責任者)
-summary: 組織のAI業務規範のテンプレート（Layer 1 中核文書）。組織方針・コンプラ規範・データ取扱・エスカレーションを機械可読化する。自組織で充填し、承認体制の合意で agreed に昇格させる
+owner: (requires implementation DRI)
+summary: Template for organizational AI work norms, the core Layer 1 document. It makes organizational policy, compliance norms, data handling, and escalation machine-readable. Fill it for the adopting organization and promote it to agreed after approval.
 ---
 
-# <組織名> CLAUDE.md（テンプレート）
+Japanese version: [docs/ja/layer1/組織CLAUDE.md](../docs/ja/layer1/組織CLAUDE.md)
 
-> Layer 1（規範・SSoT分離）の中核文書。**組織内で業務支援を行うすべての AI が最初に読む規範。**
+# <Organization Name> CLAUDE.md (Template)
+
+> The core Layer 1 document for norms and SSoT separation. **This is the first norm document read by every AI agent that supports work inside the organization.**
 >
-> 充填方針: 一度に完成させない。確定できる箇所（法令ベースのコンプラ規範・既合意事項の転記）から充填し、経営判断を要する箇所は `(要・代表)` 等の責任者フラグで明示して運用と並走で埋める。
+> Filling policy: Do not try to complete it all at once. Fill confirmed parts first, such as compliance norms based on current law and already agreed internal decisions. Mark items that require management judgment with owner flags such as `(requires executive owner)` and fill them alongside operations.
 
-- 作成: [日付] / [起案者]
-- ステータス: draft（フラグ付き項目の充填と承認体制の確認を経て proposed → agreed へ昇格）
+- Created: [Date] / [Drafter]
+- Status: draft. Promote to proposed and then agreed after owner-flagged items are filled and the approval body is confirmed.
 
 ---
 
-## 組織方針
+## Organizational Policy
 
-- ビジョン: (要・代表: 既に言語化済みならここに転記。AI の判断はここに整合させる)
-- ターゲット顧客・対象領域: (要・代表)
-- スコアボード（組織が追う一番の指標）: (要・代表)
+- Vision: (requires executive owner: copy existing wording here if already defined. AI decisions should align with this.)
+- Target customers and domains: (requires executive owner)
+- Scoreboard, the organization's primary metric: (requires executive owner)
 
-### 判断優先順位
+### Decision Priorities
 
-> AI が選択肢に迷ったときの優先順位。上位を毀損する選択肢は下位がどれだけ良くても採らない。以下は実運用で有効だった初期値。
+> Priority order for AI when choices conflict. If an option harms a higher-priority item, do not choose it no matter how good it is for lower-priority items. The following defaults have worked in real operations.
 
-1. **コンプラ厳守** — 非交渉。業法・個人情報保護法・契約に抵触する選択肢は、顧客価値や効率がどれだけ高くても採らない
-2. **顧客価値** — コンプラ制約内での最上位の判断軸
-3. **品質・再現性** — 速さより、誰がやっても同じ品質が出る仕組みを優先
-4. **効率** — 上記3つを毀損しない範囲でのみ追求
+1. **Compliance first** — Non-negotiable. Do not choose an option that conflicts with industry law, privacy law, or contracts, even if it creates customer value or efficiency.
+2. **Customer value** — The highest decision criterion inside compliance constraints.
+3. **Quality and reproducibility** — Prefer systems that produce the same quality regardless of who performs the work.
+4. **Efficiency** — Pursue only within the bounds above.
 
-- やらないリスト: (要・代表 — 運用中に「AIにやらせない業務」が見えた時点で集約)
+- Not-to-do list: (requires executive owner. Consolidate work that AI must not do once it becomes visible through operations.)
 
-## 業務SOP参照
+## Work SOP References
 
-> 各業務領域の SOP（手順書）への参照ポインタ。本ドキュメントには中身を書かず、リンクのみ。SOP の所在・形式の棚卸しは運用と並走で実施する。
+> Pointers to SOPs for each work domain. Do not copy SOP content into this document; link to it. Inventory SOP locations and formats alongside operations.
 
-| 業務領域 | SOP参照先 | 担当 |
+| Work domain | SOP reference | Owner |
 |---|---|---|
-| [業務領域1] | (要・担当: 既存手順書の所在指定) | (要・代表) |
-| [業務領域2] | (要・担当: 同上) | (要・代表) |
-| 基幹システム運用 | (要・システム責任者: 接続制約含む) | (要・システム責任者) |
+| [Work domain 1] | (requires domain owner: specify the existing SOP location) | (requires executive owner) |
+| [Work domain 2] | (requires domain owner: same as above) | (requires executive owner) |
+| Core-system operations | (requires system owner: include connection constraints) | (requires system owner) |
 
-## コンプライアンス規範
+## Compliance Norms
 
-> 業法・個人情報保護法・契約上の取扱に関する規範。AI が業務支援する際に必ず参照する。**充填時は必ず現行条文を確認する**（AI の記憶で書かない）。有資格者・法務の最終確認を経ること。
+> Norms for industry law, privacy law, and contractual handling. AI must refer to this section when supporting work. **When filling this section, always verify the current primary legal text** rather than relying on AI memory. Obtain final confirmation from qualified professionals or legal owners.
 
-### 業法・資格法（業種依存 — 最重要充填箇所）
+### Industry and Qualification Law: Industry-Dependent, Highest Priority
 
-(要・代表/有資格者: 自組織の業法を確認して充填。士業・医療・金融等の規制産業は必須。以下は充填の観点)
+(requires executive owner / qualified professional: verify the organization's industry law and fill this section. Regulated industries such as licensed professions, healthcare, and finance must complete it. The following are filling viewpoints.)
 
-- **守秘義務**: 業務上知り得た秘密の漏えいが法定義務違反になる業種では、**AI への投入も「漏えい」になり得る**。データの外部送信可否は [[データ分類マトリクス]] に必ず従う、という接続をここに明記する
-- **信用失墜行為**: AI 生成物（ハルシネーション・不正確な見解を含み得る）を**無確認で組織・代表名義で対外発信することは信用失墜リスク**として扱う → [[禁止用途リスト]]
-- **独占業務・専門家責任**: 法令上有資格者にしかできない判断がある業種では、AI を顧客に直接接続してその判断を自動回答させる構成を禁止する → [[禁止用途リスト]]。AI の役割は**有資格者の判断を支援する叩き台生成**に限定する
+- **Duty of confidentiality**: In industries where leaking secrets learned through work violates a statutory duty, entering data into AI can also become a disclosure. Explicitly connect this rule to [[data-classification-matrix]], which controls whether data may leave the organization.
+- **Conduct that damages trust**: Treat unreviewed external publication of AI-generated material under the organization or representative name as a trust-damage risk, because generated material may include hallucinations or inaccurate views. See [[prohibited-uses]].
+- **Exclusive professional acts and expert responsibility**: If the law reserves certain judgments to qualified professionals, prohibit connecting AI directly to customers for automatic answers on those judgments. See [[prohibited-uses]]. AI's role is limited to creating drafts that support qualified human judgment.
 
-### 個人情報保護法・番号法（業種共通）
+### Privacy Law and Individual Number Law: Cross-Industry
 
-- 顧客の個人データを組織管理外のクラウドAIに投入する行為は、**第三者提供または委託に該当し得る**。本人同意・委託先監督の整理がない限り行わない（[[データ分類マトリクス]] の管理外環境 ✗ の法的根拠）
-- マイナンバー（個人番号）は番号法により利用目的・提供が厳格に制限される。AI 投入は環境を問わず禁止 → [[データ分類マトリクス]] 区分4
-- 要配慮個人情報（病歴等）を含む資料は区分4に準じて扱う
+- Entering customer personal data into cloud AI outside organization management may constitute third-party provision or outsourcing. Do not do this unless consent and vendor-supervision duties are organized. This is the legal basis for the unmanaged-environment prohibition in [[data-classification-matrix]].
+- Individual numbers and related documents are strictly limited by law. Entering them into AI is prohibited regardless of environment. Treat them as category 4 in [[data-classification-matrix]].
+- Materials containing sensitive personal information, such as medical history, should be handled in line with category 4.
 
-### 契約・その他
+### Contracts and Other Rules
 
-- 顧客との契約上の守秘条項・データ取扱条項の標準形の確認: (要・代表: 標準契約書の提示)。契約に AI 利用・外部委託の制限がある顧客はリスト化して個別管理する
-- 利益相反: 複数顧客の情報を突き合わせて一方に有利な助言を生成する利用は禁止（[[禁止用途リスト]]）
+- Confirm standard confidentiality and data-handling clauses in customer contracts: (requires executive owner: provide the standard contract). Customers whose contracts restrict AI use or external outsourcing must be listed and managed individually.
+- Conflicts of interest: Using information from multiple customers together to generate advice favorable to one side is prohibited. See [[prohibited-uses]].
 
-## データ取扱規範
+## Data Handling Norms
 
-- 投入可否の SSoT: [[データ分類マトリクス]]（データ4区分×実行環境・運用条件・監査ログ定義）
-- 禁止用途の SSoT: [[禁止用途リスト]]
-- **暫定運用（マトリクス agreed 昇格まで）**: AI への投入は「公開」区分（架空ケース・公開情報・本人の公開済み発信物）のみ
+- SSoT for whether data may be entered into AI: [[data-classification-matrix]], covering four data categories, execution environments, operating conditions, and audit-log definitions.
+- SSoT for prohibited use cases: [[prohibited-uses]].
+- **Interim operation until the matrix is promoted to agreed**: Only public-category data may be entered into AI, such as fictional cases, public information, and material the person has already published.
 
-## ロール定義（Layer 3 への参照）
+## Role Definitions: Reference Toward Layer 3
 
-> 組織内 AI の役割定義（業務領域別AI・レビューAI 等）。**実運用から抽出される SKILL化候補が設計の供給源**となるため、本セクションの詳細化は候補が十分揃ってから行う。それまで個別ロールの責任範囲は定義しない（ハコモノ化防止）。
+> Definitions for organizational AI roles, such as domain-specific AI and reviewer AI. Operationally observed skill candidates are the input to design, so detail this section only after enough candidates exist. Until then, do not define the responsibility boundaries of individual roles.
 
-## エスカレーション
+## Escalation
 
-> AI で判断できない場合・判断レイヤをまたぐ場合の人間へのエスカレーション経路。
+> Human escalation paths when AI cannot decide or when a decision crosses layers.
 
-- 経路: **現場の判断 → AI技術判断（[導入責任者/システム責任者]）→ 連結判断（承認体制）→ ビジネス判断（[代表]）**
-- 連結判断の対象（初期値）: 顧客データの外部送信 / 法令解釈に絡む実装方式 / 対外的な公開範囲 / 代表名義発信への AI 利用
-- AI 自身の行動規則: 判断に迷うケース・規範に明記のないケースは**実行せず** [導入責任者] へエスカレーションする
-- 時間外・緊急時の対応ルール: (要・代表: 連絡経路と即応の要否)
+- Path: **frontline decision → AI technical decision ([implementation DRI / system owner]) → joined approval decision (approval body) → business decision ([representative])**
+- Initial targets for joined approval: external transmission of customer data / implementation methods involving legal interpretation / scope of external publication / AI use in messages under the representative name
+- AI behavior rule: If a case is ambiguous or not covered by the norms, **do not execute it**. Escalate to [implementation DRI].
+- Out-of-hours and emergency rules: (requires executive owner: contact path and required response level)
 
-## 運用ルール
+## Operating Rules
 
-- **人間レビュー必須範囲**: 組織外に出るすべての成果物（顧客向け文書・助言・対外発信）は有資格者または当該業務責任者の確認を経る。AI 出力の直接送信・直接提出は禁止（[[禁止用途リスト]]）
-- **AI 使用の顧客への開示ポリシー**: (要・代表: 開示の要否・文言。契約改訂と合わせて判断)
-- **月次レビュー**: 監査ログ（[[データ分類マトリクス]]参照）・レビュー差戻し率・規範逸脱件数を月次で確認。体制: (要・代表)
+- **Human review required**: Every deliverable leaving the organization, including customer documents, advice, and external announcements, must be reviewed by a qualified professional or the responsible work owner. Direct submission or sending of AI output is prohibited. See [[prohibited-uses]].
+- **Customer disclosure policy for AI use**: (requires executive owner: whether and how to disclose. Decide together with contract revisions.)
+- **Monthly review**: Review audit logs, review rejection rates, and norm deviations each month. See [[data-classification-matrix]] for audit logs. Review body: (requires executive owner)
 
-## 改訂履歴
+## Revision History
 
-| 日付 | 版 | 改訂者 | 内容 |
+| Date | Version | Author | Change |
 |---|---|---|---|
-| [日付] | v0.1 | [起案者] | テンプレートから起案 |
+| [Date] | v0.1 | [Drafter] | Drafted from template |

@@ -1,49 +1,51 @@
 ---
 tags:
   - project
-classification: 社内
-owner: [オーナー名]
+classification: internal
+owner: [Owner Name]
 last_reviewed: [YYYY-MM-DD]
-name: [プロジェクト名]
+name: [Project Name]
 project_status: active   # active / paused / done
-summary: [1行要約。何のためのPJで今どういう状態か]
+summary: [One-line summary: what the project is for and its current state]
 ---
 
-# PJ: [プロジェクト名]
+Japanese version: [docs/ja/knowledge/projects/_テンプレート.md](../../docs/ja/knowledge/projects/_テンプレート.md)
 
-## 目的・価値
+# PJ: [Project Name]
 
-- [このPJは何のためにあるか。完了すると誰の何が良くなるか]
+## Purpose and Value
 
-## スコープ
+- [What this project exists for. Whose situation improves when it is completed, and how?]
 
-**スコープイン**
-- [やること]
+## Scope
 
-**スコープアウト**
-- [やらないと決めたこと]
+**In Scope**
+- [What will be done]
 
-## 完了条件
+**Out of Scope**
+- [What has been explicitly decided not to do]
 
-- [観測可能な条件で書く。「実装する」ではなく「○○が2週間連続で△△の状態であること」の形。未定なら `(要・オーナー名)` で残す]
+## Completion Criteria
 
-## 体制
+- [Write observable criteria. Use a form such as "____ remains ____ for two consecutive weeks" rather than "implement ____". If undecided, leave an owner flag such as `(requires owner name)`.]
 
-- オーナー: [名前]
-- メンバー: [名前]
+## Team
 
-## マイルストーン
+- Owner: [Name]
+- Members: [Names]
 
-- [YYYY-MM-DD] [節目]
+## Milestones
 
-## 現在の論点
+- [YYYY-MM-DD] [Milestone]
 
-- [いま議論・判断が必要なこと。決まったら「直近の決定」へ移す]
+## Current Issues
 
-## 直近の決定
+- [What needs discussion or decision now. Move it to "Recent Decisions" once decided.]
 
-- [YYYY-MM-DD] [決定内容。判断: 〜。理由: 〜]
+## Recent Decisions
 
-## 次アクション
+- [YYYY-MM-DD] [Decision. Decision: ... Reason: ...]
 
-- [ ] [誰が・何を]
+## Next Actions
+
+- [ ] [Who does what]

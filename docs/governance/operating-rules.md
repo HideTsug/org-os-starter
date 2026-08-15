@@ -1,72 +1,74 @@
 ---
 doc_type: template
 version: "1.0"
-summary: 知識基盤リポジトリの運用ルールのテンプレート。権限設計・文書status管理・コミット禁止事項・編集経路・連絡チャネルを定める。導入組織が充填して制定する（制定時に status: agreed を付与）
+summary: Template for operating rules of the knowledge-base repository. It defines permission design, document status management, commit prohibitions, editing paths, and communication channels. The adopting organization fills and enacts it, adding status: agreed when enacted.
 ---
 
-# リポジトリ運用規約（テンプレート）
+Japanese version: [docs/ja/docs/governance/運用規約.md](../ja/docs/governance/運用規約.md)
 
-> 本リポジトリの運用ルール。リポジトリ管理に関する規約であり、組織の業務規範（`layer1/`）とは別レイヤ。
+# Repository Operating Rules (Template)
+
+> Operating rules for this repository. This governs repository management and sits on a different layer from organizational work norms in `layer1/`.
 >
-> （テンプレート注記: 「権限設計」を Step 0 の決定内容で充填し、DRI 単独で v1.0 を制定してよい — `layer1/` 規範の合意とは別物。角括弧内は選択・置換箇所）
+> Template note: Fill "Permission Design" with the decisions from Step 0. The DRI may enact v1.0 alone because this is separate from agreement on the `layer1/` norms. Values in square brackets must be selected or replaced.
 
-## 権限設計
+## Permission Design
 
-- **write 権限 = [DRI名] のみ**。他メンバーは read で招待する
-- main への直 push は [DRI名] のみ。第三者が write を持つ段階になったら PR 運用へ移行し、本規約を改訂する
-- 補足: GitHub org の Free プランでは private リポジトリの branch 保護が使えない（現行仕様は GitHub Docs で要確認）。その場合、権限の最小化を構造的ガードとする
-- read 権限メンバーの提案経路: fork からの PR（org 設定で private fork を許可した場合）、または AI・チャット経由で [DRI名] に依頼して代理起票。どちらを使うかをここに明記する
+- **write permission = [DRI Name] only**. Invite other members with read permission.
+- Direct push to `main` is limited to [DRI Name]. Once a third party has write permission, move to PR operation and revise these rules.
+- Note: On the GitHub org Free plan, branch protection for private repositories must be confirmed against the current GitHub Docs. If it is unavailable in the adopting environment, minimize permissions as the structural guard.
+- Proposal path for read-permission members: PR from a fork if private forks are allowed by the org settings, or a request to [DRI Name] through AI or chat to file on their behalf. Specify which path the organization uses.
 
-## 文書 status 管理
+## Document status Management
 
-文書の合意状態は frontmatter `status` で管理する。GitHub の保護機能に頼らない合意トラッキングの仕組み。
+Document agreement state is managed through frontmatter `status`. This is an agreement-tracking mechanism that does not rely on GitHub protection features.
 
-| status | 意味 | 効力 |
+| status | Meaning | Effect |
 |---|---|---|
-| `draft` | 起案中。内容が流動的 | なし |
-| `proposed` | 起案完了。合意待ち | なし（合意パッケージとして共有可） |
-| `agreed` | 承認体制（[N名連結判断]）の合意済 | **あり**。`layer1/` 文書はこの状態でのみ規範として機能する |
+| `draft` | Being drafted; content is fluid | None |
+| `proposed` | Drafting complete; waiting for agreement | None, but shareable as an agreement package |
+| `agreed` | Agreed by the approval body, [joined decision by N people] | **Effective**. Documents under `layer1/` function as norms only in this state. |
 
-- 昇格時は文書末尾の改訂履歴表に **合意日・合意者・合意手段（MTG/チャット/メール）** を記録する
-- `agreed` 文書の実質的変更は再合意が必要（誤字修正等の軽微修正は除く）
+- On promotion, record **agreement date, approvers, and agreement method**, such as meeting, chat, or email, in the revision history table at the end of the document.
+- Substantive changes to an `agreed` document require renewed agreement. Typo fixes and other minor edits are excluded.
 
-## 編集経路
+## Editing Path
 
-非エンジニアの主経路は「AI に話す → AI がスキーマ準拠ノートに変換して PR → Web UI で diff 承認」とする。raw git 操作は要求しない。
+The main path for non-engineers is: speak to AI → AI converts the content into a schema-compliant note and opens a PR → the DRI approves the diff in the Web UI. Raw git operation is not required.
 
-これは UX 方針であり、セキュリティ境界ではない。セキュリティ境界は repo の権限設定で定義する。
+This is a UX policy, not a security boundary. The security boundary is the repository permission setting.
 
-## コミット禁止事項
+## Commit Prohibitions
 
-1. **顧客・取引先の実名・法人名・実財務数値・実通信履歴・社内非公開情報**（人事・提携・M&A・未公開財務・係争）。教材・サンプルはすべてダミー/架空/公開情報で作る
-2. API キー・トークン・パスワード・シークレット
-3. 顧客・取引先から預かったファイルそのもの（形式を問わず）
+1. **Real customer or vendor names, company names, real financial figures, real communication history, or internal non-public information**, including HR, partnerships, M&A, unpublished financials, and disputes. Training and sample material must be dummy, fictional, or public information.
+2. API keys, tokens, passwords, and secrets.
+3. Customer or vendor files themselves, regardless of format.
 
-GitHub は組織管理外のクラウド上の保管先であり、コミット可否は `layer1/データ分類マトリクス.md` の「保管先としての GitHub リポジトリ」に従う。**区分3（顧客・取引先特定）・区分4（規制対象）はコミット禁止**で、乗せた時点で規約違反となる。区分1（公開）・区分2（社内）は上記1〜3の禁止事項を満たす限りコミットできる。
+GitHub is cloud storage outside organization management. In `layer1/data-classification-matrix.md`, it is not an AI execution environment, but as a data location it is treated equivalently to unmanaged environments. Placing prohibited-category data in the repository violates these rules.
 
-## 非破壊取り込み原則
+## Non-Destructive Intake
 
-既存記述の削除・書き換えより追記を優先する。決定・経緯は消さず、後から判断の流れを追える状態を保つ。
+Prefer adding to existing content over deleting or rewriting it. Decisions and background should remain traceable later.
 
-既存ノートを置き換える場合は、新ノートを作成し、frontmatter の `supersedes` で旧版へリンクする。旧版は残し、どの情報がどの判断で置き換えられたかを追跡可能にする。
+When replacing an existing note, create a new note and link the old one through frontmatter `supersedes`. Keep the old note so it remains possible to trace which information was replaced by which decision.
 
-## 記法・構造規約
+## Notation and Structure Rules
 
-- Obsidian 互換 Markdown（`[[wikilink]]` 有効）
-- 空ディレクトリ・プレースホルダのみのファイル禁止（ハコモノ化防止）
-- 未充填項目は責任者フラグ付き（`(要・代表)` 等）のみ許可。無印 `(TODO)` 禁止
-- 重要文書（`layer1/`・`docs/decisions/`）は改訂履歴表必須
+- Obsidian-compatible Markdown; `[[wikilink]]` is valid.
+- Empty directories and files that are only placeholders are prohibited.
+- Unfilled items may remain only with owner flags such as `(requires executive owner)`. Bare `(TODO)` is prohibited.
+- Important documents under `layer1/` and `docs/decisions/` must include a revision history table.
 
-## 連絡チャネル（規模が出たら導入する運用パターン）
+## Communication Channels: Pattern to Introduce at Scale
 
-メンバーが増え、各自のAIが作業を分担する段階になったら、AI向けと人間向けでチャネルを分離すると混線しない（実運用で検証済みのパターン。導入時に本節を具体化する）:
+When membership grows and each person has an AI agent sharing work, separating AI-facing and human-facing channels prevents confusion. This pattern has been validated in real operation and should be made concrete during onboarding:
 
-- **AI ⇄ AI（技術指示・実行依頼・作業報告）= リポジトリの issue** に一本化。From 明記・書く前にスレッド全読・機密禁止・結論先出しで簡潔に
-- **人間向け = チャット**。トリガー1行（「issue #N を読んで実行して」）＋結論＋学びポイント1点の平易な概要のみ。実行手順・コマンドはチャットに貼らない（版ズレ・機密混入・文脈欠落の温床）
-- issue は「1 issue = 1トピック」。完了定義を観測可能な条件で書き、**クローズ権は起票側**（実行側の自己申告のみで閉じない）
+- **AI ⇄ AI technical instructions, execution requests, and work reports = repository issues**. Always state the sender, read the full thread before writing, avoid confidential information, and lead with the conclusion.
+- **Human-facing = chat**. Send only a trigger line such as "read issue #N and execute", the conclusion, and one plain-language learning point. Do not paste commands or detailed procedures into chat, because that invites version drift, confidential-data leakage, and missing context.
+- One issue equals one topic. Write completion definitions as observable conditions. **The filing side owns closure**; the executing side should not close solely on self-report.
 
-## 改訂履歴
+## Revision History
 
-| 日付 | 版 | 改訂者 | 内容 |
+| Date | Version | Author | Change |
 |---|---|---|---|
-| [日付] | v1.0 | [DRI名] | 制定 |
+| [Date] | v1.0 | [DRI Name] | Enacted |

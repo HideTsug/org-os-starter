@@ -1,85 +1,89 @@
 ---
 doc_type: reference
 version: "1.0"
-summary: Org-OS の5層アーキテクチャ解説。Layer 3〜5 の構想は本文書にのみ存在する（実体化は中身が入る段階で）
+summary: Overview of the Org-OS five-layer architecture. Layer 3 through Layer 5 concepts exist only in this document until real content is ready.
 ---
 
-# Org-OS アーキテクチャ全体像
+Japanese version: [docs/ja/docs/architecture.md](ja/docs/architecture.md)
 
-> 組織のAI基盤を5層で捉える設計図。個別の規範テンプレートは `layer1/` を参照。
+# Org-OS Architecture Overview
 
-## 設計の考え方
+> A blueprint that treats an organization's AI foundation as five layers. See `layer1/` for the individual norm templates.
 
-このアーキテクチャは、個人運用で実証されたAI業務基盤（Obsidian + Claude Code による知識・規範・エージェントの統合運用。個人版スターター: [pm-os-starter](https://github.com/HideTsug/pm-os-starter)）を組織スケールに写像したもの。「個人で動いた原則」が組織でどう対応するか:
+## Design Approach
 
-| 個人で実証済みの原則 | 組織への応用 |
+This architecture maps an AI work foundation proven in personal operations to an organizational scale. The personal foundation combined Obsidian and Claude Code to operate knowledge, norms, and agents together. The personal starter is [pm-os-starter](https://github.com/HideTsug/pm-os-starter).
+
+How principles proven in personal work map to organizations:
+
+| Principle proven in personal work | Organizational application |
 |---|---|
-| AIファースト記述による知識の構造化 | 顧客・案件・事例・業務テンプレの構造化ノート化（Layer 2） |
-| 規範とメタデータの分離（CLAUDE.md / frontmatter） | 組織ポリシー・コンプラ規範の機械可読化（Layer 1） |
-| 役割別に発動するエージェント（Skill群） | 業務領域別AIのSKILL化（Layer 3） |
-| セッション間ワーキングメモリ | 案件ごとの「現在の論点・直近の決定」の担当者間引き継ぎ（Layer 2） |
-| 作業AI vs レビューAI の二者協調 | 作業者AIと監査AIの分離・品質ゲート（Layer 5） |
-| イベント駆動の自動処理（Hook） | 月次・期限・契約更新等のトリガで自動アクション（Layer 4） |
-| 検索可能性と冪等性（インデックス・取込ガード） | 大量顧客・大量データ対応の基盤（Layer 2） |
+| Structured knowledge written for AI-first use | Structured notes for customers, projects, cases, and work templates (Layer 2) |
+| Separation of norms and metadata (`CLAUDE.md` / frontmatter) | Machine-readable organizational policy and compliance norms (Layer 1) |
+| Role-triggered agents through skills | Skillization of AI for each work domain (Layer 3) |
+| Working memory across sessions | Handoffs between owners through each project's current issues and recent decisions (Layer 2) |
+| Collaboration between worker AI and reviewer AI | Separation of worker AI and audit AI, with quality gates (Layer 5) |
+| Event-driven automation through hooks | Automated actions triggered by monthly cycles, deadlines, contract renewals, and similar events (Layer 4) |
+| Searchability and idempotency through indexes and intake guards | A foundation for handling many customers and large data volumes (Layer 2) |
 
-## 5層構成
+## Five Layers
 
+```text
+Layer 5  Governance          Audit logs / reviews / compliance verification
+Layer 4  Integration         Core systems / SaaS such as accounting and CRM / customer touchpoints
+Layer 3  Role and Skill      Domain-specific AI, such as accounting AI, HR AI, sales-support AI, and reviewer AI
+Layer 2  Knowledge Base      Structured notes for project state / issues / decisions / work templates
+Layer 1  Norms and SSoT      ORG-CLAUDE.md / data classification matrix / prohibited uses
 ```
-Layer 5  ガバナンス層     監査ログ / レビュー / コンプライアンス検証
-Layer 4  統合層           基幹システム / 会計・CRM等のSaaS / 顧客接点との接続
-Layer 3  ロール・SKILL層   業務領域別AI（例: 経理AI / 労務AI / 営業支援AI / レビューAI）
-Layer 2  ナレッジ・知識基盤  プロジェクト状態 / issue / 意思決定 / 業務テンプレの構造化ノート
-Layer 1  規範・SSoT分離    組織CLAUDE.md / データ分類マトリクス / 禁止用途リスト
-```
 
-### 各層の役割
+### Layer Responsibilities
 
-**Layer 1: 規範・SSoT分離** — 組織内のすべてのAIと人が従う最上位ルール。3点セットで構成する:
+**Layer 1: Norms and SSoT** — The top-level rules followed by all AI agents and humans inside the organization. It consists of three documents:
 
-1. `組織CLAUDE.md` — 組織方針・判断優先順位・コンプライアンス規範・エスカレーション経路
-2. `データ分類マトリクス` — どのデータをどのAI実行環境に渡してよいか（環境選定の基準そのもの）
-3. `禁止用途リスト` — AIに何をさせてはならないか（マトリクスと対をなす）
+1. `ORG-CLAUDE.md` — organizational policy, decision priorities, compliance norms, and escalation paths
+2. `data-classification-matrix.md` — which data may be given to which AI execution environment; this is also the basis for choosing environments
+3. `prohibited-uses.md` — what AI must not be used for; this pairs with the matrix
 
-規範は frontmatter `status` で合意状態を機械可読に管理する。`agreed` のみ効力を持つ。
+Norm agreement state is managed in machine-readable form through frontmatter `status`. Only `agreed` documents are authoritative.
 
-**Layer 2: ナレッジ・知識基盤** — 「組織の現在地」が構造化されて蓄積される場所。最初のユースケースとして推奨するのは**プロジェクト知識の一点突破**:
+**Layer 2: Knowledge Base** — The place where the organization's current state is accumulated as structured notes. The recommended first use case is a narrow start with project knowledge:
 
-- `knowledge/projects/` — 各プロジェクトの目的・現在地・直近の決定・次アクション・担当を構造化ノートで一箇所に
-- `knowledge/issues/` — 別作業中に気づいた課題をそのまま起票できる構造化issue
-- 動線は3つ: 横断整理・格納 / AIへの対話キャッチアップ / 隣のプロジェクトからのissue起票
+- `knowledge/projects/` — one place for each project's purpose, current state, recent decisions, next actions, and owner
+- `knowledge/issues/` — structured issues that can be filed when a problem is noticed during adjacent work
+- Three operating paths: cross-project organization and storage, conversational catch-up through AI, and issue filing from adjacent projects
 
-**Layer 3: ロール・SKILL層** — 業務領域別に発動するAIエージェント（Claude Code の Skill 等）。**実運用から抽出される SKILL化候補が設計の供給源**。候補が揃う前にロール定義を書かない（ハコモノ化防止）。実運用で繰り返し現れた手順（例: プロジェクトのキャッチアップ要約、議事録の要約取り込み、issue起票）から順にSKILL化する。
+**Layer 3: Role and Skill** — AI agents triggered by work domain, such as Claude Code skills. Operationally observed skill candidates are the input to design. Do not write role definitions before candidates exist, because that creates unused structure. Convert repeated procedures into skills in order, such as project catch-up summaries, meeting-note intake, and issue filing.
 
-**Layer 4: 統合層** — 基幹システム・SaaS・顧客接点との接続。knowledge/ への自動取り込み（チャット・議事録のDLP済み要約化）、イベント駆動の自動処理など。接続先の制約確認と Layer 1 のデータ分類が先行条件。
+**Layer 4: Integration** — Connections to core systems, SaaS, and customer touchpoints. Examples include automatic intake into `knowledge/` after DLP-style summarization of chat or meeting notes, and event-driven automation. Constraints of the connected systems and the Layer 1 data classification must be confirmed first.
 
-**Layer 5: ガバナンス層** — 監査ログ・レビューAI・コンプラ検証。監査ログの保存先・記録項目の定義は Layer 1 の規範文書（データ分類マトリクス）が先行する。
+**Layer 5: Governance** — Audit logs, reviewer AI, and compliance verification. Audit-log storage locations and required fields must be defined first in the Layer 1 norms, especially the data classification matrix.
 
-## 着手順: Layer 1 → 2 → 3以降
+## Start Order: Layer 1 → 2 → Layer 3 and Later
 
-Layer 3（SKILL）から作ると規範と知識の裏付けがない「ハコモノ」になる。逆に Layer 1〜2 が回り始めると、SKILL化すべき反復作業が実地で見えてくる。
+Starting from Layer 3 skills creates structure without norms or knowledge behind it. Once Layers 1 and 2 are working, repeated operations that should become skills become visible through real use.
 
-5層を横並びで作らないこと。**「関係者が毎日使う1つの動線」**（推奨: プロジェクト知識の横断整理＋対話キャッチアップ＋issue起票）を最初のゴールに据え、そこから広げる。
+Do not build the five layers side by side. Start with one path that stakeholders use every day. The recommended first goal is cross-project knowledge organization, conversational catch-up, and issue filing. Expand from there.
 
-## 実行環境方針の考え方
+## Execution Environment Policy
 
-「どのAI実行環境を使うか」はツールの好みではなく、**データ分類が決める**。
+The question "which AI execution environment should we use?" is not a tool preference. It is decided by data classification.
 
-- `layer1/データ分類マトリクス.md` のデータ区分が、そのまま実行環境の選定基準として機能する
-- 例: 顧客特定データを扱う業務は組織管理環境（ローカル実行・組織テナント内推論）のみ、公開・架空データの検証はクラウド版でも可、という切り分けを**先に**合意する
-- 環境の追加（新しいAIサービスの業務利用）は、マトリクス上の区分判定を経てから
+- The data categories in `layer1/data-classification-matrix.md` act directly as the environment selection criteria.
+- For example, work involving customer-identifying data may be limited to organization-managed environments such as local execution or inference inside an organizational tenant, while tests using public or fictional data may be allowed in cloud tools. This distinction must be agreed first.
+- Adding a new AI service for work use must go through classification in the matrix first.
 
-## 発展要素（本スターターの範囲外）
+## Expansion Patterns Outside v1 Core
 
-以下は v1 コアには含めない発展パターン。導入組織の実運用が回り始めてから検討する:
+The following patterns are intentionally outside the v1 core. Consider them after the adopting organization's daily operation is working:
 
-- **取り込みパイプライン** — チャット・議事録をDLP変換（実名→ロール表記）して knowledge/ に自動集約
-- **機密の二層格納** — 実名入り実体は組織管理ストレージ（権限制御あり）、リポジトリには非機微 stub のみ置くパターン
-- **AI間連絡チャネル** — メンバーのAI同士が GitHub issue で技術指示・作業報告をやりとりし、人間向けにはチャットで平易な概要のみ流す2チャネル分離
-- **プロジェクト盤面** — issue を SSoT にした横断可視化（GitHub Projects 等）
-- **自律構築ループ** — ツール群の構築自体をAIの自律ループで前進させる機構（規範文書は読むだけ・人間ゲート必須などの安全化とセット）
+- **Intake pipelines** — DLP-style conversion of chat and meeting notes, such as replacing real names with role labels, followed by automatic aggregation into `knowledge/`
+- **Two-layer confidential storage** — storing real-name source material in organization-managed storage with access controls, while keeping only non-sensitive stubs in the repository
+- **AI-to-AI communication channel** — members' AI agents exchange technical instructions and work reports through GitHub issues, while humans receive only plain-language summaries in chat
+- **Project board** — cross-project visibility where issues are the SSoT, using GitHub Projects or similar tools
+- **Autonomous construction loop** — a mechanism where AI advances construction of the toolset itself, paired with safeguards such as read-only access to normative documents and human gates
 
-## 改訂履歴
+## Revision History
 
-| 日付 | 版 | 改訂者 | 内容 |
+| Date | Version | Author | Change |
 |---|---|---|---|
-| 2026-08-13 | v1.0 | HideTsug | 初版 |
+| 2026-08-13 | v1.0 | HideTsug | Initial version |

@@ -1,51 +1,53 @@
 ---
 status: draft
 version: "0.1"
-owner: (要・導入責任者)
-summary: 組織内AI利用の明示的禁止用途と違反時対応のテンプレート。データ分類マトリクスと対をなす
+owner: (requires implementation DRI)
+summary: Template for explicitly prohibited AI uses inside the organization and the response to violations. It pairs with the data classification matrix.
 relates_to:
-  - "[[データ分類マトリクス]]"
+  - "[[data-classification-matrix]]"
 ---
 
-# 禁止用途リスト（テンプレート）
+Japanese version: [docs/ja/layer1/禁止用途リスト.md](../docs/ja/layer1/禁止用途リスト.md)
 
-> 組織内で AI を**何に使ってはならないか**の明示的リスト。[[データ分類マトリクス]]が「何を渡してよいか」を定めるのに対し、本リストは「何をさせてはならないか」を定める。
+# Prohibited Uses (Template)
+
+> An explicit list of what AI **must not** be used for inside the organization. [[data-classification-matrix]] defines what data may be given to AI; this document defines what AI must not be made to do.
 >
-> 充填方針: 1〜3 は業種の専門家責任に合わせて具体化する（士業・医療・金融等の規制産業は必須。参考例を残してある）。4〜9 は業種を問わずほぼそのまま使える。
+> Filling policy: Items 1 through 3 should be customized to match professional responsibility in the organization's industry. Regulated industries such as licensed professions, healthcare, and finance must fill them. Items 4 through 9 can usually be used almost as-is across industries.
 
-- 起案: [日付] / [起案者]
-- 合意対象: [承認体制]
-- 適用範囲: 組織内のすべての AI 利用
+- Drafted: [Date] / [Drafter]
+- Agreement target: [approval body]
+- Scope: all AI use inside the organization
 
-## 絶対禁止（環境を問わず）
+## Absolutely Prohibited in Any Environment
 
-1. **専門家責任を伴う成果物の AI 直接生成 → 有資格者・責任者の確認なしでの提出・送付**。AI 出力は常に「叩き台」であり、責任者の最終確認を経ない成果物を顧客・行政に出さない（参考例: 医療なら診断関連文書、金融なら顧客向け助言文書、士業なら申告書・登記書類等の法定文書）
-2. **契約範囲外の専門的助言を AI 出力のまま顧客へ提供すること**。契約範囲外の論点は AI で下調べしてよいが、顧客への助言は契約・責任範囲の人間判断を必ず挟む
-3. **法令上の独占業務・有資格者にしかできない判断の AI 自動応答化**。AI を顧客に直接接続してその判断を自動回答させない（顧客接点AIの自動応答範囲は別途承認体制で設計）(要・有資格者: 自組織の業法で該当業務を特定)
-4. **規制対象データ（[[データ分類マトリクス]] 区分4）の AI 投入**。マイナンバー・本人確認書類・要配慮個人情報・係争中案件資料
-5. **代表名義・組織名義の対外発信（メール送信・SNS投稿・顧客向け文書）の無確認自動実行**。生成は可、送信・公開は必ず本人確認を挟む
-6. **利益相反チェックの回避・形骸化につながる利用**（複数顧客の情報を突き合わせて一方に有利な助言を生成する等）
+1. **Direct AI generation of deliverables involving professional responsibility, followed by submission or sending without review by a qualified professional or responsible owner.** AI output is always a draft. Do not submit deliverables to customers or public authorities without final human review. Reference examples: diagnosis-related documents in healthcare, customer-facing advice in finance, and legally required documents in licensed professions.
+2. **Providing specialized advice outside the contract scope to customers as-is from AI output.** AI may be used for preliminary research on out-of-scope topics, but advice to customers must pass through human judgment inside the contract and responsibility scope.
+3. **Automating legal or qualified-professional-only judgments as direct AI responses.** Do not connect AI directly to customers to answer such judgments automatically. The automatic-response scope of customer-facing AI must be designed separately by the approval body. (requires qualified professional: identify applicable work under the organization's industry law)
+4. **Entering regulated data, category 4 in [[data-classification-matrix]], into AI.** This includes individual numbers, identity-verification documents, sensitive personal information, and litigation materials.
+5. **Unreviewed automatic execution of external communication under the representative or organization name.** This includes sending email, posting to social media, and sending customer-facing documents. Generation is allowed; sending and publication require human confirmation.
+6. **Uses that avoid or hollow out conflict-of-interest checks**, such as combining information from multiple customers to generate advice favorable to one side.
 
-## 環境条件付き禁止（データ持ち出し系）
+## Environment-Conditioned Prohibitions: Data Export
 
-7. **区分3（顧客・取引先特定）データの組織管理外環境への投入**: ベンダ管理クラウドAI・一般クラウドAI への投入、および GitHub へのコミットは匿名化の有無を問わず禁止（[[データ分類マトリクス]] の区分3行 ✗ セルと「保管先としての GitHub リポジトリ」の再掲。区分4 も同様に禁止）
-8. **投入データの学習利用への許諾**。利用規約・設定で入力データが学習に使われる構成を組織業務に使わない
-9. **承認なしの新規 AI サービス追加**。マトリクスの E1〜E3 に分類されていないサービスの業務利用は、事前に導入責任者が区分を判定してから
+7. **Entering category 3 customer/vendor-identifying data into environments outside organization management**. Vendor-managed cloud AI, general cloud AI, and GitHub are prohibited regardless of anonymization. This restates the most important ✗ cells in [[data-classification-matrix]].
+8. **Allowing input data to be used for training.** Do not use a service configuration for organizational work if its terms or settings allow input data to be used for training.
+9. **Adding a new AI service without approval.** Any work use of a service not classified into E1 through E3 in the matrix requires prior classification by the implementation DRI.
 
-## 違反時の対応
+## Response to Violations
 
-1. 発見者は当該利用を**即時停止**し、導入責任者へ報告（自己申告を含む。**申告者を不利に扱わない**）
-2. 承認体制で影響評価（何がどこへ出たか・回収可能性・顧客/法令影響）し、対応を決定
-3. 監査ログに違反記録として残す（[[データ分類マトリクス]]の監査ログと同じ保存先）
-4. **規定外のデータ取扱が[3件]以上発生した場合、当該 AI 利用を一時停止し、承認体制でデータ取扱規定を再定義する**
+1. The discoverer immediately stops the use and reports it to the implementation DRI, including self-reporting. **Do not disadvantage the reporter.**
+2. The approval body assesses impact, including what went where, whether recovery is possible, and customer or legal impact, then decides the response.
+3. Record the incident as a violation in the audit log, using the same storage location as the audit log in [[data-classification-matrix]].
+4. **If [3] or more non-standard data-handling incidents occur, suspend the relevant AI use and redefine data-handling rules through the approval body.**
 
-## 改訂
+## Revision
 
-- 本リストの追加・緩和・削除は承認体制の連結判断による（status: agreed の再合意）
-- 判断に迷う用途は**実行しない**。導入責任者に確認してから
+- Adding, loosening, or deleting items in this list requires a joined decision by the approval body and renewed agreement on `status: agreed`.
+- If a use case is ambiguous, **do not execute it**. Confirm with the implementation DRI first.
 
-## 改訂履歴
+## Revision History
 
-| 日付 | 版 | 改訂者 | 内容 |
+| Date | Version | Author | Change |
 |---|---|---|---|
-| [日付] | v0.1 | [起案者] | テンプレートから起案 |
+| [Date] | v0.1 | [Drafter] | Drafted from template |

@@ -1,95 +1,97 @@
 ---
 doc_type: reference
 version: "1.0"
-summary: Org-OS Starter の導入手順（Step 0〜4）とカスタマイズポイント。AIと対話しながら進める前提で書いてある
+summary: Org-OS Starter setup guide covering Step 0 through Step 4 and customization points. It assumes implementation through conversation with AI.
 ---
 
-# 導入ガイド
+Japanese version: [docs/ja/docs/導入ガイド.md](ja/docs/導入ガイド.md)
 
-> このリポジトリを自組織の「Org-OS」にするための手順。全工程をAI（Claude Code 等）と対話しながら進められる。人間が自分で決めるべき箇所だけ明示してある。
+# Setup Guide
 
-## Step 0: 体制を決める（人間の仕事・30分）
+> A guide for turning this repository into the adopting organization's Org-OS. Every step can be done through conversation with AI such as Claude Code. The parts humans must decide directly are called out explicitly.
 
-コードより先に、3つだけ決める。
+## Step 0: Decide the Operating Body
 
-1. **導入責任者（DRI）** — このリポジトリの管理者。マージ権限を持ち、規範の起案を主導する。AIツールに一番慣れている人が適任（エンジニアである必要はない）
-2. **承認体制** — `layer1/` の規範が「効力を持つ」ために誰の合意が必要か。推奨は**経営責任者＋導入責任者＋システム責任者の連結判断**（2〜3名。1人で兼務してもよいが、経営判断とAI技術判断の区別は保つ）
-3. **最初の一点突破ユースケース** — 推奨は「プロジェクト知識の横断整理＋対話キャッチアップ」。組織で「あれどうなってたっけ？」が一番起きている領域を選ぶ
+Before working on documents, decide only three things.
 
-決めたら `docs/governance/運用規約.md` の権限設計節に記入する。
+1. **Implementation DRI** — The administrator of this repository. This person has merge authority and leads drafting of norms. The best fit is the person most familiar with AI tools; they do not need to be an engineer.
+2. **Approval body** — The people whose agreement makes the norms in `layer1/` effective. The recommended shape is a joined decision by the executive owner, implementation DRI, and system owner. Two or three people is typical. One person may hold multiple roles, but keep business judgment and AI technical judgment distinct.
+3. **First narrow use case** — The recommended use case is cross-project knowledge organization plus conversational catch-up. Choose the area where people most often ask, "what happened with that?"
 
-## Step 1: Layer 1 の3文書を充填する（AIと対話・1〜2週間）
+After deciding, fill the permission design section in `docs/governance/operating-rules.md`.
 
-`layer1/` の3テンプレートを自組織用に充填する。**完璧を待たない** — 充填できる箇所から埋め、経営判断が要る箇所は責任者フラグ `(要・代表)` で残したまま `draft` として運用を始めてよい。
+## Step 1: Fill the Three Layer 1 Documents
 
-| 文書 | 充填の中心 | 特に業種依存が強い箇所 |
+Fill the three templates under `layer1/` for the adopting organization. **Do not wait for perfection.** Fill the parts that can be confirmed, and leave management-judgment items as owner flags such as `(requires executive owner)` while beginning draft operation.
+
+| Document | Main filling work | Strongly industry-dependent areas |
 |---|---|---|
-| [組織CLAUDE.md](../layer1/組織CLAUDE.md) | 組織方針・判断優先順位・業法コンプラ | コンプライアンス規範（業法・資格法・守秘義務の条文確認） |
-| [データ分類マトリクス](../layer1/データ分類マトリクス.md) | データ4区分の具体例・実行環境の棚卸し | 区分4（規制対象）に何が入るか |
-| [禁止用途リスト](../layer1/禁止用途リスト.md) | 絶対禁止の具体化 | 専門家責任・独占業務まわり（士業・医療・金融は必須） |
+| [ORG-CLAUDE.md](../layer1/ORG-CLAUDE.md) | Organizational policy, decision priorities, industry-law compliance | Compliance norms, including industry law, qualification law, and statutory confidentiality |
+| [data-classification-matrix.md](../layer1/data-classification-matrix.md) | Concrete examples for the four data categories and inventory of execution environments | What belongs in category 4, regulated data |
+| [prohibited-uses.md](../layer1/prohibited-uses.md) | Concrete wording for absolute prohibitions | Professional responsibility and exclusive professional acts |
 
-充填のコツ:
+Filling tips:
 
-- AIに「うちは○○業。この文書の業種依存箇所を、うちの業法に合わせて充填する叩き台を作って。**条文は必ず原文を確認して**」と頼む（AI任せにせず、最終確認は有資格者・責任者が行う）
-- 迷った区分は**重い方に倒す**。緩和は運用実績を見てから
-- 3文書が `proposed` になったら承認体制で合意し、frontmatter を `status: agreed` に昇格 ＋ 改訂履歴に合意日・合意者を記録。**ここから規範として効力を持つ**
+- Ask AI: "Our industry is ____. Create a draft for the industry-dependent parts of this document based on our industry law. **Always verify the primary legal text.**" Do not leave final judgment to AI; qualified professionals and responsible owners must confirm.
+- When unsure about classification, choose the stricter category. Loosening should come only after operational evidence.
+- When all three documents are `proposed`, obtain approval-body agreement, promote frontmatter to `status: agreed`, and record agreement date and approvers in the revision history. **From this point, they are effective norms.**
 
-**暫定運用ルール（agreed 昇格まで）**: AI投入は「公開」区分（架空ケース・公開情報）のみ。この暫定ルール自体を先にメンバーへ周知する。
+**Interim operation until agreed promotion**: AI input is limited to public-category data such as fictional cases and public information. Communicate this interim rule to members first.
 
-## Step 2: knowledge/ を立ち上げる（AIと対話・1日）
+## Step 2: Start knowledge/
 
-一点突破ユースケースの初期データを入れる。
+Enter initial data for the first narrow use case.
 
-1. 進行中のプロジェクトを3〜5個選ぶ
-2. 各プロジェクトのオーナーに、AIがヒアリング形式で聞き取り（「○○プロジェクトの目的は？現在の論点は？」）、`knowledge/projects/_テンプレート.md` 準拠のノートに変換して PR
-3. 承認・マージして初期状態の完成
+1. Choose three to five active projects.
+2. Have AI interview each project owner, asking questions such as "What is the purpose of this project?" and "What are the current issues?" Then convert the answers into notes following `knowledge/projects/_template.md` and open a PR.
+3. Approve and merge to complete the initial state.
 
-**注意: 顧客・取引先の実名はこの時点から入れない。** テンプレートの `classification` 欄で区分を自己申告させ、AIにもコミット前の機密チェックをさせる（`CLAUDE.md` のコミット禁止事項）。
+**Important: do not add real customer or vendor names from this point onward.** Have people self-declare classification in the template's `classification` field, and have AI run a confidentiality check before commit. See the commit prohibitions in `CLAUDE.md`.
 
-サンプルノート（`PJ-サンプル-備品管理.md`・`ISSUE-0001.md`）は構造の見本。自組織のノートが3本入ったら削除してよい。
+The sample notes, `PJ-sample-equipment.md` and `ISSUE-0001.md`, show the structure. Delete them after the organization has three real project notes.
 
-## Step 3: 日常運用に乗せる（2週間の定着期間）
+## Step 3: Put Daily Operation in Place
 
-メンバーには [利用ガイド](利用ガイド.md) を配布する（読む・書く・聞くの3動線だけ覚えればよい設計）。
+Distribute [user-guide.md](user-guide.md) to members. It is designed so they only need to remember three paths: read, write, and ask.
 
-定着のドライバは**DRIが毎日使って見せること**:
+The main driver of adoption is that **the DRI uses it visibly every day**:
 
-- 定例で「AIに聞けば出ますよ」を実演する（動線1: 聞く）
-- 会議後に「この決定、記録しておいて」をAI経由で行う（動線3: 書く）
-- 週1回、ノートの鮮度を確認（`last_reviewed` が古いPJはオーナーにヒアリング）
+- In recurring meetings, demonstrate that "AI can answer that from the repository." This is the ask path.
+- After meetings, tell AI, "record this decision." This is the write path.
+- Once a week, check note freshness. If `last_reviewed` is old, ask the project owner for an update.
 
-2週間で「AIに聞く方が人に聞くより速い」状態になれば定着。ならなければ、ノートの粒度・鮮度・網羅性のどれが欠けているかをAIと分析する。
+If, after two weeks, asking AI is faster than asking people, adoption is working. If not, analyze with AI which part is missing: note granularity, freshness, or coverage.
 
-## Step 4: 広げる（実運用からの抽出）
+## Step 4: Expand from Real Operation
 
-Layer 2 が回り始めてから、次を検討する（詳細: [architecture.md](architecture.md) の発展要素）:
+After Layer 2 starts working, consider the following. See the expansion patterns in [architecture.md](architecture.md).
 
-- **SKILL化（Layer 3）** — 3回以上繰り返した対話パターン（キャッチアップ要約・議事録取り込み・issue起票）から順に Skill にする
-- **取り込み自動化（Layer 4）** — チャット・議事録の要約を knowledge/ へ自動集約
-- **監査・レビュー（Layer 5）** — データ分類マトリクスの監査ログ運用を本格化
+- **Skillization, Layer 3** — Convert dialogue patterns repeated three or more times into skills, such as catch-up summaries, meeting-note intake, and issue filing.
+- **Intake automation, Layer 4** — Automatically aggregate chat and meeting-note summaries into `knowledge/`.
+- **Audit and review, Layer 5** — Put the audit-log operation in the data classification matrix into full use.
 
-**広げる判断も「毎日使われているか」を基準にする。** 使われていない層の上に次を積まない。
+**Use daily usage as the criterion for expansion.** Do not build a new layer on top of a layer that is not being used.
 
-## カスタマイズポイント一覧
+## Customization Points
 
-| 箇所 | 初期値 | 変える判断基準 |
+| Area | Initial default | When to change |
 |---|---|---|
-| 承認体制の人数 | 3名連結判断 | 組織規模。最小構成は「経営1名＋構築1名」の2名 |
-| データ区分の粒度 | 4区分 | 規制産業は区分4の細分化、非規制でも4区分の枠は維持を推奨 |
-| 実行環境の棚卸し | E1〜E3の3+1環境 | 自組織で実際に使うAIサービスをすべてマトリクスに載せる |
-| knowledge/ のノート種別 | projects / issues | 顧客・案件・議事録ノートは Layer 4 と合わせて拡張 |
-| 責任者フラグの表記 | `(要・<役割名>)` | 実名でも役割名でもよいが、リポジトリを外部共有する予定があるなら役割名 |
-| マージ権限 | DRIのみ | write権限者が増えたら PR 運用 + レビュー必須へ移行 |
+| Size of approval body | Joined decision by three people | Organization size. The minimum useful shape is one business owner plus one builder. |
+| Data-category granularity | Four categories | Regulated industries may split category 4 further. Even in non-regulated industries, keep the four-category frame. |
+| Execution-environment inventory | E1 through E3 plus E1.5 | Put every AI service actually used by the organization into the matrix. |
+| Note types under `knowledge/` | projects / issues | Add customer, case, or meeting-note types together with Layer 4 intake design. |
+| Owner-flag notation | `(requires <role name>)` | Real names or role names are both acceptable. Prefer role names if the repository may be shared externally. |
+| Merge authority | DRI only | If more people receive write permission, move to PR operation with required review. |
 
-## つまずきポイント（実運用からの教訓）
+## Common Pitfalls from Real Operation
 
-- **規範を後回しにして道具から作る** → 一番多い失敗。データ事故が起きてから規範を作ると信頼回復に倍のコストがかかる
-- **5層を横並びで着工する** → どれも中途半端になり「使われないハコモノ」化する。一点突破を守る
-- **AIに全部任せて人間が読まない** → 規範文書の最終確認は必ず人間（特にコンプラ規範は有資格者）。AIは叩き台と検索の道具
-- **ノートの鮮度が落ちて信頼を失う** → 「AIの答えが古い」と一度思われると使われなくなる。`last_reviewed` の週次確認をDRIの習慣にする
+- **Building tools before norms** — This is the most common failure. If norms are created only after a data incident, trust is harder to recover.
+- **Starting all five layers side by side** — Everything becomes half-built and unused. Protect the narrow start.
+- **Leaving everything to AI without human reading** — Humans must perform final confirmation of norm documents, especially compliance norms. AI is a drafting and research aid.
+- **Letting notes become stale** — If people believe "AI's answer is old" even once, usage drops. Make weekly `last_reviewed` checks a DRI habit.
 
-## 改訂履歴
+## Revision History
 
-| 日付 | 版 | 改訂者 | 内容 |
+| Date | Version | Author | Change |
 |---|---|---|---|
-| 2026-08-13 | v1.0 | HideTsug | 初版 |
+| 2026-08-13 | v1.0 | HideTsug | Initial version |

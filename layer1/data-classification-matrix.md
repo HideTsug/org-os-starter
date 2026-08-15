@@ -1,109 +1,98 @@
 ---
 status: draft
 version: "0.1"
-owner: (要・導入責任者)
-summary: データ4区分×実行環境の投入可否マトリクスのテンプレート。どのデータをどのAI実行環境に渡してよいかの最上位ルール。自組織の環境を棚卸しして充填する
+owner: (requires implementation DRI)
+summary: Template for the permission matrix across four data categories and AI execution environments. This is the top-level rule for which data may be given to which AI environment. Fill it after inventorying the adopting organization's real environments.
 ---
 
-# データ分類マトリクス（テンプレート）
+Japanese version: [docs/ja/layer1/データ分類マトリクス.md](../docs/ja/layer1/データ分類マトリクス.md)
 
-> どのデータをどの実行環境の AI に渡してよいかの最上位ルール。本マトリクスのデータ区分は、そのまま**実行環境の選定基準**として機能する。
+# Data Classification Matrix (Template)
+
+> The top-level rule for which data may be given to AI in which execution environment. The data categories in this matrix also work directly as **execution environment selection criteria**.
 >
-> 充填方針: データ4区分の枠は変えず、「例」を自組織の実データで具体化する。実行環境は自組織で実際に使う AI サービスをすべて E1〜E3 のどれかに分類する。
+> Filling policy: Keep the four data categories. Replace and enrich the examples with the adopting organization's real data. Classify every AI service actually used by the organization into E1, E1.5, E2, or E3.
 
-- 起案: [日付] / [起案者]
-- 合意対象: [承認体制（例: 代表＋導入責任者＋システム責任者の3名連結判断）]
-- 効力発生: status: agreed 昇格時。それまでは暫定運用（投入は「公開」区分のみ）
+- Drafted: [Date] / [Drafter]
+- Agreement target: [approval body, for example a joined decision by representative + implementation DRI + system owner]
+- Effective date: when frontmatter is promoted to `status: agreed`. Until then, interim operation allows only public-category data to be entered into AI.
 
-## データ4区分
+## Four Data Categories
 
-| 区分 | 定義 | 例（自組織用に具体化する） |
+| Category | Definition | Examples to customize for the organization |
 |---|---|---|
-| **1. 公開** | 誰に見られても問題ないデータ | 公開情報・業界記事・公開法令、架空/ダミーケース・教育用ケース、本人が公開済みの発信物 |
-| **2. 社内** | 組織内部のデータで、顧客・取引先を特定できないもの。**本人由来**（投入者本人の思考・内省で他者固有情報を含まない）と**組織内部**（議事録・SOP・業務テンプレ等）に分ける | 内省・キャリア観メモ／個人名をイニシャル化した議事録、業務手順書 |
-| **3. 顧客・取引先特定** | 顧客・取引先を特定できる、または特定につながるデータ | 実名・法人名、財務数値、通信履歴（メール等）、顧客分析メモ、業務上の非公開テーマメモ（人事・提携・M&A・未公開財務） |
-| **4. 規制対象** | 法令上特別な管理義務があるデータ | マイナンバー・個人番号関係書類、本人確認書類、要配慮個人情報、係争中案件の資料、(要・有資格者: 業法上の法定文書を追加) |
+| **1. Public** | Data that may be seen by anyone without issue | Public information, industry articles, public laws and regulations, fictional or dummy cases, training cases, and statements already published by the person |
+| **2. Internal** | Internal organizational data that does not identify customers or vendors. Split into **personal-origin** data, such as the contributor's own thinking or reflection with no unique information about others, and **organizational internal** data, such as meeting notes, SOPs, and work templates | Reflection and career-view notes; meeting notes with personal names replaced by initials; work procedure documents |
+| **3. Customer/vendor-identifying** | Data that identifies or could lead to identification of a customer or vendor | Real personal names, company names, financial figures, communication history such as email, customer analysis notes, and non-public business themes such as HR, partnerships, M&A, and unpublished financials |
+| **4. Regulated** | Data with special legal management duties | Individual numbers and related documents, identity-verification documents, sensitive personal information, litigation materials, and (requires qualified professional: add legally required documents for the organization's industry) |
 
-区分判定の原則: **迷ったら重い方の区分**として扱う。本人の思考メモでも他者の固有情報（顧客名・社員名・取引先名）を含む場合は内容実態で区分する（顧客分析 → 区分3、人事メモ → 区分3の非公開テーマ扱い）。
+Classification principle: **When in doubt, choose the stricter category**. Even a personal thinking note should be classified by its actual content if it contains unique information about others, such as customer names, employee names, or vendor names. Customer analysis becomes category 3; HR notes are handled as category 3 non-public themes.
 
-## 実行環境
+## Execution Environments
 
-> 自組織で使う環境をすべて分類する。以下は代表的な構成の初期値。
+> Classify every environment used by the organization. The following defaults represent a common setup.
 
-| 環境 | 内容 | データ主権 |
+| Environment | Content | Data sovereignty |
 |---|---|---|
-| **E1: ローカル自組織管理** | Claude Code 等のローカル実行。本番昇格時は Bedrock / Vertex AI 等のテナント内推論を本筋とする | 組織管理 |
-| **E1.5: 組織テナント SaaS** | Google Workspace・組織契約のクラウドDB等。AI 参照は per-user OAuth（本人の権限を継承する経路）のみ | 組織管理（テナント契約） |
-| **E2: ベンダ管理クラウドAI（商用契約）** | Claude Code Web版等、ベンダ管理環境。学習不使用の契約があっても、実行環境・ファイル置き場としては組織管理外 | 組織管理外 |
-| **E3: 一般クラウドAI** | 無料版チャットAI・個人アカウント等、入力が学習に使われ得る環境 | 組織管理外 |
+| **E1: Local or organization-managed** | Local execution such as Claude Code. For production promotion, tenant-internal inference such as Bedrock or Vertex AI is the main path. | Organization-managed |
+| **E1.5: Organization-tenant SaaS** | Google Workspace, organization-contracted cloud databases, and similar systems. AI reference is allowed only through per-user OAuth, inheriting the user's own permissions. | Organization-managed through tenant contract |
+| **E2: Vendor-managed cloud AI under commercial contract** | Vendor-managed environments such as Claude Code on the web. Even with no-training terms, the execution environment and file storage are outside organization management. | Outside organization management |
+| **E3: General cloud AI** | Free chat AI services, personal accounts, and similar environments where inputs may be used for training. | Outside organization management |
 
-## 保管先としての GitHub リポジトリ
+GitHub repositories, including this repository, are not AI execution environments, but they are **cloud storage outside organization management**. As a data location, treat them equivalently to E2/E3. Committing category 3 or 4 data is prohibited. See `docs/governance/operating-rules.md`.
 
-GitHub リポジトリ（本リポジトリ含む）は AI 実行環境ではなく、**組織管理外クラウド上の保管先**である。データ主権は E2/E3 と同じ「組織管理外」だが、**下記の投入可否マトリクスの E2/E3 列は適用しない**（あちらは AI への投入可否、こちらはコミット可否）。保管先としてのコミット可否は次による:
+## Input Permission Matrix: Initial Defaults
 
-| データ区分 | GitHub へのコミット |
-|---|---|
-| 1. 公開 | 可 |
-| 2. 社内 | 可。ただし個人名のイニシャル化・ロール表記化等の処理後（`knowledge/README.md`） |
-| 3. 顧客・取引先特定 | **禁止** |
-| 4. 規制対象 | **禁止** |
+> The defaults are intentionally conservative. Loosening them requires operational evidence and renewed agreement by the approval body.
 
-いずれの区分でも `docs/governance/運用規約.md` の「コミット禁止事項」を併せて満たすこと。なお、保管先（どこに置くか）と推論経路（どの AI に読ませるか）は別軸である — 後者の考え方は下記「E1.5 AI 参照条件」の R 軸を参照。
-
-## 投入可否マトリクス（初期値）
-
-> 初期値は「安全側に倒した」設定。緩和は運用実績と承認体制の再合意で行う。
-
-| データ区分 | E1: ローカル自組織管理 | E1.5: 組織テナント SaaS | E2: ベンダ管理クラウドAI | E3: 一般クラウドAI | 承認者 |
+| Data category | E1: Local or organization-managed | E1.5: Organization-tenant SaaS | E2: Vendor-managed cloud AI | E3: General cloud AI | Approver |
 |---|---|---|---|---|---|
-| 1. 公開 | ◎ | ◎ | ◎ | ◎ | 不要 |
-| 2. 社内（本人由来） | ◎ | ◎ | ✗（非公開の内省は不可。公開済み発信物は区分1） | ✗ 同左 | 本人（迷ったら導入責任者） |
-| 2. 社内（組織内部） | ○ 個人名イニシャル化等の処理後 | ○（保管・参照とも可） | ✗ | ✗ | 導入責任者 |
-| 3. 顧客・取引先特定 | △ 下記「△運用条件」をすべて満たした場合のみ | 保管=◎（既存実務の明文化）/ AI 参照=△ 下記「E1.5 AI 参照条件」 | ✗ | ✗ | 承認体制の連結判断 |
-| 4. 規制対象 | ✗ 当面禁止 | 保管=法定の正規保管先に従う / AI 参照=✗ | ✗ | ✗ | —（解禁は本マトリクス改訂による。連結判断＋外部法務確認が条件） |
+| 1. Public | ◎ | ◎ | ◎ | ◎ | Not required |
+| 2. Internal, personal-origin | ◎ | ◎ | ✗ Non-public reflection is not allowed. Already published statements are category 1. | ✗ Same as left | The person, or implementation DRI if uncertain |
+| 2. Internal, organizational internal | ○ After processing such as replacing personal names with initials | ○ Storage and reference both allowed | ✗ | ✗ | Implementation DRI |
+| 3. Customer/vendor-identifying | △ Only when all operating conditions below are met | Storage = ◎ as formalization of existing work; AI reference = △ under the E1.5 AI-reference conditions below | ✗ | ✗ | Joined decision by approval body |
+| 4. Regulated | ✗ Prohibited for now | Storage = follow statutory official storage; AI reference = ✗ | ✗ | ✗ | None. Unlocking requires revising this matrix, joined approval, and external legal confirmation. |
 
-凡例: ◎=自由投入 / ○=条件付き投入可 / △=指定処理＋事前承認後のみ / ✗=禁止
+Legend: ◎ = freely allowed / ○ = conditionally allowed / △ = only after specified processing and prior approval / ✗ = prohibited
 
-本表が定めるのは **AI への投入可否**。GitHub リポジトリへの**コミット可否**は上記「保管先としての GitHub リポジトリ」の表に従い、E2/E3 列を流用しない。
+### Operating Conditions for Category 3 × E1
 
-### △運用条件（区分3 × E1）
+Input is allowed only when **all** of the following are satisfied:
 
-以下を**すべて**満たした場合のみ投入可:
+1. The approval body has pre-confirmed that the E1 environment satisfies organization-managed requirements, such as local execution or inference inside an organizational tenant.
+2. Prior joined approval has been obtained for each data type. Chat or email approval is acceptable if it is retained.
+3. Required processing is applied: masking real names and proper nouns, converting financial figures to ranges or fictional replacements, and replacing personal names with initials. The required processing level is specified at approval time.
+4. The input is recorded in the audit log below.
 
-1. E1 環境が「自組織管理」要件を満たすことを承認体制で事前確認済み（ローカル実行構成 or 組織テナント内推論）
-2. データ種別ごとに連結判断の事前承認を取得（チャット/メール合意可）
-3. 指定処理を適用: 実名・固有名詞マスク、財務数値のレンジ化または架空置換、人名イニシャル化（処理レベルは承認時に指定）
-4. 投入を監査ログに記録（下記）
+### E1.5 AI Reference Conditions: Phased Introduction
 
-### E1.5 AI 参照条件（段階導入）
+Treat the **storage environment axis** and the **inference path axis** separately. Define what inference paths are allowed when storage remains inside the organizational tenant.
 
-**保管環境（E軸）と推論経路（R軸）は別軸**で考える。「保管は組織テナントのまま、AI 参照時の推論経路に何を許すか」を段階的に定める。
-
-| 推論経路 | 内容 | 区分3データ |
+| Inference path | Content | Category 3 data |
 |---|---|---|
-| R1: 組織テナント内推論 | Vertex AI / Bedrock 等（テナント内処理・国内リージョン可） | ○（本番の本線） |
-| R2: ベンダ商用 API | 学習不使用＋DPA のある商用 API 経由 | △ 発効条件をすべて満たす場合のみ |
-| R3: 学習に使われ得る経路 | 一般クラウドAI・consumer 設定（学習オプトイン） | ✗ 常に禁止 |
+| R1: Inference inside organizational tenant | Vertex AI, Bedrock, or similar tenant-internal processing, including domestic-region options where applicable | ○ Main production path |
+| R2: Vendor commercial API | Commercial API path with no-training terms and DPA | △ Only if all activation conditions are satisfied |
+| R3: Path where data may be used for training | General cloud AI or consumer settings with training opt-in | ✗ Always prohibited |
 
-R2 の発効条件（初期値。承認体制の合意に加え、すべて満たすまで機密参照を開始しない）:
+Activation conditions for R2, initial defaults. Do not begin confidential reference until all are satisfied in addition to approval-body agreement:
 
-1. AI の機密層読取は per-user OAuth（本人の権限を継承する経路）のみ。サービスアカウント・domain-wide delegation は禁止
-2. 学習不使用の契約的担保と DPA をベンダの利用規約・commercial terms で確認済み
-3. 保持期間の把握と統制（API・コネクタ経由データの保持設定を確認。**共有チャット機能・学習オプトインのある consumer 設定での利用は禁止**）
-4. 参照が監査ログに記録される（保管側 SaaS の標準監査ログで可）
-5. **AI 出力の区分継承**: 出力に区分3が含まれる場合、出力も区分3として扱い、GitHub（PR 本文・issue 含む）・共有リンク・チャット共有へ転記しない
-6. **顧客への AI 利用説明・合意方針の確定** (要・代表 — 発効前ブロッカー。業界ガイドラインがあれば準拠)
+1. AI reading of the confidential layer must use only per-user OAuth, inheriting the person's own permissions. Service accounts and domain-wide delegation are prohibited.
+2. No-training contractual protection and a DPA have been confirmed in the vendor terms and commercial terms.
+3. Retention period and controls are understood. Confirm retention settings for API and connector data. **Shared-chat features and consumer settings with training opt-in are prohibited.**
+4. References are recorded in audit logs. Standard audit logs of the storage-side SaaS are acceptable.
+5. **Classification inheritance for AI output**: If output contains category 3 data, treat the output as category 3. Do not copy it into GitHub, including PR bodies and issues, shared links, or shared chat.
+6. **Customer explanation and agreement policy for AI use has been finalized**. (requires executive owner — blocker before activation. Follow industry guidelines if they exist.)
 
-## 監査ログ
+## Audit Log
 
-- **保存先**: 組織管理のクラウドストレージ内に専用ログ「データ投入承認ログ」を作成 (要・代表: 保存先テナントの指定)
-- 本リポジトリ（GitHub）には置かない。判断: ログ自体に顧客参照が含まれ得るため。理由: 組織管理外クラウドへの区分3データ持ち出しに該当
-- **必須記録項目**: 日時 / 投入者 / 環境（E1/E1.5/E2/E3） / データ区分 / 対象の概要（実名は書かず案件ID等で参照） / 適用した処理 / 承認者 / 承認手段
-- **記録対象**: △区分の投入はすべて。○区分は導入責任者の承認分のみ（本人判断分は対象外）
-- **閲覧権限**: 承認体制＋承認体制が承認した運用者のみ
+- **Storage location**: Create a dedicated "data-input approval log" inside organization-managed cloud storage. (requires executive owner: specify the storage tenant)
+- Do not store this log in this GitHub repository. Decision: the log itself may contain customer references. Reason: that would move category 3 data into cloud storage outside organization management.
+- **Required fields**: date and time / submitter / environment (E1/E1.5/E2/E3) / data category / target overview using case IDs rather than real names / applied processing / approver / approval method
+- **Events to record**: all △ category input. For ○ category input, record only entries approved by the implementation DRI; person-only judgments are out of scope.
+- **Read permissions**: approval body and operators approved by the approval body
 
-## 改訂履歴
+## Revision History
 
-| 日付 | 版 | 改訂者 | 内容 |
+| Date | Version | Author | Change |
 |---|---|---|---|
-| [日付] | v0.1 | [起案者] | テンプレートから起案 |
+| [Date] | v0.1 | [Drafter] | Drafted from template |

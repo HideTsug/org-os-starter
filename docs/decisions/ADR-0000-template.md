@@ -1,42 +1,44 @@
 ---
 doc_type: template
 version: "1.0"
-summary: ADR（Architecture Decision Record）のテンプレート。組織のAI基盤に関する重要決定を、後から経緯ごと追える形で記録する
+summary: Template for ADRs, Architecture Decision Records. It records important decisions about the organization's AI foundation in a form that preserves the background for later review.
 ---
 
-# ADR-0000: [決定のタイトル]
+Japanese version: [docs/ja/docs/decisions/ADR-0000-テンプレート.md](../ja/docs/decisions/ADR-0000-テンプレート.md)
 
-> テンプレート注記: 新しい ADR はこのファイルをコピーして `ADR-0001-<短い題名>.md` として作る。ADR は「決めたこと」の時点記録であり、後から書き換えない（変更は新しい ADR で supersede する）。
+# ADR-0000: [Decision Title]
+
+> Template note: Copy this file as `ADR-0001-<short-title>.md` when creating a new ADR. An ADR is a point-in-time record of what was decided. Do not rewrite it later; use a new ADR with `supersedes` for changes.
 >
-> 最初の ADR に向くテーマの例: 「本番のAI実行環境をどこに置くか」「知識基盤のトポロジー（1リポジトリか分割か）」「機密データの格納方式」
+> Suitable first ADR topics include "where to place the production AI execution environment", "knowledge-base topology, one repository or split repositories", and "confidential-data storage approach".
 
-- 起案: [日付] / [起案者]
-- 決定: [日付] / [承認体制での合意者]
-- status: draft → proposed → agreed で管理
+- Drafted: [Date] / [Drafter]
+- Decided: [Date] / [Approvers in approval body]
+- status: managed as draft → proposed → agreed
 
-## 背景・課題
+## Background and Problem
 
-[この決定が必要になった状況。何が問題だったか]
+[The situation that made this decision necessary. What problem needed to be solved?]
 
-## 決定
+## Decision
 
-[決めたことを1〜3行で明確に。「〜を本筋とする」「〜は当面禁止する」のように断定形で]
+[State the decision clearly in one to three lines. Use decisive phrasing such as "The main path is ..." or "... is prohibited for now."]
 
-## 理由
+## Reason
 
-[なぜこの選択か。判断: 〜。理由: 〜。の形式を推奨]
+[Explain why this option was chosen. The recommended format is "Decision: ... Reason: ...".]
 
-## 採らなかった選択肢
+## Options Not Chosen
 
-[比較した代替案と、採らなかった理由。ここが将来一番読まれる]
+[Alternatives compared and why they were not chosen. This is often the most valuable section for future readers.]
 
-## 影響・フォローアップ
+## Impact and Follow-up
 
-- [この決定で変わる運用・文書]
-- [再検討のトリガ条件（例: 「メンバーが10名を超えたら」「規制が変わったら」）]
+- [Operations or documents changed by this decision]
+- [Triggers for re-evaluation, such as "when membership exceeds 10 people" or "when regulations change"]
 
-## 改訂履歴
+## Revision History
 
-| 日付 | 版 | 改訂者 | 内容 |
+| Date | Version | Author | Change |
 |---|---|---|---|
-| [日付] | v1.0 | [起案者] | 起案 |
+| [Date] | v1.0 | [Drafter] | Drafted |

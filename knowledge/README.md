@@ -1,23 +1,25 @@
-# knowledge/ — 知識基盤（Layer 2）
+# knowledge/ — Knowledge Base (Layer 2)
 
-組織の「現在地」を構造化ノートで蓄積する場所。AI がここを検索して質問に答え、メンバーの発話をここへのノート追加に変換する。
+Japanese version: [docs/ja/knowledge/README.md](../docs/ja/knowledge/README.md)
 
-## ノート種別
+This is where the organization's current state is accumulated as structured notes. AI searches this area to answer questions and converts member input into notes that belong here.
 
-| ディレクトリ | 種別 | 1ノートの単位 |
+## Note Types
+
+| Directory | Type | Unit of one note |
 |---|---|---|
-| `projects/` | プロジェクトノート | 進行中のプロジェクト1つ |
-| `issues/` | issueノート | 気づいた課題1つ（プロジェクトに紐付け可） |
+| `projects/` | Project note | One active project |
+| `issues/` | Issue note | One noticed problem, optionally linked to a project |
 
-各ディレクトリの `_テンプレート.md` が形式の SSoT。`PJ-サンプル-備品管理.md`・`ISSUE-0001.md` は架空データの見本で、自組織のノートが入ったら削除してよい。
+Each directory's `_template.md` is the format SSoT. `PJ-sample-equipment.md` and `ISSUE-0001.md` are fictional examples. Delete them once the organization has real notes.
 
-## 共通ルール
+## Common Rules
 
-- frontmatter の `classification` にデータ区分（`layer1/データ分類マトリクス.md` の4区分）を自己申告する。**許容値は `公開` / `社内` の2つのみ**（区分3「顧客・取引先特定」・区分4「規制対象」のデータはこのリポジトリに置けないため、値としても現れない）
-- **顧客・取引先の実名・実数値は書かない**（区分3）。必要なら案件ID・ロール表記（「顧客A」「代表」等）で参照する
-- 種別判定は `tags`（`project` / `issue`）で行う。検索・集計ツールはこのタグを見る
-- 古くなった記述は消さず追記で更新し、`last_reviewed` を更新する
+- Self-declare the data category in frontmatter `classification`, using the four categories in `layer1/data-classification-matrix.md`. **Allowed values are only `public` and `internal`** because category 3, customer/vendor-identifying data, and category 4, regulated data, must not be stored in this repository.
+- **Do not write real customer or vendor names or real figures**. If needed, refer by case ID or role labels such as "Customer A" or "Representative".
+- Note type is identified by `tags`, using `project` or `issue`. Search and aggregation tools read this tag.
+- Do not delete outdated content. Add updates and refresh `last_reviewed`.
 
-## 拡張
+## Extension
 
-顧客ノート・案件ノート・議事録要約ノート等の種別追加は、Layer 4（取り込み自動化）の設計と合わせて行う（`docs/architecture.md` の発展要素参照）。種別を増やすときは必ず `_テンプレート.md` を先に定義する。
+Add note types such as customer notes, case notes, or meeting-note summaries together with Layer 4 intake automation design. See the expansion patterns in `docs/architecture.md`. When adding a type, define its `_template.md` first.

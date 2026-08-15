@@ -1,33 +1,35 @@
 ---
 tags:
   - issue
-classification: 社内
-owner: 佐藤（架空）
+classification: internal
+owner: Sato (fictional)
 last_reviewed: 2026-08-13
 issue_status: open
-project: PJ-サンプル-備品管理
-reporter: 佐藤（架空）
+project: PJ-sample-equipment
+reporter: Sato (fictional)
 created: 2026-08-13
-source: 備品台帳の初期登録作業（架空）
-summary: 架空のサンプルissue。同一備品が部署ごとに別名で登録され、名寄せルールが必要
+source: Initial equipment-ledger entry work (fictional)
+summary: Fictional sample issue. The same equipment is registered under different names by department, so a normalization rule is needed.
 ---
 
-# ISSUE-0001: 備品名の表記ゆれで台帳の名寄せができない
+Japanese version: [docs/ja/knowledge/issues/ISSUE-0001.md](../../docs/ja/knowledge/issues/ISSUE-0001.md)
 
-> **架空のサンプルデータ**。issueノートの書きぶりの見本。自組織のissueが入ったら削除してよい。
+# ISSUE-0001: Equipment names vary, preventing ledger normalization
 
-## 概要
+> **Fictional sample data.** This file shows how to write an issue note. Delete it once the organization has real issues.
 
-- 同じ備品（例: モニター）が部署ごとに「ディスプレイ」「液晶」等の別名で登録され、在庫集計が正しく出ない。
+## Overview
 
-## 背景・再現
+- The same equipment, such as monitors, is registered under different names by department, such as "display" and "LCD", so inventory aggregation is inaccurate.
 
-- 初期登録済み120件のうち、18件で同一品の別名登録を確認（架空の数字）。
+## Background and Reproduction
 
-## 期待
+- Among 120 initially registered items, 18 were found to be duplicate registrations under alternate names. These numbers are fictional.
 
-- 備品カテゴリの正規名リストを定義し、新規登録時はリストから選ぶ運用で表記ゆれの新規発生をゼロにする。
+## Expected State
 
-## 補足
+- Define an approved equipment-category name list. New entries should select from that list, reducing new naming variation to zero.
 
-- 紐付け先 PJ: `[[PJ-サンプル-備品管理]]`
+## Notes
+
+- Linked PJ: `[[PJ-sample-equipment]]`
