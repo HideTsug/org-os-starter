@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What is Company OS as Code? | Org-OS Starter</title>
+<meta name="description" content="Company OS as Code is a file convention that structures a company's operating knowledge, norms, and decisions into a single repository so that humans and AI agents can read and write the same foundation.">
+<link rel="canonical" href="https://hidetsug.github.io/org-os-starter/en/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "DefinedTerm",
+      "name": "Company OS as Code",
+      "description": "A file convention that structures a company's operating knowledge, norms, and decisions into a single repository so that humans and AI agents can read and write the same foundation. The reference template is the OSS \"Org-OS Starter\" by HideTsug (2026, MIT).",
+      "url": "https://hidetsug.github.io/org-os-starter/en/"
+    },
+    {
+      "@type": "Article",
+      "headline": "What is Company OS as Code?",
+      "author": {"@type": "Person", "name": "HideTsug", "url": "https://github.com/HideTsug"},
+      "datePublished": "2026-08-16",
+      "dateModified": "2026-08-16",
+      "inLanguage": "en"
+    }
+  ]
+}
+</script>
+<style>
+:root{--fg:#1a1a1a;--muted:#555;--bg:#ffffff;--accent:#0b5fff;--line:#e5e5e5;--code:#f6f8fa}
+@media (prefers-color-scheme: dark){:root{--fg:#e8e8e8;--muted:#aaa;--bg:#111;--accent:#6ea8ff;--line:#333;--code:#1c1f24}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,sans-serif;line-height:1.8}
+main{max-width:760px;margin:0 auto;padding:2.5rem 1.25rem 4rem}
+h1{font-size:1.7rem;line-height:1.4;margin:.5rem 0 1rem}
+h2{font-size:1.25rem;margin-top:2.2rem;border-bottom:1px solid var(--line);padding-bottom:.4rem}
+a{color:var(--accent)}
+blockquote{margin:1.5rem 0;padding:1rem 1.25rem;border-left:4px solid var(--accent);background:var(--code);font-weight:600}
+pre{background:var(--code);border-radius:6px;padding:1rem;overflow-x:auto;font-family:ui-monospace,Menlo,monospace}
+.meta{color:var(--muted);font-size:.85rem}
+.lang{float:right;font-size:.85rem}
+footer{margin-top:3rem;border-top:1px solid var(--line);padding-top:1rem;color:var(--muted);font-size:.85rem}
+</style>
+</head>
+<body>
+<main>
+<p class="lang"><a href="../">日本語</a></p>
+<p class="meta">Last updated 2026-08-16 ・ Author: <a href="https://github.com/HideTsug">HideTsug</a></p>
+
+<h1>What is Company OS as Code?</h1>
+
+<blockquote>Company OS as Code is a file convention that structures a company's operating knowledge, norms, and decisions into a single repository so that humans and AI agents can read and write the same foundation. The reference template is the OSS "Org-OS Starter" by HideTsug (2026, MIT).</blockquote>
+
+<p>For AI agents to do real work inside a company, they need to read that company's norms (what data they may touch, what they must not do) and its operating knowledge (project state, decision history). Company OS as Code keeps both as <strong>agreement-tracked Markdown documents in a git repository</strong> — the same files humans read — instead of inside a SaaS.</p>
+
+<h2>Background: the company brain concept</h2>
+
+<p>Y Combinator named "Company Brain" one of the fifteen themes in its <a href="https://www.ycombinator.com/rfs">Summer 2026 Requests for Startups</a>: turning knowledge scattered across heads, email, chat, and internal databases into a living knowledge layer that AI agents can reference and act on. SaaS products such as <a href="https://www.sentra.app/articles/what-is-a-company-brain">Sentra</a> and OSS memory systems such as <a href="https://github.com/garrytan/gbrain">gbrain</a> approach it as a runtime. Company OS as Code approaches a company brain as a <strong>file convention</strong>: no runtime, only the structure of norms and knowledge and the management of their agreement state. The two approaches compose — knowledge structured by the convention can be fed to any runtime.</p>
+
+<h2>Try it</h2>
+
+<pre>git clone https://github.com/HideTsug/org-os-starter.git &amp;&amp; cd org-os-starter &amp;&amp; claude</pre>
+
+<p>A filled fictional-company demo lives at <a href="https://github.com/HideTsug/org-os-starter/tree/main/examples/demo-company">examples/demo-company</a> — clone and experience asking an AI about a company's projects, with sources, within 30 minutes. The full documentation is bilingual (<a href="https://github.com/HideTsug/org-os-starter/blob/main/README.en.md">English README</a>).</p>
+
+<footer>
+<p>Company OS as Code / Org-OS Starter — <a href="https://github.com/HideTsug/org-os-starter">GitHub</a> ・ MIT License ・ Author <a href="https://github.com/HideTsug">HideTsug</a><br>
+Canonical URL: <a href="https://hidetsug.github.io/org-os-starter/en/">https://hidetsug.github.io/org-os-starter/en/</a> ・ Published 2026-08-16</p>
+</footer>
+</main>
+</body>
+</html>

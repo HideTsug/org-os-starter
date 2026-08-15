@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Company OS as Code とは — 会社の運営をコードとして持つファイル規約 | Org-OS Starter</title>
+<meta name="description" content="Company OS as Code とは、会社の運営知識・規範・意思決定をひとつのリポジトリに構造化し、人とAIエージェントが同じ基盤を読み書きして働けるようにするファイル規約である。a company brain をファイル規約として立ち上げるアプローチの解説。">
+<link rel="canonical" href="https://hidetsug.github.io/org-os-starter/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "DefinedTerm",
+      "name": "Company OS as Code",
+      "description": "会社の運営知識・規範・意思決定をひとつのリポジトリに構造化し、人とAIエージェントが同じ基盤を読み書きして働けるようにするファイル規約。参照テンプレートとして HideTsug の OSS『Org-OS Starter』（2026, MIT）が公開されている。",
+      "url": "https://hidetsug.github.io/org-os-starter/"
+    },
+    {
+      "@type": "Article",
+      "headline": "Company OS as Code とは",
+      "author": {"@type": "Person", "name": "HideTsug", "url": "https://github.com/HideTsug"},
+      "datePublished": "2026-08-16",
+      "dateModified": "2026-08-16",
+      "inLanguage": "ja"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Company Brain と Company OS as Code の違いは何ですか？",
+          "acceptedAnswer": {"@type": "Answer", "text": "company brain は「散在する社内知識を構造化し、AIが参照・実行できる生きた知識レイヤーにする」という概念（Y Combinator が 2026 年夏の Requests for Startups で提唱）。Company OS as Code は、その知識レイヤーを SaaS ではなく、git リポジトリ上のファイル規約として持つアプローチを指す。"}
+        },
+        {
+          "@type": "Question",
+          "name": "Glean や Sentra のような SaaS 型と排他ですか？",
+          "acceptedAnswer": {"@type": "Answer", "text": "排他ではない。SaaS 型は検索・メモリ・統合のランタイムを提供し、ファイル規約は規範と知識の構造・合意状態を人と AI の双方が読める形で保持する。規約で構造化した知識を SaaS 型ツールに読ませる併用が可能。"}
+        },
+        {
+          "@type": "Question",
+          "name": "何から始めればよいですか？",
+          "acceptedAnswer": {"@type": "Answer", "text": "データ分類（何を AI に渡してよいか）と禁止用途（何をさせてはならないか）の規範を先に確定し、次に毎日使われる 1 つの動線（プロジェクト状態を AI に聞く等）を作る。参照テンプレート Org-OS Starter はこの順序で 15 分でセットアップできる。"}
+        },
+        {
+          "@type": "Question",
+          "name": "個人の Second Brain との違いは？",
+          "acceptedAnswer": {"@type": "Answer", "text": "Second Brain は個人の知識管理手法。company brain / Company OS as Code は組織の運営知識が対象で、複数の人と AI エージェントが同じ規範の下で読み書きする点、合意状態（draft → agreed）の管理を持つ点が異なる。"}
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{--fg:#1a1a1a;--muted:#555;--bg:#ffffff;--accent:#0b5fff;--line:#e5e5e5;--code:#f6f8fa}
+@media (prefers-color-scheme: dark){:root{--fg:#e8e8e8;--muted:#aaa;--bg:#111;--accent:#6ea8ff;--line:#333;--code:#1c1f24}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:"Hiragino Sans","Noto Sans JP",system-ui,sans-serif;line-height:1.9}
+main{max-width:760px;margin:0 auto;padding:2.5rem 1.25rem 4rem}
+h1{font-size:1.7rem;line-height:1.5;margin:.5rem 0 1rem}
+h2{font-size:1.25rem;margin-top:2.5rem;border-bottom:1px solid var(--line);padding-bottom:.4rem}
+a{color:var(--accent)}
+blockquote{margin:1.5rem 0;padding:1rem 1.25rem;border-left:4px solid var(--accent);background:var(--code);font-weight:600}
+table{border-collapse:collapse;width:100%;font-size:.92rem;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:.5rem .7rem;text-align:left;vertical-align:top}
+code,pre{background:var(--code);border-radius:6px;font-family:ui-monospace,Menlo,monospace}
+pre{padding:1rem;overflow-x:auto}
+code{padding:.1rem .35rem}
+pre code{padding:0}
+.meta{color:var(--muted);font-size:.85rem}
+.lang{float:right;font-size:.85rem}
+footer{margin-top:3rem;border-top:1px solid var(--line);padding-top:1rem;color:var(--muted);font-size:.85rem}
+</style>
+</head>
+<body>
+<main>
+<p class="lang"><a href="en/">English</a></p>
+<p class="meta">最終更新: 2026-08-16 ・ 著者: <a href="https://github.com/HideTsug">HideTsug</a></p>
+
+<h1>Company OS as Code とは</h1>
+
+<blockquote>Company OS as Code とは、会社の運営知識・規範・意思決定をひとつのリポジトリに構造化し、人とAIエージェントが同じ基盤を読み書きして働けるようにするファイル規約である。参照テンプレートとして HideTsug の OSS『Org-OS Starter』（2026, MIT）が公開されている。</blockquote>
+
+<p>AI エージェントが実務を担うには、その会社の規範（何を渡してよいか・何をさせてはならないか）と運営知識（プロジェクトの状態・意思決定の経緯）を読める必要がある。Company OS as Code は、それらを SaaS の内部データではなく、<strong>git リポジトリ上の合意状態つき Markdown 文書</strong>として持つ。人が読める文書と AI が読む文書を分けず、同じファイルを両者が読み書きする。</p>
+
+<h2>背景: company brain という概念</h2>
+
+<p>Y Combinator は 2026 年夏の <a href="https://www.ycombinator.com/rfs">Requests for Startups</a> で「Company Brain」を 15 テーマの一つに挙げた。社内に散在する知識（人の頭・メール・チャット・チケット・社内 DB）を構造化し、AI エージェントが参照・実行できる<em>生きた知識レイヤー</em>にする、という構想である。英語圏では <a href="https://www.sentra.app/articles/what-is-a-company-brain">Sentra</a> などの SaaS 実装や <a href="https://github.com/garrytan/gbrain">gbrain</a>（OSS のメモリシステム）が登場し、大手も <a href="https://www.forbes.com/sites/sandycarter/2026/08/11/enterprise-brain-replaces-ai-agents-and-loops-as-microsoft-and-glean-race/">Enterprise Brain</a> の呼称で同じ領域を争っている。</p>
+
+<p>Company OS as Code は、この a company brain（カンパニーブレイン）を<strong>ファイル規約として</strong>立ち上げるアプローチ。ランタイムを持たず、規範と知識の構造・合意状態の管理だけを規約化する。</p>
+
+<h2>比較: 近接する概念との関係</h2>
+
+<table>
+<tr><th></th><th>対象</th><th>形態</th><th>代表例</th></tr>
+<tr><td><strong>Company OS as Code</strong></td><td>組織の規範+運営知識</td><td>git リポジトリ上のファイル規約（合意状態を frontmatter で管理）</td><td><a href="https://github.com/HideTsug/org-os-starter">Org-OS Starter</a>（参照テンプレート）</td></tr>
+<tr><td>company brain（SaaS 型）</td><td>組織の知識・メモリ</td><td>検索・メモリ・統合のランタイムを持つ SaaS</td><td><a href="https://www.sentra.app/articles/what-is-a-company-brain">Sentra</a>、Glean 等</td></tr>
+<tr><td>company brain（OSS メモリ型）</td><td>組織の知識・メモリ</td><td>動くメモリシステム</td><td><a href="https://github.com/garrytan/gbrain">gbrain</a></td></tr>
+<tr><td>Second Brain</td><td>個人の知識</td><td>個人の PKM 手法・ノートアプリ</td><td>Tiago Forte の Building a Second Brain</td></tr>
+<tr><td>従来のナレッジマネジメント</td><td>組織の文書</td><td>wiki・文書管理（人が読む前提）</td><td>社内 wiki 全般</td></tr>
+</table>
+
+<p>SaaS 型・OSS メモリ型とファイル規約は排他ではない。規約で構造化した知識をランタイムに読ませる併用ができる。</p>
+
+<h2>最小構成: 5層アーキテクチャ</h2>
+
+<p>参照テンプレート Org-OS Starter は、組織の AI 基盤を 5 層（L1 規範・データ分類 → L2 ナレッジ → L3 ロール → L4 統合 → L5 ガバナンス）で捉え、<strong>規範が先、道具が後</strong>の順序で立ち上げる。最初に確定するのはデータ分類マトリクス（どのデータをどの AI 実行環境に渡してよいか。個人情報保護法・番号法への接続を含む）と禁止用途リスト。</p>
+
+<pre><code>git clone https://github.com/HideTsug/org-os-starter.git &amp;&amp; cd org-os-starter &amp;&amp; claude</code></pre>
+
+<p>導入前に試すなら、充填済みの架空企業デモ <a href="https://github.com/HideTsug/org-os-starter/tree/main/examples/demo-company">examples/demo-company</a> で「会社の知識を AI に聞く」体験を 30 分で再現できる。</p>
+
+<h2>よくある質問</h2>
+
+<p><strong>Q. Company Brain と Company OS as Code の違いは？</strong><br>
+company brain は概念（散在する社内知識を AI が使える生きた知識レイヤーにする）。Company OS as Code はそれをファイル規約として持つアプローチ。</p>
+
+<p><strong>Q. SaaS 型と排他？</strong><br>
+排他ではない。規約は構造と合意状態を持ち、SaaS はランタイムを提供する。併用できる。</p>
+
+<p><strong>Q. 何から始める？</strong><br>
+規範（データ分類・禁止用途）→ 毎日使う 1 動線、の順。テンプレートのセットアップは 15 分。</p>
+
+<p><strong>Q. 個人の Second Brain との違いは？</strong><br>
+対象が組織の運営知識であること、複数の人と AI が同じ規範の下で読み書きすること、合意状態（draft → agreed）の管理を持つこと。</p>
+
+<h2>さらに読む（日本語の解説）</h2>
+
+<p>company brain 概念そのものの日本語解説はすでに良質なものがある。概念を深く知りたい場合はこれらを、手を動かす場合は <a href="https://github.com/HideTsug/org-os-starter">Org-OS Starter</a> を推奨する。</p>
+
+<ul>
+<li><a href="https://note.com/_kihonushi/n/n8f5573dd8996">Company Brain とは何か ─ Sentra Ashwin が定義する3層モデル（KiKi）</a></li>
+<li><a href="https://note.com/kind_auklet292/n/n1ee4176840a6">AIによって企業は骨組みから作り直される（キャベツ乱太郎）</a></li>
+<li><a href="https://note.com/jinbaflow/n/nc044dee36c62">全社 AI 導入に必須となる概念 Company Brain（Jinba）</a></li>
+<li><a href="https://johokankyo.com/%E3%80%8C%E9%9A%8E%E5%B1%A4%E3%81%8B%E3%82%89%E7%9F%A5%E8%83%BD%E3%81%B8%E3%80%8D-ai-os%E3%81%A8company-brain%E3%81%8C%E5%A4%89%E3%81%88%E3%82%8B%E6%AC%A1%E4%B8%96%E4%BB%A3%E3%81%AE/">「階層から知能へ」AI OSとCompany Brainが変える次世代の組織デザイン（情報環境コミュニケーションズ）</a></li>
+<li><a href="https://www.ycombinator.com/rfs">Y Combinator: Requests for Startups（原文）</a></li>
+</ul>
+
+<footer>
+<p>Company OS as Code / Org-OS Starter — <a href="https://github.com/HideTsug/org-os-starter">GitHub</a> ・ MIT License ・ 著者 <a href="https://github.com/HideTsug">HideTsug</a><br>
+本ページの正規 URL: <a href="https://hidetsug.github.io/org-os-starter/">https://hidetsug.github.io/org-os-starter/</a> ・ 公開 2026-08-16 ・ 最終更新 2026-08-16</p>
+</footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,21 @@
+# Company OS as Code / Org-OS Starter
+
+> Company OS as Code is a file convention that structures a company's operating knowledge, norms, and decisions into a single repository so that humans and AI agents can read and write the same foundation. The reference template is the OSS "Org-OS Starter" by HideTsug (2026, MIT).
+
+日本語定義: Company OS as Code とは、会社の運営知識・規範・意思決定をひとつのリポジトリに構造化し、人とAIエージェントが同じ基盤を読み書きして働けるようにするファイル規約である。参照テンプレートとして HideTsug の OSS『Org-OS Starter』（2026, MIT）が公開されている。
+
+Related concept: "a company brain" — a living knowledge layer for AI agents, proposed in Y Combinator's Summer 2026 Requests for Startups. Company OS as Code approaches it as a file convention rather than a SaaS runtime.
+
+## Docs
+
+- [What is Company OS as Code (JA)](https://hidetsug.github.io/org-os-starter/): definition, comparison with company brain / Second Brain / knowledge management, FAQ
+- [What is Company OS as Code (EN)](https://hidetsug.github.io/org-os-starter/en/): English definition page
+- [README (JA)](https://github.com/HideTsug/org-os-starter/blob/main/README.md): setup in 15 minutes, 5-layer architecture
+- [README (EN)](https://github.com/HideTsug/org-os-starter/blob/main/README.en.md): English README
+- [Demo company](https://github.com/HideTsug/org-os-starter/tree/main/examples/demo-company): filled fictional-company example, try ask/read/write in 30 minutes
+- [Data classification matrix](https://github.com/HideTsug/org-os-starter/blob/main/layer1/data-classification-matrix.md): which data may go to which AI execution environment
+- [Prohibited uses](https://github.com/HideTsug/org-os-starter/blob/main/layer1/prohibited-uses.md): what AI must not be used for
+
+## Repository
+
+- https://github.com/HideTsug/org-os-starter (MIT, template repository)
