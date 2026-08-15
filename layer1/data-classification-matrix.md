@@ -39,7 +39,18 @@ Classification principle: **When in doubt, choose the stricter category**. Even 
 | **E2: Vendor-managed cloud AI under commercial contract** | Vendor-managed environments such as Claude Code on the web. Even with no-training terms, the execution environment and file storage are outside organization management. | Outside organization management |
 | **E3: General cloud AI** | Free chat AI services, personal accounts, and similar environments where inputs may be used for training. | Outside organization management |
 
-GitHub repositories, including this repository, are not AI execution environments, but they are **cloud storage outside organization management**. As a data location, treat them equivalently to E2/E3. Committing category 3 or 4 data is prohibited. See `docs/governance/operating-rules.md`.
+## GitHub Repositories as a Storage Location
+
+GitHub repositories, including this repository, are not AI execution environments; they are **storage locations on cloud infrastructure outside organization management**. Their data sovereignty is the same "outside organization management" as E2/E3, but **the E2/E3 columns of the input permission matrix below do not apply to them** — that matrix governs what may be given to AI, while this section governs what may be committed. Commit permission is as follows:
+
+| Data category | Committing to GitHub |
+|---|---|
+| 1. Public | Allowed |
+| 2. Internal | Allowed, but only after processing such as replacing personal names with initials or role titles (`knowledge/README.md`) |
+| 3. Customer/vendor-identifying | **Prohibited** |
+| 4. Regulated | **Prohibited** |
+
+In every category, the "Commit Prohibitions" in `docs/governance/operating-rules.md` must also be satisfied. Note that the storage location (where data lives) and the inference path (which AI may read it) are separate axes — for the latter, see the R axis under "E1.5 AI Reference Conditions" below.
 
 ## Input Permission Matrix: Initial Defaults
 
@@ -54,6 +65,8 @@ GitHub repositories, including this repository, are not AI execution environment
 | 4. Regulated | ✗ Prohibited for now | Storage = follow statutory official storage; AI reference = ✗ | ✗ | ✗ | None. Unlocking requires revising this matrix, joined approval, and external legal confirmation. |
 
 Legend: ◎ = freely allowed / ○ = conditionally allowed / △ = only after specified processing and prior approval / ✗ = prohibited
+
+This matrix governs **what may be given to AI**. Commit permission for GitHub repositories follows the table in "GitHub Repositories as a Storage Location" above; do not reuse the E2/E3 columns for that purpose.
 
 ### Operating Conditions for Category 3 × E1
 

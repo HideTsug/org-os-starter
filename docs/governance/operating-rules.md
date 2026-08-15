@@ -44,7 +44,7 @@ This is a UX policy, not a security boundary. The security boundary is the repos
 2. API keys, tokens, passwords, and secrets.
 3. Customer or vendor files themselves, regardless of format.
 
-GitHub is cloud storage outside organization management. In `layer1/data-classification-matrix.md`, it is not an AI execution environment, but as a data location it is treated equivalently to unmanaged environments. Placing prohibited-category data in the repository violates these rules.
+GitHub is a storage location on cloud infrastructure outside organization management. Commit permission follows "GitHub Repositories as a Storage Location" in `layer1/data-classification-matrix.md`. **Category 3 (customer/vendor-identifying) and category 4 (regulated) data must not be committed** — placing them in the repository violates these rules the moment it happens. Category 1 (public) and category 2 (internal) data may be committed as long as prohibitions 1 through 3 above are satisfied.
 
 ## Non-Destructive Intake
 

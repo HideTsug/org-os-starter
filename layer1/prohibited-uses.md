@@ -30,7 +30,7 @@ Japanese version: [docs/ja/layer1/禁止用途リスト.md](../docs/ja/layer1/�
 
 ## Environment-Conditioned Prohibitions: Data Export
 
-7. **Entering category 3 customer/vendor-identifying data into environments outside organization management**. Vendor-managed cloud AI, general cloud AI, and GitHub are prohibited regardless of anonymization. This restates the most important ✗ cells in [[data-classification-matrix]].
+7. **Entering category 3 customer/vendor-identifying data into environments outside organization management**. Input into vendor-managed cloud AI or general cloud AI, and committing to GitHub, are prohibited regardless of anonymization. This restates the category-3 row ✗ cells and "GitHub Repositories as a Storage Location" in [[data-classification-matrix]]. Category 4 is prohibited in the same way.
 8. **Allowing input data to be used for training.** Do not use a service configuration for organizational work if its terms or settings allow input data to be used for training.
 9. **Adding a new AI service without approval.** Any work use of a service not classified into E1 through E3 in the matrix requires prior classification by the implementation DRI.
 

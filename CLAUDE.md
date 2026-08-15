@@ -17,7 +17,7 @@ This file defines the operating rules for AI agents that read and write this kno
 
 ## Commit Prohibitions
 
-- Do not commit real customer or vendor names, real financial figures, real communication logs, or internal non-public information. Samples and training material must use dummy, fictional, or public information.
+- Do not commit real customer or vendor names, real financial figures, real communication logs, or internal non-public information (HR, partnerships, M&A, unpublished financials, disputes). Samples and training material must use dummy, fictional, or public information. Ordinary category-2 "Internal" notes — project status, issues, work procedures — do not fall under this prohibition and are expected to be committed after processing (`knowledge/README.md`).
 - Do not commit API keys, tokens, passwords, or secrets.
 - If the classification of data is unclear, check `layer1/data-classification-matrix.md` before adding it.
 
