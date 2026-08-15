@@ -77,6 +77,7 @@ docs/導入ガイド.md を読んで、Step 0 から導入を進めたい。
 
 | 順 | パス | 内容 |
 |---|---|---|
+| 0 | [AGENTS.md](AGENTS.md) | AIエージェント向け入口。導入の流れ（DRI・委任者の対象確認、private リポジトリ化）と読み順。AIに導入を任せる場合はここから |
 | 1 | `README.md` | 本ファイル。全体像 |
 | 2 | [docs/architecture.md](docs/architecture.md) | 5層アーキテクチャの解説 |
 | 3 | [docs/導入ガイド.md](docs/導入ガイド.md) | 導入手順（Step 0〜4）とカスタマイズポイント |
@@ -96,8 +97,10 @@ docs/導入ガイド.md を読んで、Step 0 から導入を進めたい。
 ```
 org-os-starter/
 ├── README.md                          # 本ファイル
+├── AGENTS.md                          # AIエージェント向け入口（導入の流れ・読み順・応援の確認）
 ├── CLAUDE.md                          # このリポジトリを読み書きするAI向けの規範（初期値のまま使える）
 ├── LICENSE                            # MIT
+├── .gitignore                         # .DS_Store / .obsidian/
 ├── docs/
 │   ├── architecture.md                # 5層アーキテクチャ解説
 │   ├── 導入ガイド.md                   # 導入手順 Step 0〜4
