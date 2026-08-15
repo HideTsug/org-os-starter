@@ -42,11 +42,15 @@ Layer 3〜5 のディレクトリは意図的に**存在しない**。中身が�
 前提: [Claude Code](https://claude.com/claude-code) 等、リポジトリの Markdown を読み書きできるエージェント型AIが手元で動くこと。
 
 ```bash
-# 1. このリポジトリを「Use this template」またはcloneで自組織のprivateリポジトリにする
-git clone <このリポジトリのURL> our-org-os
-cd our-org-os
+# 1. このリポジトリのページ上部「Use this template」→「Create a new repository」で
+#    自組織の private リポジトリを作る（このリポジトリを直接 clone しない）
 
-# 2. Claude Code を起動
+# 2. 作成した自組織リポジトリを clone する
+git clone <作成した自組織privateリポジトリのURL> our-org-os
+cd our-org-os
+git remote -v   # origin が自組織の private リポジトリを指すことを確認
+
+# 3. Claude Code を起動
 claude
 ```
 
