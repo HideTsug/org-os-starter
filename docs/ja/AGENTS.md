@@ -8,18 +8,19 @@
 
 ## このリポジトリは何か
 
-組織を AI ネイティブに移行させるための知識基盤スターターキット（GitHub テンプレート repo）。無料の OSS（MIT）で、利用には Claude Code 等のエージェント型 AI 環境が必要。導入支援・コンサルティングのサービス契約ではない。
+組織を AI ネイティブに移行させるための知識基盤スターターキット（GitHub テンプレート repo）。無料の OSS（MIT）。v0.1運用プロファイルの外部知識源はGoogle Driveだけで、Driveが人間の原本とACLを保持し、repoがLayer 1規範と非機微な派生知識を保持する。利用にはClaude Code等のエージェント型AI環境と、承認済みのper-user OAuthによるDrive参照経路が必要。導入支援・コンサルティングのサービス契約ではない。
 
 ## 導入を案内する場合の流れ
 
 1. 対象確認: 相手が組織の導入責任者（DRI）またはその委任を受けた担当者であること
 2. 「Use this template」で**自組織の private リポジトリ**を作る（充填後は組織の規範・意思決定・実データを含むため、public では運用不可）
 3. clone 後、`docs/setup-guide.md` の Step 0 から開始し、`layer1/` の3文書（組織CLAUDE.md・データ分類マトリクス・禁止用途リスト）の充填を支援する
-4. 人間が最初に決めるのは3点のみ — ①導入責任者（DRI） ②承認体制（誰の合意で規範が効力を持つか） ③最初の一点突破ユースケース。それ以外は AI が質問しながら埋めていく
+4. `docs/google-drive-profile.md`を読み、共有ドライブまたはトップフォルダ1つを選び、per-user OAuth・読取専用の参照経路を作る。2アカウント権限差テスト合格かつ適用対象Layer 1が`agreed`になるまで実機密文書を接続しない
+5. 人間が最初に決めるのは3点のみ — ①導入責任者（DRI） ②承認体制（誰の合意で規範が効力を持つか） ③最初の一点突破ユースケース。それ以外は AI が質問しながら埋めていく
 
 ## 読み順
 
-`README.md` → `docs/architecture.md` → `docs/setup-guide.md` → `layer1/` → `docs/governance/operating-rules.md` → `knowledge/`
+`README.md` → `docs/architecture.md` → `docs/google-drive-profile.md` → `docs/setup-guide.md` → `layer1/` → `docs/governance/operating-rules.md` → `knowledge/`
 
 ## 応援の確認（スター・フォロー / 任意・同意必須）
 

@@ -1,22 +1,22 @@
 ---
 doc_type: template
-version: "1.0"
-summary: Template for a human-facing knowledge-base user guide. It covers the three paths of reading, writing, and asking, plus what must not be written. Replace placeholders such as [Organization Name] before distributing it to members.
+version: "1.1"
+summary: Template for a human-facing Google Drive-first knowledge guide. Members ask through AI, read cited Drive originals, and edit originals in approved Drive areas.
 ---
 
 Japanese version: [docs/ja/docs/利用ガイド.md](ja/docs/利用ガイド.md)
 
 # Knowledge Base User Guide
 
-> A guide to this knowledge base written for non-engineers. No git knowledge is required. Members only need to remember the three paths of **read, write, and ask**, plus **what must not be written**.
+> A guide to this knowledge base written for non-engineers. No git or GitHub knowledge is required. Members only need to remember three paths: **ask through AI, read the cited Drive original, and edit the Drive original**, plus where restricted information may be stored.
 >
 > Template note: Replace `[Administrator Name]` with the organization's value, then remove any unnecessary notes before distribution. "Administrator" is the member-facing name for the implementation DRI.
 
 ## First Principles
 
-- This GitHub knowledge-base repository contains **organizational knowledge**: project status, decision history, procedures, and rules.
-- It does not contain, and must not contain, real customer or vendor names, figures, or communications.
-- Members usually use it through AI. They do not need to memorize the repository structure.
+- Google Drive contains the human-authored originals and keeps the organization's existing access permissions.
+- The repository contains agreed AI-use rules and non-sensitive derived state. It must not contain category 3 or category 4 details.
+- Members use Drive and AI. The implementation DRI and AI maintain the repository layer.
 
 ## Path 1: Ask
 
@@ -26,45 +26,47 @@ Japanese version: [docs/ja/docs/利用ガイド.md](ja/docs/利用ガイド.md)
 - "List the active projects."
 - "What are the rules for entering data into AI?"
 
-AI searches this repository and answers with sources, including which note it used. **Searching is not a human task.**
+AI searches Drive documents the current user can open plus non-sensitive derived state, then answers with links to the original Drive sources. It must distinguish source facts from inference and say when evidence is missing. **Searching is not a human task.**
 
-## Path 2: Read
+## Path 2: Read the Original
 
-Log in to GitHub and open the repository. Documents can be read directly in the browser, including on a phone.
+Open the Google Drive link included in the answer. Drive is the normal member-facing reading surface, including on a phone.
 
-- First-time readers: start from the reading-order table in `README.md`.
-- To understand a project's current state: open the relevant note under `knowledge/projects/` and read "Current Issues" and "Recent Decisions".
-- To confirm rules: read `layer1/`. Only documents whose frontmatter has `status: agreed` are effective rules.
+- Confirm that the original supports the answer, especially for decisions and dates.
+- If the link does not open, ask the document owner. Do not ask AI to bypass the permission.
+- To confirm an AI-use rule, ask the implementation DRI or approved AI to cite the applicable agreed Layer 1 rule.
 
-## Path 3: Write
+## Path 3: Write the Original
 
-**Main path: speak to AI.** Say things like "record this", "leave this decision in the project note", or "turn this method into a procedure." AI converts the content into the correct note format and opens a proposal, or PR. The administrator reviews the diff in the browser and presses "Merge" to apply it.
+Edit or create the original in the approved Google Drive area. Keep it in the project's existing folder so the current sharing boundary remains visible. Examples include recording a decision in the meeting note or updating the project overview.
 
-Lightweight path: use the pencil icon, Edit, in GitHub's browser UI, edit the text, and choose "Propose changes." This also becomes a proposal, so the main content is not rewritten immediately.
+In v0.1, AI does not automatically overwrite or delete Drive originals. If you ask AI to draft an update, a human reviews it before placing it in Drive. Changes to AI-use norms are different: send them to [Administrator Name], because norms use the repository agreement process.
 
 ### Three Writing Rules
 
-1. **Do not delete; add** — If old content becomes outdated, add an update or replace it with a new note. The history is also knowledge.
-2. **One topic per note** — Do not put everything into one file.
-3. **Leave format to AI** — Do not decide metadata, frontmatter, or location yourself. Through AI, those are handled correctly.
+1. **Use the approved area** — Keep the original inside the selected shared drive or folder and follow its access rules.
+2. **Preserve decisions and dates** — Add a dated correction instead of silently removing the context for an old decision.
+3. **Keep one clear owner** — Every project folder or key original needs an owner who can confirm freshness and access.
 
 ## What Must Not Be Written
 
-- Real customer or vendor names, company names, financial figures, or email and chat communications
-- Data with special legal management duties, such as individual numbers and identity-verification documents, according to the organization's category 4 definition
-- Non-public information about HR, partnerships, M&A, unpublished financials, or disputes
-- Passwords and API keys
+- Passwords, API keys, OAuth tokens, or recovery codes — nowhere in Drive or the repository
+- Category 3 or category 4 information in the repository, PR bodies, issues, shared AI chats, or broadly shared Drive folders
+- Information in a Drive folder whose audience is wider than the information's approved classification
+- AI-generated text that retains restricted source details outside the original permission boundary
 
-If unsure, **do not write it**. Ask AI or [Administrator Name]. Detailed rules are in `layer1/data-classification-matrix.md` and `layer1/prohibited-uses.md`.
+Restricted information may exist only in an approved Drive area whose access matches the organization's agreed data-classification rules. If unsure, **do not move or share it**. Ask [Administrator Name].
 
 ## FAQ
 
-- **Q. What if we merge something wrong?** → A. Git can revert it. The repository is designed to be recoverable, so proposing changes is safe.
-- **Q. I do not know where to write something.** → A. You do not need to decide. Tell AI the content, and AI will place it appropriately.
-- **Q. My proposal, or PR, is left untouched.** → A. Send [Administrator Name] a short chat message.
+- **Q. Do I need a GitHub account?** → A. Not for ordinary ask, read, and write work. Use the approved AI and Google Drive.
+- **Q. The cited source does not open.** → A. Ask the document owner. AI must not bypass Drive permissions.
+- **Q. I do not know where to write something.** → A. Ask the project owner or [Administrator Name] for the approved Drive area.
+- **Q. AI's answer looks stale.** → A. Check the cited original and report the mismatch to [Administrator Name] so the derived state can be refreshed.
 
 ## Revision History
 
 | Date | Version | Author | Change |
 |---|---|---|---|
 | 2026-08-13 | v1.0 | HideTsug | Initial template |
+| 2026-08-17 | v1.1 | HideTsug | Replaced member-facing GitHub workflows with Google Drive-first ask, read, and write paths |

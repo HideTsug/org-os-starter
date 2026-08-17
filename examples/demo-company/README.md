@@ -1,13 +1,13 @@
 ---
 doc_type: reference
-summary: 架空企業「みどり精密株式会社」で全項目を充填したデモ一式。clone 後 30 分以内に「会社の知識を AI に聞く」体験を再現するためのサンプル
+summary: 架空企業「みどり精密株式会社」でファイル規約とAI質問回答を試す自己完結デモ。Google Drive接続・権限・鮮度は検証対象外
 ---
 
 > **注記: 本ディレクトリの内容はすべて架空のデモデータです。** 登場する企業・人物・数値・事例は実在のものと一切関係ありません。
 
 # デモ: みどり精密株式会社（架空の中小製造業）
 
-このディレクトリは、Org-OS Starter のテンプレート一式を架空企業で充填した「動くサンプル」です。clone した人が 30 分以内に「会社の知識を AI に聞く」体験を再現できることを目的としています。
+このディレクトリは、Org-OS Starter のテンプレート一式を架空企業で充填した自己完結サンプルです。clone した人が 30 分以内にファイル規約と「会社の知識を AI に聞く」を試せます。**Google Driveは接続しないため、v0.1運用プロファイルの権限・原本リンク・鮮度はこのデモでは検証できません。**
 
 - 会社設定: みどり精密株式会社（架空）。さいたま市の金属精密加工業、従業員 28 名
 - 登場人物: 高橋（代表取締役）、佐藤（製造部長）、鈴木（品質保証）、伊藤（営業）、田中（総務部・導入責任者）、渡辺（製造部）— すべて架空の姓のみの人物です
@@ -66,17 +66,18 @@ examples/demo-company/
 
    → 新人研修の属人化について、提起から現在までの経緯と、誰が何をするかが返ってくることを確認します。
 
-   **プロンプト例 3 — AI による起票**
+   **プロンプト例 3 — デモ限定のrepo起票**
 
    ```
    新しい懸念を issue ノートとして起票して
    ```
 
-   → 会話で懸念を伝えると、既存の ISSUE ノートと同じ形式（frontmatter スキーマの正本は `../../knowledge/issues/_template.md`）で `knowledge/issues/ISSUE-0104-….md` が作られることを確認します。
+   → 会話で懸念を伝えると、既存の ISSUE ノートと同じ形式（frontmatter スキーマの正本は `../../knowledge/issues/_template.md`）で `knowledge/issues/ISSUE-0104-….md` が作られることを確認します。これは合成データでスキーマを試すデモ限定動線で、一般メンバーのv0.1書込動線はGoogle Drive原本です。
 
 ## このデモの範囲
 
 - **このデモは `examples/demo-company/` 配下だけで完結します。** リポジトリ本体の `knowledge/` や `layer1/` を書き換える必要はありません。
+- **Drive-first導入テストの代替にはなりません。** 実導入では `../../docs/google-drive-profile.md` に従い、per-user OAuth・読取専用・2アカウント権限差テストを行います。
 - `ORG-CLAUDE.md` は充填完了後のイメージを示すため、デモとして `status: agreed` にしています（実運用では draft から始めて承認体制の合意で昇格させます）。
 - 規範テンプレートの原本と解説は `../../layer1/` と `../../docs/` を参照してください。
 
@@ -84,4 +85,4 @@ examples/demo-company/
 
 ## English summary
 
-This directory is a fully filled, self-contained demo of Org-OS Starter for a fictional small manufacturer, "Midori Seimitsu Co., Ltd." (28 employees, precision metal machining, Saitama City, Japan). All companies, people, and figures are fictional. To try it: clone the repository, `cd examples/demo-company`, run `claude`, and paste the three sample prompts above — asking for open project issues with sources, tracing the history and next actions of ISSUE-0102, and having the AI file a new issue note that follows the template schema. Everything resolves inside `examples/demo-company/`; the canonical templates live in `layer1/` and `knowledge/` at the repository root.
+This directory is a fully filled, self-contained file-convention demo of Org-OS Starter for a fictional small manufacturer, "Midori Seimitsu Co., Ltd." All companies, people, and figures are fictional. It does not connect Google Drive and does not test Drive permissions, original-source links, or freshness. To try it: clone the repository, `cd examples/demo-company`, run `claude`, and paste the sample prompts. The third prompt writes only synthetic demo data; ordinary-member v0.1 writes happen in Drive. The real Drive-first setup contract is `../../docs/google-drive-profile.md`.

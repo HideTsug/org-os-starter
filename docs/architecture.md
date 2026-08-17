@@ -1,7 +1,7 @@
 ---
 doc_type: reference
-version: "1.0"
-summary: Overview of the Org-OS five-layer architecture. Layer 3 through Layer 5 concepts exist only in this document until real content is ready.
+version: "1.1"
+summary: Overview of the Org-OS five-layer architecture and its Google Drive-first Layer 2 topology. Layer 3 through Layer 5 concepts exist only in this document until real content is ready.
 ---
 
 Japanese version: [docs/ja/docs/architecture.md](ja/docs/architecture.md)
@@ -46,15 +46,26 @@ Layer 1  Norms and SSoT      ORG-CLAUDE.md / data classification matrix / prohib
 
 Norm agreement state is managed in machine-readable form through frontmatter `status`. Only `agreed` documents are authoritative.
 
-**Layer 2: Knowledge Base** — The place where the organization's current state is accumulated as structured notes. The recommended first use case is a narrow start with project knowledge:
+**Layer 2: Knowledge Base** — A two-layer representation of the organization's current state. In v0.1, Google Drive is the only external source and remains the SSoT for human-authored originals and ACLs. `knowledge/` contains non-sensitive derived state optimized for AI:
 
-- `knowledge/projects/` — one place for each project's purpose, current state, recent decisions, next actions, and owner
-- `knowledge/issues/` — structured issues that can be filed when a problem is noticed during adjacent work
-- Three operating paths: cross-project organization and storage, conversational catch-up through AI, and issue filing from adjacent projects
+- Google Drive — existing project originals, sharing, permissions, and revision history
+- `knowledge/projects/` — derived project purpose, current state, recent decisions, next actions, source links, and freshness
+- `knowledge/issues/` — non-sensitive derived issues linked to original evidence
+- Three member paths: ask through AI, read the cited original in Drive, and edit the original in Drive
+
+```text
+Google Drive originals ──per-user OAuth──▶ AI answer with original links
+        │                                      ▲
+        └──non-sensitive derivation──▶ knowledge/
+                                               ▲
+layer1/ norms ─────────────────────────────────┘
+```
+
+See [Google Drive Operating Profile](google-drive-profile.md) and [ADR-0001](decisions/ADR-0001-google-drive-first-v0.1.md).
 
 **Layer 3: Role and Skill** — AI agents triggered by work domain, such as Claude Code skills. Operationally observed skill candidates are the input to design. Do not write role definitions before candidates exist, because that creates unused structure. Convert repeated procedures into skills in order, such as project catch-up summaries, meeting-note intake, and issue filing.
 
-**Layer 4: Integration** — Connections to core systems, SaaS, and customer touchpoints. Examples include automatic intake into `knowledge/` after DLP-style summarization of chat or meeting notes, and event-driven automation. Constraints of the connected systems and the Layer 1 data classification must be confirmed first.
+**Layer 4: Integration** — Connections to core systems, SaaS, and customer touchpoints. Google Drive is the one v0.1 integration profile and is read-only through per-user OAuth. Incremental intake may update non-sensitive `knowledge/` derivations after classification checks. Additional SaaS connectors and automated write-back are future Layer 4 decisions, not v0.1 core.
 
 **Layer 5: Governance** — Audit logs, reviewer AI, and compliance verification. Audit-log storage locations and required fields must be defined first in the Layer 1 norms, especially the data classification matrix.
 
@@ -62,7 +73,7 @@ Norm agreement state is managed in machine-readable form through frontmatter `st
 
 Starting from Layer 3 skills creates structure without norms or knowledge behind it. Once Layers 1 and 2 are working, repeated operations that should become skills become visible through real use.
 
-Do not build the five layers side by side. Start with one path that stakeholders use every day. The recommended first goal is cross-project knowledge organization, conversational catch-up, and issue filing. Expand from there.
+Do not build the five layers side by side. The v0.1 goal is: select one Drive boundary, answer five recurring project questions with original links, and verify that Drive permissions remain effective. Expand only after the ask path repeats in real operation.
 
 ## Execution Environment Policy
 
@@ -72,11 +83,13 @@ The question "which AI execution environment should we use?" is not a tool prefe
 - For example, work involving customer-identifying data may be limited to organization-managed environments such as local execution or inference inside an organizational tenant, while tests using public or fictional data may be allowed in cloud tools. This distinction must be agreed first.
 - Adding a new AI service for work use must go through classification in the matrix first.
 
-## Expansion Patterns Outside v1 Core
+## Expansion Patterns Outside v0.1 Core
 
-The following patterns are intentionally outside the v1 core. Consider them after the adopting organization's daily operation is working:
+The following patterns are intentionally outside the v0.1 core. Consider them after the Drive-first daily operation is working:
 
-- **Intake pipelines** — DLP-style conversion of chat and meeting notes, such as replacing real names with role labels, followed by automatic aggregation into `knowledge/`
+- **Additional source adapters** — Notion, Slack, Chatwork, SharePoint, and generic files. Add one only after a blocked recurring workflow is observed
+- **Automated write-back** — creating, editing, or deleting Drive originals through AI. v0.1 is read-only
+- **Expanded intake pipelines** — DLP-style derivation from Drive changes, followed by idempotent updates to `knowledge/`
 - **Two-layer confidential storage** — storing real-name source material in organization-managed storage with access controls, while keeping only non-sensitive stubs in the repository
 - **AI-to-AI communication channel** — members' AI agents exchange technical instructions and work reports through GitHub issues, while humans receive only plain-language summaries in chat
 - **Project board** — cross-project visibility where issues are the SSoT, using GitHub Projects or similar tools
@@ -87,3 +100,4 @@ The following patterns are intentionally outside the v1 core. Consider them afte
 | Date | Version | Author | Change |
 |---|---|---|---|
 | 2026-08-13 | v1.0 | HideTsug | Initial version |
+| 2026-08-17 | v1.1 | HideTsug | Made Google Drive the sole v0.1 external source and defined the two-layer Layer 2 topology |

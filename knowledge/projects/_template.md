@@ -4,6 +4,10 @@ tags:
 classification: internal
 owner: [Owner Name]
 last_reviewed: [YYYY-MM-DD]
+source_urls:
+  - [Original source URL]
+source_modified_at: [YYYY-MM-DDTHH:MM:SSZ]
+source_status: current   # current / stale
 name: [Project Name]
 project_status: active   # active / paused / done
 summary: [One-line summary: what the project is for and its current state]
