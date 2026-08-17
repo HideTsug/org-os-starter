@@ -1,6 +1,6 @@
 ---
 status: draft
-version: "0.1"
+version: "0.2"
 owner: (requires implementation DRI)
 summary: Template for the permission matrix across four data categories and AI execution environments. This is the top-level rule for which data may be given to which AI environment. Fill it after inventorying the adopting organization's real environments.
 ---
@@ -30,14 +30,18 @@ Classification principle: **When in doubt, choose the stricter category**. Even 
 
 ## Execution Environments
 
-> Classify every environment used by the organization. The following defaults represent a common setup.
+> Classify every environment used by the organization. Each row is defined by **where the AI process executes and where its files persist**, not by product name. The following defaults represent a common setup.
 
-| Environment | Content | Data sovereignty |
+| Environment | Defining property | Data sovereignty |
 |---|---|---|
-| **E1: Local or organization-managed** | Local execution such as Claude Code. For production promotion, tenant-internal inference such as Bedrock or Vertex AI is the main path. | Organization-managed |
-| **E1.5: Organization-tenant SaaS** | Google Workspace, organization-contracted cloud databases, and similar systems. AI reference is allowed only through per-user OAuth, inheriting the user's own permissions. | Organization-managed through tenant contract |
-| **E2: Vendor-managed cloud AI under commercial contract** | Vendor-managed environments such as Claude Code on the web. Even with no-training terms, the execution environment and file storage are outside organization management. | Outside organization management |
+| **E1: Local or organization-managed** | The AI process runs on hardware the organization provisions — a member's machine, an organization-managed server, or a runner inside the organization's network — and checkouts, working files, and secrets persist there. For production promotion, tenant-internal inference such as Bedrock or Vertex AI is the main path. Example: an agentic AI CLI running locally. | Organization-managed |
+| **E1.5: Organization-tenant SaaS** | Data lives in a SaaS tenant contracted by the organization. AI reference is allowed only through per-user OAuth, inheriting the user's own permissions. Example: Google Workspace, an organization-contracted cloud database. | Organization-managed through tenant contract |
+| **E2: Vendor-managed cloud AI under commercial contract** | The process executes on vendor-provisioned infrastructure and session files persist there. Even with no-training terms, the execution environment and file storage are outside organization management. Example: an agentic AI's default web or cloud session. | Outside organization management |
 | **E3: General cloud AI** | Free chat AI services, personal accounts, and similar environments where inputs may be used for training. | Outside organization management |
+
+**Classify by configured deployment, not by product name.** The same product can belong to different rows depending on how the organization deployed it, so confirm the deployment actually enabled before filing it. When execution and file residency move onto organization-controlled infrastructure while prompts, responses, and tool results are still sent to the vendor for inference, the two axes are assessed separately: the table above covers execution and file residency, and the inference path is assessed on the R axis in "E1.5 AI Reference Conditions" below.
+
+Example of why the property decides the row, current as of 2026-08 — verify the vendor's current terms rather than relying on this paragraph: Claude Code cloud sessions run on vendor-provisioned infrastructure by default, which is E2. Organizations on Team or Enterprise plans can enable self-hosted environments so that sessions run on runners inside their own network, with repository checkouts, build artifacts, and secrets staying on infrastructure they provision — that moves the execution and file-residency axis to E1. The conversation is still sent to the vendor for inference either way, so the inference path remains a separate R-axis question.
 
 ## GitHub Repositories as a Storage Location
 
@@ -109,3 +113,4 @@ Activation conditions for R2, initial defaults. Do not begin confidential refere
 | Date | Version | Author | Change |
 |---|---|---|---|
 | [Date] | v0.1 | [Drafter] | Drafted from template |
+| 2026-08-18 | v0.2 | upstream template | Defined the execution-environment rows by execution and file-residency property instead of product name, and separated them from the inference-path R axis |
