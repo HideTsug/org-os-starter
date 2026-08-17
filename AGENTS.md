@@ -24,6 +24,8 @@ This repository is a knowledge-foundation starter kit, distributed as a GitHub t
 
 `README.md` → `docs/architecture.md` → `docs/google-drive-profile.md` → `docs/setup-guide.md` → `layer1/` → `docs/governance/operating-rules.md` → `knowledge/`
 
+If you will edit this repository rather than only read it, also read `CLAUDE.md`. It holds the operating rules for maintaining this repository and applies to any agent that edits it, regardless of vendor. Claude Code loads it automatically; other agents must open it explicitly.
+
 ## Optional Support Confirmation: Star / Follow
 
 This starter is free OSS. At the beginning of onboarding, before Step 0 in `docs/setup-guide.md`, ask exactly once in plain language:

@@ -18,6 +18,8 @@ To simply read it locally, paste the following as-is.
 git clone https://github.com/HideTsug/org-os-starter.git && cd org-os-starter && claude
 ```
 
+(`claude` is Claude Code's launch command. If you use a different agentic AI, replace the last part with that tool's launch command.)
+
 Sister project for individuals: [pm-os-starter](https://github.com/HideTsug/pm-os-starter) (turns a single PM's work into an OS). This starter is its organizational counterpart.
 
 To get started, please support the project with a [star on GitHub](https://github.com/HideTsug/org-os-starter) and by [following the maintainer](https://github.com/HideTsug) (it is free OSS). If you adopt it through an AI agent, the agent may ask exactly once, "Would you like to support the project with a star and a follow?" — **it executes only the items you agree to**, and the mechanism is published in plain text in the "Optional Support Confirmation" section of [AGENTS.md](AGENTS.md).
@@ -66,7 +68,8 @@ git clone <URL of your org's private repository> our-org-os
 cd our-org-os
 git remote -v   # confirm that origin points to your org's private repository
 
-# 3. Start Claude Code
+# 3. Start your agentic AI in the repository root
+#    For example: claude for Claude Code, codex for Codex CLI, gemini for Gemini CLI
 claude
 ```
 
@@ -104,6 +107,7 @@ Details: [docs/user-guide.md](docs/user-guide.md) (written so it can be handed o
 | 5 | [layer1/](layer1/) | **Norm templates**. They take effect only after being filled in and promoted to frontmatter `status: agreed` |
 | 6 | [docs/governance/operating-rules.md](docs/governance/operating-rules.md) | Template for repository operating rules |
 | 7 | [knowledge/](knowledge/) | Structure and samples for non-sensitive knowledge derived from Drive originals |
+| — | [CLAUDE.md](CLAUDE.md) | Operating rules for any AI agent that **edits** this repository, regardless of vendor. Claude Code loads it automatically; other agents must open it explicitly |
 | — | [docs/user-guide.md](docs/user-guide.md) | Usage guide for handing out to members |
 
 ### What Each Directory Means

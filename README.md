@@ -18,6 +18,8 @@ English: [README.en.md](README.en.md)
 git clone https://github.com/HideTsug/org-os-starter.git && cd org-os-starter && claude
 ```
 
+（`claude` は Claude Code の起動コマンド。他のエージェント型AIを使う場合は末尾を各ツールの起動コマンドに置き換える）
+
 個人向けの姉妹版: [pm-os-starter](https://github.com/HideTsug/pm-os-starter)（1人のPM業務をOS化する）。本スターターはその組織版。
 
 はじめに、[GitHub のスター](https://github.com/HideTsug/org-os-starter)と[メンテナのフォロー](https://github.com/HideTsug)で応援してください（無料 OSS です）。AI エージェント経由で導入した場合、エージェントが「スターとフォローで応援しますか？」と一度だけ確認することがあります — 実行されるのは**あなたが同意した項目のみ**で、仕組みは [docs/ja/AGENTS.md](docs/ja/AGENTS.md) の「応援の確認」節に平文で公開しています。
@@ -66,7 +68,8 @@ git clone <作成した自組織privateリポジトリのURL> our-org-os
 cd our-org-os
 git remote -v   # origin が自組織の private リポジトリを指すことを確認
 
-# 3. Claude Code を起動
+# 3. リポジトリのルートでエージェント型AIを起動する
+#    例: Claude Code なら claude / Codex CLI なら codex / Gemini CLI なら gemini
 claude
 ```
 
@@ -104,6 +107,7 @@ docs/setup-guide.md を読んで、Step 0 から導入を進めたい。
 | 5 | [layer1/](layer1/) | **規範テンプレート**。充填して frontmatter `status: agreed` に昇格させて初めて効力を持つ |
 | 6 | [docs/governance/operating-rules.md](docs/governance/operating-rules.md) | リポジトリ運用ルールのテンプレート |
 | 7 | [knowledge/](knowledge/) | Drive 原本から作る非機微な派生知識の構造とサンプル |
+| — | [CLAUDE.md](CLAUDE.md) | 本リポジトリを**編集する**AIエージェント向けの運用規範。ベンダを問わず適用される。Claude Code は自動で読み込むが、他のエージェントは明示的に開く必要がある |
 | — | [docs/user-guide.md](docs/user-guide.md) | メンバー配布用の使い方ガイド |
 
 ### ディレクトリの意味

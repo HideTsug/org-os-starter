@@ -63,7 +63,7 @@ layer1/ norms ──────────────────────
 
 See [Google Drive Operating Profile](google-drive-profile.md) and [ADR-0001](decisions/ADR-0001-google-drive-first-v0.1.md).
 
-**Layer 3: Role and Skill** — AI agents triggered by work domain, such as Claude Code skills. Operationally observed skill candidates are the input to design. Do not write role definitions before candidates exist, because that creates unused structure. Convert repeated procedures into skills in order, such as project catch-up summaries, meeting-note intake, and issue filing.
+**Layer 3: Role and Skill** — AI agents triggered by work domain, packaged as skills. Write each one as a portable `SKILL.md` file, a format that Claude Code and several other agents can load, so the layer does not become tied to one vendor. Operationally observed skill candidates are the input to design. Do not write role definitions before candidates exist, because that creates unused structure. Convert repeated procedures into skills in order, such as project catch-up summaries, meeting-note intake, and issue filing.
 
 **Layer 4: Integration** — Connections to core systems, SaaS, and customer touchpoints. Google Drive is the one v0.1 integration profile and is read-only through per-user OAuth. Incremental intake may update non-sensitive `knowledge/` derivations after classification checks. Additional SaaS connectors and automated write-back are future Layer 4 decisions, not v0.1 core.
 
