@@ -10,6 +10,8 @@ English: [README.en.md](README.en.md)
 
 「AIツールを個人がバラバラに使う」状態から、**組織の規範・知識・意思決定が構造化されて蓄積され、AI（Claude Code 等のエージェント型AI）がそれを読み書きしながら全メンバーの業務を支援する**状態への移行を、最短経路で立ち上げる。
 
+**v0.1 の運用入口は Google Drive に限定する。** メンバーは既存の Drive で原本を読み書きし、AI は本人の権限でそれらを参照して原本リンク付きで答える。repo は `layer1/` の規範と、`knowledge/` の非機微な派生状態を保持する。この二層構造は [Google Drive 運用プロファイル](docs/ja/docs/Google-Drive-運用プロファイル.md) に定義している。本repoはOAuthアプリ・検索runtimeを同梱せず、承認済みAIコネクタまたはDrive APIクライアントと組み合わせる規約・テンプレートである。
+
 まずローカルで読むだけなら、以下をそのまま貼り付ける。
 
 ```bash
@@ -38,22 +40,22 @@ Layer 1  規範・SSoT分離    ORG-CLAUDE.md / データ分類 / 禁止用途
 
 詳細は [docs/architecture.md](docs/architecture.md)。
 
-## このスターターに入っているもの（v1 = コア）
+## このスターターに入っているもの（v0.1 コア）
 
 | 層 | 内容 | 状態 |
 |---|---|---|
 | Layer 1 | [ORG-CLAUDE.md](layer1/ORG-CLAUDE.md) / [データ分類マトリクス](layer1/data-classification-matrix.md) / [禁止用途リスト](layer1/prohibited-uses.md) | **テンプレート**（自組織で充填して合意させる） |
-| Layer 2 | [knowledge/](knowledge/) — プロジェクトノート・issueノートの構造とサンプル | **すぐ使える**（サンプルは架空データ） |
+| Layer 2 | Google Drive 原本 + [knowledge/](knowledge/) の非機微な派生ノート | **Google Drive-first v0.1**（サンプルは架空データ） |
 | 運用 | [運用規約](docs/governance/operating-rules.md) / [利用ガイド](docs/user-guide.md) / [ADRテンプレート](docs/decisions/ADR-0000-template.md) | **テンプレート** |
 | Layer 3〜5 | 構想として [docs/architecture.md](docs/architecture.md) に記述のみ | 各組織の実運用から抽出（本スターターの範囲外） |
 
 Layer 3〜5 のディレクトリは意図的に**存在しない**。中身が入る段階で初めて作る（ハコモノ化防止）。
 
-## セットアップ（15分）
+## セットアップ（repo 15分 + Drive権限検証）
 
-**導入時は必ず private リポジトリとして複製する。充填後は組織の規範・意思決定・実データを含むため、public のまま運用しない。**
+**導入時は必ず private リポジトリとして複製する。充填後は組織の規範・意思決定・非機微な派生状態を含むため、public のまま運用しない。**
 
-前提: [Claude Code](https://claude.com/claude-code) 等、リポジトリの Markdown を読み書きできるエージェント型AIが手元で動くこと。
+前提: [Claude Code](https://claude.com/claude-code) 等、リポジトリの Markdown を読み書きできるエージェント型AIが手元で動くこと。実データを接続する段階では、Google Drive を **per-user OAuth・読取専用**で参照できる経路も必要になる。
 
 ```bash
 # 1. このリポジトリのページ上部「Use this template」→「Create a new repository」で
@@ -72,7 +74,8 @@ claude
 
 ```
 docs/setup-guide.md を読んで、Step 0 から導入を進めたい。
-まず私たちの組織について質問しながら、layer1/ の3文書の充填を手伝って。
+まず私たちの組織について質問しながら、layer1/ の3文書を充填して。
+その後、docs/google-drive-profile.md に従って最初の共有ドライブ領域を読取専用で接続して。
 ```
 
 あとはAIが質問しながら、規範文書を自組織用に充填していく。人間が最初に決めるのは3つだけ — **①導入責任者（DRI） ②承認体制（誰の合意で規範が効力を持つか） ③最初の一点突破ユースケース**。詳細は [docs/setup-guide.md](docs/setup-guide.md)。
@@ -81,9 +84,11 @@ docs/setup-guide.md を読んで、Step 0 から導入を進めたい。
 
 非エンジニアのメンバーが覚えるのは3動線だけ。
 
-1. **聞く** — 「○○プロジェクトの今の論点は？」とAIに日本語で聞く。AIが knowledge/ を検索して出典付きで答える
-2. **読む** — GitHubをブラウザで開けばそのまま読める（スマホ可）
-3. **書く** — 「これ記録しておいて」とAIに話す。AIが正しい形式のノートに変換して提案（PR）を作る
+1. **聞く** — 「○○プロジェクトの今の論点は？」とAIに日本語で聞く。AIが本人に見える Drive 原本と `knowledge/` を検索し、原本リンク付きで答える
+2. **読む** — 回答の出典から Google Drive 原本を開く
+3. **書く** — 承認済みの Drive 領域で原本を編集・作成する。v0.1 では AI が原本を自動上書きしない
+
+通常メンバーに GitHub 操作は不要。GitHub は導入DRIとAIが、規範・非機微な派生状態を保守するために使う。
 
 詳細は [docs/user-guide.md](docs/user-guide.md)（メンバー配布用に書いてある）。
 
@@ -94,16 +99,17 @@ docs/setup-guide.md を読んで、Step 0 から導入を進めたい。
 | 0 | [AGENTS.md](AGENTS.md) | AIエージェント向け入口。導入の流れ（DRI・委任者の対象確認、private リポジトリ化）と読み順。AIに導入を任せる場合はここから |
 | 1 | `README.md` | 本ファイル。全体像 |
 | 2 | [docs/architecture.md](docs/architecture.md) | 5層アーキテクチャの解説 |
-| 3 | [docs/setup-guide.md](docs/setup-guide.md) | 導入手順（Step 0〜4）とカスタマイズポイント |
-| 4 | [layer1/](layer1/) | **規範テンプレート**。充填して frontmatter `status: agreed` に昇格させて初めて効力を持つ |
-| 5 | [docs/governance/operating-rules.md](docs/governance/operating-rules.md) | リポジトリ運用ルールのテンプレート |
-| 6 | [knowledge/](knowledge/) | 知識基盤の構造とサンプル |
+| 3 | [Google Drive 運用プロファイル](docs/ja/docs/Google-Drive-運用プロファイル.md) | v0.1 の原本・権限・派生知識・鮮度の契約 |
+| 4 | [docs/setup-guide.md](docs/setup-guide.md) | 導入手順（Step 0〜4）とカスタマイズポイント |
+| 5 | [layer1/](layer1/) | **規範テンプレート**。充填して frontmatter `status: agreed` に昇格させて初めて効力を持つ |
+| 6 | [docs/governance/operating-rules.md](docs/governance/operating-rules.md) | リポジトリ運用ルールのテンプレート |
+| 7 | [knowledge/](knowledge/) | Drive 原本から作る非機微な派生知識の構造とサンプル |
 | — | [docs/user-guide.md](docs/user-guide.md) | メンバー配布用の使い方ガイド |
 
 ### ディレクトリの意味
 
 - `layer1/` — **規範SSoT**。合意済み（`status: agreed`）の文書のみが組織内のすべてのAIと人を拘束する
-- `knowledge/` — 知識基盤。プロジェクト状態・issue の構造化ノート
+- `knowledge/` — 派生知識層。Drive 原本を複製せず、非機微なプロジェクト状態・issue・原本リンク・鮮度を保持
 - `docs/` — 検討資料・ガイド・決定記録（ADR）。**規範ではない**
 
 ### 全ファイルマップ
@@ -117,12 +123,14 @@ org-os-starter/
 ├── .gitignore                         # .DS_Store / .obsidian/
 ├── docs/
 │   ├── architecture.md                # 5層アーキテクチャ解説
+│   ├── google-drive-profile.md        # v0.1 Google Drive 運用契約
 │   ├── setup-guide.md                 # 導入手順 Step 0〜4
 │   ├── user-guide.md                  # メンバー配布用テンプレート
 │   ├── governance/
 │   │   └── operating-rules.md         # リポジトリ運用ルールのテンプレート
 │   └── decisions/
-│       └── ADR-0000-template.md       # 意思決定記録の雛形
+│       ├── ADR-0000-template.md       # 意思決定記録の雛形
+│       └── ADR-0001-google-drive-first-v0.1.md
 ├── layer1/                            # 規範テンプレート3点セット（充填 → agreed 昇格で効力発生）
 │   ├── ORG-CLAUDE.md
 │   ├── data-classification-matrix.md
@@ -141,7 +149,7 @@ org-os-starter/
 
 ## 30分で試す（デモ企業）
 
-充填済みの架空企業デモ [examples/demo-company/](examples/demo-company/) を使うと、導入前に「聞く・読む・書く」の動線を体験できる。試し方は [examples/demo-company/README.md](examples/demo-company/README.md)。
+充填済みの架空企業デモ [examples/demo-company/](examples/demo-company/) を使うと、Driveを接続せずファイル規約とAIの質問回答を体験できる。これは合成データによる規約デモで、Drive権限・鮮度動線の検証には使わない。試し方は [examples/demo-company/README.md](examples/demo-company/README.md)。
 
 ## 設計原則（このスターターが守っていること）
 
@@ -151,6 +159,7 @@ org-os-starter/
 4. **効力の明示** — 文書の合意状態は frontmatter `status`（draft → proposed → agreed）で機械可読に管理する
 5. **非破壊取り込み** — 決定・経緯は消さず追記する。置き換えは `supersedes` リンクで追跡可能にする
 6. **データ分類が環境を決める** — 「どのデータをどのAI実行環境に渡してよいか」のマトリクスが、ツール選定より先に来る
+7. **Drive-first、モデルはprovider-neutral** — v0.1 の外部情報源は Drive だけに絞るが、派生ノートは将来の情報源追加を妨げない共通メタデータで持つ
 
 ## 記法規約
 
@@ -159,7 +168,7 @@ Markdown は **Obsidian 互換**で書く。`[[wikilink]]` はリポジトリ内
 ## 更新戦略（スターターと自組織資産の二層）
 
 - **コア（上流=本リポジトリ由来）**: `docs/architecture.md`・テンプレート群。上流の改善はリリースノートを見て手動で取り込む
-- **育成層（自組織資産）**: 充填済みの `layer1/`・`knowledge/`・運用中の規約。**上流更新で上書きしない**
+- **育成層（自組織資産）**: 充填済みの `layer1/`、Drive 原本、`knowledge/` の派生状態、運用中の規約。**上流更新で上書きしない**
 
 template から作った時点で独立進化が基本。上流に還元したい改善（テンプレの汎用的な穴・良い運用パターン）は本リポジトリへ issue / PR を歓迎する。
 

@@ -40,8 +40,11 @@ This file defines the operating rules for AI agents that read and write this kno
 ## Writing Notes Under knowledge/
 
 - Project notes follow `knowledge/projects/_template.md`; issue notes follow `knowledge/issues/_template.md`.
+- Treat Google Drive as the v0.1 SSoT for human-authored originals. `knowledge/` contains only non-sensitive derived state, source links, and freshness metadata. Do not copy an original into the repository.
+- Populate `source_urls` and `source_modified_at` when a note is derived from Drive. If a source becomes unavailable, mark the derived reference stale rather than treating cached content as current.
+- Drive access must follow `docs/google-drive-profile.md`: per-user OAuth, read-only in v0.1, and no service accounts or domain-wide delegation.
 - Prefer non-destructive intake. Add to existing notes rather than deleting or rewriting them. Replace a note by creating a new note and linking the old one through frontmatter `supersedes`.
-- The main path for non-engineer contributions is: speak to AI → AI converts the content into a schema-compliant note → AI opens a PR.
+- The main path for non-engineer contributions is editing or creating the original in the approved Drive area. AI maintains a schema-compliant non-sensitive derived note when needed. Norm changes still use a repository proposal and review.
 
 ## Optional Support Confirmation
 

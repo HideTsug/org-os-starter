@@ -9,6 +9,10 @@ project: [Linked project note name. Delete if none]
 reporter: [Person who noticed the issue]
 created: [YYYY-MM-DD]
 source: [Work or context where this was noticed]
+source_urls:
+  - [Original source URL]
+source_modified_at: [YYYY-MM-DDTHH:MM:SSZ]
+source_status: current   # current / stale
 summary: [One-line summary]
 ---
 

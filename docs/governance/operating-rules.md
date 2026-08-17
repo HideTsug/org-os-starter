@@ -1,7 +1,7 @@
 ---
 doc_type: template
-version: "1.0"
-summary: Template for operating rules of the knowledge-base repository. It defines permission design, document status management, commit prohibitions, editing paths, and communication channels. The adopting organization fills and enacts it, adding status: agreed when enacted.
+version: "1.1"
+summary: Template for operating rules of the repository layer in the Google Drive-first profile. It defines DRI permissions, derived-note edits, commit prohibitions, and norm agreement.
 ---
 
 Japanese version: [docs/ja/docs/governance/運用規約.md](../ja/docs/governance/運用規約.md)
@@ -14,10 +14,10 @@ Japanese version: [docs/ja/docs/governance/運用規約.md](../ja/docs/governanc
 
 ## Permission Design
 
-- **write permission = [DRI Name] only**. Invite other members with read permission.
+- **write permission = [DRI Name] only**. Ordinary members use Google Drive and do not require repository access. Invite additional read-only reviewers only when needed.
 - Direct push to `main` is limited to [DRI Name]. Once a third party has write permission, move to PR operation and revise these rules.
 - Note: On the GitHub org Free plan, branch protection for private repositories must be confirmed against the current GitHub Docs. If it is unavailable in the adopting environment, minimize permissions as the structural guard.
-- Proposal path for read-permission members: PR from a fork if private forks are allowed by the org settings, or a request to [DRI Name] through AI or chat to file on their behalf. Specify which path the organization uses.
+- Proposal path for repository reviewers: PR from a fork if private forks are allowed by the org settings, or a request to [DRI Name] through AI or chat to file on their behalf. Specify which path the organization uses.
 
 ## Document status Management
 
@@ -34,9 +34,9 @@ Document agreement state is managed through frontmatter `status`. This is an agr
 
 ## Editing Path
 
-The main path for non-engineers is: speak to AI → AI converts the content into a schema-compliant note and opens a PR → the DRI approves the diff in the Web UI. Raw git operation is not required.
+Ordinary members edit human-authored originals in the approved Google Drive area. They do not edit this repository. AI or the DRI updates non-sensitive derived notes under `knowledge/` through a reviewed repository change. Layer 1 norm changes always use the repository proposal and agreement path.
 
-This is a UX policy, not a security boundary. The security boundary is the repository permission setting.
+This is a UX policy, not the whole security boundary. Drive access is bounded by the current user's effective Drive permission; repository access is bounded separately by repository permissions.
 
 ## Commit Prohibitions
 
@@ -72,3 +72,4 @@ When membership grows and each person has an AI agent sharing work, separating A
 | Date | Version | Author | Change |
 |---|---|---|---|
 | [Date] | v1.0 | [DRI Name] | Enacted |
+| 2026-08-17 | v1.1 | upstream template | Made ordinary-member edits Drive-first and limited repository edits to norms and non-sensitive derived state |
