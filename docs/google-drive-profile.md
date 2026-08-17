@@ -73,7 +73,7 @@ Use two organization accounts with different access:
 1. Put one harmless test document in a folder visible to both accounts.
 2. Put a second harmless test document in a restricted folder visible to only one account.
 3. Ask the same question as each account.
-4. Pass only if the restricted answer and source are absent for the account without access.
+4. Test both direct retrieval and an existing derived note. Pass only if the restricted answer and source are absent for the account without access.
 
 Do not connect real confidential documents until this test passes and the applicable Layer 1 documents are `agreed`.
 
@@ -85,8 +85,11 @@ For each selected project, create or update a note from `knowledge/projects/_tem
 - `source_modified_at`: the newest source modification time used for the summary
 - `last_reviewed`: when a human or AI last verified that the derived state still matches the originals
 - `classification`: only `public` or `internal` may be committed
+- `access_policy`: `source_acl`, the only allowed v0.1 value. Before using the derived note, AI verifies access to every source needed for the answer
 
 Keep category 3 and category 4 details in Drive. The derived note may contain a non-sensitive reference such as a case ID only when Layer 1 permits it.
+
+Do not treat repository access as permission to disclose a derived note. For a note built from multiple sources, use the intersection of source audiences. A broader derived audience is outside v0.1 and requires a new ADR.
 
 ### 5. Verify the Ask Path
 

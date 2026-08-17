@@ -5,9 +5,10 @@ classification: internal
 owner: [Owner Name]
 last_reviewed: [YYYY-MM-DD]
 source_urls:
-  - [Original source URL]
-source_modified_at: [YYYY-MM-DDTHH:MM:SSZ]
+  - "[Original source URL]"
+source_modified_at: "[YYYY-MM-DDTHH:MM:SSZ]"
 source_status: current   # current / stale
+access_policy: source_acl   # only allowed v0.1 value
 name: [Project Name]
 project_status: active   # active / paused / done
 summary: [One-line summary: what the project is for and its current state]

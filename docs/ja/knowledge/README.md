@@ -17,6 +17,7 @@
 - **顧客・取引先の実名・実数値は書かない**（区分3）。必要なら案件ID・ロール表記（「顧客A」「代表」等）で参照する
 - 種別判定は `tags`（`project` / `issue`）で行う。検索・集計ツールはこのタグを見る
 - Drive由来ノートは`source_urls`・`source_modified_at`・`source_status`を記録する。`source_status`は`current`または`stale`。原本を再度開けなければ`stale`にする
+- `access_policy`の既定は`source_acl`。派生ノートを回答に使う前に必要な原本へのアクセスを確認し、repoアクセスだけを開示許可とみなさない
 - 派生した事実主張は原本URLへ追跡可能にする。原本が裏付けない内容は推論と明示するか書かない
 - 古くなった記述は消さず追記で更新し、`last_reviewed` を更新する
 

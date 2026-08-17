@@ -42,6 +42,7 @@ layer1/ rules ──────────────────────
 
 - Do not mirror category 3 or category 4 content into GitHub, prompts shared with unauthorized people, logs, PR bodies, or issues.
 - A derived output inherits the highest classification of the content it retains.
+- `knowledge/` is not an authorization boundary. Every v0.1 derived note uses `access_policy: source_acl`; before using it in an answer, AI must verify that the current user can open every source required for that answer. For a note derived from multiple sources, the effective audience is the intersection of their audiences. A broader derived audience is outside v0.1 and requires a new ADR.
 - Drive folder placement is a routing hint, not permission evidence. The effective Drive permission of the current user is the access boundary.
 - Notifications only indicate that changes exist; an implementation must read the Drive change feed before updating derived state.
 
@@ -50,7 +51,7 @@ layer1/ rules ──────────────────────
 - The README, architecture, setup guide, user guide, and agent entry point all describe Google Drive as the sole v0.1 external source.
 - Ordinary members can follow the read/write/ask paths without using GitHub; GitHub remains an implementation-DRI and AI-maintenance surface.
 - Project and issue templates can record original source URLs and source freshness without copying restricted source content.
-- The permission model requires a two-account differential test: a user must not receive content from a Drive document they cannot open.
+- The permission model requires a two-account differential test across both direct Drive retrieval and cached or derived `knowledge/` state: a user must not receive content from a Drive document they cannot open.
 - A changed Drive source can be detected and its derived freshness metadata can be updated without full re-ingestion.
 - No documentation describes another external source connector as part of the v0.1 core.
 

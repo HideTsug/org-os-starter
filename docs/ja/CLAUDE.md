@@ -40,6 +40,7 @@
 - プロジェクトノートは `knowledge/projects/_テンプレート.md`、issueノートは `knowledge/issues/_テンプレート.md` に従う
 - v0.1ではGoogle Driveを人間が作る原本のSSoTとする。`knowledge/`には非機微な派生状態・原本リンク・鮮度だけを置き、原本を複製しない
 - Drive由来ノートには`source_urls`と`source_modified_at`を入れる。原本へ到達できなくなったら、最後のキャッシュを現在値として扱わず派生参照をstaleにする
+- 派生ノートを回答に使う前に`access_policy`を適用する。`source_acl`では回答に必要な全原本を現在の利用者が開けることを確認し、repoアクセスだけで開示しない
 - Drive参照は`docs/google-drive-profile.md`に従う。per-user OAuth・v0.1読取専用とし、サービスアカウント・domain-wide delegationを使わない
 - 非破壊取り込み: 既存記述の削除・書き換えより追記を優先する。置き換えは新ノート + frontmatter `supersedes` で行う
 - 非エンジニアの入力は、承認済みDrive領域の原本を編集・作成するのが主経路。必要に応じてAIが非機微なスキーマ準拠派生ノートを保守する。規範変更は引き続きrepoの提案・レビューを使う

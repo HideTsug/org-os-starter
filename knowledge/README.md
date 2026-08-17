@@ -19,6 +19,7 @@ Each directory's `_template.md` is the format SSoT. `PJ-sample-equipment.md` and
 - **Do not write real customer or vendor names or real figures**. If needed, refer by case ID or role labels such as "Customer A" or "Representative".
 - Note type is identified by `tags`, using `project` or `issue`. Search and aggregation tools read this tag.
 - Drive-derived notes record `source_urls`, `source_modified_at`, and `source_status`. `source_status` is `current` or `stale`; inability to re-open a source must make it `stale`.
+- `access_policy` defaults to `source_acl`. AI must verify access to the sources needed for an answer before using a derived note; repository access alone does not authorize disclosure.
 - Every derived factual claim must be traceable to a source URL. If the source does not support a claim, label it as inference or omit it.
 - Do not delete outdated content. Add updates and refresh `last_reviewed`.
 
