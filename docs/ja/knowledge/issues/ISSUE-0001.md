@@ -5,7 +5,7 @@ classification: 社内
 owner: 佐藤（架空）
 last_reviewed: 2026-08-13
 issue_status: open
-project: PJ-sample-equipment
+project: PJ-サンプル-備品管理
 reporter: 佐藤（架空）
 created: 2026-08-13
 source: 備品台帳の初期登録作業（架空）
@@ -30,4 +30,4 @@ summary: 架空のサンプルissue。同一備品が部署ごとに別名で登
 
 ## 補足
 
-- 紐付け先 PJ: `[[PJ-sample-equipment]]`
+- 紐付け先 PJ: `[[PJ-サンプル-備品管理]]`

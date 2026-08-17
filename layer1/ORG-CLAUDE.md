@@ -60,7 +60,7 @@ Japanese version: [docs/ja/layer1/組織CLAUDE.md](../docs/ja/layer1/組織CLAUD
 ### Privacy Law and Individual Number Law: Cross-Industry
 
 - Entering customer personal data into cloud AI outside organization management may constitute third-party provision or outsourcing. Do not do this unless consent and vendor-supervision duties are organized. This is the legal basis for the unmanaged-environment prohibition in [[data-classification-matrix]].
-- Individual numbers and related documents are strictly limited by law. Entering them into AI is prohibited regardless of environment. Treat them as category 4 in [[data-classification-matrix]].
+- Individual numbers and related documents are governed by the Individual Number Act, which strictly limits both the purposes for which they may be used and the parties they may be provided to. Entering them into AI is prohibited regardless of environment. Treat them as category 4 in [[data-classification-matrix]].
 - Materials containing sensitive personal information, such as medical history, should be handled in line with category 4.
 
 ### Contracts and Other Rules
