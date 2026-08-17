@@ -10,9 +10,10 @@ reporter: [Person who noticed the issue]
 created: [YYYY-MM-DD]
 source: [Work or context where this was noticed]
 source_urls:
-  - [Original source URL]
-source_modified_at: [YYYY-MM-DDTHH:MM:SSZ]
+  - "[Original source URL]"
+source_modified_at: "[YYYY-MM-DDTHH:MM:SSZ]"
 source_status: current   # current / stale
+access_policy: source_acl   # only allowed v0.1 value
 summary: [One-line summary]
 ---
 

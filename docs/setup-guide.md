@@ -44,7 +44,7 @@ Follow [Google Drive Operating Profile](google-drive-profile.md). The goal is to
 
 1. Choose one shared drive or top-level folder and three to five active projects inside it.
 2. Establish a read-only per-user OAuth path. Do not use a service account or domain-wide delegation.
-3. Run the required two-account permission-differential test with harmless test documents. An account without access must receive neither the restricted content nor its source.
+3. Run the required two-account permission-differential test with harmless test documents, including an answer path that uses an existing derived note. An account without access must receive neither the restricted content nor its source.
 4. For each selected project, create a non-sensitive derived note from `knowledge/projects/_template.md`. Record the Drive source URL and newest source modification time.
 5. Have project owners choose five recurring questions, then verify that every answer cites an original Drive document and states when it was modified or reviewed.
 
