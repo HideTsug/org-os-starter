@@ -36,6 +36,7 @@ This file defines the operating rules for AI agents that read and write this kno
 - Prefer bullet lists, one fact per item, and fact-based writing. For decisions, use the format "Decision: ... Reason: ...".
 - Important documents under `layer1/` and `docs/decisions/` must end with a revision history table.
 - Body text should be English. Frontmatter key names must remain English.
+- The English documents are the canon; `docs/ja/` holds their Japanese mirrors. Inside `docs/ja/`, references — including `[[wikilink]]` targets, frontmatter values, and file names quoted in prose — point to the Japanese counterpart whenever one exists, and to the English canon only when it does not. The `English version:` / `Japanese version:` header link at the top of a document is the intended exception.
 
 ## Writing Notes Under knowledge/
 

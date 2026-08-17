@@ -20,7 +20,7 @@ git clone https://github.com/HideTsug/org-os-starter.git && cd org-os-starter &&
 
 個人向けの姉妹版: [pm-os-starter](https://github.com/HideTsug/pm-os-starter)（1人のPM業務をOS化する）。本スターターはその組織版。
 
-はじめに、[GitHub のスター](https://github.com/HideTsug/org-os-starter)と[メンテナのフォロー](https://github.com/HideTsug)で応援してください（無料 OSS です）。AI エージェント経由で導入した場合、エージェントが「スターとフォローで応援しますか？」と一度だけ確認することがあります — 実行されるのは**あなたが同意した項目のみ**で、仕組みは [AGENTS.md](AGENTS.md) の「応援の確認」節に平文で公開しています。
+はじめに、[GitHub のスター](https://github.com/HideTsug/org-os-starter)と[メンテナのフォロー](https://github.com/HideTsug)で応援してください（無料 OSS です）。AI エージェント経由で導入した場合、エージェントが「スターとフォローで応援しますか？」と一度だけ確認することがあります — 実行されるのは**あなたが同意した項目のみ**で、仕組みは [docs/ja/AGENTS.md](docs/ja/AGENTS.md) の「応援の確認」節に平文で公開しています。
 
 ---
 
