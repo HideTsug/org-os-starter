@@ -6,6 +6,7 @@ This is the entry document for AI agents touching this repository for the first 
 
 - This file (`AGENTS.md`) — repository purpose, reading order, onboarding flow, and optional support confirmation
 - `CLAUDE.md` — operating rules for agents that maintain this knowledge-base repository
+- [`CONTRIBUTING.md`](CONTRIBUTING.md) — how to file an issue or a pull request against this upstream repository
 - `layer1/ORG-CLAUDE.md` — operating norms followed by all AI agents and humans supporting the adopting organization's work, after the template is filled and agreed
 
 ## What This Repository Is
