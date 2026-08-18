@@ -100,7 +100,7 @@ Details: [docs/user-guide.md](docs/user-guide.md) (written so it can be handed o
 | Order | Path | Contents |
 |---|---|---|
 | 0 | [AGENTS.md](AGENTS.md) | Entry point for AI agents. The adoption flow (confirming the DRI or delegated implementer, making the repository private) and reading order. Start here if you delegate adoption to an AI |
-| 1 | `README.md` | This README. The big picture |
+| 1 | `README.en.md` | This README. The big picture. The Japanese original is `README.md` |
 | 2 | [docs/architecture.md](docs/architecture.md) | The 5-layer architecture explained |
 | 3 | [docs/google-drive-profile.md](docs/google-drive-profile.md) | The v0.1 contract for originals, permissions, derived knowledge, and freshness |
 | 4 | [docs/setup-guide.md](docs/setup-guide.md) | Adoption steps (Step 0–4) and customization points |
@@ -121,22 +121,49 @@ Details: [docs/user-guide.md](docs/user-guide.md) (written so it can be handed o
 
 ```
 org-os-starter/
-├── README.md                          # This README
-├── AGENTS.md                          # Entry point for AI agents (adoption flow, reading order, support confirmation)
+├── README.md                          # Japanese README
+├── README.en.md                       # This README (English)
+├── AGENTS.md                          # Entry point for AI agents (editing branch, adoption flow, reading order, support confirmation)
 ├── CLAUDE.md                          # Norms for AI that reads/writes this repository (usable as-is)
-├── CONTRIBUTING.md                    # How to file issues / pull requests upstream (Japanese under docs/ja/)
+├── CONTRIBUTING.md                    # How to file issues / pull requests upstream
 ├── LICENSE                            # MIT
 ├── .gitignore                         # .DS_Store / .obsidian/
-├── docs/
+├── docs/                              # English canon: explanations, guides, decision records (not normative)
 │   ├── architecture.md                # The 5-layer architecture explained
 │   ├── google-drive-profile.md        # v0.1 Google Drive operating contract
 │   ├── setup-guide.md                 # Adoption steps 0–4
 │   ├── user-guide.md                  # Template for handing out to members
 │   ├── governance/
 │   │   └── operating-rules.md         # Template for repository operating rules
-│   └── decisions/
-│       ├── ADR-0000-template.md       # Scaffold for decision records
-│       └── ADR-0001-google-drive-first-v0.1.md
+│   ├── decisions/
+│   │   ├── ADR-0000-template.md       # Scaffold for decision records
+│   │   └── ADR-0001-google-drive-first-v0.1.md
+│   └── ja/                            # Japanese mirrors of the English canon (one-to-one with canon)
+│       ├── AGENTS.md
+│       ├── CLAUDE.md
+│       ├── CONTRIBUTING.md
+│       ├── docs/
+│       │   ├── architecture.md
+│       │   ├── Google-Drive-運用プロファイル.md
+│       │   ├── 導入ガイド.md            # setup-guide.md
+│       │   ├── 利用ガイド.md            # user-guide.md
+│       │   ├── governance/
+│       │   │   └── 運用規約.md
+│       │   └── decisions/
+│       │       ├── ADR-0000-テンプレート.md
+│       │       └── ADR-0001-Google-Drive-first-v0.1.md
+│       ├── layer1/
+│       │   ├── 組織CLAUDE.md
+│       │   ├── データ分類マトリクス.md
+│       │   └── 禁止用途リスト.md
+│       └── knowledge/
+│           ├── README.md
+│           ├── projects/
+│           │   ├── _テンプレート.md
+│           │   └── PJ-サンプル-備品管理.md
+│           └── issues/
+│               ├── _テンプレート.md
+│               └── ISSUE-0001.md
 ├── layer1/                            # The three norm templates (take effect once filled in and agreed)
 │   ├── ORG-CLAUDE.md
 │   ├── data-classification-matrix.md
@@ -151,6 +178,19 @@ org-os-starter/
 │       └── ISSUE-0001.md              # Fictional sample (same as above)
 └── examples/
     └── demo-company/                  # Filled-in demo of a fictional company (clone it and try "Ask" right away)
+        ├── README.md                  # How to try the demo (Japanese)
+        ├── ORG-CLAUDE.md              # Filled-in organizational AI norms (Layer 1 equivalent)
+        ├── knowledge/
+        │   ├── projects/
+        │   │   ├── PJ-0001-検査工程のAI化.md
+        │   │   └── PJ-0002-見積もりテンプレ整備.md
+        │   └── issues/
+        │       ├── ISSUE-0101-図面データの保管場所.md
+        │       ├── ISSUE-0102-新人研修の属人化.md
+        │       └── ISSUE-0103-顧客名の扱いルール.md
+        └── docs/
+            └── decisions/
+                └── ADR-0001-AI導入の一点突破.md
 ```
 
 ## Try It in 30 Minutes (Demo Company)
