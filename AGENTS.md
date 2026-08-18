@@ -9,6 +9,17 @@ This is the entry document for AI agents touching this repository for the first 
 - [`CONTRIBUTING.md`](CONTRIBUTING.md) — how to file an issue or a pull request against this upstream repository
 - `layer1/ORG-CLAUDE.md` — operating norms followed by all AI agents and humans supporting the adopting organization's work, after the template is filled and agreed
 
+## If You Are Here to Edit This Repository
+
+Many agents load this file automatically when a repository is opened. If your task is to **change files in this repository** — fix a typo, correct a translation, improve a template — stop here and read [`CLAUDE.md`](CLAUDE.md) (operating rules for editing) and [`CONTRIBUTING.md`](CONTRIBUTING.md) (what belongs upstream and how to open a pull request). The onboarding flow below is not your task; it is for guiding an adopting organization through setup.
+
+This is a Markdown-only repository. There is no build, no dependency install, and no test suite — do not look for one. The gates that must hold after your change are:
+
+1. **Every relative link resolves.** If you add, move, or rename a file, update the file maps and reading-order tables in `README.md` and `README.en.md` in the same change. A runnable check is in [`CONTRIBUTING.md`](CONTRIBUTING.md)
+2. **English canon and Japanese mirror move together.** The English documents are the canon and `docs/ja/` holds their Japanese mirrors, so a one-sided edit leaves the repository inconsistent
+3. **Samples use fictional data only.** No real customer, vendor, or personnel information, and no keys, tokens, or secrets
+4. **No directories for Layers 3 through 5, no empty directories, and no placeholder-only files.** Their absence is a design principle, not an omission
+
 ## What This Repository Is
 
 This repository is a knowledge-foundation starter kit, distributed as a GitHub template repository, for helping an organization become AI-native. It is free OSS under the MIT license. The v0.1 operating profile uses Google Drive as its only external knowledge source: Drive keeps human-authored originals and ACLs, while this repository keeps Layer 1 norms and non-sensitive derived knowledge. Using it requires an agentic AI environment such as Claude Code plus an approved per-user OAuth path to Drive. It is not a consulting engagement or onboarding service contract.
