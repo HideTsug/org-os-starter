@@ -144,25 +144,25 @@ org-os-starter/
 │       ├── CONTRIBUTING.md
 │       ├── docs/
 │       │   ├── architecture.md
-│       │   ├── Google-Drive-運用プロファイル.md
-│       │   ├── 導入ガイド.md            # setup-guide.md
-│       │   ├── 利用ガイド.md            # user-guide.md
+│       │   ├── Google-Drive-運用プロファイル.md   # google-drive-profile.md
+│       │   ├── 導入ガイド.md                      # setup-guide.md
+│       │   ├── 利用ガイド.md                      # user-guide.md
 │       │   ├── governance/
-│       │   │   └── 運用規約.md
+│       │   │   └── 運用規約.md                    # operating-rules.md
 │       │   └── decisions/
-│       │       ├── ADR-0000-テンプレート.md
+│       │       ├── ADR-0000-テンプレート.md       # ADR-0000-template.md
 │       │       └── ADR-0001-Google-Drive-first-v0.1.md
 │       ├── layer1/
-│       │   ├── 組織CLAUDE.md
-│       │   ├── データ分類マトリクス.md
-│       │   └── 禁止用途リスト.md
+│       │   ├── 組織CLAUDE.md                      # ORG-CLAUDE.md
+│       │   ├── データ分類マトリクス.md            # data-classification-matrix.md
+│       │   └── 禁止用途リスト.md                  # prohibited-uses.md
 │       └── knowledge/
 │           ├── README.md
 │           ├── projects/
-│           │   ├── _テンプレート.md
-│           │   └── PJ-サンプル-備品管理.md
+│           │   ├── _テンプレート.md               # _template.md
+│           │   └── PJ-サンプル-備品管理.md        # PJ-sample-equipment.md
 │           └── issues/
-│               ├── _テンプレート.md
+│               ├── _テンプレート.md               # _template.md
 │               └── ISSUE-0001.md
 ├── layer1/                            # The three norm templates (take effect once filled in and agreed)
 │   ├── ORG-CLAUDE.md
