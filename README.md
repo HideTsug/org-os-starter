@@ -100,7 +100,7 @@ docs/setup-guide.md を読んで、Step 0 から導入を進めたい。
 | 順 | パス | 内容 |
 |---|---|---|
 | 0 | [AGENTS.md](AGENTS.md) | AIエージェント向け入口。導入の流れ（DRI・委任者の対象確認、private リポジトリ化）と読み順。AIに導入を任せる場合はここから |
-| 1 | `README.md` | 本ファイル。全体像 |
+| 1 | `README.md` | 本ファイル。全体像。英語版は `README.en.md` |
 | 2 | [docs/architecture.md](docs/architecture.md) | 5層アーキテクチャの解説 |
 | 3 | [Google Drive 運用プロファイル](docs/ja/docs/Google-Drive-運用プロファイル.md) | v0.1 の原本・権限・派生知識・鮮度の契約 |
 | 4 | [docs/setup-guide.md](docs/setup-guide.md) | 導入手順（Step 0〜4）とカスタマイズポイント |
@@ -121,22 +121,49 @@ docs/setup-guide.md を読んで、Step 0 から導入を進めたい。
 
 ```
 org-os-starter/
-├── README.md                          # 本ファイル
-├── AGENTS.md                          # AIエージェント向け入口（導入の流れ・読み順・応援の確認）
+├── README.md                          # 本ファイル（日本語）
+├── README.en.md                       # 英語版 README
+├── AGENTS.md                          # AIエージェント向け入口（編集時の振り分け・導入の流れ・読み順・応援の確認）
 ├── CLAUDE.md                          # このリポジトリを読み書きするAI向けの規範（初期値のまま使える）
-├── CONTRIBUTING.md                    # 上流リポジトリへの issue / PR の出し方（日本語版は docs/ja/）
+├── CONTRIBUTING.md                    # 上流リポジトリへの issue / PR の出し方
 ├── LICENSE                            # MIT
 ├── .gitignore                         # .DS_Store / .obsidian/
-├── docs/
+├── docs/                              # 英語 canon の解説・ガイド・決定記録（規範ではない）
 │   ├── architecture.md                # 5層アーキテクチャ解説
 │   ├── google-drive-profile.md        # v0.1 Google Drive 運用契約
 │   ├── setup-guide.md                 # 導入手順 Step 0〜4
 │   ├── user-guide.md                  # メンバー配布用テンプレート
 │   ├── governance/
 │   │   └── operating-rules.md         # リポジトリ運用ルールのテンプレート
-│   └── decisions/
-│       ├── ADR-0000-template.md       # 意思決定記録の雛形
-│       └── ADR-0001-google-drive-first-v0.1.md
+│   ├── decisions/
+│   │   ├── ADR-0000-template.md       # 意思決定記録の雛形
+│   │   └── ADR-0001-google-drive-first-v0.1.md
+│   └── ja/                            # 英語 canon の日本語ミラー（canon と1対1で対応）
+│       ├── AGENTS.md
+│       ├── CLAUDE.md
+│       ├── CONTRIBUTING.md
+│       ├── docs/
+│       │   ├── architecture.md
+│       │   ├── Google-Drive-運用プロファイル.md
+│       │   ├── 導入ガイド.md
+│       │   ├── 利用ガイド.md
+│       │   ├── governance/
+│       │   │   └── 運用規約.md
+│       │   └── decisions/
+│       │       ├── ADR-0000-テンプレート.md
+│       │       └── ADR-0001-Google-Drive-first-v0.1.md
+│       ├── layer1/
+│       │   ├── 組織CLAUDE.md
+│       │   ├── データ分類マトリクス.md
+│       │   └── 禁止用途リスト.md
+│       └── knowledge/
+│           ├── README.md
+│           ├── projects/
+│           │   ├── _テンプレート.md
+│           │   └── PJ-サンプル-備品管理.md
+│           └── issues/
+│               ├── _テンプレート.md
+│               └── ISSUE-0001.md
 ├── layer1/                            # 規範テンプレート3点セット（充填 → agreed 昇格で効力発生）
 │   ├── ORG-CLAUDE.md
 │   ├── data-classification-matrix.md
@@ -151,6 +178,19 @@ org-os-starter/
 │       └── ISSUE-0001.md              # 架空サンプル（同上）
 └── examples/
     └── demo-company/                  # 架空企業の充填済みデモ（clone してすぐ「聞く」を試せる）
+        ├── README.md                  # デモの試し方
+        ├── ORG-CLAUDE.md              # 充填済みの組織AI業務規範（Layer 1 相当）
+        ├── knowledge/
+        │   ├── projects/
+        │   │   ├── PJ-0001-検査工程のAI化.md
+        │   │   └── PJ-0002-見積もりテンプレ整備.md
+        │   └── issues/
+        │       ├── ISSUE-0101-図面データの保管場所.md
+        │       ├── ISSUE-0102-新人研修の属人化.md
+        │       └── ISSUE-0103-顧客名の扱いルール.md
+        └── docs/
+            └── decisions/
+                └── ADR-0001-AI導入の一点突破.md
 ```
 
 ## 30分で試す（デモ企業）
