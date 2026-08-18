@@ -107,6 +107,7 @@ Details: [docs/user-guide.md](docs/user-guide.md) (written so it can be handed o
 | 5 | [layer1/](layer1/) | **Norm templates**. They take effect only after being filled in and promoted to frontmatter `status: agreed` |
 | 6 | [docs/governance/operating-rules.md](docs/governance/operating-rules.md) | Template for repository operating rules |
 | 7 | [knowledge/](knowledge/) | Structure and samples for non-sensitive knowledge derived from Drive originals |
+| — | [CONTRIBUTING.md](CONTRIBUTING.md) | How to file issues and pull requests against this repository. Japanese version: [docs/ja/CONTRIBUTING.md](docs/ja/CONTRIBUTING.md) |
 | — | [CLAUDE.md](CLAUDE.md) | Operating rules for any AI agent that **edits** this repository, regardless of vendor. Claude Code loads it automatically; other agents must open it explicitly |
 | — | [docs/user-guide.md](docs/user-guide.md) | Usage guide for handing out to members |
 
@@ -123,6 +124,7 @@ org-os-starter/
 ├── README.md                          # This README
 ├── AGENTS.md                          # Entry point for AI agents (adoption flow, reading order, support confirmation)
 ├── CLAUDE.md                          # Norms for AI that reads/writes this repository (usable as-is)
+├── CONTRIBUTING.md                    # How to file issues / pull requests upstream (Japanese under docs/ja/)
 ├── LICENSE                            # MIT
 ├── .gitignore                         # .DS_Store / .obsidian/
 ├── docs/
@@ -174,7 +176,7 @@ Write Markdown in an **Obsidian-compatible** style. `[[wikilink]]` is valid for 
 - **Core (upstream = derived from this repository)**: `docs/architecture.md` and the templates. Adopt upstream improvements manually by reviewing release notes
 - **Growth tier (your organization's assets)**: the filled-in `layer1/`, Drive originals, derived state under `knowledge/`, and the rules you operate under. **Never overwrite these with upstream updates**
 
-Once created from the template, independent evolution is the default. Improvements worth contributing back upstream (generic gaps in the templates, good operating patterns) are welcome as issues / PRs to this repository.
+Once created from the template, independent evolution is the default. Improvements worth contributing back upstream (generic gaps in the templates, good operating patterns) are welcome as issues / PRs to this repository. Read [CONTRIBUTING.md](CONTRIBUTING.md) first — it covers what belongs upstream, the pre-pull-request checklist, and how to write an issue.
 
 ## License
 

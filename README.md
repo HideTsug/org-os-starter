@@ -107,6 +107,7 @@ docs/setup-guide.md を読んで、Step 0 から導入を進めたい。
 | 5 | [layer1/](layer1/) | **規範テンプレート**。充填して frontmatter `status: agreed` に昇格させて初めて効力を持つ |
 | 6 | [docs/governance/operating-rules.md](docs/governance/operating-rules.md) | リポジトリ運用ルールのテンプレート |
 | 7 | [knowledge/](knowledge/) | Drive 原本から作る非機微な派生知識の構造とサンプル |
+| — | [CONTRIBUTING.md](CONTRIBUTING.md) | 本リポジトリへ issue / PR を出すときの規約。日本語版は [docs/ja/CONTRIBUTING.md](docs/ja/CONTRIBUTING.md) |
 | — | [CLAUDE.md](CLAUDE.md) | 本リポジトリを**編集する**AIエージェント向けの運用規範。ベンダを問わず適用される。Claude Code は自動で読み込むが、他のエージェントは明示的に開く必要がある |
 | — | [docs/user-guide.md](docs/user-guide.md) | メンバー配布用の使い方ガイド |
 
@@ -123,6 +124,7 @@ org-os-starter/
 ├── README.md                          # 本ファイル
 ├── AGENTS.md                          # AIエージェント向け入口（導入の流れ・読み順・応援の確認）
 ├── CLAUDE.md                          # このリポジトリを読み書きするAI向けの規範（初期値のまま使える）
+├── CONTRIBUTING.md                    # 上流リポジトリへの issue / PR の出し方（日本語版は docs/ja/）
 ├── LICENSE                            # MIT
 ├── .gitignore                         # .DS_Store / .obsidian/
 ├── docs/
@@ -174,7 +176,7 @@ Markdown は **Obsidian 互換**で書く。`[[wikilink]]` はリポジトリ内
 - **コア（上流=本リポジトリ由来）**: `docs/architecture.md`・テンプレート群。上流の改善はリリースノートを見て手動で取り込む
 - **育成層（自組織資産）**: 充填済みの `layer1/`、Drive 原本、`knowledge/` の派生状態、運用中の規約。**上流更新で上書きしない**
 
-template から作った時点で独立進化が基本。上流に還元したい改善（テンプレの汎用的な穴・良い運用パターン）は本リポジトリへ issue / PR を歓迎する。
+template から作った時点で独立進化が基本。上流に還元したい改善（テンプレの汎用的な穴・良い運用パターン）は本リポジトリへ issue / PR を歓迎する。出す前に [docs/ja/CONTRIBUTING.md](docs/ja/CONTRIBUTING.md) を読む（何を上流に還元してほしいか、PR 前のチェックリスト、issue の書き方）。
 
 ## ライセンス
 
