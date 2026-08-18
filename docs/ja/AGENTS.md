@@ -4,7 +4,7 @@
 
 - 本ファイル（AGENTS.md） — repo の目的・読み順・導入の流れ・応援の確認
 - `CLAUDE.md` — この知識基盤リポジトリを保守・運用するエージェントの規範
-- `CONTRIBUTING.md` — 上流リポジトリへ issue / PR を出すときの規約（[CONTRIBUTING.md](CONTRIBUTING.md)）
+- [`CONTRIBUTING.md`](CONTRIBUTING.md) — 上流リポジトリへ issue / PR を出すときの規約
 - `layer1/ORG-CLAUDE.md` — 導入組織の業務を支援するすべての AI と人が従う規範（充填・合意後に効力を持つ）
 
 ## このリポジトリは何か
