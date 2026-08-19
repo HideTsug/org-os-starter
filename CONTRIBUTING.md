@@ -45,8 +45,8 @@ PY
 ```
 
 - [ ] **Samples use fictional data only.** No real customer or vendor names, real financial figures, real communication logs, or internal non-public information, and no API keys, tokens, or secrets. `examples/demo-company/` is entirely fictional by design — see [CLAUDE.md](CLAUDE.md), "Commit Prohibitions"
-- [ ] **No Layer 3–5 directories, no empty directories, no placeholder-only files.** Unfilled items carry an owner flag such as `(requires executive owner)`, never a bare `(TODO)` — see [CLAUDE.md](CLAUDE.md), "Structure Rules"
-- [ ] **Every relative link resolves.** If you added, moved, or renamed a file, the file maps and reading-order tables in `README.md` and `README.en.md` need the same change. Verify that **every** relative link resolves — directories and non-Markdown targets such as `LICENSE` included, not only `.md` files — and produce output stating how many files were checked and how many links are broken. The script below is a reference implementation for an environment that has `python3`; where it is not available, use node, ripgrep plus a shell loop, or direct inspection of the files you changed to produce equivalent output, and paste that output in the pull request
+- [ ] **No Layer 3–5 directories, no empty directories, no placeholder-only files.** Unfilled items carry an owner flag such as `(requires executive owner)`, never a bare `(TODO)` — see [CLAUDE.md](CLAUDE.md), "Structure Rules". `python3 scripts/validate.py` detects bare placeholders mechanically
+- [ ] **Every relative link resolves.** If you added, moved, or renamed a file, the file maps and reading-order tables in `README.md` and `README.en.md` need the same change. Run `python3 scripts/validate.py` from the repository root: it verifies that **every** relative link resolves — directories and non-Markdown targets such as `LICENSE` included, not only `.md` files — and also checks `[[wikilink]]` resolution, frontmatter `status` values, and bare placeholders, printing the number of files checked and every violation. Exit code 0 means no violations. Paste its output in the pull request. Where `python3` is not available, the script cannot run; the snippet below is a reference implementation of the link portion — reproduce equivalent output with node, ripgrep plus a shell loop, or direct inspection of the files you changed
 
 ```bash
 python3 - <<'PY'
@@ -67,7 +67,7 @@ PY
 ```
 
 - [ ] **Notes under `knowledge/` match their template's frontmatter contract.** A note derived from Drive carries `source_urls`, `source_modified_at`, `source_status`, and `access_policy`, as in the matching `_template.md`. The shipped samples are not Drive-derived and say so in their own body instead of carrying the four keys. `examples/` is out of scope
-- [ ] **Documents that carry frontmatter keep it valid.** `status` (`draft → proposed → agreed`) belongs to normative documents under `layer1/`, enacted operating rules, and ADRs; `doc_type` (`reference` / `template`) belongs to everything else. Do not promote a template's `status` in an upstream pull request — promotion is an act of agreement inside an adopting organization
+- [ ] **Documents that carry frontmatter keep it valid.** `status` (`draft → proposed → agreed`) belongs to normative documents under `layer1/`, enacted operating rules, and ADRs; `doc_type` (`reference` / `template`) belongs to everything else. Do not promote a template's `status` in an upstream pull request — promotion is an act of agreement inside an adopting organization. `python3 scripts/validate.py` checks that every `status` value is one of the three
 - [ ] **Changes are non-destructive.** Prefer adding to existing content. Replace a note by creating a new one and linking the old through frontmatter `supersedes`, rather than deleting it
 
 ## Writing an Issue
@@ -84,7 +84,7 @@ Reports of a broken adoption flow are useful even without an approach — say wh
 
 - One logical change per pull request. Do not bundle unrelated fixes; open a separate issue for anything you notice along the way
 - Reference the issue with `Closes #<number>` in the pull request body
-- Describe how you verified the change, including the output of the link check if you touched links or file maps
+- Describe how you verified the change, including the output of `python3 scripts/validate.py` if you touched links, file maps, frontmatter, or placeholders
 - Everything you write here is public and is read by adopting organizations and by AI agents. Keep the tone plain and factual, and match the language of the document you are editing
 
 ## Scope Notes
