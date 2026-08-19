@@ -245,6 +245,10 @@ git diff HEAD upstream/main -- docs/architecture.md docs/setup-guide.md   # コ�
 
 反映後の受入基準: `git diff --stat` に出るのが意図して扱ったコアのパスだけで、`layer1/`・`docs/governance/`・`knowledge/projects/`・`knowledge/issues/` には何も出ないこと。育成層のパスが出ていたら取り込みが自組織資産に届いている — そのパスを復元してやり直す。
 
+## 採用組織
+
+実運用している組織・個人の一覧は [ADOPTERS.md](ADOPTERS.md)（掲載は本人希望のみ・いつでも削除可）。
+
 ## ライセンス
 
 MIT License — [LICENSE](LICENSE)
