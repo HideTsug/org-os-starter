@@ -114,7 +114,7 @@ Details: [docs/user-guide.md](docs/user-guide.md) (written so it can be handed o
 | — | [CLAUDE.md](CLAUDE.md) | Operating rules for any AI agent that **edits** this repository, regardless of vendor. Claude Code loads it automatically; other agents must open it explicitly |
 | — | [docs/user-guide.md](docs/user-guide.md) | Usage guide for handing out to members |
 
-This table and the file map below describe the actual repository tree, so their paths are the English canon and match `README.md` row for row. The Japanese mirrors live under `docs/ja/`, reachable from the `Japanese version:` link at the top of each document.
+This table and the file map below describe the actual repository tree, so their paths are the English canon and match `README.md` row for row, apart from row 1, where each README names itself. To read in Japanese, follow the `Japanese version:` link at the top of the document, or open its counterpart under `docs/ja/` in the file map below.
 
 ### What Each Directory Means
 
