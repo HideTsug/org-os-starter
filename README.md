@@ -134,6 +134,8 @@ org-os-starter/
 ├── CONTRIBUTING.md                    # 上流リポジトリへの issue / PR の出し方
 ├── LICENSE                            # MIT
 ├── .gitignore                         # .DS_Store / .obsidian/
+├── scripts/
+│   └── validate.py                    # 不変条件の機械検査（リンク・wikilink・status・プレースホルダ）
 ├── docs/                              # 英語 canon の解説・ガイド・決定記録（規範ではない）
 │   ├── ai-agent-guide.md              # clone 前のAI向け導入台本（raw URL 1本で読み込む）
 │   ├── architecture.md                # 5層アーキテクチャ解説

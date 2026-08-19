@@ -134,6 +134,8 @@ org-os-starter/
 ├── CONTRIBUTING.md                    # How to file issues / pull requests upstream
 ├── LICENSE                            # MIT
 ├── .gitignore                         # .DS_Store / .obsidian/
+├── scripts/
+│   └── validate.py                    # Mechanical invariant checks (links, wikilinks, status, placeholders)
 ├── docs/                              # English canon: explanations, guides, decision records (not normative)
 │   ├── ai-agent-guide.md              # Pre-clone briefing for AI agents (loadable from a single raw URL)
 │   ├── architecture.md                # The 5-layer architecture explained
