@@ -29,10 +29,10 @@ English version: [../../CONTRIBUTING.md](../../CONTRIBUTING.md)
 
 すべての項目を確認する。CI が何も強制しないため、以下は気づかずに壊れやすい不変条件になっている。
 
-- [ ] **英語 canon と日本語ミラーを同時に更新した。** 英語文書が canon で、`docs/ja/` はその日本語ミラー。片側だけ変更するとリポジトリが不整合になる。対応関係は、root の `AGENTS.md` / `CLAUDE.md` / `CONTRIBUTING.md` ↔ `docs/ja/`、`docs/**` ↔ `docs/ja/docs/**`、`layer1/**` ↔ `docs/ja/layer1/**`、`knowledge/**` ↔ `docs/ja/knowledge/**`、`README.md`（日本語）↔ `README.en.md`（英語）。`docs/ja/` 内の参照は、日本語版が存在する限りそちらを指す（[CLAUDE.md](CLAUDE.md)「文書スタイル」）
+- [ ] **英語 canon と日本語ミラーを同時に更新した。** 英語文書が canon で、`docs/ja/` はその日本語ミラー。片側だけ変更するとリポジトリが不整合になる。対応関係は、root の `AGENTS.md` / `CLAUDE.md` / `CONTRIBUTING.md` ↔ `docs/ja/`、`docs/**` ↔ `docs/ja/docs/**`、`layer1/**` ↔ `docs/ja/layer1/**`、`knowledge/**` ↔ `docs/ja/knowledge/**`、`README.md`（日本語）↔ `README.en.md`（英語）。`examples/` はこの対応表の外にあり、ミラーを作らず、English summary のみを英語正本と歩調を合わせる。`docs/ja/` 内の参照は、日本語版が存在する限りそちらを指す（[CLAUDE.md](CLAUDE.md)「上流リポジトリ専用の規約」）
 - [ ] **サンプルは架空データのみ。** 実在の顧客名・取引先名・実際の財務数値・実際のやり取り・社内非公開情報（人事・提携・M&A・未公開財務・係争）を含めない。APIキー・トークン・シークレットも同様。`examples/demo-company/` は設計上すべて架空（[CLAUDE.md](CLAUDE.md)「コミット禁止事項」）
 - [ ] **Layer 3〜5 のディレクトリ・空ディレクトリ・プレースホルダのみのファイルを作っていない。** 未充填項目は `(要・代表)` のような責任者フラグ付きでのみ残し、裸の `(TODO)` は書かない（[CLAUDE.md](CLAUDE.md)「構造ルール」）
-- [ ] **相対リンクがすべて解決する。** ファイルを追加・移動・改名した場合は、`README.md` と `README.en.md` のファイルマップ・読み順表にも同じ変更が必要。下記の検査を実行する
+- [ ] **相対リンクがすべて解決する。** ファイルを追加・移動・改名した場合は、`README.md` と `README.en.md` のファイルマップ・読み順表にも同じ変更が必要。`.md` だけでなくディレクトリや `LICENSE` 等の非Markdownを含む**すべて**の相対リンクが解決することを検証し、検査したファイル数と壊れたリンク数を出力する。下記は `python3` がある環境向けの参照実装で、使えない場合は node・ripgrep＋シェルループ・変更したファイルの直接確認などで同等の出力を作り、その出力を PR に貼る
 
 ```bash
 python3 - <<'PY'
@@ -42,7 +42,7 @@ files = [f for f in out.split('\0') if f]
 bad = []
 for f in files:
     base = os.path.dirname(f)
-    for link in re.findall(r'\]\(([^)#:]+?\.md)(?:#[^)]*)?\)', open(f, encoding='utf-8').read()):
+    for link in re.findall(r'\]\(([^)#:]+?)(?:#[^)]*)?\)', open(f, encoding='utf-8').read()):
         if not os.path.exists(os.path.normpath(os.path.join(base, link))):
             bad.append((f, link))
 for b in bad:
@@ -52,6 +52,7 @@ sys.exit(1 if bad else 0)
 PY
 ```
 
+- [ ] **`knowledge/` のノートが対応するテンプレートの frontmatter 契約を満たしている。** Drive由来のノートは対応する `_テンプレート.md` と同じく `source_urls`・`source_modified_at`・`source_status`・`access_policy` を持つ。同梱サンプルはDrive由来ではないため4キーを持たず、その旨を本文に明記する。`examples/` は対象外
 - [ ] **frontmatter を持つ文書はその妥当性を保っている。** `status`（`draft → proposed → agreed`）は `layer1/` の規範文書・制定後の運用規約・ADR に付く。`doc_type`（`reference` / `template`）はそれ以外に付く。テンプレートの `status` を上流の PR で昇格させない — 昇格は導入組織の中での合意行為
 - [ ] **変更が非破壊である。** 既存内容への追記を優先する。ノートを置き換える場合は新しいノートを作り、古いノートを frontmatter `supersedes` でリンクする（削除しない）
 

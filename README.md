@@ -66,7 +66,10 @@ Layer 3〜5 のディレクトリは意図的に**存在しない**。中身が�
 # 2. 作成した自組織リポジトリを clone する
 git clone <作成した自組織privateリポジトリのURL> our-org-os
 cd our-org-os
-git remote -v   # origin が自組織の private リポジトリを指すことを確認
+git remote -v   # origin が自組織の private リポジトリを指すことを確認（このリポジトリを直接 clone した場合はここで判る）
+gh repo view --json visibility   # 手順1の受入基準: "visibility":"PRIVATE" が返ること
+                                 # gh が無い場合・GitHub 以外のホスティングでは、設定画面の Private 表示を目視確認し、
+                                 # docs/governance/operating-rules.md に確認を記録する
 
 # 3. リポジトリのルートでエージェント型AIを起動する
 #    例: Claude Code なら claude / Codex CLI なら codex / Gemini CLI なら gemini
@@ -213,10 +216,23 @@ Markdown は **Obsidian 互換**で書く。`[[wikilink]]` はリポジトリ内
 
 ## 更新戦略（スターターと自組織資産の二層）
 
-- **コア（上流=本リポジトリ由来）**: `docs/architecture.md`・テンプレート群。上流の改善はリリースノートを見て手動で取り込む
-- **育成層（自組織資産）**: 充填済みの `layer1/`、Drive 原本、`knowledge/` の派生状態、運用中の規約。**上流更新で上書きしない**
+- **コア（上流=本リポジトリ由来）**: `docs/architecture.md`・`docs/setup-guide.md`・`docs/user-guide.md`・`docs/google-drive-profile.md`・`docs/decisions/ADR-0000-template.md`・`knowledge/README.md`・`knowledge/` 配下の `_template.md`。上流の改善はリリースノートを見て手動で取り込む
+- **育成層（自組織資産）**: 充填済みの `layer1/`、制定した `docs/governance/operating-rules.md`、自組織向けに手を入れた `AGENTS.md`・`CLAUDE.md`、Drive 原本、`knowledge/` の派生状態、自組織のADR。**上流更新で上書きしない。** コアのテンプレートも、自組織の内容を書き込んだ時点で育成層に移る
 
 template から作った時点で独立進化が基本。上流に還元したい改善（テンプレの汎用的な穴・良い運用パターン）は本リポジトリへ issue / PR を歓迎する。出す前に [docs/ja/CONTRIBUTING.md](docs/ja/CONTRIBUTING.md) を読む（何を上流に還元してほしいか、PR 前のチェックリスト、issue の書き方）。
+
+### 上流の変更を取り込む
+
+「Use this template」で作ったリポジトリは本リポジトリと**共通の履歴を持たない**。したがって `git merge upstream/main` や `git rebase` は使えない — unrelated histories で失敗するか、全ファイル衝突になり、その衝突解消の過程で充填済みの `layer1/` が巻き戻る。差分を読んで手で反映する。
+
+```bash
+git remote add upstream https://github.com/HideTsug/org-os-starter.git
+git fetch upstream
+git diff HEAD upstream/main -- docs/architecture.md docs/setup-guide.md   # コアのパスを1つずつ。ツリー全体で差分を取らない
+# 取り込みたい箇所を自分のファイル側の編集として反映する（upstream から merge・rebase・checkout しない）
+```
+
+反映後の受入基準: `git diff --stat` に出るのが意図して扱ったコアのパスだけで、`layer1/`・`docs/governance/`・`knowledge/projects/`・`knowledge/issues/` には何も出ないこと。育成層のパスが出ていたら取り込みが自組織資産に届いている — そのパスを復元してやり直す。
 
 ## ライセンス
 

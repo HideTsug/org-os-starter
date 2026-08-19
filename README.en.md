@@ -66,7 +66,10 @@ Prerequisite: an agentic AI that can read and write the repository's Markdown �
 # 2. Clone the repository you created
 git clone <URL of your org's private repository> our-org-os
 cd our-org-os
-git remote -v   # confirm that origin points to your org's private repository
+git remote -v   # confirm that origin points to your org's private repository (this catches cloning this repository directly)
+gh repo view --json visibility   # the acceptance criterion for step 1: it must print "visibility":"PRIVATE"
+                                 # Without gh, or off GitHub, confirm "Private" in the hosting settings screen and
+                                 # record the confirmation in docs/governance/operating-rules.md
 
 # 3. Start your agentic AI in the repository root
 #    For example: claude for Claude Code, codex for Codex CLI, gemini for Gemini CLI
@@ -213,10 +216,23 @@ Write Markdown in an **Obsidian-compatible** style. `[[wikilink]]` is valid for 
 
 ## Update Strategy (Two Tiers: Starter and Your Organization's Assets)
 
-- **Core (upstream = derived from this repository)**: `docs/architecture.md` and the templates. Adopt upstream improvements manually by reviewing release notes
-- **Growth tier (your organization's assets)**: the filled-in `layer1/`, Drive originals, derived state under `knowledge/`, and the rules you operate under. **Never overwrite these with upstream updates**
+- **Core (upstream = derived from this repository)**: `docs/architecture.md`, `docs/setup-guide.md`, `docs/user-guide.md`, `docs/google-drive-profile.md`, `docs/decisions/ADR-0000-template.md`, `knowledge/README.md`, and the `_template.md` files under `knowledge/`. Adopt upstream improvements manually by reviewing release notes
+- **Growth tier (your organization's assets)**: the filled-in `layer1/`, your enacted `docs/governance/operating-rules.md`, `AGENTS.md` and `CLAUDE.md` once you have adapted them, Drive originals, derived state under `knowledge/`, and your own ADRs. **Never overwrite these with upstream updates.** A file starts as a core template and moves to the growth tier the moment you fill it with organizational content
 
 Once created from the template, independent evolution is the default. Improvements worth contributing back upstream (generic gaps in the templates, good operating patterns) are welcome as issues / PRs to this repository. Read [CONTRIBUTING.md](CONTRIBUTING.md) first — it covers what belongs upstream, the pre-pull-request checklist, and how to write an issue.
+
+### Taking an Upstream Change
+
+"Use this template" creates a repository that shares **no history** with this one, so `git merge upstream/main` and `git rebase` do not apply: they either fail as unrelated histories or turn into a whole-tree conflict, and resolving that conflict is how a filled `layer1/` gets rolled back. Read the difference and apply it by hand instead.
+
+```bash
+git remote add upstream https://github.com/HideTsug/org-os-starter.git
+git fetch upstream
+git diff HEAD upstream/main -- docs/architecture.md docs/setup-guide.md   # one core path at a time, never the whole tree
+# then edit your own files to take the parts you want; do not merge, rebase, or checkout from upstream
+```
+
+Acceptance criterion after applying: `git diff --stat` lists only the core paths you deliberately worked on, and nothing under `layer1/`, `docs/governance/`, `knowledge/projects/`, or `knowledge/issues/`. If a growth-tier path appears there, the intake reached your own assets — restore those paths and redo it.
 
 ## License
 
