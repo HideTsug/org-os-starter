@@ -29,7 +29,21 @@ If you are unsure whether something generalizes, open an issue before writing th
 
 Check every item. These are the invariants that are easy to break without noticing, because nothing in CI enforces them.
 
-- [ ] **English canon and Japanese mirror moved together.** The English documents are the canon; `docs/ja/` holds their Japanese mirrors. Changing one side only leaves the repository inconsistent. The mapping is: root `AGENTS.md` / `CLAUDE.md` / `CONTRIBUTING.md` ↔ `docs/ja/`, `docs/**` ↔ `docs/ja/docs/**`, `layer1/**` ↔ `docs/ja/layer1/**`, `knowledge/**` ↔ `docs/ja/knowledge/**`, and `README.md` (Japanese) ↔ `README.en.md` (English). `examples/` is outside this mapping: it is not mirrored, and only its English summary is kept in step with the English canon. Inside `docs/ja/`, references point to the Japanese counterpart whenever one exists — see [CLAUDE.md](CLAUDE.md), "Upstream-Only Rules"
+- [ ] **English canon and Japanese mirror moved together.** The English documents are the canon; `docs/ja/` holds their Japanese mirrors. Changing one side only leaves the repository inconsistent. The mapping is: root `AGENTS.md` / `CLAUDE.md` / `CONTRIBUTING.md` ↔ `docs/ja/`, `docs/**` ↔ `docs/ja/docs/**`, `layer1/**` ↔ `docs/ja/layer1/**`, `knowledge/**` ↔ `docs/ja/knowledge/**`, and `README.md` (Japanese) ↔ `README.en.md` (English). `examples/` is outside this mapping: it is not mirrored, and only its English summary is kept in step with the English canon. Which language each side's references point to is the next item
+- [ ] **References point to the document in the reader's language.** Inside `docs/ja/`, a reference points to the Japanese counterpart whenever one exists. Everywhere else it points to the English canon — including the first entry of the reading order in `AGENTS.md` (`README.en.md`, not the Japanese `README.md`) and the path column of the reading-order table and the file map in **both** READMEs, which name the same English canon paths row for row. A Japanese mirror may be named beside them as an extra pointer, never as the row's path. The rule is in [CLAUDE.md](CLAUDE.md), "Upstream-Only Rules". The check below lists every link that leaves `docs/ja/`; each remaining hit must be an intended exception — an `English version:` header link, the Japanese `README.md`, or a file with no Japanese counterpart such as `LICENSE`
+
+```bash
+python3 - <<'PY'
+import re, os, subprocess
+out = subprocess.run(['git', 'ls-files', '-z', 'docs/ja/*.md'], capture_output=True, text=True).stdout
+for f in [f for f in out.split('\0') if f]:
+    for link in re.findall(r'\]\(([^)#:]+?)(?:#[^)]*)?\)', open(f, encoding='utf-8').read()):
+        target = os.path.normpath(os.path.join(os.path.dirname(f), link))
+        if not target.startswith('docs/ja/'):
+            print('leaves the Japanese mirror:', f, '->', target)
+PY
+```
+
 - [ ] **Samples use fictional data only.** No real customer or vendor names, real financial figures, real communication logs, or internal non-public information, and no API keys, tokens, or secrets. `examples/demo-company/` is entirely fictional by design — see [CLAUDE.md](CLAUDE.md), "Commit Prohibitions"
 - [ ] **No Layer 3–5 directories, no empty directories, no placeholder-only files.** Unfilled items carry an owner flag such as `(requires executive owner)`, never a bare `(TODO)` — see [CLAUDE.md](CLAUDE.md), "Structure Rules"
 - [ ] **Every relative link resolves.** If you added, moved, or renamed a file, the file maps and reading-order tables in `README.md` and `README.en.md` need the same change. Verify that **every** relative link resolves — directories and non-Markdown targets such as `LICENSE` included, not only `.md` files — and produce output stating how many files were checked and how many links are broken. The script below is a reference implementation for an environment that has `python3`; where it is not available, use node, ripgrep plus a shell loop, or direct inspection of the files you changed to produce equivalent output, and paste that output in the pull request

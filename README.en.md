@@ -114,6 +114,8 @@ Details: [docs/user-guide.md](docs/user-guide.md) (written so it can be handed o
 | — | [CLAUDE.md](CLAUDE.md) | Operating rules for any AI agent that **edits** this repository, regardless of vendor. Claude Code loads it automatically; other agents must open it explicitly |
 | — | [docs/user-guide.md](docs/user-guide.md) | Usage guide for handing out to members |
 
+This table and the file map below describe the actual repository tree, so their paths are the English canon and match `README.md` row for row. The Japanese mirrors live under `docs/ja/`, reachable from the `Japanese version:` link at the top of each document.
+
 ### What Each Directory Means
 
 - `layer1/` — **SSoT for norms**. Only agreed documents (`status: agreed`) bind all AI and all people in the organization

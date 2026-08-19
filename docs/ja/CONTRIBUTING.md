@@ -29,7 +29,21 @@ English version: [../../CONTRIBUTING.md](../../CONTRIBUTING.md)
 
 すべての項目を確認する。CI が何も強制しないため、以下は気づかずに壊れやすい不変条件になっている。
 
-- [ ] **英語 canon と日本語ミラーを同時に更新した。** 英語文書が canon で、`docs/ja/` はその日本語ミラー。片側だけ変更するとリポジトリが不整合になる。対応関係は、root の `AGENTS.md` / `CLAUDE.md` / `CONTRIBUTING.md` ↔ `docs/ja/`、`docs/**` ↔ `docs/ja/docs/**`、`layer1/**` ↔ `docs/ja/layer1/**`、`knowledge/**` ↔ `docs/ja/knowledge/**`、`README.md`（日本語）↔ `README.en.md`（英語）。`examples/` はこの対応表の外にあり、ミラーを作らず、English summary のみを英語正本と歩調を合わせる。`docs/ja/` 内の参照は、日本語版が存在する限りそちらを指す（[CLAUDE.md](CLAUDE.md)「上流リポジトリ専用の規約」）
+- [ ] **英語 canon と日本語ミラーを同時に更新した。** 英語文書が canon で、`docs/ja/` はその日本語ミラー。片側だけ変更するとリポジトリが不整合になる。対応関係は、root の `AGENTS.md` / `CLAUDE.md` / `CONTRIBUTING.md` ↔ `docs/ja/`、`docs/**` ↔ `docs/ja/docs/**`、`layer1/**` ↔ `docs/ja/layer1/**`、`knowledge/**` ↔ `docs/ja/knowledge/**`、`README.md`（日本語）↔ `README.en.md`（英語）。`examples/` はこの対応表の外にあり、ミラーを作らず、English summary のみを英語正本と歩調を合わせる。各側の参照先をどちらの言語にするかは次の項目で定める
+- [ ] **参照先が読者の言語の文書を指している。** `docs/ja/` 内の参照は、日本語版が存在する限りそちらを指す。それ以外の場所では英語正本を指す — `AGENTS.md` の読み順の1件目（日本語の `README.md` ではなく `README.en.md`）と、**両方**の README の読み順表・ファイルマップのパス列（両者は同じ英語正本のパスを行単位で一致させる）を含む。日本語ミラーは補足リンクとして併記してよいが、行のパスそのものにはしない。規約は [CLAUDE.md](CLAUDE.md)「上流リポジトリ専用の規約」にある。下記の検査は `docs/ja/` の外へ出るリンクをすべて列挙する。残る各件は意図した例外（`English version:` の冒頭リンク・日本語版である `README.md`・`LICENSE` のように日本語版が存在しないファイル）でなければならない
+
+```bash
+python3 - <<'PY'
+import re, os, subprocess
+out = subprocess.run(['git', 'ls-files', '-z', 'docs/ja/*.md'], capture_output=True, text=True).stdout
+for f in [f for f in out.split('\0') if f]:
+    for link in re.findall(r'\]\(([^)#:]+?)(?:#[^)]*)?\)', open(f, encoding='utf-8').read()):
+        target = os.path.normpath(os.path.join(os.path.dirname(f), link))
+        if not target.startswith('docs/ja/'):
+            print('leaves the Japanese mirror:', f, '->', target)
+PY
+```
+
 - [ ] **サンプルは架空データのみ。** 実在の顧客名・取引先名・実際の財務数値・実際のやり取り・社内非公開情報（人事・提携・M&A・未公開財務・係争）を含めない。APIキー・トークン・シークレットも同様。`examples/demo-company/` は設計上すべて架空（[CLAUDE.md](CLAUDE.md)「コミット禁止事項」）
 - [ ] **Layer 3〜5 のディレクトリ・空ディレクトリ・プレースホルダのみのファイルを作っていない。** 未充填項目は `(要・代表)` のような責任者フラグ付きでのみ残し、裸の `(TODO)` は書かない（[CLAUDE.md](CLAUDE.md)「構造ルール」）
 - [ ] **相対リンクがすべて解決する。** ファイルを追加・移動・改名した場合は、`README.md` と `README.en.md` のファイルマップ・読み順表にも同じ変更が必要。`.md` だけでなくディレクトリや `LICENSE` 等の非Markdownを含む**すべて**の相対リンクが解決することを検証し、検査したファイル数と壊れたリンク数を出力する。下記は `python3` がある環境向けの参照実装で、使えない場合は node・ripgrep＋シェルループ・変更したファイルの直接確認などで同等の出力を作り、その出力を PR に貼る

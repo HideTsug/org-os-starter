@@ -1,6 +1,6 @@
 ---
 doc_type: reference
-version: "1.2"
+version: "1.3"
 summary: Org-OS Starter setup guide covering Layer 1 agreement, a Google Drive-first Layer 2, permission verification, and recurring use.
 ---
 
@@ -72,7 +72,9 @@ The main driver of adoption is that **the DRI uses it visibly every day**:
 - After meetings, record the decision in the approved Drive area. This is the write path.
 - Once a week, check `source_modified_at` against the original and refresh stale derived notes.
 
-If, after two weeks, asking AI is faster than asking people, adoption is working. If not, analyze with AI which part is missing: note granularity, freshness, or coverage.
+Judge adoption at two weeks against something observable rather than a feeling. The criterion: over the preceding seven days, each of the five recurring questions chosen in Step 2-5 was asked through AI at least once, and every answer linked its original and stated when that original was last modified or reviewed — the full answer contract is in [Google Drive Operating Profile](google-drive-profile.md), "Verify the Ask Path". Record the count and every question that fell short in the verification records section of `docs/governance/operating-rules.md`. An organization that did not run Step 2 applies the same criterion to its manually maintained `knowledge/`, with the last review date in place of the Drive link.
+
+If the criterion is not met, record which part is missing — note granularity, freshness, or coverage — fix that part, and measure the same five questions again. Do not begin Step 4 until the criterion is met once.
 
 ## Step 4: Expand from Real Operation
 
@@ -113,3 +115,4 @@ After Layer 2 starts working, consider the following. See the expansion patterns
 | 2026-08-13 | v1.0 | HideTsug | Initial version |
 | 2026-08-17 | v1.1 | HideTsug | Replaced the repository-only Layer 2 setup with the Google Drive-first v0.1 path |
 | 2026-08-19 | v1.2 | upstream template | Added the Layer 1 load-path wiring step, the branch for organizations without a Google Workspace tenant, and the record locations for the permission test and the sample-note contract |
+| 2026-08-19 | v1.3 | upstream template | Replaced the subjective Step 3 adoption judgment with the observable five-question criterion, its record location, and the gate before Step 4 |

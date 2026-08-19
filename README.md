@@ -105,7 +105,7 @@ docs/setup-guide.md を読んで、Step 0 から導入を進めたい。
 | 0 | [AGENTS.md](AGENTS.md) | AIエージェント向け入口。導入の流れ（DRI・委任者の対象確認、private リポジトリ化）と読み順。AIに導入を任せる場合はここから |
 | 1 | `README.md` | 本ファイル。全体像。英語版は `README.en.md` |
 | 2 | [docs/architecture.md](docs/architecture.md) | 5層アーキテクチャの解説 |
-| 3 | [Google Drive 運用プロファイル](docs/ja/docs/Google-Drive-運用プロファイル.md) | v0.1 の原本・権限・派生知識・鮮度の契約 |
+| 3 | [docs/google-drive-profile.md](docs/google-drive-profile.md) | v0.1 の原本・権限・派生知識・鮮度の契約。日本語版は [docs/ja/docs/Google-Drive-運用プロファイル.md](docs/ja/docs/Google-Drive-運用プロファイル.md) |
 | 4 | [docs/setup-guide.md](docs/setup-guide.md) | 導入手順（Step 0〜4）とカスタマイズポイント |
 | 5 | [layer1/](layer1/) | **規範テンプレート**。充填して frontmatter `status: agreed` に昇格させて初めて効力を持つ |
 | 6 | [docs/governance/operating-rules.md](docs/governance/operating-rules.md) | リポジトリ運用ルールのテンプレート |
@@ -113,6 +113,8 @@ docs/setup-guide.md を読んで、Step 0 から導入を進めたい。
 | — | [CONTRIBUTING.md](CONTRIBUTING.md) | 本リポジトリへ issue / PR を出すときの規約。日本語版は [docs/ja/CONTRIBUTING.md](docs/ja/CONTRIBUTING.md) |
 | — | [CLAUDE.md](CLAUDE.md) | 本リポジトリを**編集する**AIエージェント向けの運用規範。ベンダを問わず適用される。Claude Code は自動で読み込むが、他のエージェントは明示的に開く必要がある |
 | — | [docs/user-guide.md](docs/user-guide.md) | メンバー配布用の使い方ガイド |
+
+この表と下のファイルマップはリポジトリの実ツリーを表すため、パスは英語正本を指す（`README.en.md` と行単位で一致する）。日本語で読む場合は、各文書冒頭の `Japanese version:` リンクか、下のファイルマップの `docs/ja/` 配下の対応ファイルを開く。
 
 ### ディレクトリの意味
 
