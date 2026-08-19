@@ -14,6 +14,8 @@ Japanese version: [docs/ja/knowledge/projects/PJ-サンプル-備品管理.md](.
 # PJ: Equipment Ledger Project (Fictional Sample)
 
 > **Fictional sample data.** This file shows how to write a project note. Delete it once the organization has three real project notes.
+>
+> It is not derived from Drive, so it carries none of `source_urls`, `source_modified_at`, `source_status`, or `access_policy`. A note derived from Drive must carry all four; see `_template.md` in this directory and `knowledge/README.md`.
 
 ## Purpose and Value
 

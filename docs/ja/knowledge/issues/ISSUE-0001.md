@@ -15,6 +15,8 @@ summary: 架空のサンプルissue。同一備品が部署ごとに別名で登
 # ISSUE-0001: 備品名の表記ゆれで台帳の名寄せができない
 
 > **架空のサンプルデータ**。issueノートの書きぶりの見本。自組織のissueが入ったら削除してよい。
+>
+> Drive由来ではないため、`source_urls`・`source_modified_at`・`source_status`・`access_policy` をどれも持たない。Drive派生ノートはこの4キーを必ず持つ（同ディレクトリの `_テンプレート.md` と `knowledge/README.md` 参照）。
 
 ## 概要
 

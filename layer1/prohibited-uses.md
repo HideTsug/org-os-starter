@@ -1,6 +1,6 @@
 ---
 status: draft
-version: "0.1"
+version: "0.2"
 owner: (requires implementation DRI)
 summary: Template for explicitly prohibited AI uses inside the organization and the response to violations. It pairs with the data classification matrix.
 relates_to:
@@ -24,7 +24,7 @@ Japanese version: [docs/ja/layer1/禁止用途リスト.md](../docs/ja/layer1/�
 1. **Direct AI generation of deliverables involving professional responsibility, followed by submission or sending without review by a qualified professional or responsible owner.** AI output is always a draft. Do not submit deliverables to customers or public authorities without final human review. Reference examples: diagnosis-related documents in healthcare, customer-facing advice in finance, and legally required documents in licensed professions.
 2. **Providing specialized advice outside the contract scope to customers as-is from AI output.** AI may be used for preliminary research on out-of-scope topics, but advice to customers must pass through human judgment inside the contract and responsibility scope.
 3. **Automating statutorily exclusive acts, or judgments reserved by law to qualified professionals, as direct AI responses.** Do not connect AI directly to customers to answer such judgments automatically. The automatic-response scope of customer-facing AI must be designed separately by the approval body. (requires qualified professional: identify applicable work under the organization's industry law)
-4. **Entering regulated data, category 4 in [[data-classification-matrix]], into AI.** This includes individual numbers, identity-verification documents, sensitive personal information, and litigation materials.
+4. **Entering regulated data, category 4 in [[data-classification-matrix]], into AI.** This includes statutory identifiers restricted by law, identity-verification documents, sensitive personal information, and litigation materials. Which items belong here is decided by the laws of the organization's own jurisdiction (example, Japanese jurisdiction: individual numbers under the Individual Number Act).
 5. **Unreviewed automatic execution of external communication under the representative or organization name.** This includes sending email, posting to social media, and sending customer-facing documents. Generation is allowed; sending and publication require human confirmation.
 6. **Uses that avoid or hollow out conflict-of-interest checks**, such as combining information from multiple customers to generate advice favorable to one side.
 
@@ -51,3 +51,4 @@ Japanese version: [docs/ja/layer1/禁止用途リスト.md](../docs/ja/layer1/�
 | Date | Version | Author | Change |
 |---|---|---|---|
 | [Date] | v0.1 | [Drafter] | Drafted from template |
+| 2026-08-19 | v0.2 | upstream template | Restated item 4 as jurisdiction-independent, with the Japanese items kept as a labelled example |

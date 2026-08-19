@@ -12,6 +12,8 @@ summary: 構造の見本として置いてある架空PJ。社内備品の在庫
 # PJ: 備品管理の台帳化（架空サンプル）
 
 > **架空のサンプルデータ**。ノートの書きぶりの見本として置いてある。自組織のPJノートが3本入ったら削除してよい。
+>
+> Drive由来ではないため、`source_urls`・`source_modified_at`・`source_status`・`access_policy` をどれも持たない。Drive派生ノートはこの4キーを必ず持つ（同ディレクトリの `_テンプレート.md` と `knowledge/README.md` 参照）。
 
 ## 目的・価値
 
