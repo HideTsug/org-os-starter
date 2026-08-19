@@ -1,6 +1,6 @@
 ---
 status: draft
-version: "0.1"
+version: "0.2"
 owner: (requires implementation DRI)
 summary: Template for organizational AI work norms, the core Layer 1 document. It makes organizational policy, compliance norms, data handling, and escalation machine-readable. Fill it for the adopting organization and promote it to agreed after approval.
 ---
@@ -10,6 +10,8 @@ Japanese version: [docs/ja/layer1/組織CLAUDE.md](../docs/ja/layer1/組織CLAUD
 # <Organization Name> CLAUDE.md (Template)
 
 > The core Layer 1 document for norms and SSoT separation. **This is the first norm document read by every AI agent that supports work inside the organization.**
+>
+> That is a requirement, not an automatic behavior: no agent loads this file on its own. Connect it to the load path of every agent the organization uses, as described in `docs/setup-guide.md`, Step 1, and treat these norms as effective for an agent only after that step's check passes for it.
 >
 > Filling policy: Do not try to complete it all at once. Fill confirmed parts first, such as compliance norms based on current law and already agreed internal decisions. Mark items that require management judgment with owner flags such as `(requires executive owner)` and fill them alongside operations.
 
@@ -57,11 +59,13 @@ Japanese version: [docs/ja/layer1/組織CLAUDE.md](../docs/ja/layer1/組織CLAUD
 - **Conduct that damages trust**: Treat unreviewed external publication of AI-generated material under the organization or representative name as a trust-damage risk, because generated material may include hallucinations or inaccurate views. See [[prohibited-uses]].
 - **Exclusive professional acts and expert responsibility**: If the law reserves certain judgments to qualified professionals, prohibit connecting AI directly to customers for automatic answers on those judgments. See [[prohibited-uses]]. AI's role is limited to creating drafts that support qualified human judgment.
 
-### Privacy Law and Individual Number Law: Cross-Industry
+### Privacy Law and Statutory Identifiers: Cross-Industry
 
-- Entering customer personal data into cloud AI outside organization management may constitute third-party provision or outsourcing. Do not do this unless consent and vendor-supervision duties are organized. This is the legal basis for the unmanaged-environment prohibition in [[data-classification-matrix]].
-- Individual numbers and related documents are governed by the Individual Number Act, which strictly limits both the purposes for which they may be used and the parties they may be provided to. Entering them into AI is prohibited regardless of environment. Treat them as category 4 in [[data-classification-matrix]].
-- Materials containing sensitive personal information, such as medical history, should be handled in line with category 4.
+(requires qualified professional: identify the privacy law and the statutory-identifier rules that actually apply in the organization's own jurisdiction, and cite the primary legal text. Acceptance criterion for this section once filled: it names the governing jurisdiction and links at least one primary legal source. The goals below hold across jurisdictions; the parenthesized items are examples from the Japanese jurisdiction and must be replaced when a different law applies.)
+
+- Entering customer personal data into cloud AI outside organization management may constitute third-party provision or outsourcing under the applicable privacy law. Do not do this unless consent and vendor-supervision duties are organized. This is the legal basis for the unmanaged-environment prohibition in [[data-classification-matrix]]. (Example, Japanese jurisdiction: the Act on the Protection of Personal Information.)
+- National or statutory identifiers whose permitted purposes and permitted recipients are restricted by law, and the documents that carry them, must not be entered into AI regardless of environment. Treat them as category 4 in [[data-classification-matrix]]. (Example, Japanese jurisdiction: individual numbers under the Individual Number Act.)
+- Materials containing sensitive personal information, such as medical history, should be handled in line with category 4. Which attributes count as sensitive is set by the applicable law. (Example, Japanese jurisdiction: "special care-required personal information".)
 
 ### Contracts and Other Rules
 
@@ -98,3 +102,4 @@ Japanese version: [docs/ja/layer1/組織CLAUDE.md](../docs/ja/layer1/組織CLAUD
 | Date | Version | Author | Change |
 |---|---|---|---|
 | [Date] | v0.1 | [Drafter] | Drafted from template |
+| 2026-08-19 | v0.2 | upstream template | Tied the "read first" requirement to the load-path wiring step, and restated the privacy section as jurisdiction-independent goals with an owner flag and labelled examples |

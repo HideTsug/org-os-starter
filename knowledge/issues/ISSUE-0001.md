@@ -17,6 +17,8 @@ Japanese version: [docs/ja/knowledge/issues/ISSUE-0001.md](../../docs/ja/knowled
 # ISSUE-0001: Equipment names vary, preventing ledger normalization
 
 > **Fictional sample data.** This file shows how to write an issue note. Delete it once the organization has real issues.
+>
+> It is not derived from Drive, so it carries none of `source_urls`, `source_modified_at`, `source_status`, or `access_policy`. A note derived from Drive must carry all four; see `_template.md` in this directory and `knowledge/README.md`.
 
 ## Overview
 

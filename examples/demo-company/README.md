@@ -42,11 +42,13 @@ examples/demo-company/
    cd org-os-starter/examples/demo-company
    ```
 
-2. このディレクトリで Claude Code を起動する
+2. このディレクトリでエージェント型AIを起動する
 
    ```bash
    claude
    ```
+
+   （`claude` は Claude Code の起動コマンド。他のエージェント型AIを使う場合は各ツールの起動コマンドに置き換える — Codex CLI なら `codex`、Gemini CLI なら `gemini`）
 
 3. 次のプロンプトを貼り付けて試す
 
@@ -85,4 +87,12 @@ examples/demo-company/
 
 ## English summary
 
-This directory is a fully filled, self-contained file-convention demo of Org-OS Starter for a fictional small manufacturer, "Midori Seimitsu Co., Ltd." All companies, people, and figures are fictional. It does not connect Google Drive and does not test Drive permissions, original-source links, or freshness. To try it: clone the repository, `cd examples/demo-company`, run `claude`, and paste the sample prompts. The third prompt writes only synthetic demo data; ordinary-member v0.1 writes happen in Drive. The real Drive-first setup contract is `../../docs/google-drive-profile.md`.
+This directory is a fully filled, self-contained file-convention demo of Org-OS Starter for a fictional small manufacturer, "Midori Seimitsu Co., Ltd." All companies, people, and figures are fictional. It does not connect Google Drive and does not test Drive permissions, original-source links, or freshness. The notes themselves are written in Japanese — the demo exercises the file convention, and an agent can answer in English from them.
+
+To try it: clone the repository, `cd examples/demo-company`, run your agentic AI in this directory (`claude` for Claude Code, `codex` for Codex CLI, `gemini` for Gemini CLI), and paste the prompts below. Each prompt states what a correct answer looks like; use that as the acceptance criterion.
+
+1. `List the current open points of Midori Seimitsu's active projects, with sources.` → the answer names both notes under `knowledge/projects/` by file name and reproduces their 現在の論点 (current issues) sections.
+2. `What is the history of ISSUE-0102, and what happens next?` → the answer covers the new-hire training issue from when it was raised through today and says who does what next, citing `knowledge/issues/ISSUE-0102-新人研修の属人化.md`.
+3. `File this new concern as an issue note.` → a new `knowledge/issues/ISSUE-0104-….md` appears with the same frontmatter schema as the existing issue notes; the schema canon is `../../knowledge/issues/_template.md`.
+
+The third prompt writes only synthetic demo data; ordinary-member v0.1 writes happen in Drive. The real Drive-first setup contract is `../../docs/google-drive-profile.md`.

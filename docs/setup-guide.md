@@ -1,6 +1,6 @@
 ---
 doc_type: reference
-version: "1.1"
+version: "1.3"
 summary: Org-OS Starter setup guide covering Layer 1 agreement, a Google Drive-first Layer 2, permission verification, and recurring use.
 ---
 
@@ -20,6 +20,8 @@ Before working on documents, decide only three things.
 
 After deciding, fill the permission design section in `docs/governance/operating-rules.md`.
 
+In the same pass, clear the template's upstream-only items. The list, and the action for each, is in `CLAUDE.md` under "Upstream-Only Rules".
+
 ## Step 1: Fill the Three Layer 1 Documents
 
 Fill the three templates under `layer1/` for the adopting organization. **Do not wait for perfection.** Fill the parts that can be confirmed, and leave management-judgment items as owner flags such as `(requires executive owner)` while beginning draft operation.
@@ -38,19 +40,27 @@ Filling tips:
 
 **Interim operation until agreed promotion**: AI input is limited to public-category data such as fictional cases and public information. Communicate this interim rule to members first.
 
+### Wire the Agreed Documents into Each Agent's Load Path
+
+Promotion to `agreed` records the agreement. It does not by itself put the norms into any agent's context: nothing loads `layer1/` automatically. Before treating the norms as effective, connect the three documents to the automatic load path of **every** agentic AI the organization actually uses, through whatever mechanism that tool provides — a reference from the repository root `CLAUDE.md`, an `AGENTS.md`, a rules file, a project instruction file, or a system prompt. Members who only use Drive plus a chat AI are included; their agent needs the same path.
+
+Acceptance criterion, checked once per agent in a fresh session with no file attached: ask "quote the item numbers in `prohibited-uses.md` that apply to this work". Until the agent answers with item numbers from the agreed document, the norms are not effective for that agent and must not be relied on. Record the agents covered and the path each uses in the verification records section of `docs/governance/operating-rules.md`.
+
 ## Step 2: Connect One Google Drive Area
 
-Follow [Google Drive Operating Profile](google-drive-profile.md). The goal is to connect one existing knowledge boundary without reorganizing the entire drive.
+The goal of this step is stated independently of the source: connect one existing knowledge boundary that AI can read while inheriting the asking user's own permissions, without reorganizing everything behind it. **v0.1 implements that goal for Google Drive only.** If the organization has no Google Workspace tenant, do not run Step 2 — begin operation with the filled Layer 1 documents and a manually maintained `knowledge/`, and report the organization's source of record and one recurring workflow as an issue, following re-evaluation condition 2 in [ADR-0001](decisions/ADR-0001-google-drive-first-v0.1.md).
+
+For Google Drive, follow [Google Drive Operating Profile](google-drive-profile.md) and connect one existing knowledge boundary without reorganizing the entire drive.
 
 1. Choose one shared drive or top-level folder and three to five active projects inside it.
 2. Establish a read-only per-user OAuth path. Do not use a service account or domain-wide delegation.
-3. Run the required two-account permission-differential test with harmless test documents, including an answer path that uses an existing derived note. An account without access must receive neither the restricted content nor its source.
+3. Run the required two-account permission-differential test with harmless test documents, including an answer path that uses an existing derived note. An account without access must receive neither the restricted content nor its source. Record the pass as an ADR, as described in [Google Drive Operating Profile](google-drive-profile.md), "Run the Permission-Differential Test".
 4. For each selected project, create a non-sensitive derived note from `knowledge/projects/_template.md`. Record the Drive source URL and newest source modification time.
 5. Have project owners choose five recurring questions, then verify that every answer cites an original Drive document and states when it was modified or reviewed.
 
-**Do not connect real confidential documents until the permission test passes and the applicable Layer 1 documents are `agreed`.** Category 3 and category 4 details remain in Drive. They must not be copied into `knowledge/`, prompts shared with unauthorized people, logs, PR bodies, or issues. Have AI run a confidentiality check before every commit; see `CLAUDE.md`.
+**Do not connect real confidential documents until the permission test passes and the applicable Layer 1 documents are `agreed`.** Both halves of that gate must be checkable by a later session: agreement is the frontmatter `status`, and the permission test is the ADR created in Step 2-3. Category 3 and category 4 details remain in Drive. They must not be copied into `knowledge/`, prompts shared with unauthorized people, logs, PR bodies, or issues. Have AI run a confidentiality check before every commit; see `CLAUDE.md`.
 
-The sample notes, `PJ-sample-equipment.md` and `ISSUE-0001.md`, show the derived-note structure. Delete them after the organization has three real derived project notes.
+The sample notes, `PJ-sample-equipment.md` and `ISSUE-0001.md`, show the section structure of a note. They are not derived from Drive and therefore carry none of the source and access keys a Drive-derived note requires. Delete them after the organization has three real derived project notes.
 
 ## Step 3: Put Daily Operation in Place
 
@@ -62,7 +72,9 @@ The main driver of adoption is that **the DRI uses it visibly every day**:
 - After meetings, record the decision in the approved Drive area. This is the write path.
 - Once a week, check `source_modified_at` against the original and refresh stale derived notes.
 
-If, after two weeks, asking AI is faster than asking people, adoption is working. If not, analyze with AI which part is missing: note granularity, freshness, or coverage.
+Judge adoption at two weeks against something observable rather than a feeling. The criterion: over the preceding seven days, each of the five recurring questions chosen in Step 2-5 was asked through AI at least once, and every answer linked its original and stated when that original was last modified or reviewed — the full answer contract is in [Google Drive Operating Profile](google-drive-profile.md), "Verify the Ask Path". Record the count and every question that fell short in the verification records section of `docs/governance/operating-rules.md`. An organization that did not run Step 2 applies the same criterion to its manually maintained `knowledge/`, with the last review date in place of the Drive link.
+
+If the criterion is not met, record which part is missing — note granularity, freshness, or coverage — fix that part, and measure the same five questions again. Do not begin Step 4 until the criterion is met once.
 
 ## Step 4: Expand from Real Operation
 
@@ -102,3 +114,5 @@ After Layer 2 starts working, consider the following. See the expansion patterns
 |---|---|---|---|
 | 2026-08-13 | v1.0 | HideTsug | Initial version |
 | 2026-08-17 | v1.1 | HideTsug | Replaced the repository-only Layer 2 setup with the Google Drive-first v0.1 path |
+| 2026-08-19 | v1.2 | upstream template | Added the Layer 1 load-path wiring step, the branch for organizations without a Google Workspace tenant, and the record locations for the permission test and the sample-note contract |
+| 2026-08-19 | v1.3 | upstream template | Replaced the subjective Step 3 adoption judgment with the observable five-question criterion, its record location, and the gate before Step 4 |

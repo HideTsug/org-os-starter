@@ -1,7 +1,7 @@
 ---
 doc_type: template
-version: "1.1"
-summary: Template for operating rules of the repository layer in the Google Drive-first profile. It defines DRI permissions, derived-note edits, commit prohibitions, and norm agreement.
+version: "1.3"
+summary: Template for operating rules of the repository layer in the Google Drive-first profile. It defines DRI permissions, adoption verification records, derived-note edits, commit prohibitions, and norm agreement.
 ---
 
 Japanese version: [docs/ja/docs/governance/運用規約.md](../ja/docs/governance/運用規約.md)
@@ -18,6 +18,19 @@ Japanese version: [docs/ja/docs/governance/運用規約.md](../ja/docs/governanc
 - Direct push to `main` is limited to [DRI Name]. Once a third party has write permission, move to PR operation and revise these rules.
 - Note: On the GitHub org Free plan, branch protection for private repositories must be confirmed against the current GitHub Docs. If it is unavailable in the adopting environment, minimize permissions as the structural guard.
 - Proposal path for repository reviewers: PR from a fork if private forks are allowed by the org settings, or a request to [DRI Name] through AI or chat to file on their behalf. Specify which path the organization uses.
+
+## Adoption Verification Records
+
+Checks that gate a later step are recorded here, so a different person or a later AI session can tell whether they were actually done instead of assuming they probably were. Fill a row when the check passes; leave it empty while it has not.
+
+| Check | Date | Confirmed by | Note |
+|---|---|---|---|
+| Repository visibility is private — `gh repo view --json visibility` returns `"visibility":"PRIVATE"`, or the hosting settings screen shows Private | [Date] | [Name] | |
+| Layer 1 norms are wired into each agent's load path — asked which prohibited-uses items apply, the agent quotes item numbers from the agreed document (`docs/setup-guide.md`, Step 1) | [Date] | [Name] | agents and load paths covered: [list] |
+| Agent Drive access capability — the agent shows the title and last modification time of one named Drive file, or the reason it cannot (`AGENTS.md`, onboarding step 4) | [Date] | [Name] | |
+| Step 3 adoption criterion, the gate before Step 4 — over the preceding seven days each of the five recurring questions was asked through AI at least once, and every answer linked its original and stated when it was last modified or reviewed (`docs/setup-guide.md`, Step 3) | [Date] | [Name] | questions that fell short: [list] |
+
+The two-account permission-differential test is recorded as an ADR instead of a row here, because it gates connecting real confidential documents. See `docs/google-drive-profile.md`, "Run the Permission-Differential Test".
 
 ## Document status Management
 
@@ -73,3 +86,5 @@ When membership grows and each person has an AI agent sharing work, separating A
 |---|---|---|---|
 | [Date] | v1.0 | [DRI Name] | Enacted |
 | 2026-08-17 | v1.1 | upstream template | Made ordinary-member edits Drive-first and limited repository edits to norms and non-sensitive derived state |
+| 2026-08-19 | v1.2 | upstream template | Added the adoption verification records section for repository visibility, Layer 1 load-path wiring, and agent Drive capability |
+| 2026-08-19 | v1.3 | upstream template | Added the Step 3 adoption criterion row that gates Step 4 |
