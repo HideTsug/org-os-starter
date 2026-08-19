@@ -2,6 +2,8 @@
 
 日本語: [README.md](README.md)
 
+Current version: v1.0.0 (2026-08-13) plus unreleased improvements on main. The change history is in [CHANGELOG.md](CHANGELOG.md).
+
 A knowledge-foundation starter kit for moving your organization toward an **AI-native organization**. It sets up — in a form you can manage as a repository — your internal rules for AI use, a structure that keeps knowledge from being locked inside individuals, and the groundwork for entrusting company work to AI.
 
 > Company OS as Code is a file convention that structures a company's operating knowledge, norms, and decisions into a single repository so that humans and AI agents can read and write the same foundation. The reference template is the OSS "Org-OS Starter" by HideTsug (2026, MIT).
@@ -132,6 +134,7 @@ org-os-starter/
 ├── AGENTS.md                          # Entry point for AI agents (editing branch, adoption flow, reading order, support confirmation)
 ├── CLAUDE.md                          # Norms for AI that reads/writes this repository (usable as-is)
 ├── CONTRIBUTING.md                    # How to file issues / pull requests upstream
+├── CHANGELOG.md                       # Change history (Keep a Changelog format; the base for judging upstream differences)
 ├── LICENSE                            # MIT
 ├── .gitignore                         # .DS_Store / .obsidian/
 ├── scripts/
@@ -151,6 +154,7 @@ org-os-starter/
 │       ├── AGENTS.md
 │       ├── CLAUDE.md
 │       ├── CONTRIBUTING.md
+│       ├── CHANGELOG.md
 │       ├── docs/
 │       │   ├── AIエージェント導入ガイド.md         # ai-agent-guide.md
 │       │   ├── architecture.md
@@ -223,7 +227,7 @@ Write Markdown in an **Obsidian-compatible** style. `[[wikilink]]` is valid for 
 
 ## Update Strategy (Two Tiers: Starter and Your Organization's Assets)
 
-- **Core (upstream = derived from this repository)**: `docs/architecture.md`, `docs/setup-guide.md`, `docs/user-guide.md`, `docs/google-drive-profile.md`, `docs/decisions/ADR-0000-template.md`, `knowledge/README.md`, and the `_template.md` files under `knowledge/`. Adopt upstream improvements manually by reviewing release notes
+- **Core (upstream = derived from this repository)**: `docs/architecture.md`, `docs/setup-guide.md`, `docs/user-guide.md`, `docs/google-drive-profile.md`, `docs/decisions/ADR-0000-template.md`, `knowledge/README.md`, and the `_template.md` files under `knowledge/`. Adopt upstream improvements manually by reviewing [CHANGELOG.md](CHANGELOG.md) and the release notes
 - **Growth tier (your organization's assets)**: the filled-in `layer1/`, your enacted `docs/governance/operating-rules.md`, `AGENTS.md` and `CLAUDE.md` once you have adapted them, Drive originals, derived state under `knowledge/`, and your own ADRs. **Never overwrite these with upstream updates.** A file starts as a core template and moves to the growth tier the moment you fill it with organizational content
 
 Once created from the template, independent evolution is the default. Improvements worth contributing back upstream (generic gaps in the templates, good operating patterns) are welcome as issues / PRs to this repository. Read [CONTRIBUTING.md](CONTRIBUTING.md) first — it covers what belongs upstream, the pre-pull-request checklist, and how to write an issue.
