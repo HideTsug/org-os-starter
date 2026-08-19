@@ -245,6 +245,10 @@ git diff HEAD upstream/main -- docs/architecture.md docs/setup-guide.md   # one 
 
 Acceptance criterion after applying: `git diff --stat` lists only the core paths you deliberately worked on, and nothing under `layer1/`, `docs/governance/`, `knowledge/projects/`, or `knowledge/issues/`. If a growth-tier path appears there, the intake reached your own assets — restore those paths and redo it.
 
+## Adopters
+
+See [ADOPTERS.md](ADOPTERS.md) for organizations running this convention (opt-in only, removable at any time).
+
 ## License
 
 MIT License — [LICENSE](LICENSE)
