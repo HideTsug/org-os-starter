@@ -113,6 +113,7 @@ docs/setup-guide.md を読んで、Step 0 から導入を進めたい。
 | — | [CONTRIBUTING.md](CONTRIBUTING.md) | 本リポジトリへ issue / PR を出すときの規約。日本語版は [docs/ja/CONTRIBUTING.md](docs/ja/CONTRIBUTING.md) |
 | — | [CLAUDE.md](CLAUDE.md) | 本リポジトリを**編集する**AIエージェント向けの運用規範。ベンダを問わず適用される。Claude Code は自動で読み込むが、他のエージェントは明示的に開く必要がある |
 | — | [docs/user-guide.md](docs/user-guide.md) | メンバー配布用の使い方ガイド |
+| — | [docs/ai-agent-guide.md](docs/ai-agent-guide.md) | clone **前**のAI向け導入台本。raw URL 1本で読み込み、対象確認・実行環境の自己判定・private 化の同意を経て導入手順 Step 0 へ引き渡す。日本語版は [docs/ja/docs/AIエージェント導入ガイド.md](docs/ja/docs/AIエージェント導入ガイド.md) |
 
 この表と下のファイルマップはリポジトリの実ツリーを表すため、パスは英語正本を指す（順1の行は各READMEが自分自身を指すため例外で、それ以外は `README.en.md` と行単位で一致する）。日本語で読む場合は、各文書冒頭の `Japanese version:` リンクか、下のファイルマップの `docs/ja/` 配下の対応ファイルを開く。
 
@@ -134,6 +135,7 @@ org-os-starter/
 ├── LICENSE                            # MIT
 ├── .gitignore                         # .DS_Store / .obsidian/
 ├── docs/                              # 英語 canon の解説・ガイド・決定記録（規範ではない）
+│   ├── ai-agent-guide.md              # clone 前のAI向け導入台本（raw URL 1本で読み込む）
 │   ├── architecture.md                # 5層アーキテクチャ解説
 │   ├── google-drive-profile.md        # v0.1 Google Drive 運用契約
 │   ├── setup-guide.md                 # 導入手順 Step 0〜4
@@ -148,6 +150,7 @@ org-os-starter/
 │       ├── CLAUDE.md
 │       ├── CONTRIBUTING.md
 │       ├── docs/
+│       │   ├── AIエージェント導入ガイド.md
 │       │   ├── architecture.md
 │       │   ├── Google-Drive-運用プロファイル.md
 │       │   ├── 導入ガイド.md

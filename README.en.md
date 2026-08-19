@@ -113,6 +113,7 @@ Details: [docs/user-guide.md](docs/user-guide.md) (written so it can be handed o
 | — | [CONTRIBUTING.md](CONTRIBUTING.md) | How to file issues and pull requests against this repository. Japanese version: [docs/ja/CONTRIBUTING.md](docs/ja/CONTRIBUTING.md) |
 | — | [CLAUDE.md](CLAUDE.md) | Operating rules for any AI agent that **edits** this repository, regardless of vendor. Claude Code loads it automatically; other agents must open it explicitly |
 | — | [docs/user-guide.md](docs/user-guide.md) | Usage guide for handing out to members |
+| — | [docs/ai-agent-guide.md](docs/ai-agent-guide.md) | Pre-clone briefing for an AI agent, loadable from a single raw URL. Confirms scope, self-assesses the execution environment, obtains private-repository consent, then hands over to Step 0 of the setup guide |
 
 This table and the file map below describe the actual repository tree, so their paths are the English canon and match `README.md` row for row, apart from row 1, where each README names itself. To read in Japanese, follow the `Japanese version:` link at the top of the document, or open its counterpart under `docs/ja/` in the file map below.
 
@@ -134,6 +135,7 @@ org-os-starter/
 ├── LICENSE                            # MIT
 ├── .gitignore                         # .DS_Store / .obsidian/
 ├── docs/                              # English canon: explanations, guides, decision records (not normative)
+│   ├── ai-agent-guide.md              # Pre-clone briefing for AI agents (loadable from a single raw URL)
 │   ├── architecture.md                # The 5-layer architecture explained
 │   ├── google-drive-profile.md        # v0.1 Google Drive operating contract
 │   ├── setup-guide.md                 # Adoption steps 0–4
@@ -148,6 +150,7 @@ org-os-starter/
 │       ├── CLAUDE.md
 │       ├── CONTRIBUTING.md
 │       ├── docs/
+│       │   ├── AIエージェント導入ガイド.md         # ai-agent-guide.md
 │       │   ├── architecture.md
 │       │   ├── Google-Drive-運用プロファイル.md   # google-drive-profile.md
 │       │   ├── 導入ガイド.md                      # setup-guide.md
