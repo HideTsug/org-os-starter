@@ -2,6 +2,8 @@
 
 English: [README.en.md](README.en.md)
 
+現行バージョン: v1.0.0（2026-08-13）＋ main 上の未リリース改善。変更履歴は [CHANGELOG.md](CHANGELOG.md)（日本語版は [docs/ja/CHANGELOG.md](docs/ja/CHANGELOG.md)）。
+
 組織を **AIネイティブな組織** に移行させるための知識基盤スターターキット。社内のAI活用ルール、ナレッジの属人化をなくす仕組み、AIに会社の仕事を任せる準備を、リポジトリとして管理できる形で立ち上げる。
 
 > Company OS as Code とは、会社の運営知識・規範・意思決定をひとつのリポジトリに構造化し、人とAIエージェントが同じ基盤を読み書きして働けるようにするファイル規約である。参照テンプレートとして HideTsug の OSS『Org-OS Starter』（2026, MIT）が公開されている。
@@ -132,6 +134,7 @@ org-os-starter/
 ├── AGENTS.md                          # AIエージェント向け入口（編集時の振り分け・導入の流れ・読み順・応援の確認）
 ├── CLAUDE.md                          # このリポジトリを読み書きするAI向けの規範（初期値のまま使える）
 ├── CONTRIBUTING.md                    # 上流リポジトリへの issue / PR の出し方
+├── CHANGELOG.md                       # 変更履歴（Keep a Changelog 形式・上流差分の判断起点）
 ├── LICENSE                            # MIT
 ├── .gitignore                         # .DS_Store / .obsidian/
 ├── scripts/
@@ -151,6 +154,7 @@ org-os-starter/
 │       ├── AGENTS.md
 │       ├── CLAUDE.md
 │       ├── CONTRIBUTING.md
+│       ├── CHANGELOG.md
 │       ├── docs/
 │       │   ├── AIエージェント導入ガイド.md
 │       │   ├── architecture.md
@@ -223,7 +227,7 @@ Markdown は **Obsidian 互換**で書く。`[[wikilink]]` はリポジトリ内
 
 ## 更新戦略（スターターと自組織資産の二層）
 
-- **コア（上流=本リポジトリ由来）**: `docs/architecture.md`・`docs/setup-guide.md`・`docs/user-guide.md`・`docs/google-drive-profile.md`・`docs/decisions/ADR-0000-template.md`・`knowledge/README.md`・`knowledge/` 配下の `_template.md`。上流の改善はリリースノートを見て手動で取り込む
+- **コア（上流=本リポジトリ由来）**: `docs/architecture.md`・`docs/setup-guide.md`・`docs/user-guide.md`・`docs/google-drive-profile.md`・`docs/decisions/ADR-0000-template.md`・`knowledge/README.md`・`knowledge/` 配下の `_template.md`。上流の改善は [CHANGELOG.md](CHANGELOG.md)（日本語版は [docs/ja/CHANGELOG.md](docs/ja/CHANGELOG.md)）とリリースノートを見て手動で取り込む
 - **育成層（自組織資産）**: 充填済みの `layer1/`、制定した `docs/governance/operating-rules.md`、自組織向けに手を入れた `AGENTS.md`・`CLAUDE.md`、Drive 原本、`knowledge/` の派生状態、自組織のADR。**上流更新で上書きしない。** コアのテンプレートも、自組織の内容を書き込んだ時点で育成層に移る
 
 template から作った時点で独立進化が基本。上流に還元したい改善（テンプレの汎用的な穴・良い運用パターン）は本リポジトリへ issue / PR を歓迎する。出す前に [docs/ja/CONTRIBUTING.md](docs/ja/CONTRIBUTING.md) を読む（何を上流に還元してほしいか、PR 前のチェックリスト、issue の書き方）。
