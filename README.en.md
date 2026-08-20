@@ -8,7 +8,7 @@ A knowledge-foundation starter kit for moving your organization toward an **AI-n
 
 > Company OS as Code is a file convention that structures a company's operating knowledge, norms, and decisions into a single repository so that humans and AI agents can read and write the same foundation. The reference template is the OSS "Org-OS Starter" by HideTsug (2026, MIT).
 
-This repository is that reference template. It stands up a company brain (a concept proposed in Y Combinator's Summer 2026 Requests for Startups) inside your own organization — not as SaaS, but as a file convention you can manage as code.
+This repository is that reference template. It stands up a company brain (a concept proposed in Y Combinator's Summer 2026 Requests for Startups) inside your own organization — not as SaaS, but as a file convention you can manage as code. An [explainer page](https://hidetsug.github.io/org-os-starter/) (Japanese) expands on this definition with an FAQ.
 
 It offers the shortest route from "individuals using AI tools in isolation" to a state where **your organization's norms, knowledge, and decisions are structured and accumulated, and AI (agentic AI such as Claude Code) reads and writes them while supporting every member's work**.
 
