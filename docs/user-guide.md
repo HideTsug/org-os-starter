@@ -1,6 +1,6 @@
 ---
 doc_type: template
-version: "1.1"
+version: "1.2"
 summary: Template for a human-facing Google Drive-first knowledge guide. Members ask through AI, read cited Drive originals, and edit originals in approved Drive areas.
 ---
 
@@ -63,6 +63,7 @@ Restricted information may exist only in an approved Drive area whose access mat
 - **Q. The cited source does not open.** → A. Ask the document owner. AI must not bypass Drive permissions.
 - **Q. I do not know where to write something.** → A. Ask the project owner or [Administrator Name] for the approved Drive area.
 - **Q. AI's answer looks stale.** → A. Check the cited original and report the mismatch to [Administrator Name] so the derived state can be refreshed.
+- **Q. AI's answer has no original link, or contradicts the cited original.** → A. Do not use that answer for work. Report the question and the answer to [Administrator Name]. Answers must cite their Drive originals (Path 1); checking that the original supports the answer is Path 2.
 
 ## Revision History
 
@@ -70,3 +71,4 @@ Restricted information may exist only in an approved Drive area whose access mat
 |---|---|---|---|
 | 2026-08-13 | v1.0 | HideTsug | Initial template |
 | 2026-08-17 | v1.1 | HideTsug | Replaced member-facing GitHub workflows with Google Drive-first ask, read, and write paths |
+| 2026-08-21 | v1.2 | upstream template | Added the FAQ entry for answers with no original link or contradicting the cited original |
