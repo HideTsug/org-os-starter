@@ -1,6 +1,6 @@
 ---
 doc_type: reference
-version: "1.3"
+version: "1.4"
 summary: Org-OS Starter setup guide covering Layer 1 agreement, a Google Drive-first Layer 2, permission verification, and recurring use.
 ---
 
@@ -10,7 +10,7 @@ Japanese version: [docs/ja/docs/導入ガイド.md](ja/docs/導入ガイド.md)
 
 > A guide for turning this repository into the adopting organization's Org-OS. Every step can be done through conversation with AI such as Claude Code. The parts humans must decide directly are called out explicitly.
 
-## Step 0: Decide the Operating Body
+## Step 0: Decide the Operating Body (human work, about 30 minutes)
 
 Before working on documents, decide only three things.
 
@@ -22,7 +22,7 @@ After deciding, fill the permission design section in `docs/governance/operating
 
 In the same pass, clear the template's upstream-only items. The list, and the action for each, is in `CLAUDE.md` under "Upstream-Only Rules".
 
-## Step 1: Fill the Three Layer 1 Documents
+## Step 1: Fill the Three Layer 1 Documents (dialogue with AI, one to two weeks)
 
 Fill the three templates under `layer1/` for the adopting organization. **Do not wait for perfection.** Fill the parts that can be confirmed, and leave management-judgment items as owner flags such as `(requires executive owner)` while beginning draft operation.
 
@@ -62,7 +62,7 @@ For Google Drive, follow [Google Drive Operating Profile](google-drive-profile.m
 
 The sample notes, `PJ-sample-equipment.md` and `ISSUE-0001.md`, show the section structure of a note. They are not derived from Drive and therefore carry none of the source and access keys a Drive-derived note requires. Delete them after the organization has three real derived project notes.
 
-## Step 3: Put Daily Operation in Place
+## Step 3: Put Daily Operation in Place (two-week adoption period)
 
 Distribute [user-guide.md](user-guide.md) to members. They only need the three Drive-first paths: ask through AI, read the cited Drive original, and edit the Drive original.
 
@@ -116,3 +116,4 @@ After Layer 2 starts working, consider the following. See the expansion patterns
 | 2026-08-17 | v1.1 | HideTsug | Replaced the repository-only Layer 2 setup with the Google Drive-first v0.1 path |
 | 2026-08-19 | v1.2 | upstream template | Added the Layer 1 load-path wiring step, the branch for organizations without a Google Workspace tenant, and the record locations for the permission test and the sample-note contract |
 | 2026-08-19 | v1.3 | upstream template | Replaced the subjective Step 3 adoption judgment with the observable five-question criterion, its record location, and the gate before Step 4 |
+| 2026-08-21 | v1.4 | upstream template | Added to the Step 0, 1, and 3 headings the effort estimates the Japanese mirror already carried |
