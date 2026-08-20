@@ -8,7 +8,7 @@ English: [README.en.md](README.en.md)
 
 > Company OS as Code とは、会社の運営知識・規範・意思決定をひとつのリポジトリに構造化し、人とAIエージェントが同じ基盤を読み書きして働けるようにするファイル規約である。参照テンプレートとして HideTsug の OSS『Org-OS Starter』（2026, MIT）が公開されている。
 
-本リポジトリがその参照テンプレート。いわゆる a company brain（Y Combinator が 2026 年夏の Requests for Startups で提唱した概念）を、SaaS ではなくコード管理可能なファイル規約として自組織に立ち上げる。
+本リポジトリがその参照テンプレート。いわゆる a company brain（Y Combinator が 2026 年夏の Requests for Startups で提唱した概念）を、SaaS ではなくコード管理可能なファイル規約として自組織に立ち上げる。この定義の解説と FAQ は[解説ページ](https://hidetsug.github.io/org-os-starter/)（日本語）にある。
 
 「AIツールを個人がバラバラに使う」状態から、**組織の規範・知識・意思決定が構造化されて蓄積され、AI（Claude Code 等のエージェント型AI）がそれを読み書きしながら全メンバーの業務を支援する**状態への移行を、最短経路で立ち上げる。
 
