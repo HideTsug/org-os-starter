@@ -1,6 +1,6 @@
 ---
 status: draft
-version: "0.2"
+version: "0.3"
 owner: (requires implementation DRI)
 summary: Template for organizational AI work norms, the core Layer 1 document. It makes organizational policy, compliance norms, data handling, and escalation machine-readable. Fill it for the adopting organization and promote it to agreed after approval.
 ---
@@ -72,6 +72,10 @@ Japanese version: [docs/ja/layer1/組織CLAUDE.md](../docs/ja/layer1/組織CLAUD
 - Confirm standard confidentiality and data-handling clauses in customer contracts: (requires executive owner: provide the standard contract). Customers whose contracts restrict AI use or external outsourcing must be listed and managed individually.
 - Conflicts of interest: Using information from multiple customers together to generate advice favorable to one side is prohibited. See [[prohibited-uses]].
 
+### National AI Governance Guidance: Non-Binding Reference
+
+- When filling this section, also consult the AI governance guidance published by the organization's own jurisdiction — non-binding soft law that organizes risk-based practice for AI deployment, including generative AI and AI agents. It does not override the binding laws above; use it as a filling reference for this document, [[data-classification-matrix]], and [[prohibited-uses]]. Verify you are reading the current version rather than relying on the example's date. (Example, Japanese jurisdiction: the [AI Guidelines for Business, version 1.2](https://www.meti.go.jp/shingikai/mono_info_service/ai_shakai_jisso/pdf/20260331_1.pdf), published 2026-03-31 by the Ministry of Internal Affairs and Communications and METI, which added guidance on generative-AI and AI-agent risks.)
+
 ## Data Handling Norms
 
 - SSoT for whether data may be entered into AI: [[data-classification-matrix]], covering four data categories, execution environments, operating conditions, and audit-log definitions.
@@ -103,3 +107,4 @@ Japanese version: [docs/ja/layer1/組織CLAUDE.md](../docs/ja/layer1/組織CLAUD
 |---|---|---|---|
 | [Date] | v0.1 | [Drafter] | Drafted from template |
 | 2026-08-19 | v0.2 | upstream template | Tied the "read first" requirement to the load-path wiring step, and restated the privacy section as jurisdiction-independent goals with an owner flag and labelled examples |
+| 2026-08-22 | v0.3 | upstream template | Added a national AI-governance guidance reference viewpoint to Compliance Norms, with the Japanese guideline kept as a labelled example |
