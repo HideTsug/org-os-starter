@@ -1,6 +1,6 @@
 ---
 status: draft
-version: "0.2"
+version: "0.3"
 owner: (requires implementation DRI)
 summary: Template for explicitly prohibited AI uses inside the organization and the response to violations. It pairs with the data classification matrix.
 relates_to:
@@ -13,7 +13,7 @@ Japanese version: [docs/ja/layer1/禁止用途リスト.md](../docs/ja/layer1/�
 
 > An explicit list of what AI **must not** be used for inside the organization. [[data-classification-matrix]] defines what data may be given to AI; this document defines what AI must not be made to do.
 >
-> Filling policy: Items 1 through 3 should be customized to match professional responsibility in the organization's industry. Regulated industries such as licensed professions, healthcare, and finance must fill them. Items 4 through 9 can usually be used almost as-is across industries.
+> Filling policy: Items 1 through 3 should be customized to match professional responsibility in the organization's industry. Regulated industries such as licensed professions, healthcare, and finance must fill them. Items 4 through 10 can usually be used almost as-is across industries.
 
 - Drafted: [Date] / [Drafter]
 - Agreement target: [approval body]
@@ -27,12 +27,13 @@ Japanese version: [docs/ja/layer1/禁止用途リスト.md](../docs/ja/layer1/�
 4. **Entering regulated data, category 4 in [[data-classification-matrix]], into AI.** This includes statutory identifiers restricted by law, identity-verification documents, sensitive personal information, and litigation materials. Which items belong here is decided by the laws of the organization's own jurisdiction (example, Japanese jurisdiction: individual numbers under the Individual Number Act).
 5. **Unreviewed automatic execution of external communication under the representative or organization name.** This includes sending email, posting to social media, and sending customer-facing documents. Generation is allowed; sending and publication require human confirmation.
 6. **Uses that avoid or hollow out conflict-of-interest checks**, such as combining information from multiple customers to generate advice favorable to one side.
+7. **Unattended automatic execution of irreversible operations by an AI agent.** This includes bulk deletion of data, execution of payments or orders, and changes to production-system configuration. Generation and proposals are allowed; execution requires human confirmation — the internal counterpart of item 5's rule for external communication. (requires implementation DRI: identify which operations count as irreversible in the organization)
 
 ## Environment-Conditioned Prohibitions: Data Export
 
-7. **Entering category 3 customer/vendor-identifying data into environments outside organization management**. Input into vendor-managed cloud AI or general cloud AI, and committing to GitHub, are prohibited regardless of anonymization. This restates the category-3 row ✗ cells and "GitHub Repositories as a Storage Location" in [[data-classification-matrix]]. Category 4 is prohibited in the same way.
-8. **Allowing input data to be used for training.** Do not use a service configuration for organizational work if its terms or settings allow input data to be used for training.
-9. **Adding a new AI service without approval.** Any work use of a service not classified into E1 through E3 in the matrix requires prior classification by the implementation DRI.
+8. **Entering category 3 customer/vendor-identifying data into environments outside organization management**. Input into vendor-managed cloud AI or general cloud AI, and committing to GitHub, are prohibited regardless of anonymization. This restates the category-3 row ✗ cells and "GitHub Repositories as a Storage Location" in [[data-classification-matrix]]. Category 4 is prohibited in the same way.
+9. **Allowing input data to be used for training.** Do not use a service configuration for organizational work if its terms or settings allow input data to be used for training.
+10. **Adding a new AI service without approval.** Any work use of a service not classified into E1 through E3 in the matrix requires prior classification by the implementation DRI.
 
 ## Response to Violations
 
@@ -52,3 +53,4 @@ Japanese version: [docs/ja/layer1/禁止用途リスト.md](../docs/ja/layer1/�
 |---|---|---|---|
 | [Date] | v0.1 | [Drafter] | Drafted from template |
 | 2026-08-19 | v0.2 | upstream template | Restated item 4 as jurisdiction-independent, with the Japanese items kept as a labelled example |
+| 2026-08-22 | v0.3 | upstream template | Added item 7 prohibiting unattended execution of irreversible operations by AI agents, and renumbered the data-export items to 8–10 |
