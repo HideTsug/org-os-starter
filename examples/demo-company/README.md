@@ -38,7 +38,7 @@ examples/demo-company/
 1. リポジトリを clone して、このディレクトリに入る
 
    ```bash
-   git clone <このリポジトリのURL>
+   git clone https://github.com/HideTsug/org-os-starter.git
    cd org-os-starter/examples/demo-company
    ```
 
