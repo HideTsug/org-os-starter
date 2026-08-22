@@ -6,6 +6,8 @@ audience: ai
 summary: v0.1運用プロファイルの外部知識源をGoogle Driveだけに絞り、Driveを原本・ACLの正、repoを規範・非機微な派生知識の正とする
 ---
 
+English version: [docs/decisions/ADR-0001-google-drive-first-v0.1.md](../../../decisions/ADR-0001-google-drive-first-v0.1.md)
+
 # ADR-0001: Google Drive-first v0.1
 
 - 起案: 2026-08-17 / maintainer
@@ -75,7 +77,6 @@ layer1/ 規範 ─────────────────────�
 ## 参照
 
 - [Google Drive運用プロファイル](../Google-Drive-運用プロファイル.md)
-- 英語正本: [ADR-0001](../../../decisions/ADR-0001-google-drive-first-v0.1.md)
 
 ## 改訂履歴
 

@@ -9,6 +9,8 @@ project_status: active
 summary: 構造の見本として置いてある架空PJ。社内備品の在庫と持ち出しを台帳管理し、紛失と重複購入を防ぐ
 ---
 
+English version: [knowledge/projects/PJ-sample-equipment.md](../../../../knowledge/projects/PJ-sample-equipment.md)
+
 # PJ: 備品管理の台帳化（架空サンプル）
 
 > **架空のサンプルデータ**。ノートの書きぶりの見本として置いてある。自組織のPJノートが3本入ったら削除してよい。

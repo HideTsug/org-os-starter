@@ -5,6 +5,8 @@ owner: (要・導入責任者)
 summary: 組織のAI業務規範のテンプレート（Layer 1 中核文書）。組織方針・コンプラ規範・データ取扱・エスカレーションを機械可読化する。自組織で充填し、承認体制の合意で agreed に昇格させる
 ---
 
+English version: [layer1/ORG-CLAUDE.md](../../../layer1/ORG-CLAUDE.md)
+
 # <組織名> CLAUDE.md（テンプレート）
 
 > Layer 1（規範・SSoT分離）の中核文書。**組織内で業務支援を行うすべての AI が最初に読む規範。**

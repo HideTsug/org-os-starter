@@ -5,6 +5,8 @@ audience: dual
 summary: Google Drive原本とrepoの規範・非機微派生知識を組み合わせるv0.1の実行可能な運用プロファイル
 ---
 
+English version: [docs/google-drive-profile.md](../../google-drive-profile.md)
+
 # Google Drive運用プロファイル（v0.1）
 
 > v0.1の一点突破は、既存Google Drive領域を接続し、繰り返し発生するプロジェクト質問へ原本リンク付きで答えること。一般メンバーにGitHub利用を要求しない。
@@ -123,4 +125,3 @@ Layer 1規範の変更だけは別で、通常のDrive書込ではなくrepoの�
 ## 関連決定
 
 - [ADR-0001: Google Drive-first v0.1](decisions/ADR-0001-Google-Drive-first-v0.1.md)
-- 英語正本: [Google Drive operating profile](../../google-drive-profile.md)

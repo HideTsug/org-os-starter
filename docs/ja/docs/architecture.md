@@ -4,6 +4,8 @@ version: "1.1"
 summary: Org-OSの5層アーキテクチャとGoogle Drive-firstのLayer 2構造。Layer 3〜5は実体ができるまで本書内の構想のみ
 ---
 
+English version: [docs/architecture.md](../../architecture.md)
+
 # Org-OS アーキテクチャ全体像
 
 > 組織のAI基盤を5層で捉える設計図。個別の規範テンプレートは `layer1/` を参照。

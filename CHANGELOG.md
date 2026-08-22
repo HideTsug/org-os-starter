@@ -40,6 +40,7 @@ Changes on `main` since v1.0.0.
 - README file maps and reading-order tables matched to the actual repository tree (#4, #16)
 - Translation polish and `docs/ja/` cross-reference fixes (#8)
 - Demo README: the clone command's placeholder URL replaced with the repository URL, so it can be pasted and run (#35)
+- Mirror header links evened out: every document under `docs/ja/` now carries an `English version:` link and the English ADR-0001 carries its `Japanese version:` link, so the mirror check in `CONTRIBUTING.md` has only intended exceptions left (#25)
 
 ## [1.0.0] - 2026-08-13
 
