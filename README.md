@@ -135,6 +135,7 @@ org-os-starter/
 ├── CLAUDE.md                          # このリポジトリを読み書きするAI向けの規範（初期値のまま使える）
 ├── CONTRIBUTING.md                    # 上流リポジトリへの issue / PR の出し方
 ├── CHANGELOG.md                       # 変更履歴（Keep a Changelog 形式・上流差分の判断起点）
+├── ADOPTERS.md                        # 実運用組織の掲載希望制リスト（EN/JA 併記・docs/ja ミラーなし）
 ├── LICENSE                            # MIT
 ├── .gitignore                         # .DS_Store / .obsidian/
 ├── scripts/
