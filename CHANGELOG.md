@@ -16,6 +16,9 @@ Changes on `main` since v1.0.0.
 - English canon: canonical documents translated to English with Japanese mirrors under `docs/ja/`, and all file and directory names renamed to English
 - `docs/ai-agent-guide.md` — a pre-clone briefing for AI agents, loadable from a single raw URL, with a Japanese mirror (#26)
 - `scripts/validate.py` — mechanical checks for relative links, wikilinks, frontmatter `status`, and bare placeholders (#28)
+- `ADOPTERS.md` — an opt-in list of organizations running this convention, linked from both READMEs (#22)
+- `CHANGELOG.md` with a Japanese mirror, and the current version stated at the top of both READMEs (#27)
+- A user-guide FAQ entry on what a member should do when an AI answer carries no source link or contradicts the original (#29)
 
 ### Changed
 
@@ -26,11 +29,17 @@ Changes on `main` since v1.0.0.
 - Made AI-facing instructions verifiable and environment-independent (#23)
 - Separated GitHub from the E2/E3 execution environments as its own storage rule, resolving the self-contradiction about committing category-2 "internal" notes (#3)
 - Split the setup path into "Use this template" followed by cloning the organization's own private repository (#2)
+- Added the effort estimates of the Japanese mirror to the Step 0/1/3 headings of the English setup guide (#33)
+- Linked the "Company OS as Code" explainer page from both READMEs (#34)
+- Added a national AI-governance guidance reference to the compliance norms of the Layer 1 `ORG-CLAUDE.md` template (#39)
+- Prohibited unattended execution of irreversible operations by AI agents in `layer1/prohibited-uses.md` (#40)
+- Made keeping this changelog current a checklist item in `CONTRIBUTING.md`, so upstream changes stop going unrecorded (#45)
 
 ### Fixed
 
 - README file maps and reading-order tables matched to the actual repository tree (#4, #16)
 - Translation polish and `docs/ja/` cross-reference fixes (#8)
+- Demo README: the clone command's placeholder URL replaced with the repository URL, so it can be pasted and run (#35)
 
 ## [1.0.0] - 2026-08-13
 
