@@ -135,6 +135,7 @@ org-os-starter/
 ├── CLAUDE.md                          # Norms for AI that reads/writes this repository (usable as-is)
 ├── CONTRIBUTING.md                    # How to file issues / pull requests upstream
 ├── CHANGELOG.md                       # Change history (Keep a Changelog format; the base for judging upstream differences)
+├── ADOPTERS.md                        # Opt-in list of organizations running this convention (bilingual; no docs/ja mirror)
 ├── LICENSE                            # MIT
 ├── .gitignore                         # .DS_Store / .obsidian/
 ├── scripts/

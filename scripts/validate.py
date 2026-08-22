@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Repository invariant checks for Org-OS Starter.
 
-Runs the four mechanical checks named in CONTRIBUTING.md, "Before You Open
-a Pull Request", over every tracked Markdown file:
+Runs the five mechanical checks named in CONTRIBUTING.md, "Before You Open
+a Pull Request":
 
 1. relative-link — every relative Markdown link resolves, including
    directories and non-.md targets such as LICENSE
@@ -13,6 +13,12 @@ a Pull Request", over every tracked Markdown file:
 4. placeholder  — no bare placeholder such as (TODO), (TBD), or (FIXME);
    unfilled items must carry an owner flag instead (CLAUDE.md,
    "Structure Rules")
+5. file-map     — the full file maps in README.md and README.en.md match the
+   repository's files in both directions
+
+The first four checks run over every tracked Markdown file. The file-map
+check compares each README tree with tracked files and mapped untracked files
+that exist.
 
 Fenced code blocks and inline code spans are excluded: the repository's own
 rule documents quote `(TODO)` and `[[wikilink]]` literally as examples.
@@ -35,6 +41,10 @@ FENCE_RE = re.compile(r"^\s*(```|~~~)")
 CODESPAN_RE = re.compile(r"`[^`\n]*`")
 STATUS_RE = re.compile(r"^status:\s*[\"']?([^\"'\s]+)[\"']?\s*$")
 ALLOWED_STATUS = {"draft", "proposed", "agreed"}
+FILE_MAP_READMES = ("README.md", "README.en.md")
+FILE_MAP_ROOT = "org-os-starter/"
+TREE_ENTRY_RE = re.compile(r"^((?:(?:│   | {4}))*)(?:├── |└── )(.+)$")
+TREE_COMMENT_RE = re.compile(r"\s+#.*$")
 
 
 def list_md_files():
@@ -56,6 +66,73 @@ def list_md_files():
             if name.endswith(".md"):
                 files.append(os.path.normpath(os.path.join(root, name)))
     return sorted(files)
+
+
+def list_repo_files(mapped_files):
+    """Tracked files via git, plus mapped untracked files that exist."""
+    try:
+        out = subprocess.run(
+            ["git", "ls-files", "-z"],
+            capture_output=True, text=True, check=True,
+        ).stdout
+        files = [f for f in out.split("\0") if f]
+        if files:
+            files.extend(path for path in mapped_files if os.path.isfile(path))
+            return sorted(set(files))
+    except (OSError, subprocess.CalledProcessError):
+        pass
+    files = []
+    for root, dirs, names in os.walk("."):
+        dirs[:] = [d for d in dirs if d != ".git"]
+        for name in names:
+            files.append(os.path.normpath(os.path.join(root, name)))
+    return sorted(files)
+
+
+def read_file_map(path, violations):
+    """Return mapped file paths with their lines and the tree root line."""
+    with open(path, encoding="utf-8") as fh:
+        lines = fh.read().splitlines()
+
+    for i, raw in enumerate(lines[:-1]):
+        if not raw.strip().startswith("```"):
+            continue
+        if not lines[i + 1].startswith(FILE_MAP_ROOT):
+            continue
+
+        mapped = {}
+        directories = []
+        for j in range(i + 2, len(lines)):
+            if lines[j].strip().startswith("```"):
+                break
+            match = TREE_ENTRY_RE.match(lines[j])
+            if not match:
+                continue
+
+            depth = len(match.group(1)) // 4
+            name = TREE_COMMENT_RE.sub("", match.group(2)).rstrip()
+            directories = directories[:depth]
+            if name.endswith("/"):
+                directories.append(name[:-1])
+                continue
+
+            mapped["/".join(directories + [name])] = j + 1
+        return mapped, i + 2
+
+    violations.append(("file-map", path, 1,
+                       "full file map block not found"))
+    return {}, None
+
+
+def check_file_map(path, mapped, root_line, repo_files, violations):
+    """Compare one README file map with the repository in both directions."""
+    mapped_files = set(mapped)
+    for missing in sorted(mapped_files - repo_files, key=mapped.get):
+        violations.append(("file-map", path, mapped[missing],
+                           "mapped file does not exist -> %s" % missing))
+    for missing in sorted(repo_files - mapped_files):
+        violations.append(("file-map", path, root_line,
+                           "repository file is missing from map -> %s" % missing))
 
 
 def frontmatter_end(lines):
@@ -116,6 +193,18 @@ def main():
     violations = []
     for path in files:
         check_file(path, basenames, violations)
+
+    file_maps = {}
+    mapped_files = set()
+    for path in FILE_MAP_READMES:
+        mapped, root_line = read_file_map(path, violations)
+        file_maps[path] = (mapped, root_line)
+        mapped_files.update(mapped)
+    repo_files = set(list_repo_files(mapped_files))
+    for path in FILE_MAP_READMES:
+        mapped, root_line = file_maps[path]
+        if root_line is not None:
+            check_file_map(path, mapped, root_line, repo_files, violations)
 
     for kind, path, lineno, detail in violations:
         print("%s: %s:%d %s" % (kind, path, lineno, detail))
