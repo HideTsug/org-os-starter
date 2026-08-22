@@ -69,6 +69,7 @@ PY
 - [ ] **`knowledge/` のノートが対応するテンプレートの frontmatter 契約を満たしている。** Drive由来のノートは対応する `_テンプレート.md` と同じく `source_urls`・`source_modified_at`・`source_status`・`access_policy` を持つ。同梱サンプルはDrive由来ではないため4キーを持たず、その旨を本文に明記する。`examples/` は対象外
 - [ ] **frontmatter を持つ文書はその妥当性を保っている。** `status`（`draft → proposed → agreed`）は `layer1/` の規範文書・制定後の運用規約・ADR に付く。`doc_type`（`reference` / `template`）はそれ以外に付く。テンプレートの `status` を上流の PR で昇格させない — 昇格は導入組織の中での合意行為。`status` 値が3値のいずれかであることは `python3 scripts/validate.py` が検査する
 - [ ] **変更が非破壊である。** 既存内容への追記を優先する。ノートを置き換える場合は新しいノートを作り、古いノートを frontmatter `supersedes` でリンクする（削除しない）
+- [ ] **変更を変更履歴に記録した。** `CHANGELOG.md` と `docs/ja/CHANGELOG.md` の `## [Unreleased]` に、Keep a Changelog の該当分類（`Added` / `Changed` / `Deprecated` / `Removed` / `Fixed` / `Security`）で1行を追加し、末尾に issue 番号を付す。導入組織が自分の複製の中から上流との差分を判断するための唯一の起点であり、ここに無い変更はどの導入組織からも見えない。除外: 変更履歴自体の変更と、導入組織が読む内容が変わらない変更（誤字修正・意味を変えない整形）
 
 ## issue の書き方
 
