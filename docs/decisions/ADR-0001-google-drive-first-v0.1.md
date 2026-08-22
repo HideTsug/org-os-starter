@@ -6,6 +6,8 @@ audience: ai
 summary: Google Drive is the only external knowledge source supported by the v0.1 operating profile; Drive keeps originals and ACLs while the repository keeps norms and non-sensitive derived knowledge.
 ---
 
+Japanese version: [docs/ja/docs/decisions/ADR-0001-Google-Drive-first-v0.1.md](../ja/docs/decisions/ADR-0001-Google-Drive-first-v0.1.md)
+
 # ADR-0001: Google Drive-First v0.1
 
 - Drafted: 2026-08-17 / maintainer

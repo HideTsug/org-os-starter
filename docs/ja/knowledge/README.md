@@ -1,5 +1,7 @@
 # knowledge/ — 知識基盤（Layer 2）
 
+English version: [knowledge/README.md](../../../knowledge/README.md)
+
 組織の「現在地」を表す非機微な派生層。v0.1運用では、人間が作る原本はGoogle Driveに残す。AIはここに短いPJ状態・原本リンク・鮮度メタデータを置き、制限情報を含む原本は複製しない。
 
 ## ノート種別

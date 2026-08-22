@@ -12,6 +12,8 @@ source: 備品台帳の初期登録作業（架空）
 summary: 架空のサンプルissue。同一備品が部署ごとに別名で登録され、名寄せルールが必要
 ---
 
+English version: [knowledge/issues/ISSUE-0001.md](../../../../knowledge/issues/ISSUE-0001.md)
+
 # ISSUE-0001: 備品名の表記ゆれで台帳の名寄せができない
 
 > **架空のサンプルデータ**。issueノートの書きぶりの見本。自組織のissueが入ったら削除してよい。
