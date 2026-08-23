@@ -86,7 +86,7 @@ For each selected project, create or update a note from `knowledge/projects/_tem
 - `source_urls`: the original Drive folder or document URLs
 - `source_modified_at`: the newest source modification time used for the summary
 - `last_reviewed`: when a human or AI last verified that the derived state still matches the originals
-- `classification`: only `public` or `internal` may be committed
+- `classification`: only categories 1 and 2 of `layer1/data-classification-matrix.md` may be committed — `public` and `internal` in the English canon, and whatever labels another working language gives those same two categories
 - `access_policy`: `source_acl`, the only allowed v0.1 value. Before using the derived note, AI verifies access to every source needed for the answer
 
 Keep category 3 and category 4 details in Drive. The derived note may contain a non-sensitive reference such as a case ID only when Layer 1 permits it.
