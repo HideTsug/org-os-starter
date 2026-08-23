@@ -86,7 +86,7 @@ Drive原本を無断で`knowledge/`へ複製しない。派生ノートは制限
 - `source_urls`: 原本Driveフォルダまたは文書URL
 - `source_modified_at`: 要約に使った原本群の最新更新日時
 - `last_reviewed`: 派生状態が原本と一致すると人間またはAIが最後に確認した日
-- `classification`: commit可能なのは`public`または`internal`だけ
+- `classification`: commit可能なのは `layer1/データ分類マトリクス.md` の区分1・区分2だけ（英語正本の表記では `public` / `internal`、日本語ミラーの表記では `公開` / `社内`）
 - `access_policy`: v0.1で唯一許可する`source_acl`。派生ノートを回答に使う前に、必要な全原本への現在利用者のアクセスを確認する
 
 区分3・4の詳細はDriveに残す。派生ノートに案件ID等の非機微参照を置く場合もLayer 1に従う。
