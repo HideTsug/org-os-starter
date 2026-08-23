@@ -34,6 +34,7 @@ Changes on `main` since v1.0.0.
 - Added a national AI-governance guidance reference to the compliance norms of the Layer 1 `ORG-CLAUDE.md` template (#39)
 - Prohibited unattended execution of irreversible operations by AI agents in `layer1/prohibited-uses.md` (#40)
 - Made keeping this changelog current a checklist item in `CONTRIBUTING.md`, so upstream changes stop going unrecorded (#45)
+- Setup guide Step 0 now decides the problem the first use case addresses, the observable state that means it is solved, and the date to look again; the operating-rules verification records gained the row that holds them, and the pitfalls gained the cost-reduction-only goal (#50)
 
 ### Fixed
 

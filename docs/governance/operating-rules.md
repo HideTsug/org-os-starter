@@ -1,6 +1,6 @@
 ---
 doc_type: template
-version: "1.3"
+version: "1.4"
 summary: Template for operating rules of the repository layer in the Google Drive-first profile. It defines DRI permissions, adoption verification records, derived-note edits, commit prohibitions, and norm agreement.
 ---
 
@@ -23,8 +23,11 @@ Japanese version: [docs/ja/docs/governance/運用規約.md](../ja/docs/governanc
 
 Checks that gate a later step are recorded here, so a different person or a later AI session can tell whether they were actually done instead of assuming they probably were. Fill a row when the check passes; leave it empty while it has not.
 
+The first row is the exception: it is filled at Step 0, before any check exists, because it records what the whole effort is for. Without it, later rows can show that the foundation is used while nobody can say whether it solved anything.
+
 | Check | Date | Confirmed by | Note |
 |---|---|---|---|
+| Step 0 purpose — the first narrow use case, the problem in the work it addresses, the observable state that means that problem is solved, and the date to look again (`docs/setup-guide.md`, Step 0) | [Date] | [Name] | use case: [text] / problem: [text] / observable solved state: [text] / look again on: [Date] |
 | Repository visibility is private — `gh repo view --json visibility` returns `"visibility":"PRIVATE"`, or the hosting settings screen shows Private | [Date] | [Name] | |
 | Layer 1 norms are wired into each agent's load path — asked which prohibited-uses items apply, the agent quotes item numbers from the agreed document (`docs/setup-guide.md`, Step 1) | [Date] | [Name] | agents and load paths covered: [list] |
 | Agent Drive access capability — the agent shows the title and last modification time of one named Drive file, or the reason it cannot (`AGENTS.md`, onboarding step 4) | [Date] | [Name] | |
@@ -88,3 +91,4 @@ When membership grows and each person has an AI agent sharing work, separating A
 | 2026-08-17 | v1.1 | upstream template | Made ordinary-member edits Drive-first and limited repository edits to norms and non-sensitive derived state |
 | 2026-08-19 | v1.2 | upstream template | Added the adoption verification records section for repository visibility, Layer 1 load-path wiring, and agent Drive capability |
 | 2026-08-19 | v1.3 | upstream template | Added the Step 3 adoption criterion row that gates Step 4 |
+| 2026-08-24 | v1.4 | upstream template | Added the Step 0 purpose row, filled before any check, recording what the effort is for and when to look again |
