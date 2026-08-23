@@ -1,6 +1,6 @@
 ---
 doc_type: reference
-version: "1.4"
+version: "1.5"
 summary: Org-OS Starter setup guide covering Layer 1 agreement, a Google Drive-first Layer 2, permission verification, and recurring use.
 ---
 
@@ -16,7 +16,12 @@ Before working on documents, decide only three things.
 
 1. **Implementation DRI** — The administrator of this repository. This person has merge authority and leads drafting of norms. The best fit is the person most familiar with AI tools; they do not need to be an engineer.
 2. **Approval body** — The people whose agreement makes the norms in `layer1/` effective. The recommended shape is a joined decision by the executive owner, implementation DRI, and system owner. Two or three people is typical. One person may hold multiple roles, but keep business judgment and AI technical judgment distinct.
-3. **First narrow use case** — The recommended use case is cross-project knowledge organization plus conversational catch-up. Choose the area where people most often ask, "what happened with that?"
+3. **First narrow use case, together with what it is for** — The recommended use case is cross-project knowledge organization plus conversational catch-up. Choose the area where people most often ask, "what happened with that?" Then write down three more things about it:
+   - **The problem in the work** — whose work is stuck today, and at which point it stalls.
+   - **The observable state that means the problem is solved** — something a later session can judge true or false, such as "nobody has to ask a person again to get this answer." This is not the Step 3 criterion. Step 3 asks whether the foundation is being used; this asks what it was for. Do not leave a cost reduction as the only stated goal, for the reason in "Common Pitfalls from Real Operation" below.
+   - **The date you will look again** — if that state has not appeared by then, choose a different use case instead of widening this one.
+
+   Record all three in the adoption verification records of [operating-rules.md](governance/operating-rules.md), before any document work begins.
 
 After deciding, fill the permission design section in `docs/governance/operating-rules.md`.
 
@@ -101,6 +106,7 @@ After Layer 2 starts working, consider the following. See the expansion patterns
 
 ## Common Pitfalls from Real Operation
 
+- **Naming only a cost reduction as the goal** — A saving becomes visible only after the foundation is already carrying real volume, so the early weeks have nothing to show and the work is stopped before it gets there. Alongside any saving, state what becomes possible or easier, and make that part observable within the first weeks.
 - **Building tools before norms** — This is the most common failure. If norms are created only after a data incident, trust is harder to recover.
 - **Starting all five layers side by side** — Everything becomes half-built and unused. Protect the narrow start.
 - **Leaving everything to AI without human reading** — Humans must perform final confirmation of norm documents, especially compliance norms. AI is a drafting and research aid.
@@ -117,3 +123,4 @@ After Layer 2 starts working, consider the following. See the expansion patterns
 | 2026-08-19 | v1.2 | upstream template | Added the Layer 1 load-path wiring step, the branch for organizations without a Google Workspace tenant, and the record locations for the permission test and the sample-note contract |
 | 2026-08-19 | v1.3 | upstream template | Replaced the subjective Step 3 adoption judgment with the observable five-question criterion, its record location, and the gate before Step 4 |
 | 2026-08-21 | v1.4 | upstream template | Added to the Step 0, 1, and 3 headings the effort estimates the Japanese mirror already carried |
+| 2026-08-24 | v1.5 | upstream template | Made Step 0 decide the problem, the observable solved state, and the look-again date alongside the use case, and added the cost-reduction-only pitfall |
