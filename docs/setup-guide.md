@@ -1,6 +1,6 @@
 ---
 doc_type: reference
-version: "1.5"
+version: "1.6"
 summary: Org-OS Starter setup guide covering Layer 1 agreement, a Google Drive-first Layer 2, permission verification, and recurring use.
 ---
 
@@ -85,6 +85,7 @@ If the criterion is not met, record which part is missing — note granularity, 
 
 After Layer 2 starts working, consider the following. See the expansion patterns in [architecture.md](architecture.md).
 
+- **Redesign the work itself, before adding a layer** — Take the recurring questions from Step 2-5 that people actually ask, and look at the work that produces them. By now that question gets a fast answer; the next question is whether the step that produces it can be removed instead. Replace a confirmation people chase during a meeting with something circulated beforehand. Replace a transcription step that exists only to produce a report with a reference to the original. This does not conflict with the criterion below: it applies only to a path already in daily use, and it adds no layer.
 - **Skillization, Layer 3** — Convert dialogue patterns repeated three or more times into skills, such as catch-up summaries, meeting-note intake, and issue filing.
 - **Drive change intake, Layer 4** — Incrementally refresh non-sensitive derived notes from the Drive change feed, with idempotency and stale-source handling.
 - **Additional source adapter, Layer 4** — Add one only when a recurring workflow is blocked because its source is outside Drive. Notion, Slack, Chatwork, and SharePoint are not v0.1 core.
@@ -124,3 +125,4 @@ After Layer 2 starts working, consider the following. See the expansion patterns
 | 2026-08-19 | v1.3 | upstream template | Replaced the subjective Step 3 adoption judgment with the observable five-question criterion, its record location, and the gate before Step 4 |
 | 2026-08-21 | v1.4 | upstream template | Added to the Step 0, 1, and 3 headings the effort estimates the Japanese mirror already carried |
 | 2026-08-24 | v1.5 | upstream template | Made Step 0 decide the problem, the observable solved state, and the look-again date alongside the use case, and added the cost-reduction-only pitfall |
+| 2026-08-24 | v1.6 | upstream template | Put redesigning the work itself first among the Step 4 expansion options, ahead of the layer additions |
