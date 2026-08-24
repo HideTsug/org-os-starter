@@ -1,6 +1,6 @@
 ---
 status: draft
-version: "0.3"
+version: "0.4"
 owner: (requires implementation DRI)
 summary: Template for explicitly prohibited AI uses inside the organization and the response to violations. It pairs with the data classification matrix.
 relates_to:
@@ -33,7 +33,7 @@ Japanese version: [docs/ja/layer1/禁止用途リスト.md](../docs/ja/layer1/�
 
 8. **Entering category 3 customer/vendor-identifying data into environments outside organization management**. Input into vendor-managed cloud AI or general cloud AI, and committing to GitHub, are prohibited regardless of anonymization. This restates the category-3 row ✗ cells and "GitHub Repositories as a Storage Location" in [[data-classification-matrix]]. Category 4 is prohibited in the same way.
 9. **Allowing input data to be used for training.** Do not use a service configuration for organizational work if its terms or settings allow input data to be used for training.
-10. **Adding a new AI service without approval.** Any work use of a service not classified into E1 through E3 in the matrix requires prior classification by the implementation DRI.
+10. **Adding a new AI service, or an extension to an approved environment, without approval.** Any work use of a service not classified into E1 through E3 in the matrix requires prior classification by the implementation DRI. The same applies to an extension installed into an already-approved environment — an MCP server, an agent plugin, or a connector — because it changes that environment's effective data boundary without changing which row it occupies. See "Extensions Added to an Approved Environment" in [[data-classification-matrix]].
 
 ## Response to Violations
 
@@ -54,3 +54,4 @@ Japanese version: [docs/ja/layer1/禁止用途リスト.md](../docs/ja/layer1/�
 | [Date] | v0.1 | [Drafter] | Drafted from template |
 | 2026-08-19 | v0.2 | upstream template | Restated item 4 as jurisdiction-independent, with the Japanese items kept as a labelled example |
 | 2026-08-22 | v0.3 | upstream template | Added item 7 prohibiting unattended execution of irreversible operations by AI agents, and renumbered the data-export items to 8–10 |
+| 2026-08-25 | v0.4 | upstream template | Extended item 10 to cover extensions added to an already-approved environment, such as MCP servers, agent plugins, and connectors |
