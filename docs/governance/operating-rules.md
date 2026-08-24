@@ -34,7 +34,6 @@ The first row is the exception: it is filled at Step 0, before any check exists,
 | Step 3 adoption criterion, the gate before Step 4 — over the preceding seven days each of the five recurring questions was asked through AI at least once, and every answer linked its original and stated when it was last modified or reviewed (`docs/setup-guide.md`, Step 3) | [Date] | [Name] | questions that fell short: [list] |
 | Extensions active in each approved AI environment — every MCP server, agent plugin, and connector installed into an environment classified in `layer1/data-classification-matrix.md` has been re-assessed and approved by the implementation DRI before work use (`layer1/data-classification-matrix.md`, "Extensions Added to an Approved Environment") | [Date] | [Name] | environment: [E1/E1.5/E2/E3] / approved extensions: [list] |
 
-
 The two-account permission-differential test is recorded as an ADR instead of a row here, because it gates connecting real confidential documents. See `docs/google-drive-profile.md`, "Run the Permission-Differential Test".
 
 ## Document status Management
