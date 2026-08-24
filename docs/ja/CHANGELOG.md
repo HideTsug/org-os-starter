@@ -45,6 +45,7 @@ v1.0.0 以降の `main` 上の変更。
 - 翻訳の推敲と `docs/ja/` 相互参照の修正（#8）
 - デモ README の clone コマンドの URL プレースホルダを実リポジトリ URL に置換し、コピペ実行可能に（#35）
 - ミラーのヘッダー相互リンクの不揃いを解消: `docs/ja/` 配下の全文書に `English version:` を、英語版 ADR-0001 に `Japanese version:` を追加し、`CONTRIBUTING.md` のミラー検査の残存件が意図した例外だけになるようにした（#25）
+- 英語 canon の参照表記を日本語ミラーに揃えた: `docs/governance/operating-rules.md` と `layer1/ORG-CLAUDE.md` の素パス表記を相対リンク化し、検証記録の説明文の動詞欠落を修正、権限差テスト ADR のファイル名を例示に改めて EN/JA が別ファイルを指す状態を解消（#25）
 - Google Drive 運用プロファイルの `classification` 行が commit 可能な2区分を英語ラベル名で書いており、日本語ミラー側のノートの表記（`社内`）と矛盾していた点、`AGENTS.md` の Drive 参照能力の確認が第三者に指示するように読めた点、`docs/ja/` 越境リンク検査に `python3` 不在環境の代替手段が無かった点を修正（#25）
 - 両 README の全ファイルマップに `ADOPTERS.md` を追加し、`scripts/validate.py` に両マップと実ファイルを双方向で突き合わせる `file-map` 検査を追加して、この種の乖離を機械的に検出できるようにした（#46）
 

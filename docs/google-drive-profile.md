@@ -77,7 +77,7 @@ Use two organization accounts with different access:
 
 Do not connect real confidential documents until this test passes and the applicable Layer 1 documents are `agreed`.
 
-Record the result where a later session can find it. Agreement is already machine-readable in frontmatter `status`; the test result needs an equivalent. When the test passes, create `docs/decisions/ADR-000N-drive-permission-test.md` from [ADR-0000-template.md](decisions/ADR-0000-template.md) and record the date, the role and access scope of each of the two accounts, both paths tested — direct retrieval and an existing derived note — and the result. Before connecting real confidential documents, AI confirms that this ADR exists and that its recorded result is a pass. If it is absent, treat the test as not yet run, whatever an earlier session may have reported.
+Record the result where a later session can find it. Agreement is already machine-readable in frontmatter `status`; the test result needs an equivalent. When the test passes, create an ADR under `docs/decisions/` from [ADR-0000-template.md](decisions/ADR-0000-template.md), named so that it is identifiable as the permission-differential test — for example `ADR-000N-drive-permission-test.md` — and record the date, the role and access scope of each of the two accounts, both paths tested — direct retrieval and an existing derived note — and the result. Before connecting real confidential documents, AI confirms that this ADR exists and that its recorded result is a pass. If it is absent, treat the test as not yet run, whatever an earlier session may have reported.
 
 ### 4. Create the First Derived State
 
