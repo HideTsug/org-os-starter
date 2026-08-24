@@ -1,6 +1,6 @@
 ---
 doc_type: template
-version: "1.4"
+version: "1.5"
 summary: Template for operating rules of the repository layer in the Google Drive-first profile. It defines DRI permissions, adoption verification records, derived-note edits, commit prohibitions, and norm agreement.
 ---
 
@@ -32,6 +32,7 @@ The first row is the exception: it is filled at Step 0, before any check exists,
 | Layer 1 norms are wired into each agent's load path — asked which prohibited-uses items apply, the agent quotes item numbers from the agreed document (`docs/setup-guide.md`, Step 1) | [Date] | [Name] | agents and load paths covered: [list] |
 | Agent Drive access capability — the agent shows the title and last modification time of one named Drive file, or the reason it cannot (`AGENTS.md`, onboarding step 4) | [Date] | [Name] | |
 | Step 3 adoption criterion, the gate before Step 4 — over the preceding seven days each of the five recurring questions was asked through AI at least once, and every answer linked its original and stated when it was last modified or reviewed (`docs/setup-guide.md`, Step 3) | [Date] | [Name] | questions that fell short: [list] |
+| Extensions active in each approved AI environment — every MCP server, agent plugin, and connector installed into an environment classified in `layer1/data-classification-matrix.md` has been re-assessed and approved by the implementation DRI before work use (`layer1/data-classification-matrix.md`, "Extensions Added to an Approved Environment") | [Date] | [Name] | environment: [E1/E1.5/E2/E3] / approved extensions: [list] |
 
 The two-account permission-differential test is recorded as an ADR instead of a row here, because it gates connecting real confidential documents. See `docs/google-drive-profile.md`, "Run the Permission-Differential Test".
 
@@ -92,3 +93,4 @@ When membership grows and each person has an AI agent sharing work, separating A
 | 2026-08-19 | v1.2 | upstream template | Added the adoption verification records section for repository visibility, Layer 1 load-path wiring, and agent Drive capability |
 | 2026-08-19 | v1.3 | upstream template | Added the Step 3 adoption criterion row that gates Step 4 |
 | 2026-08-24 | v1.4 | upstream template | Added the Step 0 purpose row, filled before any check, recording what the effort is for and when to look again |
+| 2026-08-25 | v1.5 | upstream template | Added the row recording extensions approved for each AI environment |

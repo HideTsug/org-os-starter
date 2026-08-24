@@ -1,6 +1,6 @@
 ---
 status: draft
-version: "0.3"
+version: "0.4"
 owner: (requires implementation DRI)
 summary: Template for the permission matrix across four data categories and AI execution environments. This is the top-level rule for which data may be given to which AI environment. Fill it after inventorying the adopting organization's real environments.
 ---
@@ -43,6 +43,12 @@ Classification principle: **When in doubt, choose the stricter category**. Even 
 
 Example of why the property decides the row, current as of 2026-08 — verify the vendor's current terms rather than relying on this paragraph: Claude Code cloud sessions run on vendor-provisioned infrastructure by default, which is E2. Organizations on Team or Enterprise plans can enable self-hosted environments so that sessions run on runners inside their own network, with repository checkouts, build artifacts, and secrets staying on infrastructure they provision — that moves the execution and file-residency axis to E1. The conversation is still sent to the vendor for inference either way, so the inference path remains a separate R-axis question.
 
+### Extensions Added to an Approved Environment
+
+An extension installed into an already-classified environment — an MCP server, an agent plugin, or a connector — is not a row of its own in the table above, because it does not move where the AI process executes or where its files persist. It does change that environment's **effective data boundary**: an extension can send file contents and tool results to a third-party endpoint that the classification never assessed. Packaging standards do not close this on their own. The Agent Plugins 1.0.0 specification, published 2026-08, states that it is a package format only and defines no permission model, no sandboxing requirements, and no trust or provenance verification.
+
+Therefore **installing an extension re-opens the classification of the environment it was installed into.** Before the extension is used for work, the implementation DRI re-assesses which row that environment belongs to with the extension active, and records the approved extension in the adoption verification records of `docs/governance/operating-rules.md`. An extension that has not been through this is unapproved, which [[prohibited-uses]] item 10 states as a prohibition.
+
 ## GitHub Repositories as a Storage Location
 
 GitHub repositories, including this repository, are not AI execution environments; they are **storage locations on cloud infrastructure outside organization management**. Their data sovereignty is the same "outside organization management" as E2/E3, but **the E2/E3 columns of the input permission matrix below do not apply to them** — that matrix governs what may be given to AI, while this section governs what may be committed. Commit permission is as follows:
@@ -80,6 +86,7 @@ Input is allowed only when **all** of the following are satisfied:
 2. Prior joined approval has been obtained for each data type. Chat or email approval is acceptable if it is retained.
 3. Required processing is applied: masking real names and proper nouns, converting financial figures to ranges or fictional replacements, and replacing personal names with initials. The required processing level is specified at approval time.
 4. The input is recorded in the audit log below.
+5. Only extensions approved under "Extensions Added to an Approved Environment" above are active in that environment. Installing a new extension suspends this category 3 permission until the environment is re-assessed.
 
 ### E1.5 AI Reference Conditions: Phased Introduction
 
@@ -115,3 +122,4 @@ Activation conditions for R2, initial defaults. Do not begin confidential refere
 | [Date] | v0.1 | [Drafter] | Drafted from template |
 | 2026-08-18 | v0.2 | upstream template | Defined the execution-environment rows by execution and file-residency property instead of product name, and separated them from the inference-path R axis |
 | 2026-08-19 | v0.3 | upstream template | Restated the category 4 examples as jurisdiction-independent, with the Japanese items kept as a labelled example |
+| 2026-08-25 | v0.4 | upstream template | Added "Extensions Added to an Approved Environment", making an installed MCP server, agent plugin, or connector re-open the environment classification, and added it as condition 5 for category 3 × E1 |
