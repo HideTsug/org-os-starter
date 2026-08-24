@@ -1,6 +1,6 @@
 ---
 doc_type: template
-version: "1.5"
+version: "1.6"
 summary: Template for operating rules of the repository layer in the Google Drive-first profile. It defines DRI permissions, adoption verification records, derived-note edits, commit prohibitions, and norm agreement.
 ---
 
@@ -21,20 +21,20 @@ Japanese version: [docs/ja/docs/governance/運用規約.md](../ja/docs/governanc
 
 ## Adoption Verification Records
 
-Checks that gate a later step are recorded here, so a different person or a later AI session can tell whether they were actually done instead of assuming they probably were. Fill a row when the check passes; leave it empty while it has not.
+Checks that gate a later step are recorded here, so a different person or a later AI session can tell whether they were actually done instead of assuming they probably were. Fill a row when the check passes; leave it empty while it has not passed.
 
 The first row is the exception: it is filled at Step 0, before any check exists, because it records what the whole effort is for. Without it, later rows can show that the foundation is used while nobody can say whether it solved anything.
 
 | Check | Date | Confirmed by | Note |
 |---|---|---|---|
-| Step 0 purpose — the first narrow use case, the problem in the work it addresses, the observable state that means that problem is solved, and the date to look again (`docs/setup-guide.md`, Step 0) | [Date] | [Name] | use case: [text] / problem: [text] / observable solved state: [text] / look again on: [Date] |
+| Step 0 purpose — the first narrow use case, the problem in the work it addresses, the observable state that means that problem is solved, and the date to look again (the [setup guide](../setup-guide.md), Step 0) | [Date] | [Name] | use case: [text] / problem: [text] / observable solved state: [text] / look again on: [Date] |
 | Repository visibility is private — `gh repo view --json visibility` returns `"visibility":"PRIVATE"`, or the hosting settings screen shows Private | [Date] | [Name] | |
-| Layer 1 norms are wired into each agent's load path — asked which prohibited-uses items apply, the agent quotes item numbers from the agreed document (`docs/setup-guide.md`, Step 1) | [Date] | [Name] | agents and load paths covered: [list] |
-| Agent Drive access capability — the agent shows the title and last modification time of one named Drive file, or the reason it cannot (`AGENTS.md`, onboarding step 4) | [Date] | [Name] | |
-| Step 3 adoption criterion, the gate before Step 4 — over the preceding seven days each of the five recurring questions was asked through AI at least once, and every answer linked its original and stated when it was last modified or reviewed (`docs/setup-guide.md`, Step 3) | [Date] | [Name] | questions that fell short: [list] |
-| Extensions active in each approved AI environment — every MCP server, agent plugin, and connector installed into an environment classified in `layer1/data-classification-matrix.md` has been re-assessed and approved by the implementation DRI before work use (`layer1/data-classification-matrix.md`, "Extensions Added to an Approved Environment") | [Date] | [Name] | environment: [E1/E1.5/E2/E3] / approved extensions: [list] |
+| Layer 1 norms are wired into each agent's load path — asked which prohibited-uses items apply, the agent quotes item numbers from the agreed document (the [setup guide](../setup-guide.md), Step 1) | [Date] | [Name] | agents and load paths covered: [list] |
+| Agent Drive access capability — the agent shows the title and last modification time of one named Drive file, or the reason it cannot ([AGENTS.md](../../AGENTS.md), onboarding step 4) | [Date] | [Name] | |
+| Step 3 adoption criterion, the gate before Step 4 — over the preceding seven days each of the five recurring questions was asked through AI at least once, and every answer linked its original and stated when it was last modified or reviewed (the [setup guide](../setup-guide.md), Step 3) | [Date] | [Name] | questions that fell short: [list] |
+| Extensions active in each approved AI environment — every MCP server, agent plugin, and connector installed into an environment classified in the [data classification matrix](../../layer1/data-classification-matrix.md) has been re-assessed and approved by the implementation DRI before work use (the same document, "Extensions Added to an Approved Environment") | [Date] | [Name] | environment: [E1/E1.5/E2/E3] / approved extensions: [list] |
 
-The two-account permission-differential test is recorded as an ADR instead of a row here, because it gates connecting real confidential documents. See `docs/google-drive-profile.md`, "Run the Permission-Differential Test".
+The two-account permission-differential test is recorded as an ADR instead of a row here, because it gates connecting real confidential documents. See the [Google Drive operating profile](../google-drive-profile.md), "Run the Permission-Differential Test".
 
 ## Document status Management
 
@@ -61,7 +61,7 @@ This is a UX policy, not the whole security boundary. Drive access is bounded by
 2. API keys, tokens, passwords, and secrets.
 3. Customer or vendor files themselves, regardless of format.
 
-GitHub is a storage location on cloud infrastructure outside organization management. Commit permission follows "GitHub Repositories as a Storage Location" in `layer1/data-classification-matrix.md`. **Category 3 (customer/vendor-identifying) and category 4 (regulated) data must not be committed** — placing them in the repository violates these rules the moment it happens. Category 1 (public) and category 2 (internal) data may be committed as long as prohibitions 1 through 3 above are satisfied.
+GitHub is a storage location on cloud infrastructure outside organization management. Commit permission follows "GitHub Repositories as a Storage Location" in the [data classification matrix](../../layer1/data-classification-matrix.md). **Category 3 (customer/vendor-identifying) and category 4 (regulated) data must not be committed** — placing them in the repository violates these rules the moment it happens. Category 1 (public) and category 2 (internal) data may be committed as long as prohibitions 1 through 3 above are satisfied.
 
 ## Non-Destructive Intake
 
@@ -94,3 +94,4 @@ When membership grows and each person has an AI agent sharing work, separating A
 | 2026-08-19 | v1.3 | upstream template | Added the Step 3 adoption criterion row that gates Step 4 |
 | 2026-08-24 | v1.4 | upstream template | Added the Step 0 purpose row, filled before any check, recording what the effort is for and when to look again |
 | 2026-08-25 | v1.5 | upstream template | Added the row recording extensions approved for each AI environment |
+| 2026-08-25 | v1.6 | upstream template | Turned bare document paths into working relative links, matching the Japanese mirror, and completed the verb in the verification-records instruction |

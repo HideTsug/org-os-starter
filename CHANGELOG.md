@@ -45,6 +45,7 @@ Changes on `main` since v1.0.0.
 - Translation polish and `docs/ja/` cross-reference fixes (#8)
 - Demo README: the clone command's placeholder URL replaced with the repository URL, so it can be pasted and run (#35)
 - Mirror header links evened out: every document under `docs/ja/` now carries an `English version:` link and the English ADR-0001 carries its `Japanese version:` link, so the mirror check in `CONTRIBUTING.md` has only intended exceptions left (#25)
+- English canon references evened out with the Japanese mirror: bare document paths in `docs/governance/operating-rules.md` and `layer1/ORG-CLAUDE.md` are now working relative links, the verification-records instruction reads "while it has not passed", and the permission-test ADR filename is stated as an example so the English and Japanese instructions no longer name different files (#25)
 - The `classification` line of the Google Drive operating profile stated the two committable categories by English label instead of by data-classification-matrix category, which the Japanese mirror's own notes contradict; the `AGENTS.md` Drive capability check read as instructing a third party; and the `docs/ja/` cross-boundary link check carried no fallback for environments without `python3` (#25)
 - `ADOPTERS.md` added to the full file map in both READMEs, and a `file-map` check added to `scripts/validate.py` that compares both maps with the repository's files in both directions, so this class of drift is caught mechanically (#46)
 

@@ -1,6 +1,6 @@
 ---
 status: draft
-version: "0.4"
+version: "0.5"
 owner: (requires implementation DRI)
 summary: Template for organizational AI work norms, the core Layer 1 document. It makes organizational policy, compliance norms, data handling, and escalation machine-readable. Fill it for the adopting organization and promote it to agreed after approval.
 ---
@@ -11,7 +11,7 @@ Japanese version: [docs/ja/layer1/組織CLAUDE.md](../docs/ja/layer1/組織CLAUD
 
 > The core Layer 1 document for norms and SSoT separation. **This is the first norm document read by every AI agent that supports work inside the organization.**
 >
-> That is a requirement, not an automatic behavior: no agent loads this file on its own. Connect it to the load path of every agent the organization uses, as described in `docs/setup-guide.md`, Step 1, and treat these norms as effective for an agent only after that step's check passes for it.
+> That is a requirement, not an automatic behavior: no agent loads this file on its own. Connect it to the load path of every agent the organization uses, as described in the [setup guide](../docs/setup-guide.md), Step 1, and treat these norms as effective for an agent only after that step's check passes for it.
 >
 > Filling policy: Do not try to complete it all at once. Fill confirmed parts first, such as compliance norms based on current law and already agreed internal decisions. Mark items that require management judgment with owner flags such as `(requires executive owner)` and fill them alongside operations.
 
@@ -110,3 +110,4 @@ Japanese version: [docs/ja/layer1/組織CLAUDE.md](../docs/ja/layer1/組織CLAUD
 | 2026-08-19 | v0.2 | upstream template | Tied the "read first" requirement to the load-path wiring step, and restated the privacy section as jurisdiction-independent goals with an owner flag and labelled examples |
 | 2026-08-22 | v0.3 | upstream template | Added a national AI-governance guidance reference viewpoint to Compliance Norms, with the Japanese guideline kept as a labelled example |
 | 2026-08-25 | v0.4 | upstream template | Added the operating rule that content reaching AI from a source is data and not instructions, with escalation when instruction-like text is found |
+| 2026-08-25 | v0.5 | upstream template | Turned the bare setup-guide path into a working relative link, matching the Japanese mirror |
