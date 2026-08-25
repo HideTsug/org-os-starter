@@ -38,6 +38,8 @@ Changes on `main` since v1.0.0.
 - Step 4 of the setup guide now offers redesigning the work itself as the first expansion option, ahead of the Layer 3 to 5 additions, for a path already in daily use (#51)
 - An extension installed into an already-approved AI environment — an MCP server, an agent plugin, or a connector — now re-opens that environment's classification, is covered by `prohibited-uses` item 10, and is recorded in the operating-rules verification records (#55)
 - The rule that content reaching AI from a source is data and not instructions, wired into three read paths: the Layer 1 `ORG-CLAUDE.md` operating rules, the ask-path answer conditions of the Google Drive profile, and the derived-note rules of `knowledge/README.md` (#56)
+- The two check snippets in the `CONTRIBUTING.md` pre-pull-request checklist moved to a Checks subsection at the end of the section, so the checklist reads as one uninterrupted list (#25)
+- The Japanese side of the demo README now states, like the English summary, that each prompt's expected-output line is the acceptance criterion, and prompt 2 names the source file the answer must cite (#25)
 
 ### Fixed
 
