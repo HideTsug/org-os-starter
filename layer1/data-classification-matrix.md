@@ -1,6 +1,6 @@
 ---
 status: draft
-version: "0.4"
+version: "0.5"
 owner: (requires implementation DRI)
 summary: Template for the permission matrix across four data categories and AI execution environments. This is the top-level rule for which data may be given to which AI environment. Fill it after inventorying the adopting organization's real environments.
 ---
@@ -42,6 +42,15 @@ Classification principle: **When in doubt, choose the stricter category**. Even 
 **Classify by configured deployment, not by product name.** The same product can belong to different rows depending on how the organization deployed it, so confirm the deployment actually enabled before filing it. When execution and file residency move onto organization-controlled infrastructure while prompts, responses, and tool results are still sent to the vendor for inference, the two axes are assessed separately: the table above covers execution and file residency, and the inference path is assessed on the R axis in "E1.5 AI Reference Conditions" below.
 
 Example of why the property decides the row, current as of 2026-08 — verify the vendor's current terms rather than relying on this paragraph: Claude Code cloud sessions run on vendor-provisioned infrastructure by default, which is E2. Organizations on Team or Enterprise plans can enable self-hosted environments so that sessions run on runners inside their own network, with repository checkouts, build artifacts, and secrets staying on infrastructure they provision — that moves the execution and file-residency axis to E1. The conversation is still sent to the vendor for inference either way, so the inference path remains a separate R-axis question.
+
+### Re-verification of Environment Classifications
+
+The rows above depend on the vendor's terms and on the organization's configured deployment, and both change over time — the example above carries a date for exactly that reason. Re-verify the E1/E1.5/E2/E3 classification of every environment in use:
+
+- **On change**: when a vendor changes its terms, plans, or data-handling conditions, or when the organization changes an environment's deployment configuration. This is the same re-assessment duty that "Extensions Added to an Approved Environment" below defines for extensions
+- **Periodically**: at a fixed interval, so that a change nobody noticed is still caught. (requires implementation DRI: set the interval. Example: once a year)
+
+A re-verification that changes a row is recorded in the Revision History below; a periodic check that confirms the current classification may be recorded as a no-change entry. This duty is separate from the Monthly review in `ORG-CLAUDE.md`, whose scope does not include classification freshness.
 
 ### Extensions Added to an Approved Environment
 
@@ -123,3 +132,4 @@ Activation conditions for R2, initial defaults. Do not begin confidential refere
 | 2026-08-18 | v0.2 | upstream template | Defined the execution-environment rows by execution and file-residency property instead of product name, and separated them from the inference-path R axis |
 | 2026-08-19 | v0.3 | upstream template | Restated the category 4 examples as jurisdiction-independent, with the Japanese items kept as a labelled example |
 | 2026-08-25 | v0.4 | upstream template | Added "Extensions Added to an Approved Environment", making an installed MCP server, agent plugin, or connector re-open the environment classification, and added it as condition 5 for category 3 × E1 |
+| 2026-08-26 | v0.5 | upstream template | Added "Re-verification of Environment Classifications", requiring the E1–E3 rows to be re-checked when vendor terms, plans, or the deployment configuration change and at a fixed interval, with changes recorded in this history |
