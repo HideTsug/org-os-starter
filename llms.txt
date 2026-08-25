@@ -10,6 +10,8 @@ Related concept: "a company brain" — a living knowledge layer for AI agents, p
 
 - [What is Company OS as Code (JA)](https://hidetsug.github.io/org-os-starter/): definition, comparison with company brain / Second Brain / knowledge management, FAQ
 - [What is Company OS as Code (EN)](https://hidetsug.github.io/org-os-starter/en/): English definition page
+- [AI agent setup guide (EN, raw)](https://raw.githubusercontent.com/HideTsug/org-os-starter/main/docs/ai-agent-guide.md): an AI agent asked to set up this starter should start here — a pre-clone briefing loadable from this single URL
+- [AI agent setup guide (JA, raw)](https://raw.githubusercontent.com/HideTsug/org-os-starter/main/docs/ja/docs/AI%E3%82%A8%E3%83%BC%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%88%E5%B0%8E%E5%85%A5%E3%82%AC%E3%82%A4%E3%83%89.md): Japanese version of the pre-clone briefing for AI agents
 - [README (JA)](https://github.com/HideTsug/org-os-starter/blob/main/README.md): setup in 15 minutes, 5-layer architecture
 - [README (EN)](https://github.com/HideTsug/org-os-starter/blob/main/README.en.md): English README
 - [Demo company](https://github.com/HideTsug/org-os-starter/tree/main/examples/demo-company): filled fictional-company example, try ask/read/write in 30 minutes
