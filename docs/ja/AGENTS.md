@@ -34,7 +34,7 @@ English version: [AGENTS.md](../../AGENTS.md)
 
 ## 読み順
 
-`README.md` → `docs/architecture.md` → `docs/Google-Drive-運用プロファイル.md` → `docs/導入ガイド.md` → `layer1/` → `docs/governance/運用規約.md` → `knowledge/`
+`README.md` → `docs/アーキテクチャ.md` → `docs/Google-Drive-運用プロファイル.md` → `docs/導入ガイド.md` → `layer1/` → `docs/governance/運用規約.md` → `knowledge/`
 
 本ファイルは日本語ミラーなので、上の読み順は日本語版（`README.md` と `docs/ja/` 配下の各文書）を指す。英語正本 `AGENTS.md` の読み順は `README.en.md` から始まり、以降も英語正本を指す。参照先をどちらの言語にするかは [CLAUDE.md](CLAUDE.md)「上流リポジトリ専用の規約」に定義がある。
 
