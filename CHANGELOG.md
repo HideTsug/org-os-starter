@@ -19,6 +19,7 @@ Changes on `main` since v1.0.0.
 - `ADOPTERS.md` — an opt-in list of organizations running this convention, linked from both READMEs (#22)
 - `CHANGELOG.md` with a Japanese mirror, and the current version stated at the top of both READMEs (#27)
 - A user-guide FAQ entry on what a member should do when an AI answer carries no source link or contradicts the original (#29)
+- A reference table in `CONTRIBUTING.md` mapping each of the five `scripts/validate.py` violation types to its meaning and fix, so a contributor can recover from a failed check without reverse-searching the prose (#61)
 
 ### Changed
 

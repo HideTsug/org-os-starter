@@ -73,6 +73,16 @@ sys.exit(1 if bad else 0)
 PY
 ```
 
+When `python3 scripts/validate.py` reports violations, every violation line begins with one of five type names. Look the type up here for what it means and how to recover:
+
+| Violation type | Meaning | How to fix |
+|---|---|---|
+| `relative-link` | A relative Markdown link points to a path that does not exist — directories and non-Markdown targets such as `LICENSE` count | Correct the path or restore the target. After a move or rename, update every link that named the old path, in both languages |
+| `wikilink` | A `[[wikilink]]` does not resolve to a Markdown file in the repository — matched by basename, or by repository path when the target contains `/` | Make the target match an existing file's basename or path exactly, or restore the missing file |
+| `status` | A frontmatter `status` value is not `draft`, `proposed`, or `agreed` | Use one of the three values. Do not promote a template's `status` in an upstream pull request — see the frontmatter checklist item above |
+| `placeholder` | A bare `(TODO)`, `(TBD)`, or `(FIXME)` appears outside code blocks and code spans | Replace it with an owner flag such as `(requires executive owner)` — see [CLAUDE.md](CLAUDE.md), "Structure Rules" |
+| `file-map` | A full file map in `README.md` or `README.en.md` disagrees with the repository tree in either direction, or the map block is missing | Apply the same addition, move, or rename to the file maps of **both** READMEs |
+
 ## Writing an Issue
 
 Use the same three sections the maintainer uses, so the issue can be picked up and worked on without a follow-up conversation:
