@@ -1,6 +1,6 @@
 ---
 doc_type: reference
-version: "1.6"
+version: "1.7"
 summary: Org-OS Starter setup guide covering Layer 1 agreement, a Google Drive-first Layer 2, permission verification, and recurring use.
 ---
 
@@ -75,9 +75,10 @@ The main driver of adoption is that **the DRI uses it visibly every day**:
 
 - In recurring meetings, demonstrate that AI answers from Drive with original links. This is the ask path.
 - After meetings, record the decision in the approved Drive area. This is the write path.
+- In the same recurring meeting, have one member other than the DRI share a question they asked AI that week and what came back, rotating who shares. This is the smallest venue that keeps usage knowledge from pooling in a few early adopters; do not create a new meeting for it.
 - Once a week, check `source_modified_at` against the original and refresh stale derived notes.
 
-Judge adoption at two weeks against something observable rather than a feeling. The criterion: over the preceding seven days, each of the five recurring questions chosen in Step 2-5 was asked through AI at least once, and every answer linked its original and stated when that original was last modified or reviewed — the full answer contract is in [Google Drive Operating Profile](google-drive-profile.md), "Verify the Ask Path". Record the count and every question that fell short in the verification records section of `docs/governance/operating-rules.md`. An organization that did not run Step 2 applies the same criterion to its manually maintained `knowledge/`, with the last review date in place of the Drive link.
+Judge adoption at two weeks against something observable rather than a feeling. The criterion: over the preceding seven days, each of the five recurring questions chosen in Step 2-5 was asked through AI at least once, the askers across the five questions included someone other than the DRI, and every answer linked its original and stated when that original was last modified or reviewed — the full answer contract is in [Google Drive Operating Profile](google-drive-profile.md), "Verify the Ask Path". Record the count, who asked, and every question that fell short in the verification records section of `docs/governance/operating-rules.md`. An organization that did not run Step 2 applies the same criterion to its manually maintained `knowledge/`, with the last review date in place of the Drive link.
 
 If the criterion is not met, record which part is missing — note granularity, freshness, or coverage — fix that part, and measure the same five questions again. Do not begin Step 4 until the criterion is met once.
 
@@ -112,6 +113,7 @@ After Layer 2 starts working, consider the following. See the expansion patterns
 - **Starting all five layers side by side** — Everything becomes half-built and unused. Protect the narrow start.
 - **Leaving everything to AI without human reading** — Humans must perform final confirmation of norm documents, especially compliance norms. AI is a drafting and research aid.
 - **Letting notes become stale** — If people believe "AI's answer is old" even once, usage drops. Make weekly `last_reviewed` checks a DRI habit.
+- **Usage settling on the DRI and a few early adopters** — A criterion that only counts what was asked can pass on the DRI's own usage while most members never ask, and the gap between heavy users and everyone else widens unobserved. Judge adoption by who asks as well, and keep the member share slot in the recurring meeting so usage knowledge surfaces instead of pooling.
 - **Treating folder placement as authorization** — A folder name or project mapping does not grant access. Test the current user's effective Drive permission with two accounts.
 - **Adding another connector before repeat use** — If users cannot name a recurring question, source breadth is not the bottleneck.
 
@@ -126,3 +128,4 @@ After Layer 2 starts working, consider the following. See the expansion patterns
 | 2026-08-21 | v1.4 | upstream template | Added to the Step 0, 1, and 3 headings the effort estimates the Japanese mirror already carried |
 | 2026-08-24 | v1.5 | upstream template | Made Step 0 decide the problem, the observable solved state, and the look-again date alongside the use case, and added the cost-reduction-only pitfall |
 | 2026-08-24 | v1.6 | upstream template | Put redesigning the work itself first among the Step 4 expansion options, ahead of the layer additions |
+| 2026-08-27 | v1.7 | upstream template | Required the Step 3 askers to include someone other than the DRI, added the rotating member share slot to the adoption drivers, and added the usage-concentration pitfall |

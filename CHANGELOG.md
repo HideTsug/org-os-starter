@@ -42,6 +42,7 @@ Changes on `main` since v1.0.0.
 - The Japanese side of the demo README now states, like the English summary, that each prompt's expected-output line is the acceptance criterion, and prompt 2 names the source file the answer must cite (#25)
 - The data classification matrix now defines re-verification triggers for the execution-environment rows — when vendor terms, plans, or the deployment configuration change, and at a fixed interval — with changes recorded in its revision history (#41)
 - Renamed the Japanese architecture mirror to `docs/ja/docs/アーキテクチャ.md`, so every mirror under `docs/ja/docs/` carries a Japanese file name and the Japanese reading order no longer needs an English-named exception (#25)
+- The Step 3 adoption criterion now requires the askers to include someone other than the DRI, the adoption drivers gained a rotating member share slot, and the pitfalls gained usage settling on a few early adopters — so a rollout that only the DRI uses no longer passes (#65)
 
 ### Fixed
 
