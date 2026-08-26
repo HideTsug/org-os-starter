@@ -158,7 +158,7 @@ org-os-starter/
 │       ├── CHANGELOG.md
 │       ├── docs/
 │       │   ├── AIエージェント導入ガイド.md
-│       │   ├── architecture.md
+│       │   ├── アーキテクチャ.md
 │       │   ├── Google-Drive-運用プロファイル.md
 │       │   ├── 導入ガイド.md
 │       │   ├── 利用ガイド.md

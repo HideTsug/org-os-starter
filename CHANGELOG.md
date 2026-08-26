@@ -41,6 +41,7 @@ Changes on `main` since v1.0.0.
 - The two check snippets in the `CONTRIBUTING.md` pre-pull-request checklist moved to a Checks subsection at the end of the section, so the checklist reads as one uninterrupted list (#25)
 - The Japanese side of the demo README now states, like the English summary, that each prompt's expected-output line is the acceptance criterion, and prompt 2 names the source file the answer must cite (#25)
 - The data classification matrix now defines re-verification triggers for the execution-environment rows — when vendor terms, plans, or the deployment configuration change, and at a fixed interval — with changes recorded in its revision history (#41)
+- Renamed the Japanese architecture mirror to `docs/ja/docs/アーキテクチャ.md`, so every mirror under `docs/ja/docs/` carries a Japanese file name and the Japanese reading order no longer needs an English-named exception (#25)
 
 ### Fixed
 

@@ -4,7 +4,7 @@ version: "1.1"
 summary: Overview of the Org-OS five-layer architecture and its Google Drive-first Layer 2 topology. Layer 3 through Layer 5 concepts exist only in this document until real content is ready.
 ---
 
-Japanese version: [docs/ja/docs/architecture.md](ja/docs/architecture.md)
+Japanese version: [docs/ja/docs/アーキテクチャ.md](ja/docs/アーキテクチャ.md)
 
 # Org-OS Architecture Overview
 
