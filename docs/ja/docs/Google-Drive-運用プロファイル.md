@@ -64,7 +64,7 @@ Drive原本を無断で`knowledge/`へ複製しない。派生ノートは制限
 - 現在の利用者のOAuth認可で動くAIコネクタまたはDrive APIクライアントを使う。
 - v0.1では読取専用権限を要求する。
 - サービスアカウント・domain-wide delegationを使わない。
-- 取得内容を処理する推論経路を`layer1/data-classification-matrix.md`に記録する。
+- 取得内容を処理する推論経路を[データ分類マトリクス](../layer1/データ分類マトリクス.md)に記録する。
 
 ### 3. 権限差テストを行う
 
@@ -81,7 +81,7 @@ Drive原本を無断で`knowledge/`へ複製しない。派生ノートは制限
 
 ### 4. 最初の派生状態を作る
 
-選択した各PJについて、`knowledge/projects/_template.md`からノートを作成・更新する。
+選択した各PJについて、[`knowledge/projects/_テンプレート.md`](../knowledge/projects/_テンプレート.md)からノートを作成・更新する。
 
 - `source_urls`: 原本Driveフォルダまたは文書URL
 - `source_modified_at`: 要約に使った原本群の最新更新日時

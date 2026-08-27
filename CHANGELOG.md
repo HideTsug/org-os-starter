@@ -54,6 +54,7 @@ Changes on `main` since v1.0.0.
 - English canon references evened out with the Japanese mirror: bare document paths in `docs/governance/operating-rules.md` and `layer1/ORG-CLAUDE.md` are now working relative links, the verification-records instruction reads "while it has not passed", and the permission-test ADR filename is stated as an example so the English and Japanese instructions no longer name different files (#25)
 - The `classification` line of the Google Drive operating profile stated the two committable categories by English label instead of by data-classification-matrix category, which the Japanese mirror's own notes contradict; the `AGENTS.md` Drive capability check read as instructing a third party; and the `docs/ja/` cross-boundary link check carried no fallback for environments without `python3` (#25)
 - `ADOPTERS.md` added to the full file map in both READMEs, and a `file-map` check added to `scripts/validate.py` that compares both maps with the repository's files in both directions, so this class of drift is caught mechanically (#46)
+- Prose file-name references inside `docs/ja/` now point to the Japanese counterpart where one exists, per the mirror reference rule in `CLAUDE.md`; the mentions that correctly stay on English canon paths — rule explanations, file-map structures, changelog records, commands and URLs — are classified in the issue (#25)
 
 ## [1.0.0] - 2026-08-13
 

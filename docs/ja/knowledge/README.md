@@ -15,7 +15,7 @@ English version: [knowledge/README.md](../../../knowledge/README.md)
 
 ## 共通ルール
 
-- frontmatter の `classification` にデータ区分（`layer1/data-classification-matrix.md` の4区分）を自己申告する。**許容値は `公開` / `社内` の2つのみ**（区分3「顧客・取引先特定」・区分4「規制対象」のデータはこのリポジトリに置けないため、値としても現れない）
+- frontmatter の `classification` にデータ区分（[データ分類マトリクス](../layer1/データ分類マトリクス.md) の4区分）を自己申告する。**許容値は `公開` / `社内` の2つのみ**（区分3「顧客・取引先特定」・区分4「規制対象」のデータはこのリポジトリに置けないため、値としても現れない）
 - **顧客・取引先の実名・実数値は書かない**（区分3）。必要なら案件ID・ロール表記（「顧客A」「代表」等）で参照する
 - 種別判定は `tags`（`project` / `issue`）で行う。検索・集計ツールはこのタグを見る
 - Drive由来ノートは`source_urls`・`source_modified_at`・`source_status`を記録する。`source_status`は`current`または`stale`。原本を再度開けなければ`stale`にする
@@ -26,4 +26,4 @@ English version: [knowledge/README.md](../../../knowledge/README.md)
 
 ## 拡張
 
-顧客ノート・案件ノート・議事録要約ノート等の種別追加は、Google Drive取込設計と合わせて行う（`docs/google-drive-profile.md`と`docs/architecture.md`の発展要素参照）。種別を増やすときは必ず`_テンプレート.md`を先に定義する。
+顧客ノート・案件ノート・議事録要約ノート等の種別追加は、Google Drive取込設計と合わせて行う（[Google-Drive-運用プロファイル](../docs/Google-Drive-運用プロファイル.md)と[アーキテクチャ](../docs/アーキテクチャ.md)の発展要素参照）。種別を増やすときは必ず`_テンプレート.md`を先に定義する。
