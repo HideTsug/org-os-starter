@@ -45,6 +45,7 @@ Changes on `main` since v1.0.0.
 - Renamed the Japanese architecture mirror to `docs/ja/docs/アーキテクチャ.md`, so every mirror under `docs/ja/docs/` carries a Japanese file name and the Japanese reading order no longer needs an English-named exception (#25)
 - The Step 3 adoption criterion now requires the askers to include someone other than the DRI, the adoption drivers gained a rotating member share slot, and the pitfalls gained usage settling on a few early adopters — so a rollout that only the DRI uses no longer passes (#65)
 - The after-copying cleanup table in `CLAUDE.md` now covers `ADOPTERS.md` and `docs/ai-agent-guide.md`, so a copy no longer keeps the upstream adopters list or the pre-clone briefing (#69)
+- The core list in the update strategy of both READMEs now includes `scripts/validate.py`, so a copy keeps taking upstream improvements to the mechanical checks (#70)
 
 ### Fixed
 

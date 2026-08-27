@@ -228,7 +228,7 @@ Markdown は **Obsidian 互換**で書く。`[[wikilink]]` はリポジトリ内
 
 ## 更新戦略（スターターと自組織資産の二層）
 
-- **コア（上流=本リポジトリ由来）**: `docs/architecture.md`・`docs/setup-guide.md`・`docs/user-guide.md`・`docs/google-drive-profile.md`・`docs/decisions/ADR-0000-template.md`・`knowledge/README.md`・`knowledge/` 配下の `_template.md`。上流の改善は [CHANGELOG.md](CHANGELOG.md)（日本語版は [docs/ja/CHANGELOG.md](docs/ja/CHANGELOG.md)）とリリースノートを見て手動で取り込む
+- **コア（上流=本リポジトリ由来）**: `docs/architecture.md`・`docs/setup-guide.md`・`docs/user-guide.md`・`docs/google-drive-profile.md`・`docs/decisions/ADR-0000-template.md`・`knowledge/README.md`・`knowledge/` 配下の `_template.md`・`scripts/validate.py`（機械検査は充填文書ではなく上流保守のツールで、複製先でもそのまま有効）。上流の改善は [CHANGELOG.md](CHANGELOG.md)（日本語版は [docs/ja/CHANGELOG.md](docs/ja/CHANGELOG.md)）とリリースノートを見て手動で取り込む
 - **育成層（自組織資産）**: 充填済みの `layer1/`、制定した `docs/governance/operating-rules.md`、自組織向けに手を入れた `AGENTS.md`・`CLAUDE.md`、Drive 原本、`knowledge/` の派生状態、自組織のADR。**上流更新で上書きしない。** コアのテンプレートも、自組織の内容を書き込んだ時点で育成層に移る
 
 template から作った時点で独立進化が基本。上流に還元したい改善（テンプレの汎用的な穴・良い運用パターン）は本リポジトリへ issue / PR を歓迎する。出す前に [docs/ja/CONTRIBUTING.md](docs/ja/CONTRIBUTING.md) を読む（何を上流に還元してほしいか、PR 前のチェックリスト、issue の書き方）。
