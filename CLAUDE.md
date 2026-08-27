@@ -53,6 +53,8 @@ After copying the template, clear these items:
 | `docs/ja/` | Delete, or keep only the documents the organization actually reads — and then stop maintaining them as mirrors |
 | `working_language` in "Document Style" | Replace with the organization's own working language |
 | `examples/demo-company/` | Delete once the demo has been tried |
+| `ADOPTERS.md` | Delete — it lists organizations running the upstream template, not the copy. To be listed, open a PR or issue upstream |
+| `docs/ai-agent-guide.md` | Delete — it is the upstream pre-clone briefing, and once the organization's copy exists its branch points are already behind you. Its Japanese mirror follows the `docs/ja/` row |
 | `CONTRIBUTING.md` | Keep only as the guide for sending improvements back upstream. It governs the upstream repository, not the organization's own |
 | The file map and reading-order table in `README.md`, and `README.en.md` if it is kept | Rewrite so they describe the organization's own repository |
 
