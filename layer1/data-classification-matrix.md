@@ -1,6 +1,6 @@
 ---
 status: draft
-version: "0.5"
+version: "0.6"
 owner: (requires implementation DRI)
 summary: Template for the permission matrix across four data categories and AI execution environments. This is the top-level rule for which data may be given to which AI environment. Fill it after inventorying the adopting organization's real environments.
 ---
@@ -24,7 +24,7 @@ Japanese version: [docs/ja/layer1/データ分類マトリクス.md](../docs/ja/
 | **1. Public** | Data that may be seen by anyone without issue | Public information, industry articles, public laws and regulations, fictional or dummy cases, training cases, and statements already published by the person |
 | **2. Internal** | Internal organizational data that does not identify customers or vendors. Split into **personal-origin** data, such as the contributor's own thinking or reflection with no unique information about others, and **organizational internal** data, such as meeting notes, SOPs, and work templates | Reflection and career-view notes; meeting notes with personal names replaced by initials; work procedure documents |
 | **3. Customer/vendor-identifying** | Data that identifies or could lead to identification of a customer or vendor | Real personal names, company names, financial figures, communication history such as email, customer analysis notes, and non-public business themes such as HR, partnerships, M&A, and unpublished financials |
-| **4. Regulated** | Data with special legal management duties | Statutory identifiers whose permitted purposes and recipients are restricted by law and the documents carrying them, identity-verification documents, sensitive personal information, litigation materials, and (requires qualified professional: identify the laws that apply in the organization's own jurisdiction and add its legally required documents. Example, Japanese jurisdiction: individual numbers and Individual Number Act-related documents) |
+| **4. Regulated** | Data with special legal management duties | Statutory identifiers whose permitted purposes and recipients are restricted by law and the documents carrying them, identity-verification documents, sensitive personal information, litigation materials, and (requires qualified professional: identify the laws that apply in the organization's own jurisdiction and add its legally required documents. Example, Japanese jurisdiction: individual numbers and Individual Number Act-related documents; specific biometric personal information — face-recognition data, DNA, voiceprints — newly regulated by the 2026 amendment to the Act on the Protection of Personal Information, promulgated 2026-07-17 and entering into force in stages) |
 
 Classification principle: **When in doubt, choose the stricter category**. Even a personal thinking note should be classified by its actual content if it contains unique information about others, such as customer names, employee names, or vendor names. Customer analysis becomes category 3; HR notes are handled as category 3 non-public themes.
 
@@ -133,3 +133,4 @@ Activation conditions for R2, initial defaults. Do not begin confidential refere
 | 2026-08-19 | v0.3 | upstream template | Restated the category 4 examples as jurisdiction-independent, with the Japanese items kept as a labelled example |
 | 2026-08-25 | v0.4 | upstream template | Added "Extensions Added to an Approved Environment", making an installed MCP server, agent plugin, or connector re-open the environment classification, and added it as condition 5 for category 3 × E1 |
 | 2026-08-26 | v0.5 | upstream template | Added "Re-verification of Environment Classifications", requiring the E1–E3 rows to be re-checked when vendor terms, plans, or the deployment configuration change and at a fixed interval, with changes recorded in this history |
+| 2026-08-29 | v0.6 | upstream template | Added specific biometric personal information, newly regulated by Japan's 2026 amendment to the Act on the Protection of Personal Information, to the category 4 Japanese example |
