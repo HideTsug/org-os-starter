@@ -46,6 +46,7 @@ Changes on `main` since v1.0.0.
 - The Step 3 adoption criterion now requires the askers to include someone other than the DRI, the adoption drivers gained a rotating member share slot, and the pitfalls gained usage settling on a few early adopters — so a rollout that only the DRI uses no longer passes (#65)
 - The after-copying cleanup table in `CLAUDE.md` now covers `ADOPTERS.md` and `docs/ai-agent-guide.md`, so a copy no longer keeps the upstream adopters list or the pre-clone briefing (#69)
 - The core list in the update strategy of both READMEs now includes `scripts/validate.py`, so a copy keeps taking upstream improvements to the mechanical checks (#70)
+- The compliance norms of the Layer 1 `ORG-CLAUDE.md` template gained an AI-specific binding-regulation viewpoint — disclosure of AI interaction and machine-readable marking of AI-generated content, with the EU AI Act Article 50 transparency obligations, applicable since 2026-08-02, as a labelled example — linked from the customer-disclosure operating rule (#75)
 
 ### Fixed
 
