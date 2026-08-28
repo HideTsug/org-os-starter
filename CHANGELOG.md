@@ -47,6 +47,7 @@ Changes on `main` since v1.0.0.
 - The after-copying cleanup table in `CLAUDE.md` now covers `ADOPTERS.md` and `docs/ai-agent-guide.md`, so a copy no longer keeps the upstream adopters list or the pre-clone briefing (#69)
 - The core list in the update strategy of both READMEs now includes `scripts/validate.py`, so a copy keeps taking upstream improvements to the mechanical checks (#70)
 - The compliance norms of the Layer 1 `ORG-CLAUDE.md` template gained an AI-specific binding-regulation viewpoint — disclosure of AI interaction and machine-readable marking of AI-generated content, with the EU AI Act Article 50 transparency obligations, applicable since 2026-08-02, as a labelled example — linked from the customer-disclosure operating rule (#75)
+- The labelled Japanese-jurisdiction examples brought up to the 2026 amendment to the Act on the Protection of Personal Information, promulgated 2026-07-17: specific biometric personal information added to the category 4 example of the data classification matrix, and the privacy-law example of the Layer 1 `ORG-CLAUDE.md` template now notes the amendment's consent exemption for statistical and AI-training uses, surcharges, and staged entry into force (#76)
 
 ### Fixed
 

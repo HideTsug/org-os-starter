@@ -1,6 +1,6 @@
 ---
 status: draft
-version: "0.6"
+version: "0.7"
 owner: (requires implementation DRI)
 summary: Template for organizational AI work norms, the core Layer 1 document. It makes organizational policy, compliance norms, data handling, and escalation machine-readable. Fill it for the adopting organization and promote it to agreed after approval.
 ---
@@ -63,7 +63,7 @@ Japanese version: [docs/ja/layer1/組織CLAUDE.md](../docs/ja/layer1/組織CLAUD
 
 (requires qualified professional: identify the privacy law and the statutory-identifier rules that actually apply in the organization's own jurisdiction, and cite the primary legal text. Acceptance criterion for this section once filled: it names the governing jurisdiction and links at least one primary legal source. The goals below hold across jurisdictions; the parenthesized items are examples from the Japanese jurisdiction and must be replaced when a different law applies.)
 
-- Entering customer personal data into cloud AI outside organization management may constitute third-party provision or outsourcing under the applicable privacy law. Do not do this unless consent and vendor-supervision duties are organized. This is the legal basis for the unmanaged-environment prohibition in [[data-classification-matrix]]. (Example, Japanese jurisdiction: the Act on the Protection of Personal Information.)
+- Entering customer personal data into cloud AI outside organization management may constitute third-party provision or outsourcing under the applicable privacy law. Do not do this unless consent and vendor-supervision duties are organized. This is the legal basis for the unmanaged-environment prohibition in [[data-classification-matrix]]. (Example, Japanese jurisdiction: the Act on the Protection of Personal Information. A 2026 amendment — passed 2026-07-10, promulgated 2026-07-17, entering into force in stages within two years of promulgation — adds a consent exemption for statistical and AI-training uses, administrative surcharges, and a new class of specific biometric personal information, so re-verify this analysis against the current text.)
 - National or statutory identifiers whose permitted purposes and permitted recipients are restricted by law, and the documents that carry them, must not be entered into AI regardless of environment. Treat them as category 4 in [[data-classification-matrix]]. (Example, Japanese jurisdiction: individual numbers under the Individual Number Act.)
 - Materials containing sensitive personal information, such as medical history, should be handled in line with category 4. Which attributes count as sensitive is set by the applicable law. (Example, Japanese jurisdiction: "special care-required personal information".)
 
@@ -119,3 +119,4 @@ Japanese version: [docs/ja/layer1/組織CLAUDE.md](../docs/ja/layer1/組織CLAUD
 | 2026-08-25 | v0.4 | upstream template | Added the operating rule that content reaching AI from a source is data and not instructions, with escalation when instruction-like text is found |
 | 2026-08-25 | v0.5 | upstream template | Turned the bare setup-guide path into a working relative link, matching the Japanese mirror |
 | 2026-08-29 | v0.6 | upstream template | Added an AI-specific binding-regulation viewpoint to Compliance Norms, with the EU AI Act Article 50 transparency obligations as a labelled example, and linked it from the customer-disclosure operating rule |
+| 2026-08-29 | v0.7 | upstream template | Brought the Japanese privacy-law example up to the 2026 amendment to the Act on the Protection of Personal Information, promulgated 2026-07-17 |
