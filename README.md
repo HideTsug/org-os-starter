@@ -149,6 +149,7 @@ org-os-starter/
 ├── ADOPTERS.md                        # 実運用組織の掲載希望制リスト（EN/JA 併記・docs/ja ミラーなし）
 ├── LICENSE                            # MIT
 ├── .gitignore                         # .DS_Store / .obsidian/
+├── context7.json                      # Context7（AI コーディングエージェント向けドキュメント索引）の設定
 ├── scripts/
 │   └── validate.py                    # 不変条件の機械検査（リンク・wikilink・status・プレースホルダ）
 ├── docs/                              # 英語 canon の解説・ガイド・決定記録（規範ではない）
