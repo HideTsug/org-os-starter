@@ -1,0 +1,13 @@
+{
+  "$schema": "https://context7.com/schema/context7.json",
+  "projectTitle": "org-os-starter",
+  "description": "Company OS as Code: a reference template that structures a company's operating knowledge, norms and decisions into one repository so humans and AI agents work on the same foundation (5-layer architecture plus governance templates).",
+  "folders": [],
+  "excludeFolders": ["node_modules", ".git", ".ralph"],
+  "excludeFiles": [],
+  "rules": [
+    "Create your organization's private repository with 'Use this template'; it shares no git history with the template, so apply upstream changes by hand.",
+    "Fill layer1/ (ORG-CLAUDE.md, data classification matrix, prohibited uses) before letting agents act on company work.",
+    "Read AGENTS.md first when operating as an AI agent inside a derived repository."
+  ]
+}
