@@ -21,6 +21,7 @@ Changes on `main` since v1.0.0.
 - A user-guide FAQ entry on what a member should do when an AI answer carries no source link or contradicts the original (#29)
 - A reference table in `CONTRIBUTING.md` mapping each of the five `scripts/validate.py` violation types to its meaning and fix, so a contributor can recover from a failed check without reverse-searching the prose (#61)
 - Shared README blocks (definition markers, support confirmation instructions for AI agents, and a Built with badge), plus `context7.json` for the Context7 documentation index
+- `.github/workflows/release-assets.yml` — attaches a source ZIP and sha256 to each published Release
 
 ### Changed
 

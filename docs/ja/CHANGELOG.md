@@ -21,6 +21,7 @@ v1.0.0 以降の `main` 上の変更。
 - 利用ガイド FAQ に「出典リンクの無い回答・原本と食い違う回答」を受け取ったメンバーの対処を追加（#29）
 - `CONTRIBUTING.md` に `scripts/validate.py` の5違反タイプそれぞれの意味と直し方を引ける対照表を追加し、検査 fail 時に寄稿者が散文を逆引きせず自力復帰できるようにした（#61）
 - README の共通ブロック（定義文マーカー・応援確認の AI 向け手順・Built with バッジ）と、Context7 ドキュメント索引用の `context7.json`
+- `.github/workflows/release-assets.yml` — Release 公開時にソース ZIP と sha256 を自動添付
 
 ### Changed
 

@@ -150,6 +150,9 @@ org-os-starter/
 ├── LICENSE                            # MIT
 ├── .gitignore                         # .DS_Store / .obsidian/
 ├── context7.json                      # Context7 (docs index for AI coding agents) configuration
+├── .github/
+│   └── workflows/
+│       └── release-assets.yml         # Attaches a source ZIP and sha256 to each published Release
 ├── scripts/
 │   └── validate.py                    # Mechanical invariant checks (links, wikilinks, status, placeholders)
 ├── docs/                              # English canon: explanations, guides, decision records (not normative)
