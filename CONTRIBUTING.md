@@ -102,5 +102,5 @@ Reports of a broken adoption flow are useful even without an approach — say wh
 
 ## Scope Notes
 
-- This repository ships no GitHub Actions workflows. Adding CI, issue templates, or anything under `.github/` is a supply-chain decision for the maintainer — open an issue and let the maintainer decide rather than sending the workflow in a pull request
+- This repository ships no GitHub Actions workflows. The sole exception is `release-assets.yml`, which is dedicated to maintainers' Release operations and does not run in adopters' derived repositories unless they publish a Release. Adding CI, issue templates, or anything under `.github/` is a supply-chain decision for the maintainer — open an issue and let the maintainer decide rather than sending the workflow in a pull request
 - Licensing is MIT ([LICENSE](LICENSE)) and applies to contributions. Do not paste text from sources whose license does not permit it

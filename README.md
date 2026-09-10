@@ -150,6 +150,9 @@ org-os-starter/
 ├── LICENSE                            # MIT
 ├── .gitignore                         # .DS_Store / .obsidian/
 ├── context7.json                      # Context7（AI コーディングエージェント向けドキュメント索引）の設定
+├── .github/
+│   └── workflows/
+│       └── release-assets.yml         # Release 公開時にソース ZIP と sha256 を自動添付
 ├── scripts/
 │   └── validate.py                    # 不変条件の機械検査（リンク・wikilink・status・プレースホルダ）
 ├── docs/                              # 英語 canon の解説・ガイド・決定記録（規範ではない）
