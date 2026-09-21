@@ -27,7 +27,7 @@ v1.0.0 から複製した組織とはパス互換でない。正本の文書は�
 | `knowledge/projects/_テンプレート.md` | `knowledge/projects/_template.md` | `docs/ja/knowledge/projects/_テンプレート.md` |
 | `knowledge/projects/PJ-サンプル-備品管理.md` | `knowledge/projects/PJ-sample-equipment.md` | `docs/ja/knowledge/projects/PJ-サンプル-備品管理.md` |
 
-v1.0.0 の残り8パス（`.gitignore`・`AGENTS.md`・`CLAUDE.md`・`LICENSE`・`README.md`・`docs/architecture.md`・`knowledge/README.md`・`knowledge/issues/ISSUE-0001.md`）はパスとしては変わらず、内容のみ更新されている。この表は `git diff --name-status -M v1.0.0 v1.1.0` で再導出できる。
+v1.0.0 の残り8パス（`.gitignore`・`AGENTS.md`・`CLAUDE.md`・`LICENSE`・`README.md`・`docs/architecture.md`・`knowledge/README.md`・`knowledge/issues/ISSUE-0001.md`）はパスとしては変わらず、内容のみ更新されている。左列は本リリースに同一パスで存在しないパスの全件で、`git diff --name-status -M v1.0.0 v1.1.0` の `D` 行と `R` 行がちょうどこの10件を列挙する。右の2列は各パスの本文の行き先で、1つの日本語原本から英語 canon と日本語ミラーの2つが出ているため改名検出だけでは出力されない。
 
 ### Added
 

@@ -27,7 +27,7 @@ Not path-compatible with a copy taken from v1.0.0. The canonical documents were 
 | `knowledge/projects/_テンプレート.md` | `knowledge/projects/_template.md` | `docs/ja/knowledge/projects/_テンプレート.md` |
 | `knowledge/projects/PJ-サンプル-備品管理.md` | `knowledge/projects/PJ-sample-equipment.md` | `docs/ja/knowledge/projects/PJ-サンプル-備品管理.md` |
 
-The other eight paths in v1.0.0 — `.gitignore`, `AGENTS.md`, `CLAUDE.md`, `LICENSE`, `README.md`, `docs/architecture.md`, `knowledge/README.md`, `knowledge/issues/ISSUE-0001.md` — are unchanged as paths; only their content moved on. The table can be re-derived with `git diff --name-status -M v1.0.0 v1.1.0`.
+The other eight paths in v1.0.0 — `.gitignore`, `AGENTS.md`, `CLAUDE.md`, `LICENSE`, `README.md`, `docs/architecture.md`, `knowledge/README.md`, `knowledge/issues/ISSUE-0001.md` — are unchanged as paths; only their content moved on. The left column is exactly the set of paths this release no longer has: the `D` and `R` lines of `git diff --name-status -M v1.0.0 v1.1.0` list those ten and no others. The two columns beside it are where each one's text went, which rename detection alone does not report — an English canon and a Japanese mirror came out of one Japanese original.
 
 ### Added
 
