@@ -8,6 +8,10 @@ All notable changes to this repository are documented in this file, so that an a
 
 Changes on `main` since v1.1.0.
 
+### Fixed
+
+- `context7.json` description shortened to fit the 200-character limit of the Context7 documentation index, so the repository can be registered
+
 ## [1.1.0] - 2026-09-21
 
 The first maintenance release after the public launch. English becomes the canon with Japanese mirrors under `docs/ja/`; the repository gains its contributor, adopter and changelog surfaces, a pre-clone briefing for AI agents, a filled demo organization, and mechanical invariant checks; the Google Drive-first operating profile is adopted; and the Layer 1 norms are brought up to the 2026 AI and personal-data regulations.

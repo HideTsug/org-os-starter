@@ -1,7 +1,7 @@
 {
   "$schema": "https://context7.com/schema/context7.json",
   "projectTitle": "org-os-starter",
-  "description": "Company OS as Code: a reference template that structures a company's operating knowledge, norms and decisions into one repository so humans and AI agents work on the same foundation (5-layer architecture plus governance templates).",
+  "description": "Company OS as Code: a reference template that structures a company's operating knowledge, norms and decisions into one repository so humans and AI agents share one foundation (5 layers + governance).",
   "folders": [],
   "excludeFolders": ["node_modules", ".git", ".ralph"],
   "excludeFiles": [],
