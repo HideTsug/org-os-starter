@@ -10,7 +10,7 @@ v1.1.0 以降の `main` 上の変更。
 
 ### Fixed
 
-- `context7.json` の description を Context7 ドキュメント索引の上限 200 字に収まるよう短縮（登録できる状態にした）
+- `context7.json` の description を Context7 ドキュメント索引の上限 200 字に収まるよう短縮（登録できる状態にした）（#83）
 
 ## [1.1.0] - 2026-09-21
 

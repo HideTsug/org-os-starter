@@ -10,7 +10,7 @@ Changes on `main` since v1.1.0.
 
 ### Fixed
 
-- `context7.json` description shortened to fit the 200-character limit of the Context7 documentation index, so the repository can be registered
+- `context7.json` description shortened to fit the 200-character limit of the Context7 documentation index, so the repository can be registered (#83)
 
 ## [1.1.0] - 2026-09-21
 
