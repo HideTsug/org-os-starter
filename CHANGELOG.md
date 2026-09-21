@@ -6,7 +6,28 @@ All notable changes to this repository are documented in this file, so that an a
 
 ## [Unreleased]
 
-Changes on `main` since v1.0.0.
+Changes on `main` since v1.1.0.
+
+## [1.1.0] - 2026-09-21
+
+The first maintenance release after the public launch. English becomes the canon with Japanese mirrors under `docs/ja/`; the repository gains its contributor, adopter and changelog surfaces, a pre-clone briefing for AI agents, a filled demo organization, and mechanical invariant checks; the Google Drive-first operating profile is adopted; and the Layer 1 norms are brought up to the 2026 AI and personal-data regulations.
+
+Not path-compatible with a copy taken from v1.0.0. The canonical documents were renamed to English paths and their Japanese text moved to mirrors under `docs/ja/`. Below are all ten paths that v1.0.0 carried and this release no longer has, each with the English canon that replaces it and the location of its Japanese text. An organization updating from v1.0.0 remaps these once; links and any path-dependent tooling inside the copy need the same remapping.
+
+| v1.0.0 path | v1.1.0 canonical path (English) | Japanese text |
+| --- | --- | --- |
+| `docs/導入ガイド.md` | `docs/setup-guide.md` | `docs/ja/docs/導入ガイド.md` |
+| `docs/利用ガイド.md` | `docs/user-guide.md` | `docs/ja/docs/利用ガイド.md` |
+| `docs/decisions/ADR-0000-テンプレート.md` | `docs/decisions/ADR-0000-template.md` | `docs/ja/docs/decisions/ADR-0000-テンプレート.md` |
+| `docs/governance/運用規約.md` | `docs/governance/operating-rules.md` | `docs/ja/docs/governance/運用規約.md` |
+| `layer1/組織CLAUDE.md` | `layer1/ORG-CLAUDE.md` | `docs/ja/layer1/組織CLAUDE.md` |
+| `layer1/データ分類マトリクス.md` | `layer1/data-classification-matrix.md` | `docs/ja/layer1/データ分類マトリクス.md` |
+| `layer1/禁止用途リスト.md` | `layer1/prohibited-uses.md` | `docs/ja/layer1/禁止用途リスト.md` |
+| `knowledge/issues/_テンプレート.md` | `knowledge/issues/_template.md` | `docs/ja/knowledge/issues/_テンプレート.md` |
+| `knowledge/projects/_テンプレート.md` | `knowledge/projects/_template.md` | `docs/ja/knowledge/projects/_テンプレート.md` |
+| `knowledge/projects/PJ-サンプル-備品管理.md` | `knowledge/projects/PJ-sample-equipment.md` | `docs/ja/knowledge/projects/PJ-サンプル-備品管理.md` |
+
+The other eight paths in v1.0.0 — `.gitignore`, `AGENTS.md`, `CLAUDE.md`, `LICENSE`, `README.md`, `docs/architecture.md`, `knowledge/README.md`, `knowledge/issues/ISSUE-0001.md` — are unchanged as paths; only their content moved on. The left column is exactly the set of paths this release no longer has: the `D` and `R` lines of `git diff --name-status -M v1.0.0 v1.1.0` list those ten and no others. The two columns beside it are where each one's text went, which rename detection alone does not report — an English canon and a Japanese mirror came out of one Japanese original.
 
 ### Added
 
@@ -20,8 +41,9 @@ Changes on `main` since v1.0.0.
 - `CHANGELOG.md` with a Japanese mirror, and the current version stated at the top of both READMEs (#27)
 - A user-guide FAQ entry on what a member should do when an AI answer carries no source link or contradicts the original (#29)
 - A reference table in `CONTRIBUTING.md` mapping each of the five `scripts/validate.py` violation types to its meaning and fix, so a contributor can recover from a failed check without reverse-searching the prose (#61)
-- Shared README blocks (definition markers, support confirmation instructions for AI agents, and a Built with badge), plus `context7.json` for the Context7 documentation index
-- `.github/workflows/release-assets.yml` — attaches a source ZIP and sha256 to each published Release
+- A "Cutting a Release" section in `CONTRIBUTING.md` that binds the changelog section, the README version line, the tag and the GitHub release into one four-step operation, so a released version is never announced without a tag to fetch it by, plus the version-number rules stating what MAJOR, MINOR and PATCH mean for a template that is copied and then diverges — from here on a release that deletes or renames a public path is MAJOR (#71)
+- Shared README blocks (definition markers, support confirmation instructions for AI agents, and a Built with badge), plus `context7.json` for the Context7 documentation index (#79)
+- `.github/workflows/release-assets.yml` — attaches a source ZIP and sha256 to each published Release (#80)
 
 ### Changed
 
@@ -73,5 +95,6 @@ Initial public release. A knowledge-foundation starter kit, MIT-licensed free OS
 - The "Use this template" flow: create the organization's own private repository and start adoption with an agentic AI such as Claude Code, with only three decisions made by humans first — the implementation DRI, the approval body, and the first narrow use case
 - `AGENTS.md` as the AI-agent entry point, the consent-based star/follow support confirmation, and `.gitignore`
 
-[Unreleased]: https://github.com/HideTsug/org-os-starter/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/HideTsug/org-os-starter/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/HideTsug/org-os-starter/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/HideTsug/org-os-starter/releases/tag/v1.0.0

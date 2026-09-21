@@ -100,6 +100,25 @@ Reports of a broken adoption flow are useful even without an approach — say wh
 - Describe how you verified the change, including the output of `python3 scripts/validate.py` if you touched links, file maps, frontmatter, or placeholders
 - Everything you write here is public and is read by adopting organizations and by AI agents. Keep the tone plain and factual, and match the language of the document you are editing
 
+## Cutting a Release
+
+Releases are cut by the maintainer. The version number, the tag and the release notes are what `CHANGELOG.md` and the update strategy in both READMEs point an adopting organization at, so the four steps below are one operation: stopping after the documents leaves a version that is announced but cannot be fetched, and comparison links that do not resolve.
+
+1. Move the entries under `## [Unreleased]` into a new `## [X.Y.Z] - YYYY-MM-DD` section in `CHANGELOG.md` and `docs/ja/CHANGELOG.md`. In both files, also set the line under `## [Unreleased]` to name the new version as its baseline, and update the comparison links at the bottom
+2. Update the current-version line at the top of `README.md` and `README.en.md`
+3. Merge the pull request carrying steps 1 and 2. Any other pull request branched from the old `## [Unreleased]` section is rebased onto the new `main` before it merges, and its changelog lines are then moved by hand into the new `## [Unreleased]`: a rebase re-applies them under the same heading, which now sits inside the section just released, so leaving them there would rewrite a published release and drop the change from the next one
+4. Tag the merged commit and publish the GitHub release with that section as the body: `gh release create vX.Y.Z --target <merge commit SHA> --title "vX.Y.Z" --notes-file <file>`. Pass the SHA the merge produced, not `main`, so a pull request landing in between is not swept into the tag
+
+### Version Numbers
+
+This repository is a template: an organization copies it and the copy then diverges, updating by the strategy in the READMEs rather than by a dependency resolver. The public paths here are therefore not an API contract, and the number is read as what an adopting organization has to redo when it takes an upstream version.
+
+- **MAJOR** — a breaking change to the five-layer structure or to the adoption flow
+- **MINOR** — added capability
+- **PATCH** — fixes
+
+From now on, a release that deletes or renames a public path is MAJOR. v1.0.0 to v1.1.0 is a transitional exception, made while English was becoming the canon; its incompatibility is announced instead by the old-to-new path table in the `[1.1.0]` section of `CHANGELOG.md`.
+
 ## Scope Notes
 
 - This repository ships no GitHub Actions workflows. The sole exception is `release-assets.yml`, which is dedicated to maintainers' Release operations and does not run in adopters' derived repositories unless they publish a Release. Adding CI, issue templates, or anything under `.github/` is a supply-chain decision for the maintainer — open an issue and let the maintainer decide rather than sending the workflow in a pull request
