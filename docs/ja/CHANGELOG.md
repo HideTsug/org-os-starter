@@ -8,6 +8,10 @@ English version: [CHANGELOG.md](../../CHANGELOG.md)
 
 v1.1.0 以降の `main` 上の変更。
 
+### Fixed
+
+- `context7.json` の description を Context7 ドキュメント索引の上限 200 字に収まるよう短縮（登録できる状態にした）（#83）
+
 ## [1.1.0] - 2026-09-21
 
 公開後の最初のメンテナンスリリース。正本を英語 canon 化して日本語ミラーを `docs/ja/` 配下に置き、コントリビュート・導入組織掲載・変更履歴の各面と clone 前の AI 向け導入台本・充填済みデモ組織・不変条件の機械検査を追加し、Google Drive 前提の運用プロファイルを採用、Layer 1 の規範を2026年のAI・個人情報関連法令に追随させた。
