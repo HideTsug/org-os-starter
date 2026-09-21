@@ -6,7 +6,7 @@
 
 日本語: [README.md](README.md)
 
-Current version: v1.0.0 (2026-08-13) plus unreleased improvements on main. The change history is in [CHANGELOG.md](CHANGELOG.md).
+Current version: v1.1.0 (2026-09-21). The change history is in [CHANGELOG.md](CHANGELOG.md).
 
 A knowledge-foundation starter kit for moving your organization toward an **AI-native organization**. It sets up — in a form you can manage as a repository — your internal rules for AI use, a structure that keeps knowledge from being locked inside individuals, and the groundwork for entrusting company work to AI.
 

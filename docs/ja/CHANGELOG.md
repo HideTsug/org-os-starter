@@ -6,7 +6,28 @@ English version: [CHANGELOG.md](../../CHANGELOG.md)
 
 ## [Unreleased]
 
-v1.0.0 以降の `main` 上の変更。
+v1.1.0 以降の `main` 上の変更。
+
+## [1.1.0] - 2026-09-21
+
+公開後の最初のメンテナンスリリース。正本を英語 canon 化して日本語ミラーを `docs/ja/` 配下に置き、コントリビュート・導入組織掲載・変更履歴の各面と clone 前の AI 向け導入台本・充填済みデモ組織・不変条件の機械検査を追加し、Google Drive 前提の運用プロファイルを採用、Layer 1 の規範を2026年のAI・個人情報関連法令に追随させた。
+
+v1.0.0 から複製した組織とはパス互換でない。正本の文書は英語パスへ改名され、日本語本文は `docs/ja/` 配下のミラーへ移った。以下は v1.0.0 にあって本リリースに同一パスでは存在しない10パスの全件と、それぞれを置き換えた英語 canon・日本語本文の移動先。v1.0.0 から更新する組織はこの対応を一度取り直す（複製内のリンクとパス依存の処理も同様）。
+
+| v1.0.0 のパス | v1.1.0 の正本パス（英語） | 日本語本文 |
+| --- | --- | --- |
+| `docs/導入ガイド.md` | `docs/setup-guide.md` | `docs/ja/docs/導入ガイド.md` |
+| `docs/利用ガイド.md` | `docs/user-guide.md` | `docs/ja/docs/利用ガイド.md` |
+| `docs/decisions/ADR-0000-テンプレート.md` | `docs/decisions/ADR-0000-template.md` | `docs/ja/docs/decisions/ADR-0000-テンプレート.md` |
+| `docs/governance/運用規約.md` | `docs/governance/operating-rules.md` | `docs/ja/docs/governance/運用規約.md` |
+| `layer1/組織CLAUDE.md` | `layer1/ORG-CLAUDE.md` | `docs/ja/layer1/組織CLAUDE.md` |
+| `layer1/データ分類マトリクス.md` | `layer1/data-classification-matrix.md` | `docs/ja/layer1/データ分類マトリクス.md` |
+| `layer1/禁止用途リスト.md` | `layer1/prohibited-uses.md` | `docs/ja/layer1/禁止用途リスト.md` |
+| `knowledge/issues/_テンプレート.md` | `knowledge/issues/_template.md` | `docs/ja/knowledge/issues/_テンプレート.md` |
+| `knowledge/projects/_テンプレート.md` | `knowledge/projects/_template.md` | `docs/ja/knowledge/projects/_テンプレート.md` |
+| `knowledge/projects/PJ-サンプル-備品管理.md` | `knowledge/projects/PJ-sample-equipment.md` | `docs/ja/knowledge/projects/PJ-サンプル-備品管理.md` |
+
+v1.0.0 の残り8パス（`.gitignore`・`AGENTS.md`・`CLAUDE.md`・`LICENSE`・`README.md`・`docs/architecture.md`・`knowledge/README.md`・`knowledge/issues/ISSUE-0001.md`）はパスとしては変わらず、内容のみ更新されている。この表は `git diff --name-status -M v1.0.0 v1.1.0` で再導出できる。
 
 ### Added
 
@@ -20,8 +41,9 @@ v1.0.0 以降の `main` 上の変更。
 - 日本語ミラー付きの `CHANGELOG.md` と、両 README 冒頭への現行バージョンの明記（#27）
 - 利用ガイド FAQ に「出典リンクの無い回答・原本と食い違う回答」を受け取ったメンバーの対処を追加（#29）
 - `CONTRIBUTING.md` に `scripts/validate.py` の5違反タイプそれぞれの意味と直し方を引ける対照表を追加し、検査 fail 時に寄稿者が散文を逆引きせず自力復帰できるようにした（#61）
-- README の共通ブロック（定義文マーカー・応援確認の AI 向け手順・Built with バッジ）と、Context7 ドキュメント索引用の `context7.json`
-- `.github/workflows/release-assets.yml` — Release 公開時にソース ZIP と sha256 を自動添付
+- `CONTRIBUTING.md` に「リリースの切り方」節を追加し、CHANGELOG の節・README の版数行・タグ・GitHub Release を4手順1操作として束ねた（告知された版がタグ無しで取得できない状態を防ぐため）。あわせて版数の付け方を明文化し、複製して分岐するテンプレートにおける MAJOR／MINOR／PATCH の意味と、今後は公開パスの削除・改名を含むリリースを MAJOR とすることを規定した（#71）
+- README の共通ブロック（定義文マーカー・応援確認の AI 向け手順・Built with バッジ）と、Context7 ドキュメント索引用の `context7.json`（#79）
+- `.github/workflows/release-assets.yml` — Release 公開時にソース ZIP と sha256 を自動添付（#80）
 
 ### Changed
 
@@ -73,5 +95,6 @@ v1.0.0 以降の `main` 上の変更。
 - 「Use this template」フロー: 自組織の private リポジトリを作り、Claude Code 等のエージェント型 AI と導入を開始。人間が最初に決めるのは導入責任者（DRI）・承認体制・最初の一点突破ユースケースの3つだけ
 - AI エージェント入口としての `AGENTS.md`、同意ベースのスター/フォロー応援確認、`.gitignore`
 
-[Unreleased]: https://github.com/HideTsug/org-os-starter/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/HideTsug/org-os-starter/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/HideTsug/org-os-starter/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/HideTsug/org-os-starter/releases/tag/v1.0.0

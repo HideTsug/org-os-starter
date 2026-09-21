@@ -6,7 +6,7 @@
 
 English: [README.en.md](README.en.md)
 
-現行バージョン: v1.0.0（2026-08-13）＋ main 上の未リリース改善。変更履歴は [CHANGELOG.md](CHANGELOG.md)（日本語版は [docs/ja/CHANGELOG.md](docs/ja/CHANGELOG.md)）。
+現行バージョン: v1.1.0（2026-09-21）。変更履歴は [CHANGELOG.md](CHANGELOG.md)（日本語版は [docs/ja/CHANGELOG.md](docs/ja/CHANGELOG.md)）。
 
 組織を **AIネイティブな組織** に移行させるための知識基盤スターターキット。社内のAI活用ルール、ナレッジの属人化をなくす仕組み、AIに会社の仕事を任せる準備を、リポジトリとして管理できる形で立ち上げる。
 
