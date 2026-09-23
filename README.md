@@ -19,10 +19,10 @@ English: [README.en.md](README.en.md)
 
 **v0.1 の運用入口は Google Drive に限定する。** メンバーは既存の Drive で原本を読み書きし、AI は本人の権限でそれらを参照して原本リンク付きで答える。repo は `layer1/` の規範と、`knowledge/` の非機微な派生状態を保持する。この二層構造は [Google Drive 運用プロファイル](docs/ja/docs/Google-Drive-運用プロファイル.md) に定義している。本repoはOAuthアプリ・検索runtimeを同梱せず、承認済みAIコネクタまたはDrive APIクライアントと組み合わせる規約・テンプレートである。
 
-導入をAIに任せるなら、お使いのAIアシスタント（Claude Code / Claude / ChatGPT など）に次の文をそのまま貼り付ける。
+導入を AI に任せるなら、お使いの AI アシスタント（Claude Code / Claude / ChatGPT など）に次の文をそのまま貼り付ける。
 
 ```
-自社の組織にAIの知識基盤を立ち上げたい。
+自分たちの組織に AI の知識基盤を立ち上げたい。
 https://raw.githubusercontent.com/HideTsug/org-os-starter/main/docs/ai-agent-guide.md
 を読んで、その手順どおりに私を案内してください。
 ```
