@@ -8,6 +8,10 @@ All notable changes to this repository are documented in this file, so that an a
 
 Changes on `main` since v1.1.0.
 
+### Added
+
+- `README.md` and `README.en.md` now carry the pre-clone AI briefing as a paste-ready block, so the single raw URL of `docs/ai-agent-guide.md` is offered at the entry point instead of only in the file map (#87)
+
 ### Fixed
 
 - `context7.json` description shortened to fit the 200-character limit of the Context7 documentation index, so the repository can be registered (#83)
