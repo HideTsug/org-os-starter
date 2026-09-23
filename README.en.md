@@ -19,6 +19,16 @@ It offers the shortest route from "individuals using AI tools in isolation" to a
 
 **The v0.1 operating entry point supports Google Drive only.** Members keep reading and writing originals in their existing Drive. AI reads those originals with the current user's permissions and answers with source links. The repository keeps the `layer1/` norms and non-sensitive derived state under `knowledge/`. The [Google Drive operating profile](docs/google-drive-profile.md) defines this two-layer topology. This repository does not bundle an OAuth app or search runtime; it is a convention and template used with an approved AI connector or Drive API client.
 
+To have an AI drive the adoption, paste the following as-is into your AI assistant (Claude Code, Claude, ChatGPT, and so on).
+
+```
+I want to stand up an AI knowledge foundation for my organization.
+Read https://raw.githubusercontent.com/HideTsug/org-os-starter/main/docs/ai-agent-guide.md
+and guide me through it step by step.
+```
+
+The agent confirms which organization is adopting, self-assesses its execution environment, obtains consent for a private repository, and then hands over to Step 0 of the setup guide (the briefing it follows is [docs/ai-agent-guide.md](docs/ai-agent-guide.md)). If your AI cannot open that URL, open it in a browser yourself and paste the text into the chat.
+
 To simply read it locally, paste the following as-is.
 
 ```bash

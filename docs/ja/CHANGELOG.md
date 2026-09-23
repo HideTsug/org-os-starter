@@ -8,6 +8,10 @@ English version: [CHANGELOG.md](../../CHANGELOG.md)
 
 v1.1.0 以降の `main` 上の変更。
 
+### Added
+
+- `README.md` と `README.en.md` に clone 前の AI 向け導入台本の貼り付けブロックを追加し、`docs/ai-agent-guide.md` の raw URL 1 本を入口で渡せるようにした（従来はファイルマップ内の 1 行のみ）（#87）
+
 ### Fixed
 
 - `context7.json` の description を Context7 ドキュメント索引の上限 200 字に収まるよう短縮（登録できる状態にした）（#83）
